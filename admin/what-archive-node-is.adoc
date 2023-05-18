@@ -1,0 +1,46 @@
+---
+permalink: admin/what-archive-node-is.html 
+sidebar: sidebar 
+keywords: archive node 
+summary: 'En option, chaque site de data Center StorageGRID peut être déployé avec un nœud d"archivage, ce qui vous permet de vous connecter à un système de stockage d"archivage externe ciblé, tel que Tivoli Storage Manager (TSM).' 
+---
+= Qu'est-ce qu'un nœud d'archivage ?
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+En option, chaque site de data Center StorageGRID peut être déployé avec un nœud d'archivage, ce qui vous permet de vous connecter à un système de stockage d'archivage externe ciblé, tel que Tivoli Storage Manager (TSM).
+
+[CAUTION]
+====
+La prise en charge des nœuds d'archivage (pour l'archivage dans le cloud à l'aide de l'API S3 et l'archivage sur bande à l'aide du middleware TSM) est obsolète et sera supprimée dans une prochaine version. Le déplacement d'objets d'un nœud d'archivage vers un système de stockage d'archives externe a été remplacé par les pools de stockage cloud ILM pour offrir davantage de fonctionnalités.
+
+Voir :
+
+* link:../admin/migrating-objects-from-cloud-tiering-s3-to-cloud-storage-pool.html["Migration des objets vers un pool de stockage cloud"]
+* link:../ilm/what-cloud-storage-pool-is.html["Utilisation des pools de stockage cloud"]
+
+
+De plus, vous devez supprimer les nœuds d'archivage de la règle ILM active dans StorageGRID 11.7 ou version antérieure. La suppression des données d'objet stockées sur les nœuds d'archivage simplifie les mises à niveau futures. Voir link:../ilm/working-with-ilm-rules-and-ilm-policies.html["Utilisation des règles ILM et des règles ILM"].
+
+====
+Le nœud d'archivage fournit une interface par le biais de laquelle vous pouvez cibler un système de stockage d'archives externe pour le stockage à long terme des données d'objet. Le nœud d'archivage surveille également cette connexion et le transfert des données d'objet entre le système StorageGRID et le système de stockage d'archives externes ciblé.
+
+Après avoir configuré les connexions à la cible externe, vous pouvez configurer le nœud d'archivage pour optimiser les performances TSM, mettre un nœud d'archivage hors ligne lorsqu'un serveur TSM atteint sa capacité ou est indisponible, et configurer les paramètres de réplication et de récupération. Vous pouvez également définir des alarmes personnalisées pour le nœud d'archivage.
+
+Les données d'objet qui ne peuvent pas être supprimées, mais qui ne sont pas régulièrement consultées, peuvent à tout moment être déplacées depuis les disques rotatifs d'un nœud de stockage et vers un stockage d'archivage externe tel que le cloud ou la bande. Cet archivage des données d'objet s'effectue via la configuration du nœud d'archivage d'un site de data Center, puis la configuration des règles ILM sur lesquelles ce nœud d'archivage est sélectionné comme « cible » pour les instructions de placement de contenu. Le nœud d'archivage ne gère pas les données d'objet archivées lui-même, ce qui est réalisé par le dispositif d'archivage externe.
+
+
+NOTE: Les métadonnées de l'objet ne sont pas archivées, mais restent sur les nœuds de stockage.
+
+
+
+== Qu'est-ce que le service ARC
+
+Le service d'archivage (ARC) sur les nœuds d'archivage fournit l'interface de gestion que vous pouvez utiliser pour configurer les connexions au système de stockage d'archivage externe, comme les bandes via le middleware TSM.
+
+Il s'agit du service ARC qui interagit avec un système de stockage d'archives externe, en envoyant des données d'objet pour le stockage secondaire et en effectuant des récupérations lorsqu'une application client demande un objet archivé. Lorsqu'une application client demande un objet archivé, un nœud de stockage demande les données de l'objet au service ARC. Le service ARC envoie une demande au système de stockage d'archives externe, qui récupère les données de l'objet demandé et les envoie au service ARC. Le service ARC vérifie les données de l'objet et les transfère au nœud de stockage, qui renvoie alors l'objet à l'application client requérant.
+
+Les demandes de données d'objet archivées sur bande via un middleware TSM sont gérées pour optimiser les récupérations. Les demandes peuvent être commandées de façon à ce que les objets stockés dans l'ordre séquentiel sur bande soient demandés dans le même ordre séquentiel. Les demandes sont alors mises en file d'attente pour soumission à l'unité de stockage. En fonction du périphérique d'archivage, plusieurs demandes d'objets sur différents volumes peuvent être traitées simultanément.

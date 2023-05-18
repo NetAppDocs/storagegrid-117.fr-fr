@@ -1,0 +1,22 @@
+---
+permalink: maintain/considerations-for-decommissioning-admin-or-gateway-nodes.html 
+sidebar: sidebar 
+keywords: storagegrid, decommission admin node, decommission gateway node 
+summary: 'Vérifiez les points suivants avant de désaffecter un nœud d"administration ou un nœud de passerelle.' 
+---
+= Considérations relatives à la désaffectation des nœuds de passerelle ou d'administration
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Vérifiez les points suivants avant de désaffecter un nœud d'administration ou un nœud de passerelle.
+
+* La procédure de mise hors service nécessite un accès exclusif à certaines ressources système. Vous devez donc confirmer qu'aucune autre procédure de maintenance n'est en cours d'exécution.
+* Vous ne pouvez pas désaffecter le nœud d'administration principal.
+* Vous ne pouvez pas désaffecter un nœud d'administration ou un nœud de passerelle si l'une de ses interfaces réseau fait partie d'un groupe haute disponibilité (HA). Vous devez d'abord supprimer les interfaces réseau du groupe haute disponibilité. Reportez-vous aux instructions pour link:../admin/managing-high-availability-groups.html["La gestion des groupes de haute disponibilité"].
+* Vous pouvez modifier la règle ILM en toute sécurité lors de la désaffectation d'un nœud de passerelle ou d'un nœud d'administration.
+* Si vous désaffectez un nœud d'administration et que l'authentification unique (SSO) est activée pour votre système StorageGRID, n'oubliez pas de supprimer la confiance de l'interlocuteur du nœud de Active Directory Federation Services (AD FS).
+* Si vous utilisez link:../admin/grid-federation-overview.html["fédération des grilles"], Assurez-vous que l'adresse IP du nœud que vous désaffecterez n'a pas été spécifiée pour une connexion de fédération de grille.
+

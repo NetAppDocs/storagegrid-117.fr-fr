@@ -1,0 +1,56 @@
+---
+permalink: sg6000/removing-fibre-channel-hba.html 
+sidebar: sidebar 
+keywords: storagegrid, sg6000, storage node, storage appliance, sg6000-cn, hba, host bus adapter, fibre channel, fiber channel, remove, removing, removal 
+summary: 'Vous devrez peut-être remplacer l"adaptateur de bus hôte Fibre Channel \(HBA\) du contrôleur SG6000-CN si ce dernier ne fonctionne pas de manière optimale ou s"il est défectueux.' 
+---
+= Retirez l'adaptateur HBA Fibre Channel
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Vous devrez peut-être remplacer l'adaptateur de bus hôte Fibre Channel (HBA) dans le contrôleur SG6000-CN s'il ne fonctionne pas de manière optimale ou s'il est défectueux.
+
+.Avant de commencer
+* Vous disposez de l'adaptateur HBA Fibre Channel de remplacement approprié.
+* Vous avez link:verifying-fibre-channel-hba-to-replace.html["Déterminez quel contrôleur SG6000-CN contient l'adaptateur HBA Fibre Channel à remplacer - effectué"].
+* Vous avez link:locating-controller-in-data-center.html["Emplacement physique du contrôleur SG6000-CN"] dans le data center.
+* Vous avez link:shutting-down-sg6000-cn-controller.html["Arrêtez le contrôleur SG6000-CN"].
++
+
+CAUTION: Un arrêt contrôlé est nécessaire avant de retirer le contrôleur du rack.
+
+* Vous avez link:removing-sg6000-cn-controller-from-cabinet-or-rack.html["retirez le contrôleur de l'armoire ou du rack - effectué"].
+* Vous avez link:removing-sg6000-cn-controller-cover.html["retirez le capot du contrôleur - effectué"].
+
+
+.Description de la tâche
+Pour éviter toute interruption de service, vérifiez que tous les autres nœuds de stockage sont connectés à la grille avant de démarrer le remplacement de HBA Fibre Channel ou de remplacer l'adaptateur lors d'une fenêtre de maintenance planifiée en cas d'interruption de service. Voir les informations sur link:../monitor/monitoring-system-health.html#monitor-node-connection-states["contrôle de l'état de connexion du nœud"].
+
+
+IMPORTANT: Si vous avez déjà utilisé une règle ILM pour créer une seule copie d'un objet, vous devez remplacer l'adaptateur HBA Fibre Channel lors d'une fenêtre de maintenance planifiée. Sinon, vous risquez de perdre temporairement l'accès à ces objets au cours de cette procédure. + Voir les informations sur link:../ilm/why-you-should-not-use-single-copy-replication.html["pourquoi ne pas utiliser la réplication à copie unique"].
+
+.Étapes
+. Enroulez l'extrémité du bracelet antistatique autour de votre poignet et fixez l'extrémité du clip à une masse métallique afin d'éviter toute décharge statique.
+. Repérez l'ensemble de montage à l'arrière du contrôleur contenant le HBA Fibre Channel.
++
+image::../media/sg6060_riser_assembly_location.jpg[Emplacement de l'assemblage de la carte de montage SG6060]
+
+. Saisissez l'ensemble de montage dans les trous marqués de couleur bleue et soulevez-le avec précaution vers le haut. Déplacez l'ensemble de montage vers l'avant du châssis tout en le soulevant pour permettre aux connecteurs externes des adaptateurs installés de dégager le châssis.
+. Placez la carte de montage sur une surface antistatique plane, face en métal vers le bas pour accéder aux adaptateurs.
++
+image::../media/sg6060_fc_hba_location.jpg[SG6060 HBA Fibre Channel dans l'assemblage de montage]
+
++
+L'ensemble carte de montage comprend deux adaptateurs : un adaptateur HBA Fibre Channel et un adaptateur réseau Ethernet. Le HBA Fibre Channel est indiqué sur l'illustration.
+
+. Ouvrez le loquet bleu de l'adaptateur (encerclé) et retirez avec précaution le HBA Fibre Channel de l'ensemble de montage. Secouez légèrement l'adaptateur pour retirer l'adaptateur de son connecteur. N'utilisez pas de force excessive.
+. Placez l'adaptateur sur une surface antistatique plane.
+
+
+.Une fois que vous avez terminé
+link:reinstalling-fibre-channel-hba.html["Installez la carte HBA Fibre Channel de remplacement"].
+
+Après le remplacement de la pièce, renvoyez la pièce défectueuse à NetApp, en suivant les instructions RMA (retour de matériel) livrées avec le kit. Voir la https://["Retour de pièce et amp ; remplacements"^] pour plus d'informations.

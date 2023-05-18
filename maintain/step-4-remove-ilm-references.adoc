@@ -1,0 +1,76 @@
+---
+permalink: maintain/step-4-remove-ilm-references.html 
+sidebar: sidebar 
+keywords: storagegrid, recover, remove ilm reference 
+summary: 'À partir de l"étape 4 \(Supprimer les références ILM\) de l"assistant site de mise hors service, vous pouvez supprimer la stratégie proposée s"il en existe une et supprimer ou modifier toute règle ILM inutilisée qui fait toujours référence au site.' 
+---
+= Étape 4 : supprimer les références ILM
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+À partir de l'étape 4 (Supprimer les références ILM) de l'assistant site de désaffection, vous pouvez supprimer la stratégie proposée s'il en existe une et supprimer ou modifier toute règle ILM inutilisée qui fait toujours référence au site.
+
+.Description de la tâche
+Dans ces cas, vous ne pouvez pas démarrer la procédure de mise hors service du site :
+
+* Une politique ILM proposée existe. Si vous avez une stratégie proposée, vous devez la supprimer.
+* Une règle ILM fait référence au site, même si cette règle n'est utilisée dans aucune politique ILM. Vous devez supprimer ou modifier toutes les règles qui font référence au site.
+
+
+.Étapes
+. Si une stratégie proposée est répertoriée, supprimez-la.
++
+.. Sélectionnez *Supprimer la stratégie proposée*.
+.. Sélectionnez *OK* dans la boîte de dialogue de confirmation.
+
+
+. Déterminez si des règles ILM inutilisées font référence au site.
++
+image::../media/decommission_site_step_4_ilm_rules.png[Désaffectation des règles ILM de l'étape 4 du site]
+
++
+Toutes les règles ILM répertoriées font toujours référence au site, mais ne sont utilisées dans aucune règle. Dans l'exemple :
+
++
+** La règle *make 2 copies* utilise le pool de stockage *All Storage Nodes* (StorageGRID 11.6 et versions antérieures), qui utilise le site *All sites*.
+** La règle *3 copies non utilisées pour le locataire S3* fait référence au pool de stockage *Raleigh*.
+** La règle *2 copie 2 non utilisée pour les objets plus petits* fait référence au pool de stockage *Raleigh*.
+** Les règles *EC grosses objets* inutilisées utilisent le site Raleigh dans le profil de code d'effacement *All 3 sites*.
+** Si aucune règle ILM n'est répertoriée, sélectionnez *Suivant* pour accéder à link:step-5-resolve-node-conflicts.html["Étape 5 : résoudre les conflits de nœuds (et démarrer la mise hors service)"].
++
+
+NOTE: Lorsque StorageGRID décompresse le site, il désactive automatiquement tous les profils de code d'effacement inutilisés qui font référence au site et supprime automatiquement les pools de stockage inutilisés qui font référence au site. Le pool de stockage tous les nœuds de stockage (StorageGRID 11.6 et versions antérieures) est supprimé car il utilise le site tous les sites.
+
+** Si une ou plusieurs règles ILM sont répertoriées, passez à l'étape suivante.
+
+
+. Modifier ou supprimer chaque règle inutilisée :
++
+** Pour modifier une règle, accédez à la page de règles ILM et mettez à jour tous les placements qui utilisent un profil de code d'effacement ou un pool de stockage faisant référence au site. Ensuite, revenez à *étape 4 (Supprimer les références ILM)*.
++
+
+NOTE: Pour plus de détails, reportez-vous aux instructions relatives à la gestion des objets avec la gestion du cycle de vie des informations.
+
+** Pour supprimer une règle, sélectionnez l'icône de corbeille image:../media/icon_trash_can.png["Corbeille des icônes"] Et sélectionnez *OK*.
++
+
+IMPORTANT: Vous devez supprimer la règle *make 2 copies* avant de pouvoir désaffecter un site.
+
+
+
+. Vérifiez qu'aucune politique ILM proposée n'existe, qu'aucune règle ILM non utilisée ne fait référence au site et que le bouton *Suivant* est activé.
++
+image::../media/decommission_site_step_4_no_policy_or_rules.png[Désaffecter le site étape 4 aucune police ou règle]
+
+. Sélectionnez *Suivant*.
++
+
+NOTE: Les pools de stockage et les profils de code d'effacement qui font référence au site ne seront plus valides après la suppression du site. Lorsque StorageGRID décompresse le site, il désactive automatiquement tous les profils de code d'effacement inutilisés qui font référence au site et supprime automatiquement les pools de stockage inutilisés qui font référence au site. Le pool de stockage tous les nœuds de stockage (StorageGRID 11.6 et versions antérieures) est supprimé car il utilise le site tous les sites.
+
++
+L'étape 5 (résoudre les conflits de nœuds) s'affiche.
+
+

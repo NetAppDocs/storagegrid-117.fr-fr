@@ -1,0 +1,54 @@
+---
+permalink: s3/accessing-and-reviewing-audit-logs.html 
+sidebar: sidebar 
+keywords: access audit logs, review audit logs, view audit logs 
+summary: 'Les messages d"audit sont générés par les services StorageGRID et stockés dans des fichiers journaux texte. Des messages d"audit spécifiques aux API dans les journaux d"audit fournissent des données stratégiques de sécurité, d"exploitation et de surveillance des performances qui vous aideront à évaluer l"état de votre système.' 
+---
+= Examiner les journaux d'audit
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Les messages d'audit sont générés par les services StorageGRID et stockés dans des fichiers journaux texte. Des messages d'audit spécifiques aux API dans les journaux d'audit fournissent des données stratégiques de sécurité, d'exploitation et de surveillance des performances qui vous aideront à évaluer l'état de votre système.
+
+.Avant de commencer
+* Vous disposez d'autorisations d'accès spécifiques.
+* Vous avez le `Passwords.txt` fichier.
+* Vous connaissez l'adresse IP d'un nœud d'administration.
+
+
+.Description de la tâche
+Le fichier journal d'audit actif est nommé `audit.log`, Et il est stocké sur des nœuds d'administration.
+
+Une fois par jour, le fichier audit.log actif est enregistré, et un nouveau `audit.log` le fichier est démarré. Le nom du fichier enregistré indique quand il a été enregistré, au format `_yyyy-mm-dd.txt_`.
+
+Après un jour, le fichier enregistré est compressé et renommé, au format `_yyyy-mm-dd.txt.gz_`, qui conserve la date originale.
+
+Cet exemple montre l'actif `audit.log` fichier du jour précédent (`2018-04-15.txt`), et le fichier compressé pour la veille (`2018-04-14.txt.gz`).
+
+[listing]
+----
+audit.log
+2018-04-15.txt
+2018-04-14.txt.gz
+----
+.Étapes
+. Connectez-vous à un nœud d'administration :
++
+.. Saisissez la commande suivante : `ssh admin@_primary_Admin_Node_IP_`
+.. Entrez le mot de passe indiqué dans le `Passwords.txt` fichier.
+.. Entrez la commande suivante pour passer à la racine : `su -`
+.. Entrez le mot de passe indiqué dans le `Passwords.txt` fichier.
++
+Lorsque vous êtes connecté en tant que root, l'invite passe de `$` à `#`.
+
+
+
+. Accédez au répertoire contenant les fichiers journaux d'audit :
++
+`cd /var/local/audit/export`
+
+. Afficher le fichier journal d'audit actuel ou enregistré, selon les besoins.
+

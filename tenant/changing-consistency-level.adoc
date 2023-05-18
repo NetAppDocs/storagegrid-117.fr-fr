@@ -1,0 +1,46 @@
+---
+permalink: tenant/changing-consistency-level.html 
+sidebar: sidebar 
+keywords: how to change bucket consistency level, read after new write, read-after-new-write, strong site, strong-site, strong global, strong-global 
+summary: Si vous utilisez un locataire S3, vous pouvez modifier le niveau de cohérence des opérations effectuées sur les objets dans des compartiments S3. 
+---
+= Modifiez le niveau de cohérence d'un compartiment
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Si vous utilisez un locataire S3, vous pouvez modifier le niveau de cohérence des opérations effectuées sur les objets dans des compartiments S3.
+
+.Avant de commencer
+* Vous êtes connecté au Gestionnaire de locataires à l'aide d'un link:../admin/web-browser-requirements.html["navigateur web pris en charge"].
+* Vous appartenez à un groupe d'utilisateurs qui possède le link:tenant-management-permissions.html["Gérez tous les compartiments ou l'autorisation d'accès racine"]. Ces autorisations remplacent les paramètres d'autorisations des stratégies de groupes ou de compartiments.
+
+
+.Description de la tâche
+Les contrôles de cohérence assurent un équilibre entre la disponibilité des objets et la cohérence de ces objets entre plusieurs nœuds de stockage et sites. En général, vous devez utiliser le niveau de cohérence *Read-After-New-write* pour vos compartiments.
+
+Si le niveau de cohérence *Read-After-New-write* ne répond pas aux exigences de l'application client, vous pouvez modifier le niveau de cohérence en définissant le niveau de cohérence du compartiment ou en utilisant le `Consistency-Control` en-tête. Le `Consistency-Control` le cueilleur remplace le niveau de cohérence du godet.
+
+
+NOTE: Lorsque vous modifiez le niveau de cohérence d'un compartiment, seuls les objets ingérées après la modification sont garantis pour satisfaire le niveau révisé.
+
+.Étapes
+. Sélectionnez *Afficher les compartiments* dans le tableau de bord ou sélectionnez *STOCKAGE (S3)* > *compartiments*.
+. Sélectionnez le nom du compartiment dans la table.
++
+La page des détails du compartiment s'affiche.
+
+. Dans l'onglet *Bucket options*, sélectionnez l'accordéon *Consistency level*.
+. Sélectionnez un niveau de cohérence pour les opérations effectuées sur les objets de ce compartiment.
++
+** *Tous* : fournit le plus haut niveau de cohérence. Tous les nœuds reçoivent les données immédiatement, sinon la requête échoue.
+** *Strong-global* : garantit la cohérence lecture après écriture pour toutes les demandes client sur tous les sites.
+** *Strong-site* : garantit la cohérence lecture après écriture pour toutes les demandes client au sein d'un site.
+** *Read-After-New-write* (par défaut) : fournit une cohérence lecture-après-écriture pour les nouveaux objets et une cohérence éventuelle pour les mises à jour d'objets. Offre une haute disponibilité et une protection des données garanties. Recommandé dans la plupart des cas.
+** *Disponible* : assure la cohérence finale pour les nouveaux objets et les mises à jour d'objets. Pour les compartiments S3, utilisez uniquement si nécessaire (par exemple, pour un compartiment qui contient des valeurs de journal rarement lues ou pour les opérations HEAD ou GET sur des clés qui n'existent pas). Non pris en charge pour les compartiments FabricPool S3.
+
+
+. Sélectionnez *Enregistrer les modifications*.
+

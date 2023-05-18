@@ -1,0 +1,24 @@
+---
+permalink: monitor/index.html 
+sidebar: sidebar 
+keywords: monitor StorageGRID 
+summary: Utilisez ces instructions pour contrôler un système StorageGRID et évaluer et résoudre les problèmes potentiels. 
+---
+= Surveillance d'un système StorageGRID : présentation
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Suivez ces instructions pour surveiller un système StorageGRID et évaluer les problèmes susceptibles de se produire.
+
+Ces instructions décrivent comment utiliser le Gestionnaire de grille pour surveiller un système StorageGRID. Vous apprendrez quelles informations vous devez surveiller régulièrement, comment gérer les alertes et les alarmes existantes, comment utiliser SNMP pour la surveillance et comment obtenir des données StorageGRID supplémentaires, notamment des mesures et des diagnostics.
+
+.Avant de commencer
+* Vous devez être connecté au Grid Manager à l'aide d'un link:../admin/web-browser-requirements.html["navigateur web pris en charge"].
+* Vous devez avoir link:../admin/admin-group-permissions.html["autorisations d'accès spécifiques"].
+
+
+
+NOTE: Pour modifier les unités des valeurs de stockage affichées dans le Gestionnaire de grille, sélectionnez la liste déroulante utilisateur dans le coin supérieur droit du Gestionnaire de grille, puis sélectionnez *Préférences utilisateur*.

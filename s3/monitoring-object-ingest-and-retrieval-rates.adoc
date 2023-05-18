@@ -1,0 +1,51 @@
+---
+permalink: s3/monitoring-object-ingest-and-retrieval-rates.html 
+sidebar: sidebar 
+keywords: monitor object ingest rates, view object ingest rates, monitor object retrieval rates, view object retrieval rates 
+summary: 'Vous pouvez surveiller les taux d"entrée et de récupération des objets, ainsi que les mesures relatives au nombre d"objets, aux requêtes et à la vérification. Vous pouvez afficher le nombre de tentatives de lecture, d"écriture et de modification d"objets du système StorageGRID ayant échoué et réussies par les applications client.' 
+---
+= Contrôler les taux d'entrée et de récupération des objets
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Vous pouvez surveiller les taux d'entrée et de récupération des objets, ainsi que les mesures relatives au nombre d'objets, aux requêtes et à la vérification. Vous pouvez afficher le nombre de tentatives de lecture, d'écriture et de modification d'objets du système StorageGRID ayant échoué et réussies par les applications client.
+
+.Étapes
+. Connectez-vous au Grid Manager à l'aide d'un link:../admin/web-browser-requirements.html["navigateur web pris en charge"].
+. Sur le tableau de bord, sélectionnez *Performance* > *S3 Operations* ou *Performance* > *Swift Operations*.
++
+Cette section récapitule le nombre d'opérations client effectuées par votre système StorageGRID. La moyenne des débits de protocole est calculée au cours des deux dernières minutes.
+
+. Sélectionnez *NOEUDS*.
+. Dans la page d'accueil noeuds (niveau de déploiement), cliquez sur l'onglet *Load Balancer*.
++
+Les graphiques présentent les tendances de tout le trafic client dirigé vers les terminaux d'équilibreur de charge dans la grille. Vous pouvez sélectionner un intervalle de temps en heures, jours, semaines, mois ou années, vous pouvez également appliquer un intervalle personnalisé.
+
+. Dans la page d'accueil noeuds (niveau de déploiement), cliquez sur l'onglet *objets*.
++
+Le graphique montre les taux d'entrée et de récupération de l'intégralité de votre système StorageGRID en octets par seconde et en octets totaux. Vous pouvez sélectionner un intervalle de temps en heures, jours, semaines, mois ou années, vous pouvez également appliquer un intervalle personnalisé.
+
+. Pour afficher les informations relatives à un noeud de stockage particulier, sélectionnez-le dans la liste de gauche, puis cliquez sur l'onglet *objets*.
++
+Le tableau affiche les taux d'entrée et de récupération de l'objet pour ce nœud de stockage. L'onglet inclut également des mesures pour le nombre d'objets, les requêtes et la vérification. Vous pouvez cliquer sur les étiquettes pour afficher les définitions de ces mesures.
+
++
+image::../media/nodes_storage_node_objects_help.png[Capture d'écran de noeuds > _Storage Node_ > objets > aide sur les attributs]
+
+. Si vous voulez encore plus de détails :
++
+.. Sélectionnez *SUPPORT* > *Outils* > *topologie de grille*.
+.. Sélectionnez *_site_* > *Présentation* > *main*.
++
+La section opérations d'API affiche un récapitulatif des informations sur l'ensemble de la grille.
+
+.. Sélectionnez *_Storage Node_* > *LDR* > *_client application_* > *Présentation* > *main*
++
+La section opérations affiche un récapitulatif des informations sur le nœud de stockage sélectionné.
+
+
+
+

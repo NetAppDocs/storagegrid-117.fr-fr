@@ -1,0 +1,142 @@
+---
+permalink: swift/put-container-consistency-request.html 
+sidebar: sidebar 
+keywords: put container consistency request 
+summary: La demande DE cohérence PUT dans le conteneur vous permet de spécifier le niveau de cohérence à appliquer aux opérations effectuées dans un conteneur. Par défaut, les nouveaux conteneurs sont créés avec le niveau de cohérence « read-after-New-write ». 
+---
+= REQUÊTE de cohérence du conteneur
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+La demande DE cohérence PUT dans le conteneur vous permet de spécifier le niveau de cohérence à appliquer aux opérations effectuées dans un conteneur. Par défaut, les nouveaux conteneurs sont créés à l'aide du niveau de cohérence « read-after-New-write ».
+
+
+
+== Demande
+
+[cols="2a,4a"]
+|===
+| En-tête HTTP de demande | Description 
+
+
+| X-Auth-Token  a| 
+Jeton d'authentification Swift pour le compte à utiliser pour la demande.
+
+
+
+| x-ntap-sg-cohérence  a| 
+Niveau de contrôle de cohérence à appliquer aux opérations sur le conteneur. Les valeurs suivantes sont prises en charge :
+
+*Tous* : tous les nœuds reçoivent les données immédiatement ou la demande échouera.
+
+*Forte-global*: Garantit la cohérence lecture-après-écriture pour toutes les demandes client sur tous les sites.
+
+*Site fort* : garantit la cohérence de lecture après écriture pour toutes les demandes de clients au sein d'un site.
+
+*Read-after-New-write*: (Par défaut) fournit la cohérence lecture-après-écriture pour les nouveaux objets et éventuellement la cohérence pour les mises à jour d'objets. Offre une haute disponibilité et une protection des données garanties. Recommandé dans la plupart des cas.
+
+*Disponible* : assure la cohérence finale pour les nouveaux objets et les mises à jour d'objets. Pour les compartiments S3, utilisez uniquement si nécessaire (par exemple, pour un compartiment qui contient des valeurs de journal rarement lues ou pour les opérations HEAD ou GET sur des clés qui n'existent pas). Non pris en charge pour les compartiments FabricPool S3.
+
+
+
+| Hôte  a| 
+Nom d'hôte auquel la demande est dirigée.
+
+|===
+
+
+== Interaction des contrôles de cohérence et des règles ILM pour la protection des données
+
+Le contrôle de cohérence et la règle ILM de votre choix affectent la protection des objets. Ces paramètres peuvent interagir.
+
+Par exemple, le contrôle de cohérence utilisé lorsqu'un objet est stocké affecte le placement initial des métadonnées d'objet, tandis que le comportement d'ingestion sélectionné pour la règle ILM affecte le placement initial des copies d'objet. Étant donné que StorageGRID nécessite l'accès aux métadonnées d'un objet et à ses données pour répondre aux demandes client, la sélection de niveaux de protection correspondant au niveau de cohérence et au comportement d'ingestion permet d'améliorer la protection des données initiale et de mieux prévoir les réponses du système.
+
+Les comportements d'ingestion suivants sont disponibles pour les règles ILM :
+
+* *Strict* : toutes les copies spécifiées dans la règle ILM doivent être effectuées avant que le succès ne soit renvoyé au client.
+* *Équilibré*: StorageGRID tente de faire toutes les copies spécifiées dans la règle ILM à l'entrée; si ce n'est pas possible, des copies intermédiaires sont faites et le succès est renvoyé au client. Les copies spécifiées dans la règle ILM sont effectuées lorsque cela est possible.
+* *Double commit*: StorageGRID effectue immédiatement des copies intermédiaires de l'objet et retourne le succès au client. Les copies spécifiées dans la règle ILM sont effectuées lorsque cela est possible.
+
+
+
+NOTE: Avant de sélectionner le comportement d'entrée d'une règle ILM, lisez la description complète de ces paramètres dans les instructions de gestion des objets avec la gestion du cycle de vie des informations.
+
+
+
+== Exemple d'interaction du contrôle de cohérence et de la règle ILM
+
+Supposons que vous disposez d'une grille à deux sites avec la règle ILM suivante et le paramètre de niveau de cohérence suivant :
+
+* *Règle ILM* : créez deux copies d'objet, une sur le site local et une sur un site distant. Le comportement d'entrée strict est sélectionné.
+* *Niveau de cohérence*: "Sept-global" (les métadonnées d'objet sont immédiatement distribuées à tous les sites).
+
+
+Lorsqu'un client stocke un objet dans la grille, StorageGRID effectue à la fois des copies d'objet et distribue les métadonnées aux deux sites avant de rétablir la réussite du client.
+
+L'objet est entièrement protégé contre la perte au moment du message d'ingestion. Par exemple, si le site local est perdu peu de temps après l'ingestion, des copies des données de l'objet et des métadonnées de l'objet existent toujours sur le site distant. L'objet est entièrement récupérable.
+
+Si vous utilisez à la place la même règle ILM et le niveau de cohérence "sept-site", le client peut recevoir un message de réussite après la réplication des données d'objet vers le site distant, mais avant que les métadonnées d'objet ne soient distribuées sur ce site. Dans ce cas, le niveau de protection des métadonnées d'objet ne correspond pas au niveau de protection des données d'objet. Si le site local est perdu peu de temps après l'ingestion, les métadonnées d'objet sont perdues. Impossible de récupérer l'objet.
+
+L'interdépendance entre les niveaux de cohérence et les règles ILM peut être complexe. Contactez NetApp si vous avez besoin d'aide.
+
+
+
+== Exemple de demande
+
+[listing]
+----
+PUT /v1/28544923908243208806/_Swift container_
+X-Auth-Token: SGRD_3a877009a2d24cb1801587bfa9050f29
+x-ntap-sg-consistency: strong-site
+Host: test.com
+----
+
+
+== Réponse
+
+|===
+| En-tête HTTP de réponse | Description 
+
+
+ a| 
+`Date`
+ a| 
+La date et l'heure de la réponse.
+
+
+
+ a| 
+`Connection`
+ a| 
+Indique si la connexion au serveur est ouverte ou fermée.
+
+
+
+ a| 
+`X-Trans-Id`
+ a| 
+Identifiant de transaction unique pour la demande.
+
+
+
+ a| 
+`Content-Length`
+ a| 
+Longueur du corps de réponse.
+
+|===
+
+
+== Exemple de réponse
+
+[listing]
+----
+HTTP/1.1 204 No Content
+Date: Sat, 29 Nov 2015 01:02:18 GMT
+Connection: CLOSE
+X-Trans-Id: 1936575373
+Content-Length: 0
+----

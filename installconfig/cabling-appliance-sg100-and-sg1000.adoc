@@ -1,0 +1,197 @@
+---
+permalink: installconfig/cabling-appliance-sg100-and-sg1000.html 
+sidebar: sidebar 
+keywords: storagegrid, sg100, sg1000, service appliance, services appliance, gateway Node, admin node, cabling, wiring, connecting, cable, wire, connect 
+summary: 'Vous devez connecter le port de gestion de l"appliance à l"ordinateur portable de service et connecter les ports réseau de l"appliance au réseau Grid et au réseau client optionnel pour StorageGRID.' 
+---
+= Cable appliance (SG100 et SG1000)
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Vous devez connecter le port de gestion de l'appliance à l'ordinateur portable de service et connecter les ports réseau de l'appliance au réseau Grid et au réseau client optionnel pour StorageGRID.
+
+.Avant de commencer
+* Vous disposez d'un câble Ethernet RJ-45 pour connecter le port de gestion.
+* Vous avez l'une des options suivantes pour les ports réseau. Ces éléments ne sont pas fournis avec l'appareil.
++
+** Un à quatre câbles TwinAx pour la connexion des quatre ports réseau.
+** Pour le SG100, un à quatre émetteurs-récepteurs SFP+ ou SFP28 si vous prévoyez d'utiliser des câbles optiques pour les ports.
+** Pour le SG1000, un à quatre émetteurs-récepteurs QSFP+ ou QSFP28 si vous prévoyez d'utiliser des câbles optiques pour les ports.
+
+
+
+
+
+CAUTION: *Risque d'exposition au rayonnement laser* -- ne démontez ou ne retirez aucune partie d'un émetteur-récepteur SFP ou QSFP. Vous pourriez être exposé à un rayonnement laser.
+
+.Description de la tâche
+Les figures suivantes montrent les ports situés à l'arrière de l'appareil.
+
+Connexions des ports SG100 :
+
+image::../media/sg100_connections.png[Connecteurs arrière SG100]
+
+Connexions du port SG1000 :
+
+image::../media/sg1000_connections.png[Connexions du port SG1000]
+
+[cols="1a,2a,2a,3a"]
+|===
+| Légende | Port | Type de port | Utiliser 
+
+
+ a| 
+1
+ a| 
+Port de gestion BMC de l'appliance
+ a| 
+1 GbE (RJ-45)
+ a| 
+Se connecte au réseau sur lequel vous accédez à l'interface BMC.
+
+
+
+ a| 
+2
+ a| 
+Quatre ports réseau sur l'appliance
+ a| 
+* Pour le SG100 : 10/25-GbE
+* Pour le SG1000 : 10/25/40/100-GbE
+
+ a| 
+Connectez-vous au réseau Grid et au réseau client pour StorageGRID.
+
+
+
+ a| 
+3
+ a| 
+Port réseau d'administration de l'appliance (étiqueté P1 dans les figures)
+ a| 
+1 GbE (RJ-45)
+
+*Important :* ce port fonctionne uniquement à 1000 BaseT/full et ne prend pas en charge les vitesses de 10 ou 100 mégabits.
+ a| 
+Permet de connecter l'appliance au réseau d'administration pour StorageGRID.
+
+
+
+ a| 
+ a| 
+Port RJ-45 le plus à droite de l'appareil
+ a| 
+1 GbE (RJ-45)
+
+*Important :* ce port fonctionne uniquement à 1000 BaseT/full et ne prend pas en charge les vitesses de 10 ou 100 mégabits.
+ a| 
+* Peut être lié avec le port de gestion 1 si vous souhaitez établir une connexion redondante avec le réseau d'administration.
+* Peut être laissée déconnectée et disponible pour l'accès local temporaire (IP 169.254.0.1).
+* Pendant l'installation, peut être utilisé pour connecter l'appliance à un ordinateur portable de service si les adresses IP attribuées par DHCP ne sont pas disponibles.
+
+
+|===
+.Étapes
+. Connectez le port de gestion BMC de l'appliance au réseau de gestion à l'aide d'un câble Ethernet.
++
+Bien que cette connexion soit facultative, elle est recommandée pour faciliter l'assistance.
+
+. Connectez les ports réseau de l'appareil aux commutateurs réseau appropriés à l'aide de câbles TwinAx ou de câbles optiques et d'émetteurs-récepteurs.
++
+[NOTE]
+====
+Les quatre ports réseau doivent utiliser la même vitesse de liaison. Consultez le tableau suivant pour connaître l'équipement requis pour votre matériel et la vitesse de liaison.
+
+[cols="2a,2a"]
+|===
+| Vitesse de liaison SG100 (GbE) | Équipement requis 
+
+
+ a| 
+10
+ a| 
+Émetteur-récepteur SFP+
+
+
+
+ a| 
+25
+ a| 
+Émetteur-récepteur SFP28
+
+
+
+| Vitesse de liaison SG1000 (GbE) | Équipement requis 
+
+
+ a| 
+10
+ a| 
+Emetteur-récepteur QSA et SFP+
+
+
+
+ a| 
+25
+ a| 
+Emetteur-récepteur QSA et SFP28
+
+
+
+ a| 
+40
+ a| 
+Émetteur-récepteur QSFP+
+
+
+
+ a| 
+100
+ a| 
+Emetteur-récepteur QFSP28
+
+|===
+====
++
+** Si vous prévoyez d'utiliser le mode de liaison de port fixe (par défaut), connectez les ports aux réseaux StorageGRID Grid et client, comme indiqué dans le tableau.
++
+[cols="1a,2a"]
+|===
+| Port | Se connecte à... 
+
+
+ a| 
+Orifice 1
+ a| 
+Réseau client (facultatif)
+
+
+
+ a| 
+Orifice 2
+ a| 
+Réseau Grid
+
+
+
+ a| 
+Orifice 3
+ a| 
+Réseau client (facultatif)
+
+
+
+ a| 
+Orifice 4
+ a| 
+Réseau Grid
+
+|===
+** Si vous prévoyez d'utiliser le mode de liaison du port de l'agrégat, connectez un ou plusieurs ports réseau à un ou plusieurs commutateurs. Vous devez connecter au moins deux des quatre ports pour éviter d'avoir un point de défaillance unique. Si vous utilisez plusieurs switchs pour une liaison LACP unique, les switchs doivent prendre en charge MLAG ou équivalent.
+
+
+. Si vous envisagez d'utiliser le réseau d'administration pour StorageGRID, connectez le port réseau d'administration de l'appliance au réseau d'administration à l'aide d'un câble Ethernet.
+

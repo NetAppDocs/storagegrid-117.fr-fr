@@ -1,0 +1,32 @@
+---
+permalink: maintain/decommissioning-disconnected-storage-nodes.html 
+sidebar: sidebar 
+keywords: storagegrid, connected nodes, decommission node, storage node, disconnected storage node 
+summary: 'Vous devez comprendre ce qui peut se produire si vous désaffectez un nœud de stockage alors qu"il est déconnecté \(l"état de santé est inconnu ou désactivé d"un point de vue administratif\).' 
+---
+= Désaffectation des nœuds de stockage déconnectés
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Vous devez comprendre ce qui peut se produire si vous mettez hors service un nœud de stockage alors qu'il est déconnecté (état de santé inconnu ou panne administrative).
+
+Lorsque vous désaffectez un nœud de stockage déconnecté de la grille, StorageGRID utilise les données des autres nœuds de stockage pour reconstruire les données d'objet et les métadonnées qui se trouvent sur le nœud déconnecté. Pour ce faire, il lance automatiquement les travaux de réparation des données à la fin du processus de mise hors service.
+
+Avant de désaffecter un nœud de stockage déconnecté, tenez compte des points suivants :
+
+* Vous ne devez jamais désaffecter un nœud déconnecté à moins d'être sûr qu'il ne peut pas être mis en ligne ou restauré.
++
+
+IMPORTANT: N'effectuez pas cette procédure si vous pensez qu'il est possible de récupérer des données d'objet à partir du nœud. Contactez plutôt le support technique pour déterminer si la restauration du nœud est possible.
+
+* Si un nœud de stockage déconnecté contient la seule copie d'un objet, cet objet sera perdu lorsque vous mettez le nœud hors service. Les tâches de réparation des données ne peuvent reconstruire et récupérer que des objets si au moins une copie répliquée ou suffisamment de fragments avec code d'effacement existent sur les nœuds de stockage actuellement connectés.
+* Lorsque vous désaffectez un nœud de stockage déconnecté, la procédure de mise hors service se termine relativement rapidement. Cependant, les tâches de réparation des données peuvent prendre des jours ou des semaines et ne sont pas surveillées par la procédure de mise hors service. Vous devez contrôler ces travaux manuellement et les redémarrer au besoin. Voir link:checking-data-repair-jobs.html["Vérifier les travaux de réparation des données"].
+* Si vous désaffectez plusieurs nœuds de stockage déconnectés à la fois, des pertes de données peuvent se produire. Il se peut que le système ne puisse pas reconstruire les données si le nombre de copies de données d'objet, de métadonnées ou de fragments avec code d'effacement reste disponible.
++
+
+IMPORTANT: Si vous ne pouvez pas restaurer plusieurs nœuds de stockage déconnectés, contactez le support technique pour déterminer la meilleure solution.
+
+

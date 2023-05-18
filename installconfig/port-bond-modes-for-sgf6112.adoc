@@ -1,0 +1,121 @@
+---
+permalink: installconfig/port-bond-modes-for-sgf6112.html 
+sidebar: sidebar 
+keywords: sgf6112, sg6100, port bond, Network bonding, fixed, Aggregate, independent, active-backup, active backup, management port 
+summary: 'Lors de la configuration des liaisons réseau pour l"appliance SGF6112, vous pouvez utiliser la liaison de port pour les ports qui se connectent au réseau Grid et au réseau client en option, ainsi que les ports de gestion 1/10-GbE qui se connectent au réseau Admin en option. La liaison de ports contribue à protéger vos données en fournissant des chemins redondants entre les réseaux StorageGRID et l"appliance.' 
+---
+= Modes de liaison de port (SGF6112)
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Quand link:configuring-network-links.html["configuration des liens réseau"] Pour l'appliance SGF6112, vous pouvez utiliser la liaison de port pour les ports qui se connectent au réseau Grid et au réseau client en option, ainsi que les ports de gestion 1/10-GbE qui se connectent au réseau Admin en option. La liaison de ports contribue à protéger vos données en fournissant des chemins redondants entre les réseaux StorageGRID et l'appliance.
+
+
+
+== Modes de liaison réseau
+
+Les ports réseau de l'appliance prennent en charge le mode de liaison de port fixe ou le mode de liaison de port agrégé pour les connexions réseau Grid et réseau client.
+
+
+
+=== Mode de liaison de port fixe
+
+Le mode de liaison de port fixe est la configuration par défaut des ports réseau.
+
+image::../media/sgf6112_fixed_port.png[SGF6112 mode liaison port fixe]
+
+[cols="1a,3a"]
+|===
+| Légende | Quels ports sont liés 
+
+
+ a| 
+C
+ a| 
+Les ports 1 et 3 sont liés ensemble pour le réseau client, si ce réseau est utilisé.
+
+
+
+ a| 
+G
+ a| 
+Les ports 2 et 4 sont liés ensemble pour le réseau de grille.
+
+|===
+Lors de l'utilisation du mode de liaison de port fixe, les ports peuvent être liés en mode de sauvegarde active ou en mode de protocole de contrôle d'agrégation de liens (LACP 802.3ad).
+
+* En mode de sauvegarde active (valeur par défaut), un seul port est actif à la fois. Si le port actif tombe en panne, son port de sauvegarde fournit automatiquement une connexion de basculement. Le port 4 fournit un chemin de sauvegarde pour le port 2 (réseau Grid) et le port 3 fournit un chemin de sauvegarde pour le port 1 (réseau client).
+* En mode LACP, chaque paire de ports forme un canal logique entre l'appliance et le réseau, ce qui permet un débit plus élevé. En cas de défaillance d'un port, l'autre port continue de fournir le canal. Le débit est réduit, mais la connectivité n'est pas affectée.
+
+
+
+NOTE: Si vous n'avez pas besoin de connexions redondantes, vous ne pouvez utiliser qu'un seul port pour chaque réseau. Cependant, n'oubliez pas que l'alerte *liaison de l'appliance de stockage en panne* peut être déclenchée dans le Gestionnaire de grille après l'installation de StorageGRID, indiquant qu'un câble est débranché. Vous pouvez désactiver cette règle d'alerte en toute sécurité.
+
+
+
+=== Mode de liaison du port agrégé
+
+Le mode de liaison de port agrégé augmente considérablement le débit de chaque réseau StorageGRID et fournit des chemins de basculement supplémentaires.
+
+image::../media/sgf6112_aggregate_ports.png[SGF6100 mode de liaison du port agrégé]
+
+[cols="1a,3a"]
+|===
+| Légende | Quels ports sont liés 
+
+
+ a| 
+1
+ a| 
+Tous les ports connectés sont regroupés en une seule liaison LACP, ce qui permet d'utiliser tous les ports pour le trafic Grid Network et client Network.
+
+|===
+Si vous prévoyez d'utiliser le mode de liaison du port agrégé :
+
+* Vous devez utiliser le mode lien réseau LACP.
+* Vous devez spécifier une balise VLAN unique pour chaque réseau. Cette balise VLAN sera ajoutée à chaque paquet réseau pour s'assurer que le trafic réseau est acheminé vers le réseau approprié.
+* Les ports doivent être connectés aux switchs capables de prendre en charge VLAN et LACP. Si plusieurs commutateurs participent au lien LACP, les switchs doivent prendre en charge les groupes d'agrégation de liens multi-châssis (MLAG), ou un équivalent.
+* Vous savez comment configurer les commutateurs pour utiliser VLAN, LACP et MLAG, ou équivalent.
+
+
+Si vous ne souhaitez pas utiliser les quatre ports, vous pouvez utiliser un, deux ou trois ports. L'utilisation de plusieurs ports permet d'optimiser la possibilité qu'une certaine connectivité réseau reste disponible en cas de défaillance de l'un des ports.
+
+
+NOTE: Si vous choisissez d'utiliser moins de quatre ports réseau, sachez qu'une alerte *Services Appliance LINK Down* peut être déclenchée dans Grid Manager après l'installation du nœud de l'appliance, ce qui indique qu'un câble est débranché. Vous pouvez désactiver cette règle d'alerte en toute sécurité pour l'alerte déclenchée.
+
+
+
+== Modes de liaison réseau pour les ports de gestion
+
+Pour les deux ports de gestion 1/10-GbE, vous pouvez choisir le mode de liaison réseau indépendant ou le mode de liaison réseau Active-Backup pour vous connecter au réseau d'administration facultatif.
+
+image::../media/sgf6112_bonded_management_ports.png[Ports de gestion du réseau]
+
+En mode indépendant, seul le port de gestion de gauche est connecté au réseau Admin. Ce mode ne fournit pas de chemin redondant. Le port de gestion sur la droite est déconnecté et disponible pour les connexions locales temporaires (utilise l'adresse IP 169.254.0.1).
+
+En mode sauvegarde active, les deux ports de gestion sont connectés au réseau Admin. Un seul port est actif à la fois. Si le port actif tombe en panne, son port de sauvegarde fournit automatiquement une connexion de basculement. Le fait de lier ces deux ports physiques à un port de gestion logique fournit un chemin redondant au réseau Admin.
+
+
+NOTE: Si vous devez établir une connexion locale temporaire à l'appliance lorsque les ports de gestion 1/10-GbE sont configurés pour le mode Active-Backup, débranchez les câbles des deux ports de gestion, branchez votre câble temporaire dans le port de gestion situé à droite et accédez au dispositif à l'aide de l'adresse IP 169.254.0.1.
+
+[cols="1a,3a"]
+|===
+| Légende | Mode de liaison réseau 
+
+
+ a| 
+A
+ a| 
+Mode de sauvegarde active/active. Les deux ports de gestion sont liés à un port de gestion logique connecté au réseau d'administration.
+
+
+
+ a| 
+JE
+ a| 
+Mode indépendant. Le port de gauche est connecté au réseau Admin. Le port de droite est disponible pour les connexions locales temporaires (adresse IP 169.254.0.1).
+
+|===

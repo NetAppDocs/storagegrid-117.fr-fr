@@ -1,0 +1,93 @@
+---
+permalink: s3/operations-for-multipart-uploads.html 
+sidebar: sidebar 
+keywords: operations, multipart uploads, uploads, rest API 
+summary: Cette section décrit comment StorageGRID prend en charge les opérations de téléchargement partitionné. 
+---
+= Opérations pour les téléchargements partitionnés
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Cette section décrit comment StorageGRID prend en charge les opérations de téléchargement partitionné.
+
+Les conditions et notes suivantes s'appliquent à toutes les opérations de téléchargement partitionné :
+
+* Vous ne devez pas dépasser 1,000 téléchargements partitionnés simultanés dans un seul compartiment car les résultats des requêtes List Multipart Uploads pour ce compartiment pourraient renvoyer des résultats incomplets.
+* StorageGRID fait respecter les limites de taille d'AWS pour les pièces en plusieurs parties. Les clients S3 doivent respecter les consignes suivantes :
++
+** Chaque partie d'un téléchargement partitionné doit être comprise entre 5 Mio (5,242,880 octets) et 5 Gio (5,368,709,120 octets).
+** La dernière partie peut être inférieure à 5 Mio (5,242,880 octets).
+** En général, la taille des pièces doit être la plus grande possible. Par exemple, utilisez une taille de pièce de 5 Gio pour un objet de 100 Gio. Chaque pièce étant considérée comme un objet unique, l'utilisation de pièces de grande taille réduit la surcharge liée aux métadonnées StorageGRID.
+** Pour les objets de moins de 5 Gio, envisagez l'utilisation de téléchargement non partitionné.
+
+
+* La gestion des règles ILM est évaluée pour chaque partie d'un objet en plusieurs parties lors de son ingestion et pour l'objet dans son ensemble lorsque le téléchargement partitionné est terminé, si la règle ILM utilise le comportement d'ingestion équilibré ou strict. Vous devez savoir comment cela affecte le positionnement de l'objet et de la pièce :
++
+** Si le téléchargement partitionné est en cours de modification du ILM, si le téléchargement partitionné et certaines parties de l'objet peuvent ne pas répondre aux exigences ILM actuelles. Toute pièce qui n'est pas placée correctement est mise en file d'attente pour la réévaluation ILM et est déplacée ultérieurement au bon emplacement.
+** Lors de l'évaluation d'ILM pour une pièce, StorageGRID filtre la taille de la pièce, et non la taille de l'objet. Ainsi, certaines parties d'un objet peuvent être stockées dans des emplacements qui ne respectent pas les exigences de la règle ILM pour l'ensemble de l'objet. Par exemple, si une règle indique que tous les objets de 10 Go ou plus sont stockés dans DC1 alors que tous les objets plus petits sont stockés dans DC2, à l'acquisition chaque partie de 1 Go d'un téléchargement partitionné en 10 parties est stockée dans DC2. Lorsque ILM est évaluée pour l'ensemble de l'objet, toutes les parties de l'objet sont déplacées vers DC1.
+
+
+* Toutes les opérations de téléchargement partitionné prennent en charge les contrôles de cohérence StorageGRID.
+* Si nécessaire, vous pouvez utiliser le cryptage côté serveur avec des téléchargements partitionnés. Pour utiliser SSE (chiffrement côté serveur avec clés gérées par StorageGRID), vous avez accès au `x-amz-server-side-encryption` En-tête de demande dans la demande de téléchargement de pièces multiples uniquement. Pour utiliser SSE-C (chiffrement côté serveur avec clés fournies par le client), vous devez spécifier les trois mêmes en-têtes de demande de clé de chiffrement dans la demande de lancement de Multipart Upload et dans chaque demande de chargement de pièce suivante.
+
+
+[cols="2a,3a"]
+|===
+| Fonctionnement | Mise en place 
+
+
+ a| 
+Liste des téléchargements partitionnés
+ a| 
+Voir link:list-multipart-uploads.html["Liste des téléchargements partitionnés"]
+
+
+
+ a| 
+Lancer le téléchargement de pièces multiples
+ a| 
+Voir link:initiate-multipart-upload.html["Lancer le téléchargement de pièces multiples"]
+
+
+
+ a| 
+Télécharger la pièce
+ a| 
+Voir link:upload-part.html["Télécharger la pièce"]
+
+
+
+ a| 
+Télécharger la pièce - Copier
+ a| 
+Voir link:upload-part-copy.html["Télécharger la pièce - Copier"]
+
+
+
+ a| 
+Chargement de pièces multiples complet
+ a| 
+Voir link:complete-multipart-upload.html["Chargement de pièces multiples complet"]
+
+
+
+ a| 
+Abandonner le téléchargement de pièces multiples
+ a| 
+Mise en œuvre avec tout le comportement de l'API REST Amazon S3. D'être modifiées sans préavis.
+
+
+
+ a| 
+Répertorier les pièces
+ a| 
+Mise en œuvre avec tout le comportement de l'API REST Amazon S3. D'être modifiées sans préavis.
+
+|===
+.Informations associées
+* link:consistency-controls.html["Contrôles de cohérence"]
+* link:using-server-side-encryption.html["Utilisez le cryptage côté serveur"]
+

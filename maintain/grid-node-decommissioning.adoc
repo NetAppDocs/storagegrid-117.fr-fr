@@ -1,0 +1,29 @@
+---
+permalink: maintain/grid-node-decommissioning.html 
+sidebar: sidebar 
+keywords: storagegrid, decommission 
+summary: 'Vous pouvez utiliser la procédure de mise hors service des nœuds pour supprimer un ou plusieurs nœuds de stockage, nœuds de passerelle ou nœuds d"administration non primaires sur un ou plusieurs sites. Vous ne pouvez pas désaffecter le nœud d"administration principal ou un nœud d"archivage.' 
+---
+= Désaffectation du nœud Grid : présentation
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Vous pouvez utiliser la procédure de mise hors service des nœuds pour supprimer un ou plusieurs nœuds de stockage, nœuds de passerelle ou nœuds d'administration non primaires sur un ou plusieurs sites. Vous ne pouvez pas désaffecter le nœud d'administration principal ou un nœud d'archivage.
+
+En général, vous devez mettre hors service les nœuds de la grille uniquement lorsqu'ils sont connectés au système StorageGRID et que tous les nœuds sont en état de santé normal (icônes vertes sur les pages *NOEUDS* et sur la page *nœuds de décomposition*). Toutefois, si nécessaire, vous pouvez désaffecter un nœud de grille qui est déconnecté. Avant de supprimer un nœud déconnecté, assurez-vous de bien comprendre les implications et les restrictions de ce processus.
+
+Utilisez la procédure de mise hors service du nœud lorsque l'un des cas suivants est vrai :
+
+* Vous avez ajouté un nœud de stockage plus grand au système et souhaitez supprimer un ou plusieurs nœuds de stockage plus petits, tout en préservant les objets.
+* Vous avez besoin de moins de stockage total.
+* Vous n'avez plus besoin d'un nœud de passerelle.
+* Vous n'avez plus besoin d'un nœud d'administration non primaire.
+* Votre grille inclut un nœud déconnecté que vous ne pouvez pas restaurer ni remettre en ligne.
+
+
+L'organigramme présente les étapes générales de mise hors service des nœuds de la grille.
+
+image::../media/overview_decommission_nodes.png[organigramme général des étapes de mise hors service]

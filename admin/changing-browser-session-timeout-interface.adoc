@@ -1,0 +1,46 @@
+---
+permalink: admin/changing-browser-session-timeout-interface.html 
+sidebar: sidebar 
+keywords: browser inactivity timeout, inactive users 
+summary: 'Vous pouvez contrôler si les utilisateurs de Grid Manager et de tenant Manager sont déconnectés s"ils sont inactifs pendant plus d"un certain temps.' 
+---
+= Modifier le délai d'inactivité du navigateur
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Vous pouvez contrôler si les utilisateurs de Grid Manager et de tenant Manager sont déconnectés s'ils sont inactifs pendant plus d'un certain temps.
+
+.Avant de commencer
+* Vous êtes connecté au Grid Manager à l'aide d'un link:../admin/web-browser-requirements.html["navigateur web pris en charge"].
+* Vous disposez de l'autorisation d'accès racine.
+
+
+.Description de la tâche
+Par défaut, le délai d'inactivité du navigateur est de 15 minutes. Si le navigateur d'un utilisateur n'est pas actif pendant cette période, l'utilisateur est déconnecté.
+
+Si nécessaire, vous pouvez augmenter ou diminuer le délai d'expiration en définissant l'option *déconnecter les utilisateurs inactifs après*.
+
+Le délai d'inactivité du navigateur est également contrôlé par les éléments suivants :
+
+* Un minuteur StorageGRID séparé non configurable, inclus pour la sécurité du système. Par défaut, le jeton d'authentification de chaque utilisateur expire 16 heures après la connexion de l'utilisateur. Lorsque l'authentification d'un utilisateur expire, cet utilisateur est automatiquement déconnecté, même si le délai d'inactivité du navigateur est désactivé ou si la valeur du délai d'inactivité du navigateur n'a pas été atteinte. Pour renouveler le jeton, l'utilisateur doit se reconnecter.
+* Paramètres de délai d'expiration pour le fournisseur d'identité, en supposant que l'authentification unique (SSO) est activée pour StorageGRID.
++
+Si la fonction SSO est activée et que le navigateur d'un utilisateur arrive à expiration, l'utilisateur doit saisir à nouveau ses informations d'identification SSO pour accéder à StorageGRID à nouveau. Voir link:configuring-sso.html["Configurer l'authentification unique"].
+
+
+
+.Étapes
+. Sélectionnez *CONFIGURATION* > *sécurité* > *Paramètres de sécurité*.
+. Sélectionnez l'onglet *délai d'inactivité du navigateur*.
+. Dans le champ *déconnecter les utilisateurs inactifs après*, spécifiez un délai d'expiration du navigateur compris entre 60 secondes et 7 jours.
++
+Vous pouvez spécifier le délai d'expiration du navigateur en secondes, minutes, heures ou jours.
+
+. Sélectionnez *Enregistrer*. Si un navigateur est inactif pendant la durée spécifiée, l'utilisateur est déconnecté du Gestionnaire de grille ou du Gestionnaire de locataires.
++
+Le nouveau paramètre n'affecte pas les utilisateurs actuellement connectés. Les utilisateurs doivent se reconnecter ou actualiser leur navigateur pour que le nouveau paramètre de délai d'expiration prenne effet.
+
+

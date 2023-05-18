@@ -1,0 +1,101 @@
+---
+permalink: admin/what-is-autosupport.html 
+sidebar: sidebar 
+keywords: autosupport, technical support, storagegrid health, system status, Active IQ 
+summary: 'La fonctionnalité AutoSupport permet à votre système StorageGRID d"envoyer des messages d"état et d"état au support technique.' 
+---
+= Utilisez AutoSupport : présentation
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+La fonctionnalité AutoSupport permet à votre système StorageGRID d'envoyer des messages d'état et d'état au support technique.
+
+L'utilisation de AutoSupport peut considérablement accélérer l'identification et la résolution des problèmes. Le support technique peut également surveiller les besoins en stockage de votre système et vous aider à déterminer si vous devez ajouter de nouveaux nœuds ou sites. Vous pouvez également configurer l'envoi des messages AutoSupport à une destination supplémentaire.
+
+Vous devez configurer StorageGRID AutoSupport uniquement sur le nœud d'administration principal. Toutefois, vous devez configurer <<hardware_autosupport,AutoSupport matériel>> sur chaque appareil.
+
+
+
+== Informations incluses dans les messages AutoSupport
+
+Les messages AutoSupport incluent des informations telles que :
+
+* Version du logiciel StorageGRID
+* Version du système d'exploitation
+* Informations sur les attributs au niveau du système et de l'emplacement
+* Alertes et alarmes récentes (système hérité)
+* État actuel de toutes les tâches de la grille, y compris les données historiques
+* Utilisation de la base de données du nœud d'administration
+* Nombre d'objets perdus ou manquants
+* Paramètres de configuration de la grille
+* Entités NMS
+* Règle ILM active
+* Fichier de spécification de grille provisionné
+* Les mesures de diagnostic
+
+
+Vous pouvez activer la fonctionnalité AutoSupport et les options AutoSupport individuelles lors de la première installation de StorageGRID, ou vous pouvez les activer ultérieurement. Si AutoSupport n'est pas activé, un message s'affiche sur le tableau de bord du Gestionnaire de grille. Le message inclut un lien vers la page de configuration de AutoSupport.
+
+image::../media/autosupport_disabled_message.png[Message désactivé AutoSupport]
+
+Si vous fermez le message, il n'apparaîtra plus tant que le cache de votre navigateur n'aura pas été effacé, même si AutoSupport reste désactivé.
+
+
+
+== Qu'est-ce que Active IQ ?
+
+Active IQ est un conseiller digital basé dans le cloud qui exploite l'analytique prédictive et les connaissances de la communauté issues de la base installée de NetApp. Les évaluations continues des risques, les alertes prédictives, les conseils normatifs et les actions automatisées vous aident à anticiper les problèmes, ce qui permet d'améliorer l'état et la disponibilité du système.
+
+Vous devez activer AutoSupport si vous souhaitez utiliser les tableaux de bord et les fonctionnalités de Active IQ sur le site de support NetApp.
+
+https://["Documentation Active IQ sur le conseiller digital"^]
+
+
+
+== Protocoles pour l'envoi des messages AutoSupport
+
+Vous pouvez choisir l'un des trois protocoles pour l'envoi des messages AutoSupport :
+
+* HTTPS
+* HTTP
+* SMTP
+
+
+Si vous utilisez SMTP comme protocole pour les messages AutoSupport, vous devez configurer un serveur de messagerie SMTP.
+
+
+
+== Options AutoSupport
+
+Toutes les combinaisons d'options suivantes vous permettent d'envoyer des messages AutoSupport au support technique :
+
+* *Hebdomadaire*: Envoyer automatiquement des messages AutoSupport une fois par semaine. Paramètre par défaut : activé.
+* *Event-déclenché* : envoie automatiquement des messages AutoSupport toutes les heures ou lorsque des événements système importants se produisent. Paramètre par défaut : activé.
+* *On Demand*: Laissez le support technique demander à votre système StorageGRID d'envoyer automatiquement des messages AutoSupport, ce qui est utile lorsqu'ils travaillent activement en cas de problème (nécessite le protocole de transmission HTTPS AutoSupport). Paramètre par défaut : Désactivé.
+* *Déclenché par l'utilisateur* : envoyez manuellement des messages AutoSupport à tout moment.
+
+
+
+
+== [[Hardware_autosupport]] AutoSupport pour appliances
+
+AutoSupport for Appliances signale les problèmes liés au matériel StorageGRID, tandis que StorageGRID AutoSupport signale les problèmes liés au logiciel StorageGRID (sauf pour SGF6112, où StorageGRID AutoSupport signale les problèmes matériels et logiciels). Vous devez configurer AutoSupport sur chaque appliance, à l'exception du SGF6112 qui ne nécessite pas de configuration supplémentaire. AutoSupport est implémenté différemment pour les services et les appliances de stockage.
+
+Vous devez activer AutoSupport dans SANtricity pour chaque appliance de stockage. Vous pouvez configurer SANtricity AutoSupport lors de la configuration initiale de l'appliance ou après l'installation d'une appliance :
+
+* Pour les appliances SG6000 et SG5700 link:../installconfig/accessing-and-configuring-santricity-system-manager.html["Configurez AutoSupport dans SANtricity System Manager"]
+
+
+Les messages AutoSupport des appliances E-Series peuvent être inclus dans StorageGRID AutoSupport si vous configurez la livraison AutoSupport par proxy dans link:../admin/sending-eseries-autosupport-messages-through-storagegrid.html["SANtricity System Manager"].
+
+StorageGRID AutoSupport ne signale pas de problèmes matériels, tels que des pannes de module DIMM ou de carte d'interface hôte (HIC). Cependant, certaines défaillances de composant peuvent se déclencher link:../monitor/alerts-reference.html["alertes matérielles"]. Pour les appliances StorageGRID dotées d'un contrôleur BMC (Baseboard Management Controller), comme SG100, SG1000, SG6060 ou SGF6024, vous pouvez configurer des interruptions SNMP et e-mail pour signaler des défaillances matérielles :
+
+* link:../installconfig/setting-up-email-notifications-for-alerts.html["Configurez les notifications par e-mail pour les alertes"]
+* link:../installconfig/configuring-snmp-settings-for-bmc.html["Configurer les paramètres SNMP"] Pour le contrôleur SG6000-CN ou les appliances de services SG100 et SG1000
+
+
+.Informations associées
+https://["Support NetApp"^]

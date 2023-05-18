@@ -1,0 +1,14 @@
+---
+permalink: installconfig/troubleshooting-hardware-installation-sg100-and-sg1000.html 
+sidebar: sidebar 
+keywords: storagegrid, sg100, sg1000, service appliance, services appliance, gateway Node, admin node, troubleshoot, troubleshooting, hardware, install, installation 
+summary: 'Si vous rencontrez des problèmes lors de l"installation, il peut s"avérer utile de consulter les informations de dépannage relatives à la configuration du matériel et aux problèmes de connectivité.' 
+---
+= Dépannage de l'installation du matériel (SG100 et SG1000)
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Si vous rencontrez des problèmes lors de l'installation, il peut s'avérer utile de consulter les informations de dépannage relatives à la configuration du matériel et aux problèmes de connectivité.

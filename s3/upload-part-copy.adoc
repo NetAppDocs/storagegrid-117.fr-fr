@@ -1,0 +1,53 @@
+---
+permalink: s3/upload-part-copy.html 
+sidebar: sidebar 
+keywords: upload part, upload part - copy, multipart uploads, uploads, 
+summary: 'L"opération Télécharger la pièce - Copier télécharge une partie d"un objet en copiant les données d"un objet existant en tant que source de données.' 
+---
+= Télécharger la pièce - Copier
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+L'opération Télécharger la pièce - Copier télécharge une partie d'un objet en copiant les données d'un objet existant en tant que source de données.
+
+L'opération Télécharger la pièce - copie est implémentée avec tout le comportement de l'API REST Amazon S3. D'être modifiées sans préavis.
+
+Cette requête lit et écrit les données de l'objet spécifiées dans `x-amz-copy-source-range` Dans le système StorageGRID.
+
+Les en-têtes de requête suivants sont pris en charge :
+
+* `x-amz-copy-source-if-match`
+* `x-amz-copy-source-if-none-match`
+* `x-amz-copy-source-if-unmodified-since`
+* `x-amz-copy-source-if-modified-since`
+
+
+
+
+== Demander des en-têtes pour le cryptage côté serveur
+
+Si vous avez spécifié le cryptage SSE-C pour lancer la demande de téléchargement multi-pièces, vous devez également inclure les en-têtes de requête suivants dans chaque pièce de téléchargement - demande de copie :
+
+* `x-amz-server-side-encryption-customer-algorithm`: Spécifiez `AES256`.
+* `x-amz-server-side-encryption-customer-key`: Spécifiez la même clé de cryptage que celle que vous avez fournie dans la demande de lancement de Multipart Upload.
+* `x-amz-server-side-encryption-customer-key-MD5`: Spécifiez le même résumé MD5 que vous avez fourni dans la demande de lancement de Multipart Upload.
+
+
+Si l'objet source est chiffré à l'aide d'une clé fournie par le client (SSE-C), vous devez inclure les trois en-têtes suivants dans la demande de copie de pièce de téléchargement, afin que l'objet puisse être décrypté puis copié :
+
+* `x-amz-copy-source​-server-side​-encryption​-customer-algorithm`: Spécifiez `AES256`.
+* `x-amz-copy-source​-server-side-encryption-customer-key`: Spécifiez la clé de cryptage que vous avez fournie lors de la création de l'objet source.
+* `x-amz-copy-source​-server-side-encryption-customer-key-MD5`: Spécifiez le résumé MD5 que vous avez fourni lors de la création de l'objet source.
+
+
+
+IMPORTANT: Les clés de chiffrement que vous fournissez ne sont jamais stockées. Si vous perdez une clé de chiffrement, vous perdez l'objet correspondant. Avant d'utiliser les clés fournies par le client pour sécuriser les données d'objet, consultez les considérations de la section « utilisation du cryptage côté serveur ».
+
+
+
+== Gestion des versions
+
+Le téléchargement partitionné est constitué de différentes opérations permettant de lancer le téléchargement, de répertorier les téléchargements, de télécharger des pièces, d'assembler les pièces téléchargées et de terminer le téléchargement. Les objets sont créés (et versionnés le cas échéant) lorsque l'opération de chargement multipièce complète est exécutée.

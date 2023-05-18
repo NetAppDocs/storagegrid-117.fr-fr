@@ -1,0 +1,70 @@
+= 
+:allow-uri-read: 
+
+
+Le tableau ci-dessous présente les services principaux pour les nœuds d'administration, mais ce tableau ne répertorie pas tous les services de nœud.
+
+[cols="1a,2a"]
+|===
+| Service | Fonction de touche 
+
+
+ a| 
+Système de gestion des audits (AMS)
+ a| 
+Suit l'activité et les événements du système.
+
+
+
+ a| 
+Nœud de gestion de la configuration (CMN)
+ a| 
+Gestion de la configuration à l'échelle du système. Nœud d'administration principal uniquement.
+
+
+
+ a| 
+Interface de gestion du programme d'applications de gestion (api)
+ a| 
+Traite les requêtes à partir de l'API de gestion Grid et de l'API de gestion des locataires.
+
+
+
+ a| 
+Haute disponibilité
+ a| 
+Gère les adresses IP virtuelles haute disponibilité pour les groupes de nœuds d'administration et de nœuds de passerelle.
+
+*Remarque :* ce service se trouve également sur les nœuds de passerelle.
+
+
+
+ a| 
+Équilibreur de charge
+ a| 
+Équilibrage de la charge du trafic S3 et Swift entre les clients et les nœuds de stockage.
+
+*Remarque :* ce service se trouve également sur les nœuds de passerelle.
+
+
+
+ a| 
+Système de gestion de réseau (NMS)
+ a| 
+Fournit des fonctionnalités pour le gestionnaire de grille.
+
+
+
+ a| 
+Prometheus
+ a| 
+Collecte et stocke les mesures de séries chronologiques des services sur tous les nœuds.
+
+
+
+ a| 
+Moniteur d'état du serveur (SSM)
+ a| 
+Surveille le système d'exploitation et le matériel sous-jacent.
+
+|===

@@ -1,0 +1,35 @@
+---
+permalink: vmware/planning-and-preparation.html 
+sidebar: sidebar 
+keywords: how to plan before installation 
+summary: Avant de déployer des nœuds grid et de configurer la grille de StorageGRID, vous devez connaître les étapes et les conditions requises pour terminer la procédure. 
+---
+= Avant d'installer (VMware)
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Avant de déployer des nœuds grid et de configurer la grille de StorageGRID, vous devez connaître les étapes et les conditions requises pour terminer la procédure.
+
+Les procédures de déploiement et de configuration de StorageGRID supposent que vous connaissez bien l'architecture et les fonctionnalités opérationnelles du système StorageGRID.
+
+Vous pouvez déployer un ou plusieurs sites à la fois. Toutefois, tous les sites doivent respecter le minimum requis : disposer d'au moins trois nœuds de stockage.
+
+Avant de démarrer la procédure de déploiement de nœuds et de configuration grid, vous devez :
+
+* Planification du déploiement StorageGRID
+* Installez, connectez et configurez tout le matériel requis, y compris les appliances StorageGRID, selon les spécifications.
++
+
+IMPORTANT: Si votre installation StorageGRID n'utilise pas de nœuds de stockage (matériels) StorageGRID, vous devez utiliser un stockage RAID matériel avec un cache d'écriture protégé par batterie (BBWC). StorageGRID ne prend pas en charge l'utilisation de réseaux de stockage virtuels (VSAN), de RAID logiciel ou aucune protection RAID.
+
++
+
+NOTE: Les instructions d'installation et d'intégration spécifiques au matériel ne sont pas incluses dans la procédure d'installation de StorageGRID. Pour savoir comment installer les appliances StorageGRID, reportez-vous à la section link:../installconfig/index.html["Installez le matériel de l'appliance"].
+
+* Prenez connaissance du link:../network/index.html["options réseau disponibles et mise en œuvre de chaque option réseau sur les nœuds grid"].
+* Rassemblez toutes les informations de réseautage à l'avance. À moins que vous n'utilisiez DHCP, rassemblez les adresses IP à attribuer à chaque nœud de grille, ainsi que les adresses IP des serveurs DNS et NTP qui seront utilisés.
+* Choisissez les outils de déploiement et de configuration que vous souhaitez utiliser.
+

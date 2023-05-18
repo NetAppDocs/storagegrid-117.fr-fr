@@ -1,0 +1,182 @@
+---
+permalink: ilm/creating-proposed-ilm-policy.html 
+sidebar: sidebar 
+keywords: how to create ILM policy, proposed policy 
+summary: Vous pouvez créer de zéro une politique ILM proposée ou cloner la règle active actuelle si vous souhaitez commencer avec le même ensemble de règles. 
+---
+= Création d'une règle ILM proposée
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Vous pouvez créer de zéro une politique ILM proposée ou cloner la règle active actuelle si vous souhaitez commencer avec le même ensemble de règles.
+
+Avant de créer votre propre stratégie, vérifiez que link:creating-ilm-policy.html#default-ilm-policy["Règle ILM par défaut"] ne répond pas à vos besoins en stockage.
+
+
+NOTE: Si le link:enabling-s3-object-lock-globally.html["Le paramètre de verrouillage d'objet S3 global a été activé"]Vous devez vous assurer que la règle ILM est conforme aux exigences des compartiments pour lesquels le verrouillage objet S3 est activé. Dans cette section, suivez les instructions qui mentionnent que le verrouillage d'objet S3 est activé.
+
+.Avant de commencer
+* Vous êtes connecté au Grid Manager à l'aide d'un link:../admin/web-browser-requirements.html["navigateur web pris en charge"].
+* Vous avez le link:../admin/admin-group-permissions.html["autorisations d'accès requises"].
+* Vous avez link:access-create-ilm-rule-wizard.html["Création de règles ILM"] Selon que le verrouillage objet S3 est activé ou non.
+
+
+[role="tabbed-block"]
+====
+.Verrouillage objet S3 non activé
+--
+* Vous avez link:what-ilm-rule-is.html["Création des règles ILM"] vous souhaitez ajouter à la stratégie proposée. Si nécessaire, vous pouvez enregistrer une stratégie proposée, créer des règles supplémentaires, puis modifier la stratégie proposée pour ajouter les nouvelles règles.
+* Vous avez link:creating-default-ilm-rule.html["Une règle ILM par défaut a été créée"] qui ne contient aucun filtre.
+
+
+--
+.Verrouillage objet S3 activé
+--
+* Le link:enabling-s3-object-lock-globally.html["Le paramètre de verrouillage d'objet S3 global est déjà activé"] Pour le système StorageGRID.
+* Vous avez link:what-ilm-rule-is.html["Vous avez créé des règles ILM conformes et non conformes"] vous souhaitez ajouter à la stratégie proposée. Si nécessaire, vous pouvez enregistrer une stratégie proposée, créer des règles supplémentaires, puis modifier la stratégie proposée pour ajouter les nouvelles règles.
+* Vous avez link:creating-default-ilm-rule.html["Une règle ILM par défaut a été créée"] de la règle qui est conforme.
+
+
+--
+====
+* Vous pouvez également regarder la vidéo : https://["Vidéo : politiques de gestion du cycle de vie de l'information dans StorageGRID 11.7"^]
++
+[link=https://netapp.hosted.panopto.com/Panopto/Pages/Viewer.aspx?id=0009ebe1-3665-4cdc-a101-afbd009a0466]
+image::../media/video-screenshot-ilm-policies-117.png[Vidéo : politiques de gestion du cycle de vie de l'information dans StorageGRID 11.7]
+
+
+
+Voir aussi link:creating-ilm-policy.html["Création d'une règle ILM : présentation"].
+
+.Description de la tâche
+Les raisons principales de la création d'une politique ILM sont les suivantes :
+
+* Vous avez ajouté un site et devez utiliser de nouvelles règles ILM pour placer les objets sur ce site.
+* Vous désaffectez un site, vous devez supprimer toutes les règles ILM qui font référence au site.
+* Vous avez ajouté un nouveau locataire qui présente des exigences spéciales de protection des données.
+* Vous avez commencé à utiliser un pool de stockage cloud.
+
+
+
+IMPORTANT: Utilisez uniquement la règle de base 2 copies fournie par le système dans les systèmes de test. Pour StorageGRID 11.6 et les versions antérieures, la règle par défaut de cette règle utilise le pool de stockage tous les nœuds de stockage, qui contient tous les sites. Si votre système StorageGRID dispose de plusieurs sites, il est possible de placer deux copies d'un objet sur le même site.
+
+.Étapes
+. Sélectionnez *ILM* > *stratégies*.
++
+Si le paramètre global S3 Object Lock est activé, la page des règles ILM indique les règles ILM compatibles.
+
+. Déterminez le mode de création de la règle ILM proposée. +
+
+
+[role="tabbed-block"]
+====
+.Commencez à zéro
+--
+. Si une stratégie ILM proposée existe actuellement, sélectionnez *politique proposée* > *actions* > *Supprimer*.
++
+Vous ne pouvez pas créer de nouvelle stratégie proposée si une stratégie proposée existe déjà.
+
+. Sélectionnez *Créer la politique proposée* > *Créer une nouvelle politique*.
+
+
+--
+.Commencez par les règles de la stratégie active
+--
+. Si une stratégie ILM proposée existe actuellement, sélectionnez *politique proposée* > *actions* > *Supprimer*.
++
+Vous ne pouvez pas cloner la règle active si une règle proposée existe déjà.
+
+. Sélectionnez *Créer la stratégie proposée* > *Cloner la stratégie active*.
+
+
+--
+.Modifier la stratégie proposée existante
+. Sélectionnez *politique proposée* > *actions* > *Modifier*.
+
+
+====
+. Dans le champ *nom de la stratégie proposée*, entrez un nom unique pour la stratégie proposée.
+. Dans le champ *motif du changement*, entrez la raison pour laquelle vous créez une nouvelle stratégie proposée.
+. Pour ajouter des règles à la stratégie, sélectionnez *Sélectionner des règles*. Sélectionnez un nom de règle pour afficher les paramètres de cette règle.
++
+
+NOTE: Périodiquement, la liste des règles est automatiquement mise à jour pour refléter les ajouts ou les suppressions. Si une règle est supprimée après sa sélection, un message d'erreur s'affiche.
+
++
+Si vous clonez une règle :
+
++
+** Vous sélectionnez les règles utilisées par la règle de clonage.
+** Si la stratégie que vous utilisez est une règle sans filtre qui n'était pas la règle par défaut, vous êtes invité à supprimer toutes ces règles, sauf une.
+** Si la règle par défaut utilise un filtre, vous êtes invité à sélectionner une nouvelle règle par défaut.
+** Si la règle par défaut n'était pas la dernière, vous pouvez la déplacer vers la fin de la nouvelle règle.
+
+
+
+
+[role="tabbed-block"]
+====
+.Verrouillage objet S3 non activé
+--
+. Sélectionnez une règle par défaut pour la stratégie proposée. Pour créer une nouvelle règle par défaut, sélectionnez *page règles ILM* image:../media/icon_nms_more_details.gif["icône plus de détails"].
++
+La règle par défaut s'applique aux objets qui ne correspondent pas à une autre règle de la stratégie. La règle par défaut ne peut pas utiliser de filtres et est toujours évaluée en dernier.
+
++
+
+IMPORTANT: N'utilisez pas la règle Make 2 copies comme règle par défaut pour une stratégie. La règle Make 2 copies utilise un pool de stockage unique, tous les nœuds de stockage, qui contient tous les sites. Si votre système StorageGRID dispose de plusieurs sites, il est possible de placer deux copies d'un objet sur le même site.
+
+
+
+--
+.Verrouillage objet S3 activé
+--
+. Sélectionnez une règle par défaut pour la stratégie proposée. Pour créer une nouvelle règle par défaut, sélectionnez *page règles ILM* image:../media/icon_nms_more_details.gif["icône plus de détails"].
++
+La liste des règles contient uniquement les règles qui sont conformes et n'utilisent aucun filtre.
+
++
+
+IMPORTANT: N'utilisez pas la règle Make 2 copies comme règle par défaut pour une stratégie. La règle Make 2 copies utilise un pool de stockage unique, tous les nœuds de stockage, qui contient tous les sites. Si vous utilisez cette règle, plusieurs copies d'un objet peuvent être placées sur le même site.
+
+. Si vous avez besoin d'une règle « par défaut » différente pour les objets dans des compartiments S3 non conformes, sélectionnez *inclure une règle sans filtres pour les compartiments S3 non conformes*, et sélectionnez une règle non conforme qui n'utilise pas de filtre.
++
+Par exemple, vous pouvez utiliser un pool de stockage cloud pour stocker des objets dans des compartiments pour lesquels le verrouillage d'objet S3 n'est pas activé.
+
++
+
+NOTE: Vous ne pouvez sélectionner qu'une règle non conforme qui n'utilise pas de filtre.
+
+
+
+Voir aussi link:example-7-compliant-ilm-policy-for-s3-object-lock.html["Exemple 7 : règle ILM conforme pour le verrouillage d'objet S3"].
+
+--
+====
+. Lorsque vous avez terminé de sélectionner la règle par défaut, sélectionnez *Continuer*.
+. Pour l'étape autres règles, sélectionnez toutes les autres règles que vous souhaitez ajouter à la stratégie. Ces règles utilisent au moins un filtre (compte de locataire, nom de compartiment, filtre avancé ou heure de référence non courante). Sélectionnez ensuite *Sélectionner*.
++
+La fenêtre Créer une stratégie proposée répertorie maintenant les règles que vous avez sélectionnées. La règle par défaut est à la fin, avec les autres règles au-dessus.
+
++
+Si le verrouillage d'objet S3 est activé et que vous avez également sélectionné une règle « par défaut » non conforme, cette règle est ajoutée en tant que règle de second en dernier dans la stratégie.
+
++
+
+NOTE: Un avertissement s'affiche si une règle ne conserve pas les objets indéfiniment. Lorsque vous activez cette règle, vous devez confirmer que vous souhaitez que StorageGRID supprime des objets lorsque les instructions de placement pour la règle par défaut s'affichent (à moins qu'un cycle de vie de compartiment ne conserve les objets pendant une période plus longue).
+
+. Faites glisser les lignes des règles non par défaut pour déterminer l'ordre dans lequel ces règles seront évaluées.
++
+Vous ne pouvez pas déplacer la règle par défaut. Si le verrouillage d'objet S3 est activé, vous ne pouvez pas déplacer la règle « par défaut » non conforme si une règle a été sélectionnée.
+
++
+
+IMPORTANT: Vous devez confirmer que les règles ILM sont dans l'ordre correct. Lorsque la stratégie est activée, les objets nouveaux et existants sont évalués par les règles dans l'ordre indiqué, à partir du haut.
+
+. Si nécessaire, sélectionnez *Sélectionner des règles* pour ajouter ou supprimer des règles.
+. Lorsque vous avez terminé, sélectionnez *Enregistrer*.
+. Accédez à link:simulating-ilm-policy.html["Simulation d'une règle ILM"]. Vous devez toujours simuler une stratégie proposée avant de l'activer pour vous assurer qu'elle fonctionne comme prévu.
+

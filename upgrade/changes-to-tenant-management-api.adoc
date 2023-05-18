@@ -1,0 +1,25 @@
+---
+permalink: upgrade/changes-to-tenant-management-api.html 
+sidebar: sidebar 
+keywords: tenant management api, api, api version, swagger, rest api 
+summary: 'StorageGRID 11.7 utilise la version 3 de l"API de gestion des locataires. La version 3 dégénère la version 2 ; cependant, les versions 1 et 2 sont toujours prises en charge.' 
+---
+= Modifications apportées à l'API de gestion des locataires
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+StorageGRID 11.7 utilise la version 3 de l'API de gestion des locataires. La version 3 dégénère la version 2 ; cependant, les versions 1 et 2 sont toujours prises en charge.
+
+
+IMPORTANT: Vous pouvez continuer à utiliser les versions 1 et 2 de l'API de gestion avec StorageGRID 11.7. Cependant, la prise en charge de ces versions de l'API sera supprimée dans une prochaine version de StorageGRID. Après la mise à niveau vers StorageGRID 11.7, les API v1 et v2 obsolètes peuvent être désactivées à l'aide du `PUT /grid/config/management` API.
+
+
+
+== Nouveaux terminaux pour la fédération des grilles
+
+Vous pouvez utiliser les noeuds finaux de l'API *grid-federation-connections* pour répertorier les connexions de fédération de grille pour le locataire actuel et pour effacer la dernière erreur de réplication de grille croisée pour le locataire actuel et la connexion de fédération de grille sélectionnée.
+
+Pour en savoir plus, rendez-vous sur link:../tenant/understanding-tenant-management-api.html["Découvrez l'API de gestion des locataires"].

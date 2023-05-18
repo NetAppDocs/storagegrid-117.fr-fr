@@ -1,0 +1,41 @@
+---
+permalink: rhel/planning-and-preparation.html 
+sidebar: sidebar 
+keywords: installation planning red hat linux 
+summary: Avant de déployer des nœuds grid et de configurer la grille de StorageGRID, vous devez connaître les étapes et les conditions requises pour terminer la procédure. 
+---
+= Avant d'installer (Red Hat ou CentOS)
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Avant de déployer des nœuds de grid et de configurer StorageGRID, vous devez connaître les étapes et les conditions requises pour effectuer cette procédure.
+
+Les procédures de déploiement et de configuration de StorageGRID supposent que vous connaissez bien l'architecture et le fonctionnement du système StorageGRID.
+
+Vous pouvez déployer un ou plusieurs sites à la fois. Toutefois, tous les sites doivent respecter le minimum requis : disposer d'au moins trois nœuds de stockage.
+
+Avant de démarrer une installation StorageGRID, vous devez :
+
+* Analysez les besoins en calcul, notamment les exigences minimales en termes de CPU et de RAM pour chaque nœud.
+* Découvrez comment StorageGRID prend en charge plusieurs réseaux pour faciliter la séparation du trafic, la sécurité et l'administration, et planifiez les réseaux que vous envisagez de connecter à chaque nœud StorageGRID.
++
+Voir le StorageGRID link:../network/index.html["Instructions de mise en réseau"].
+
+* Analysez les exigences de performances et de stockage de chaque type de nœud grid.
+* Identifier un ensemble de serveurs (physiques, virtuels ou les deux) qui, dans l'agrégat, fournissent suffisamment de ressources pour prendre en charge le nombre et le type de nœuds StorageGRID que vous prévoyez de déployer.
+* Prenez connaissance du link:node-container-migration-requirements.html["conditions requises pour la migration des nœuds"], si vous souhaitez effectuer une maintenance planifiée sur des hôtes physiques sans interruption de service.
+* Rassemblez toutes les informations de réseautage à l'avance. À moins que vous n'utilisiez DHCP, rassemblez les adresses IP à attribuer à chaque nœud de grille, ainsi que les adresses IP des serveurs DNS et NTP qui seront utilisés.
+* Installez, connectez et configurez tout le matériel requis, y compris les appliances StorageGRID, selon les spécifications.
++
+
+IMPORTANT: Si votre installation StorageGRID n'utilise pas de nœuds de stockage (matériels) StorageGRID, vous devez utiliser un stockage RAID matériel avec un cache d'écriture protégé par batterie (BBWC). StorageGRID ne prend pas en charge l'utilisation de réseaux de stockage virtuels (VSAN), de RAID logiciel ou aucune protection RAID.
+
++
+
+NOTE: Les instructions d'installation et d'intégration spécifiques au matériel ne sont pas incluses dans la procédure d'installation de StorageGRID. Pour savoir comment installer les appliances StorageGRID, reportez-vous à la section link:../installconfig/index.html["Installez le matériel de l'appliance"].
+
+* Choisissez les outils de déploiement et de configuration que vous souhaitez utiliser.
+

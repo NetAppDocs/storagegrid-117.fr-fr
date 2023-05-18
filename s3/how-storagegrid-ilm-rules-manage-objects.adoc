@@ -1,0 +1,62 @@
+---
+permalink: s3/how-storagegrid-ilm-rules-manage-objects.html 
+sidebar: sidebar 
+keywords: ilm manage object rules 
+summary: 'L"administrateur du grid crée des règles de gestion du cycle de vie des informations \(ILM\) pour gérer les données d"objet ingérées sur le système StorageGRID à partir des applications client de l"API REST S3. Ces règles sont ensuite ajoutées à la règle ILM pour déterminer la façon dont et l"emplacement de stockage des données d"objet au fil du temps.' 
+---
+= Gestion des objets par les règles StorageGRID ILM
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+L'administrateur du grid crée des règles de gestion du cycle de vie des informations pour gérer les données d'objet ingérées sur le système StorageGRID à partir des applications client de l'API REST S3. Ces règles sont ensuite ajoutées à la règle ILM pour déterminer la façon dont et l'emplacement de stockage des données d'objet au fil du temps.
+
+Les paramètres ILM déterminent les aspects suivants d'un objet :
+
+* *Géographie*
++
+L'emplacement des données d'un objet, dans le système StorageGRID (pool de stockage) ou dans un pool de stockage cloud.
+
+* *Grade de stockage*
++
+Type de stockage utilisé pour stocker les données d'objet : par exemple, Flash ou disque rotatif.
+
+* * Protection contre les pertes*
++
+Le nombre de copies effectuées et les types de copies créées : réplication, code d'effacement, ou les deux.
+
+* * Rétention*
++
+Évolution au fil du temps de la gestion des données d'un objet, de leur emplacement de stockage et de leur protection contre la perte.
+
+* * Protection pendant l'ingestion*
++
+Méthode de protection des données d'objet lors de l'ingestion : placement synchrone (avec options équilibrées ou strictes pour le comportement d'ingestion) ou copies intermédiaires (avec l'option de double validation).
+
+
+
+Les règles ILM peuvent filtrer et sélectionner des objets. Pour les objets ingérées à l'aide du protocole S3, les règles ILM peuvent filtrer les objets en fonction des métadonnées suivantes :
+
+* Compte locataire
+* Nom du compartiment
+* Temps d'ingestion
+* Clé
+* Heure du dernier accès
++
+
+NOTE: Par défaut, les mises à jour de l'heure du dernier accès sont désactivées pour tous les compartiments S3. Si votre système StorageGRID inclut une règle ILM utilisant l'option heure du dernier accès, vous devez activer les mises à jour à l'heure du dernier accès pour les compartiments S3 spécifiés dans cette règle. Utilisez la demande DE l'heure du dernier accès du compartiment PUT, le Gestionnaire de locataires (voir link:../tenant/enabling-or-disabling-last-access-time-updates.html["Activez ou désactivez les mises à jour de l'heure du dernier accès"]) Ou l'API de gestion des locataires. Lors de l'activation des mises à jour du dernier accès, notez que les performances du StorageGRID peuvent être réduites, notamment dans les systèmes dotés d'objets de petite taille.
+
+* Contrainte d'emplacement
+* Taille de l'objet
+* Métadonnées d'utilisateur
+* Balise d'objet
+
+
+.Informations associées
+link:../tenant/index.html["Utilisez un compte de locataire"]
+
+link:../ilm/index.html["Gestion des objets avec ILM"]
+
+link:put-bucket-last-access-time-request.html["METTRE l'heure du dernier accès au compartiment"]

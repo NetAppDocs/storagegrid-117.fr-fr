@@ -1,0 +1,31 @@
+---
+permalink: ilm/what-storage-pool-is.html 
+sidebar: sidebar 
+keywords: what is a storage pool 
+summary: 'Un pool de stockage est un groupe logique de nœuds de stockage ou de nœuds d"archivage.' 
+---
+= Qu'est-ce qu'un pool de stockage ?
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Un pool de stockage est un groupe logique de nœuds de stockage ou de nœuds d'archivage.
+
+Lorsque vous installez StorageGRID, un pool de stockage par site est automatiquement créé. Vous pouvez configurer des pools de stockage supplémentaires selon vos besoins en stockage.
+
+[NOTE]
+====
+La prise en charge des nœuds d'archivage (pour l'archivage dans le cloud à l'aide de l'API S3 et l'archivage sur bande à l'aide du middleware TSM) est obsolète et sera supprimée dans une prochaine version. Le déplacement d'objets d'un nœud d'archivage vers un système de stockage d'archives externe a été remplacé par les pools de stockage cloud ILM pour offrir davantage de fonctionnalités.
+
+Voir link:../ilm/what-cloud-storage-pool-is.html["Utilisation des pools de stockage cloud"].
+
+====
+Les pools de stockage ont deux attributs :
+
+* *Stockage* : pour les nœuds de stockage, les performances relatives du stockage de support.
+* *Site* : le centre de données où les objets seront stockés.
+
+
+Les pools de stockage sont utilisés dans les règles ILM pour déterminer l'emplacement du stockage des données en mode objet et le type de stockage utilisé. Lorsque vous configurez des règles ILM pour la réplication, vous sélectionnez un ou plusieurs pools de stockage incluant des nœuds de stockage ou des nœuds d'archivage. Lorsque vous créez des profils de code d'effacement, vous sélectionnez un pool de stockage qui inclut les nœuds de stockage.

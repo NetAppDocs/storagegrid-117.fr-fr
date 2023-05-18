@@ -1,0 +1,248 @@
+---
+permalink: installconfig/hardware-description-sg6000.html 
+sidebar: sidebar 
+keywords: sg6000, sg6060, sg6060x, storage appliance 
+summary: Les appliances StorageGRID SG6060 et SG6060X incluent un contrôleur de calcul et un tiroir de contrôleur de stockage contenant deux contrôleurs de stockage et 60 disques. 
+---
+= Appliances SG6060 et SG6060X : présentation
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Les appliances StorageGRID SG6060 et SG6060X incluent un contrôleur de calcul et un tiroir de contrôleur de stockage contenant deux contrôleurs de stockage et 60 disques.
+
+Des tiroirs d'extension de 60 disques peuvent également être ajoutés aux deux appliances. Il n'existe aucune différence de spécification ou de fonctionnalité entre les SG6060 et SG6060X, à l'exception de l'emplacement des ports d'interconnexion sur le contrôleur de stockage.
+
+
+
+== SG6060 et SG6060X
+
+Les appliances SG6060 et SG6060X comprennent les composants suivants :
+
+[cols="1a,2a"]
+|===
+| Composant | Description 
+
+
+ a| 
+Contrôleur de calcul
+ a| 
+Contrôleur SG6000-CN, serveur à un rack (1U) qui comprend :
+
+* 40 cœurs (80 threads)
+* 192 GO DE RAM
+* Jusqu'à 4 × 25 Gbit/s de bande passante Ethernet agrégée
+* 4 interconnexion Fibre Channel (FC) 16 Gbit/s
+* Le contrôleur de gestion de la carte mère (BMC) simplifie la gestion du matériel
+* Blocs d'alimentation redondants
+
+
+
+
+ a| 
+Tiroir contrôleur de stockage
+ a| 
+Tiroir contrôleur E2860 E-Series (baie de stockage), tiroir 4U qui inclut :
+
+* Deux contrôleurs E2800 Series (configuration duplex) pour une prise en charge du basculement du contrôleur de stockage
++
+** Tandis que le SG6060 contient des contrôleurs de stockage E2800A
+** Le SG6060X contient des contrôleurs de stockage E2800B
+
+
+* Tiroir à cinq tiroirs pour accueillir soixante disques de 3.5 pouces (2 disques SSD ou SSD et 58 disques NL-SAS)
+* Alimentations et ventilateurs redondants
+
+
+
+
+ a| 
+Facultatif : tiroirs d'extension de stockage
+
+*Remarque :* les tiroirs d'extension peuvent être installés lors du déploiement initial ou ajoutés ultérieurement.
+ a| 
+Boîtier E-Series DE460C, tiroir 4U qui inclut :
+
+* Deux modules d'entrée/sortie (IOM)
+* Cinq tiroirs, chacun contenant 12 disques NL-SAS, pour un total de 60 disques
+* Alimentations et ventilateurs redondants
+
+
+Chaque appliance SG6060 et SG6060X peut disposer d'une ou deux tiroirs d'extension pour un total de 180 disques (deux de ces disques sont réservés pour le cache de lecture E-Series).
+
+|===
+
+
+== Diagrammes SG6060 et SG6060X
+
+Les faces avant des SG6060 et SG6060X sont identiques.
+
+
+
+=== Vue avant SG6060 ou SG6060X
+
+Cette figure présente l'avant du SG6060 ou du SG6060X, qui inclut un contrôleur de calcul 1U et un tiroir 4U contenant deux contrôleurs de stockage et 60 disques dans cinq tiroirs disques.
+
+image::../media/sg6060_front_view_with_and_without_bezels.gif[SG6060 vue de face]
+
+[cols="1a,2a"]
+|===
+| Légende | Description 
+
+
+ a| 
+1
+ a| 
+Contrôleur de calcul SG6000-CN avec cadre avant
+
+
+
+ a| 
+2
+ a| 
+Tiroir contrôleur E2860 avec panneau avant (le tiroir d'extension en option apparaît identique)
+
+
+
+ a| 
+3
+ a| 
+Contrôleur de calcul SG6000-CN avec cadre avant retiré
+
+
+
+ a| 
+4
+ a| 
+Tiroir contrôleur E2860 avec panneau avant retiré (le tiroir d'extension en option apparaît identique)
+
+|===
+
+
+=== Vue arrière SG6060
+
+Cette figure illustre la arrière du SG6060, y compris des contrôleurs de calcul et de stockage, des ventilateurs et des blocs d'alimentation.
+
+image::../media/sg6060_rear_view.gif[SG6060 : vue arrière]
+
+[cols="1a,2a"]
+|===
+| Légende | Description 
+
+
+ a| 
+1
+ a| 
+Alimentation (1 sur 2) pour contrôleur de calcul SG6000-CN
+
+
+
+ a| 
+2
+ a| 
+Connecteurs pour contrôleur de calcul SG6000-CN
+
+
+
+ a| 
+3
+ a| 
+Ventilateur (1 sur 2) pour le tiroir contrôleur E2860
+
+
+
+ a| 
+4
+ a| 
+Contrôleur de stockage E-Series E2800A (1 sur 2) et connecteurs
+
+
+
+ a| 
+5
+ a| 
+Alimentation (1 sur 2) pour le tiroir contrôleur E2860
+
+|===
+
+
+=== Vue arrière du SG6060X
+
+Cette figure illustre l'arrière du SG6060X.
+
+image::../media/sg6060x_rear_view.gif[SG6060x vue arrière]
+
+[cols="1a,2a"]
+|===
+| Légende | Description 
+
+
+ a| 
+1
+ a| 
+Alimentation (1 sur 2) pour contrôleur de calcul SG6000-CN
+
+
+
+ a| 
+2
+ a| 
+Connecteurs pour contrôleur de calcul SG6000-CN
+
+
+
+ a| 
+3
+ a| 
+Ventilateur (1 sur 2) pour le tiroir contrôleur E2860
+
+
+
+ a| 
+4
+ a| 
+Contrôleur de stockage E-Series E2800B (1 sur 2) et connecteurs
+
+
+
+ a| 
+5
+ a| 
+Alimentation (1 sur 2) pour le tiroir contrôleur E2860
+
+|===
+
+
+=== Tiroir d'extension
+
+Cette figure illustre l'arrière du tiroir d'extension en option pour les SG6060 et SG6060X, notamment des modules d'entrée/sortie (IOM), des ventilateurs et des blocs d'alimentation. Chaque SG6060 peut être installé avec un ou deux tiroirs d'extension, qui peuvent être inclus dans l'installation initiale ou ajoutés ultérieurement.
+
+image::../media/de460c_expansion_shelf_rear_view.gif[Tablette d'extension arrière]
+
+[cols="1a,2a"]
+|===
+| Légende | Description 
+
+
+ a| 
+1
+ a| 
+Ventilateur (1 sur 2) pour le tiroir d'extension
+
+
+
+ a| 
+2
+ a| 
+Module d'E/S (1 sur 2) pour le tiroir d'extension
+
+
+
+ a| 
+3
+ a| 
+Bloc d'alimentation (1 sur 2) pour le tiroir d'extension
+
+|===

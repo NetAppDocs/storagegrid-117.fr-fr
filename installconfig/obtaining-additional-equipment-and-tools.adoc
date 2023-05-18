@@ -1,0 +1,237 @@
+---
+permalink: installconfig/obtaining-additional-equipment-and-tools.html 
+sidebar: sidebar 
+keywords: equipment to install appliance, tools for installation 
+summary: 'Avant d"installer une appliance StorageGRID, vérifiez que vous disposez de tous les équipements et outils supplémentaires dont vous avez besoin.' 
+---
+= Procurez-vous des équipements et outils supplémentaires
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Avant d'installer une appliance StorageGRID, vérifiez que vous disposez de tous les équipements et outils supplémentaires dont vous avez besoin.
+
+
+
+== Tous les appareils
+
+Vous avez besoin de l'équipement suivant pour installer et configurer tous les dispositifs.
+
+[cols="1a,4a"]
+|===
+| Élément | À quoi ressemble-t-il 
+
+
+ a| 
+Tournevis
+ a| 
+image::../media/screwdrivers.gif[Deux tournevis]
+
+* N° Phillips 2 tournevis
+* Tournevis plat moyen
+
+
+
+
+ a| 
+Bracelet antistatique
+ a| 
+image::../media/appliance_wriststrap.gif[Bracelet antistatique]
+
+
+
+ a| 
+L'ordinateur portable de service
+ a| 
+image::../media/sam_management_client.gif[L'ordinateur portable de service]
+
+* link:web-browser-requirements.html["Navigateur Web pris en charge"]
+* Client SSH, tel que PuTTY
+* Port 1 GbE (RJ-45)
+
+
+
+NOTE: Certains ports ne prennent pas en charge les débits Ethernet 10/100.
+
+
+
+ a| 
+Outils en option
+ a| 
+image::../media/optional_tools.gif[Perceuse électrique et lampe de poche]
+
+* Perceuse électrique avec embout Phillips
+* Lampe de poche
+
+
+|===
+
+
+== SGF6112
+
+Vous avez besoin de l'équipement supplémentaire suivant pour installer et configurer le matériel SGF6112.
+
+[cols="1a,4a"]
+|===
+| Élément | À quoi ressemble-t-il 
+
+
+ a| 
+Câbles optiques et émetteurs-récepteurs
+ a| 
+image::../media/fc_cable_and_sfp.gif[Câble optique et émetteur-récepteur QSFP+]
+
+* Un à quatre de ces types de câbles :
++
+** Twinax/cuivre
+** Fibre optique
+
+
+* De un à quatre de ces émetteurs-récepteurs/adaptateurs en fonction de la vitesse de liaison (les vitesses mixtes ne sont pas prises en charge) :
++
+** SFP+ 10 GbE
+** 25 GbE SFP28
+
+
+
+
+
+
+ a| 
+Câbles Ethernet RJ-45 (Cat5/Cat5e/Cat6/Cat6a)
+ a| 
+image::../media/ethernet_cables.png[Câble Ethernet]
+
+|===
+
+
+== SG6000
+
+Vous avez besoin de l'équipement supplémentaire suivant pour installer et configurer le matériel SG6000.
+
+[cols="1a,4a"]
+|===
+| Élément | À quoi ressemble-t-il 
+
+
+ a| 
+Câbles optiques et émetteurs-récepteurs SFP
+ a| 
+image::../media/fc_cable_and_sfp.gif[Câble optique et émetteur-récepteur SFP+]
+
+* Un à quatre de ces types de câbles :
++
+** Twinax/cuivre
+** Fibre optique
+
+
+* Un à quatre de ces émetteurs-récepteurs/cartes, en fonction de la vitesse de liaison (les vitesses mixtes ne sont pas prises en charge) :
++
+** SFP+ 10 GbE
+** 25 GbE SFP28
+
+
+
+
+
+
+ a| 
+Câbles Ethernet RJ-45 (Cat5/Cat5e/Cat6)
+ a| 
+image::../media/ethernet_cables.png[Câbles Ethernet]
+
+
+
+ a| 
+Outils en option
+ a| 
+Levage mécanisé pour les tiroirs de 60 disques
+
+|===
+
+
+== SG5700
+
+Vous avez besoin des équipements supplémentaires suivants pour installer et configurer le matériel SG5700.
+
+[cols="1a,4a"]
+|===
+| Élément | À quoi ressemble-t-il 
+
+
+ a| 
+Câbles optiques et émetteurs-récepteurs SFP
+ a| 
+image::../media/fc_cable_and_sfp.gif[Câble optique et émetteur-récepteur SFP+]
+
+* Câbles optiques pour les ports 10/25 GbE que vous souhaitez utiliser
+* Facultatif : les émetteurs-récepteurs SFP28 si vous souhaitez utiliser la vitesse de liaison 25 GbE
+
+
+
+
+ a| 
+Câbles Ethernet
+ a| 
+image::../media/ethernet_cables.png[Câbles Ethernet]
+
+
+
+ a| 
+Outils en option
+ a| 
+Levage mécanisé pour SG5760
+
+|===
+
+
+== SG100 et SG1000
+
+Vous avez besoin de l'équipement supplémentaire suivant pour installer et configurer le matériel SG100 et SG1000.
+
+[cols="1a,4a"]
+|===
+| Élément | À quoi ressemble-t-il 
+
+
+ a| 
+Câbles optiques et émetteurs-récepteurs
+ a| 
+image::../media/fc_cable_and_sfp.gif[Câble optique et émetteur-récepteur QSFP+]
+
+* Un à quatre de ces types de câble :
++
+** Twinax/cuivre
+** Fibre optique
+
+
+* De un à quatre de ces émetteurs-récepteurs/adaptateurs en fonction de la vitesse de liaison (les vitesses mixtes ne sont pas prises en charge) :
++
+** SG100 :
++
+*** SFP+ 10 GbE
+*** 25 GbE SFP28
+
+
+** SG1000 :
++
+*** Adaptateur QSFP-to-SFP (QSA) et SFP+ 10 GbE
+*** Adaptateur QSFP-to-SFP (QSA) à 25 GbE et SFP28
+*** QSFP+ 40 GbE
+*** QFSP28 100 GbE
+
+
+
+
+
+
+
+
+ a| 
+Câbles Ethernet RJ-45 (Cat5/Cat5e/Cat6/Cat6a)
+ a| 
+image::../media/ethernet_cables.png[Câble Ethernet]
+
+|===

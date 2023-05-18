@@ -1,0 +1,67 @@
+---
+permalink: monitor/using-task-tab-to-reboot-grid-node.html 
+sidebar: sidebar 
+keywords: task tab 
+summary: 'L"onglet tâche permet de redémarrer le nœud sélectionné. L"onglet tâche s"affiche pour tous les nœuds.' 
+---
+= Utilisez l'onglet tâche pour redémarrer un nœud de la grille
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+L'onglet tâche permet de redémarrer le nœud sélectionné. L'onglet tâche s'affiche pour tous les nœuds.
+
+.Avant de commencer
+* Vous êtes connecté au Grid Manager à l'aide d'un link:../admin/web-browser-requirements.html["navigateur web pris en charge"].
+* Vous disposez de l'autorisation Maintenance ou accès racine.
+* Vous avez la phrase secrète pour le provisionnement.
+
+
+.Description de la tâche
+Vous pouvez utiliser l'onglet tâche pour redémarrer un nœud. Pour les nœuds d'appliance, vous pouvez également utiliser l'onglet tâche pour placer l'appliance en mode maintenance.
+
+* Le redémarrage d'un nœud de grille à partir de l'onglet tâche émet la commande de redémarrage sur le nœud cible. Lorsque vous redémarrez un nœud, celui-ci s'arrête et redémarre. Tous les services sont redémarrés automatiquement.
++
+Si vous prévoyez de redémarrer un nœud de stockage, notez ce qui suit :
+
++
+** Si une règle ILM spécifie un comportement d'entrée de la double allocation ou si la règle indique un équilibrage et qu'il n'est pas possible de créer immédiatement toutes les copies nécessaires, StorageGRID valide immédiatement les objets récemment ingérées sur deux nœuds de stockage du même site, et évalue la ILM plus tard. Si vous souhaitez redémarrer deux ou plusieurs nœuds de stockage sur un site donné, il se peut que vous ne puissiez pas accéder à ces objets pendant la durée du redémarrage.
+** Pour vous assurer que vous pouvez accéder à tous les objets lors du redémarrage d'un nœud de stockage, arrêtez de les ingérer sur un site pendant environ une heure avant de redémarrer le nœud.
+
+
+* Vous devrez peut-être placer une appliance StorageGRID en mode de maintenance pour effectuer certaines procédures comme la modification de la configuration de la liaison ou le remplacement d'un contrôleur de stockage. Pour obtenir des instructions, reportez-vous à la section link:../commonhardware/placing-appliance-into-maintenance-mode.html["Mettez l'appareil en mode maintenance"].
++
+
+NOTE: Dans de rares cas, le fait de placer une appliance StorageGRID en mode de maintenance peut rendre l'appliance indisponible pour l'accès à distance.
+
+
+
+.Étapes
+. Sélectionnez *NOEUDS*.
+. Sélectionnez le nœud de grille que vous souhaitez redémarrer.
+. Sélectionnez l'onglet *tâches*.
++
+image::../media/maintenance_mode.png[Bouton nœuds > tâches > redémarrer]
+
+. Sélectionnez *Reboot*.
++
+Une boîte de dialogue de confirmation s'affiche.
+
++
+image::../media/nodes_tasks_reboot.png[Bouton nœuds > tâches > redémarrer]
+
++
+
+NOTE: Si vous redémarrez le nœud d'administration principal, la boîte de dialogue de confirmation vous rappelle que la connexion de votre navigateur au Grid Manager sera interrompue temporairement lorsque les services sont arrêtés.
+
+. Entrez la phrase de passe de provisionnement et sélectionnez *OK*.
+. Attendez que le nœud redémarre.
++
+La fermeture des services peut prendre un certain temps.
+
++
+Lorsque le nœud est en cours de redémarrage, l'icône grise (administrativement en panne) s'affiche sur le côté gauche de la page *Nodes*. Lorsque tous les services ont redémarré et que le nœud est connecté avec succès à la grille, la page *noeuds* doit afficher un état normal (aucune icône à gauche du nom du nœud), indiquant qu'aucune alerte n'est active et que le nœud est connecté à la grille.
+
+

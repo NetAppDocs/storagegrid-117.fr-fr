@@ -1,0 +1,201 @@
+---
+permalink: installconfig/cabling-appliance-sg6000.html 
+sidebar: sidebar 
+keywords: storagegrid, sg6000, storage node, storage appliance, cabling, wiring, connecting, cable, wire, connect 
+summary: Vous connectez les contrôleurs de stockage au contrôleur SG6000-CN, connectez les ports de gestion des trois contrôleurs et connectez les ports réseau du contrôleur SG6000-CN au réseau Grid et au réseau client en option pour StorageGRID. 
+---
+= Cable appliance (SG6000)
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Vous connectez les contrôleurs de stockage au contrôleur SG6000-CN, connectez les ports de gestion des trois contrôleurs et connectez les ports réseau du contrôleur SG6000-CN au réseau Grid et au réseau client en option pour StorageGRID.
+
+.Avant de commencer
+* Les quatre câbles optiques fournis avec l'appareil permettent de connecter les deux contrôleurs de stockage au contrôleur SG6000-CN.
+* Vous disposez de câbles Ethernet RJ-45 (quatre minimum) pour connecter les ports de gestion.
+* Vous avez l'une des options suivantes pour les ports réseau. Ces éléments ne sont pas fournis avec l'appareil.
++
+** Un à quatre câbles TwinAx pour la connexion des quatre ports réseau.
+** Un à quatre émetteurs-récepteurs SFP+ ou SFP28 si vous prévoyez d'utiliser des câbles optiques pour les ports.
++
+
+CAUTION: *Risque d'exposition au rayonnement laser* -- ne démontez ou ne retirez aucune partie d'un émetteur-récepteur SFP. Vous pourriez être exposé à un rayonnement laser.
+
+
+
+
+
+.Description de la tâche
+Les figures suivantes illustrent les trois contrôleurs des appliances SG6060 et SG6060X, avec le contrôleur de calcul SG6000-CN en haut et les deux contrôleurs de stockage E2800 en bas. Le SG6060 utilise des contrôleurs E2800A et le SG606060X utilise des contrôleurs E2800B.
+
+
+NOTE: Les deux versions du contrôleur E2800 présentent les mêmes spécifications et fonctionnent, à l'exception de l'emplacement des ports d'interconnexion.
+
+
+CAUTION: N'utilisez pas de contrôleur E2800A et E2800B dans le même appareil.
+
+Connexions SG6060 :
+
+image::../media/sg6000_e2800_connections.png[SG6060 aux connexions E2800A]
+
+Connexions SG606060X :
+
+image::../media/sg6000x_e2800B_connections.png[SG6060 aux connexions E2800B]
+
+La figure suivante présente les trois contrôleurs de l'appliance SGF6024, avec le contrôleur de calcul SG6000-CN en haut et les deux contrôleurs de stockage EF570 en dessous du contrôleur de calcul.
+
+Connexions SGF6024 :
+
+image::../media/sg6000_ef570_connections.png[Connexions SG6000 à SGF570]
+
+[cols="1a,2a,2a,3a"]
+|===
+| Légende | Port | Type de port | Utiliser 
+
+
+ a| 
+1
+ a| 
+Port de gestion BMC sur le contrôleur SG6000-CN
+ a| 
+1 GbE (RJ-45)
+ a| 
+Se connecte au réseau sur lequel vous accédez à l'interface BMC.
+
+
+
+ a| 
+2
+ a| 
+Ports de connexion FC :
+
+* 4 sur le contrôleur SG6000-CN
+* 2 sur chaque contrôleur de stockage
+
+ a| 
+SFP+ optique FC 16 Gbit/s
+ a| 
+Connectez chaque contrôleur de stockage au contrôleur SG6000-CN.
+
+
+
+ a| 
+3
+ a| 
+Quatre ports réseau sur le contrôleur SG6000-CN
+ a| 
+10/25 GbE
+ a| 
+Connectez-vous au réseau Grid et au réseau client pour StorageGRID.
+
+
+
+ a| 
+4
+ a| 
+Port réseau d'administration du contrôleur SG6000-CN (étiqueté P1 dans la figure)
+ a| 
+1 GbE (RJ-45)
+
+*Important :* ce port fonctionne uniquement à 1000 BaseT/full et ne prend pas en charge les vitesses de 10 ou 100 mégabits.
+ a| 
+Permet de connecter le contrôleur SG6000-CN au réseau Admin pour StorageGRID.
+
+
+
+ a| 
+ a| 
+Port RJ-45 le plus à droite du contrôleur SG6000-CN
+ a| 
+1 GbE (RJ-45)
+
+*Important :* ce port fonctionne uniquement à 1000 BaseT/full et ne prend pas en charge les vitesses de 10 ou 100 mégabits.
+ a| 
+* Peut être lié avec le port de gestion 1 si vous souhaitez établir une connexion redondante avec le réseau d'administration.
+* Peut être laissé sans fil et disponible pour un accès local temporaire (IP 169.254.0.1).
+* Pendant l'installation, peut être utilisé pour connecter le contrôleur SG6000-CN à un ordinateur portable de service si les adresses IP attribuées par DHCP ne sont pas disponibles.
+
+
+
+
+ a| 
+5
+ a| 
+Le port de gestion 1 de chaque contrôleur de stockage
+ a| 
+1 GbE (RJ-45)
+ a| 
+Connexion au réseau sur lequel vous accédez à SANtricity System Manager.
+
+
+
+ a| 
+ a| 
+Port de gestion 2 sur chaque contrôleur de stockage
+ a| 
+1 GbE (RJ-45)
+ a| 
+Réservé au support technique.
+
+|===
+.Étapes
+. Connectez le port de gestion BMC du contrôleur SG6000-CN au réseau de gestion à l'aide d'un câble Ethernet.
++
+Bien que cette connexion soit facultative, elle est recommandée pour faciliter l'assistance.
+
+. Connectez les deux ports FC de chaque contrôleur de stockage aux ports FC du contrôleur SG6000-CN, à l'aide de quatre câbles optiques et de quatre émetteurs-récepteurs SFP+ pour les contrôleurs de stockage.
+. Connectez les ports réseau du contrôleur SG6000-CN aux commutateurs réseau appropriés, à l'aide de câbles TwinAx ou de câbles optiques et d'émetteurs-récepteurs SFP+ ou SFP28.
++
+
+NOTE: Les quatre ports réseau doivent utiliser la même vitesse de liaison. Installez des émetteurs-récepteurs SFP+ si vous prévoyez d'utiliser des vitesses de liaison 10 GbE. Installez des émetteurs-récepteurs SFP28 si vous prévoyez d'utiliser des vitesses de liaison 25 GbE.
+
++
+** Si vous prévoyez d'utiliser le mode de liaison de port fixe (par défaut), connectez les ports aux réseaux StorageGRID Grid et client, comme indiqué dans le tableau.
++
+[cols="1a,2a"]
+|===
+| Port | Se connecte à... 
+
+
+ a| 
+Orifice 1
+ a| 
+Réseau client (facultatif)
+
+
+
+ a| 
+Orifice 2
+ a| 
+Réseau Grid
+
+
+
+ a| 
+Orifice 3
+ a| 
+Réseau client (facultatif)
+
+
+
+ a| 
+Orifice 4
+ a| 
+Réseau Grid
+
+|===
+** Si vous prévoyez d'utiliser le mode de liaison du port de l'agrégat, connectez un ou plusieurs ports réseau à un ou plusieurs commutateurs. Vous devez connecter au moins deux des quatre ports pour éviter d'avoir un point de défaillance unique. Si vous utilisez plusieurs switchs pour une liaison LACP unique, les switchs doivent prendre en charge MLAG ou équivalent.
+
+
+. Si vous prévoyez d'utiliser le réseau d'administration pour StorageGRID, connectez le port réseau d'administration du contrôleur SG6000-CN au réseau d'administration à l'aide d'un câble Ethernet.
+. Si vous prévoyez d'utiliser le réseau de gestion pour le Gestionnaire système SANtricity, connectez le port de gestion 1 (P1) de chaque contrôleur de stockage (le port RJ-45 de gauche) au réseau de gestion pour le Gestionnaire système SANtricity, à l'aide d'un câble Ethernet.
++
+N'utilisez pas le port de gestion 2 (P2) sur les contrôleurs de stockage (le port RJ-45 sur la droite). Ce port est réservé au support technique.
+
+
+
+.Informations associées
+link:../installconfig/port-bond-modes-for-sg6000-cn-controller.html["Modes de liaison du port (contrôleur SG6000-CN)"]

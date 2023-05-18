@@ -1,0 +1,26 @@
+---
+permalink: installconfig/configuring-bmc-interface.html 
+sidebar: sidebar 
+keywords: BMC, baseboard management controller, configure, setup, set up 
+summary: 'L"interface utilisateur du contrôleur de gestion de la carte de base \(BMC\) sur le système SGF6112, SG6000 ou services fournit des informations d"état sur le matériel et vous permet de configurer les paramètres SNMP et d"autres options pour les appliances.' 
+---
+= Interface BMC : présentation (SGF6112, SG6000, SG100 et SG1000)
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+L'interface utilisateur du contrôleur BMC (Baseboard Management Controller) sur le système SGF6112, SG6000 ou services fournit des informations sur l'état du matériel et vous permet de configurer les paramètres SNMP et d'autres options pour les appliances.
+
+Utilisez les procédures suivantes de cette section pour configurer le contrôleur BMC lors de l'installation de l'appliance :
+
+* Modifier le mot de passe racine de l'interface BMC
+* Définissez l'adresse IP du port de gestion BMC
+* Accéder à l'interface BMC
+* Configurer les paramètres SNMP
+* Configurez les notifications par e-mail et les alertes
+
+
+
+NOTE: Si l'appliance a déjà été installée dans une grille et exécute le logiciel StorageGRID, reportez-vous aux procédures suivantes pour un autre mécanisme de configuration du contrôleur BMC.

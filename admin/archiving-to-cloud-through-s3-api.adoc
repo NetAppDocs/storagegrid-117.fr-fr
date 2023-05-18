@@ -1,0 +1,22 @@
+---
+permalink: admin/archiving-to-cloud-through-s3-api.html 
+sidebar: sidebar 
+keywords: archive node to AWS, Amazon Web Services 
+summary: 'Vous pouvez configurer un nœud d"archivage pour qu"il se connecte directement à Amazon Web Services \(AWS\) ou à tout autre système capable d"entrer en interface avec le système StorageGRID via l"API S3.' 
+---
+= Archivez vos données dans le cloud via l'API S3
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Vous pouvez configurer un nœud d'archivage pour qu'il se connecte directement à Amazon Web Services (AWS) ou à tout autre système capable de s'interfacer avec le système StorageGRID via l'API S3.
+
+[CAUTION]
+====
+La prise en charge des nœuds d'archivage (pour l'archivage dans le cloud à l'aide de l'API S3 et l'archivage sur bande à l'aide du middleware TSM) est obsolète et sera supprimée dans une prochaine version. Le déplacement d'objets d'un nœud d'archivage vers un système de stockage d'archives externe a été remplacé par les pools de stockage cloud ILM pour offrir davantage de fonctionnalités.
+
+Voir link:../ilm/what-cloud-storage-pool-is.html["Utilisation des pools de stockage cloud"].
+
+====

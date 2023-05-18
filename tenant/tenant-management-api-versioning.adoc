@@ -1,0 +1,79 @@
+---
+permalink: tenant/tenant-management-api-versioning.html 
+sidebar: sidebar 
+keywords: tenant management api version 
+summary: 'L"API de gestion des locataires utilise la gestion des versions pour prendre en charge les mises à niveau sans interruption.' 
+---
+= Gestion des versions de l'API de gestion des locataires
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+L'API de gestion des locataires utilise la gestion des versions pour prendre en charge les mises à niveau sans interruption.
+
+Par exemple, cette URL de demande spécifie la version 3 de l'API.
+
+`https://_hostname_or_ip_address_/api/v3/authorize`
+
+La version principale de l'API de gestion des locataires est incrémentée lorsque des modifications sont effectuées et que _non compatibles_ sont apportées aux versions antérieures. La version mineure de l'API de gestion des locataires est incrémentée lorsque des modifications qui sont _compatibles_ avec les versions antérieures sont effectuées. Les modifications compatibles incluent l'ajout de nouveaux noeuds finaux ou de nouvelles propriétés. L'exemple suivant illustre comment la version de l'API est incrémentée en fonction du type de modifications apportées.
+
+[cols="2a,1a,1a"]
+|===
+| Type de modification de l'API | Ancienne version | Nouvelle version 
+
+
+ a| 
+Compatible avec les versions plus anciennes
+ a| 
+2.1
+ a| 
+2.2
+
+
+
+ a| 
+Non compatible avec les versions plus anciennes
+ a| 
+2.1
+ a| 
+3.0
+
+|===
+Lors de la première installation du logiciel StorageGRID, seule la version la plus récente de l'API de gestion des locataires est activée. Cependant, lorsque StorageGRID est mis à niveau vers une nouvelle version de fonction, vous continuez à accéder à l'ancienne version de l'API pour au moins une version de StorageGRID.
+
+Les requêtes obsolètes sont marquées comme obsolètes de l'une des manières suivantes :
+
+* L'en-tête de réponse est « obsolète : vrai »
+* Le corps de la réponse JSON inclut « obsolète » : vrai
+
+
+
+
+== Identification des versions d'API prises en charge dans la version actuelle
+
+Utilisez la requête d'API suivante pour renvoyer une liste des versions principales de l'API prises en charge :
+
+[listing]
+----
+GET https://{{IP-Address}}/api/versions
+{
+  "responseTime": "2019-01-10T20:41:00.845Z",
+  "status": "success",
+  "apiVersion": "3.0",
+  "data": [
+    2,
+    3
+  ]
+}
+----
+
+
+== Spécifiez la version de l'API pour la demande
+
+Vous pouvez spécifier la version de l'API à l'aide d'un paramètre de chemin d'accès (`/api/v3`) ou un en-tête (`Api-Version: 3`). Si vous indiquez les deux valeurs, la valeur de l'en-tête remplace la valeur du chemin d'accès.
+
+`curl \https://<IP-Address>/api/v3/grid/accounts`
+
+`curl -H "Api-Version: 3" \https://<IP-Address>/api/grid/accounts`

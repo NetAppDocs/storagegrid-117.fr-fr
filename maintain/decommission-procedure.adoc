@@ -1,0 +1,29 @@
+---
+permalink: maintain/decommission-procedure.html 
+sidebar: sidebar 
+keywords: how to decommission 
+summary: Vous pouvez effectuer une procédure de mise hors service pour supprimer définitivement les nœuds grid ou un site entier du système StorageGRID. 
+---
+= Procédure de mise hors service : présentation
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Vous pouvez effectuer une procédure de mise hors service pour supprimer définitivement les nœuds grid ou un site entier du système StorageGRID.
+
+Pour supprimer un nœud de grille ou un site, effectuez l'une des procédures de mise hors service suivantes :
+
+* Exécutez un link:grid-node-decommissioning.html["désaffectation du nœud grid"] pour supprimer un ou plusieurs nœuds, qui peuvent se trouver sur un ou plusieurs sites. Les nœuds que vous supprimez peuvent être en ligne et connectés au système StorageGRID, ou encore hors ligne et déconnectés.
+* Exécutez un link:site-decommissioning.html["désaffectation du site"] pour supprimer un site. Vous effectuez une *Désaffected site* si tous les nœuds sont connectés à StorageGRID. Vous effectuez une *Désaffected site* si tous les nœuds sont déconnectés de StorageGRID.
++
+
+IMPORTANT: Avant d'effectuer une désaffectation du site déconnecté, vous devez contacter votre ingénieur commercial NetApp. NetApp évaluera vos besoins avant d'activer toutes les étapes de l'assistant Decommission site. N'essayez pas de désaffecter le site si vous pensez qu'il est possible de récupérer le site ou de récupérer les données d'objet à partir du site.
+
+
+
+Si un site contient un mélange de connecté (image:../media/icon_alert_green_checkmark.png["Icône alerte verte coche"]) et noeuds déconnectés (image:../media/icon_alarm_gray_administratively_down.png["Icône alarme grise - Arrêt administratif"] ou image:../media/icon_alarm_blue_unknown.png["Icône alarme bleue inconnue"]), vous devez remettre tous les nœuds hors ligne en ligne.
+
+
+NOTE: Si vous devez effectuer une deuxième procédure de maintenance, vous pouvez link:pausing-and-resuming-decommission-process-for-storage-nodes.html["Mettez en pause la procédure de mise hors service pendant le retrait des nœuds de stockage"]. Le bouton *Pause* n'est activé que lorsque les étapes d'évaluation ILM ou de déclassement des données avec code d'effacement sont atteintes. Cependant, l'évaluation ILM (migration des données) continue à s'exécuter en arrière-plan. Une fois la deuxième procédure d'entretien terminée, vous pouvez reprendre la mise hors service.

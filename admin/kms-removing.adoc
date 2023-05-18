@@ -1,0 +1,48 @@
+---
+permalink: admin/kms-removing.html 
+sidebar: sidebar 
+keywords: remove kms, remove key management server 
+summary: Dans certains cas, vous pouvez supprimer un serveur de gestion des clés. Par exemple, vous pouvez vouloir supprimer un KMS spécifique au site si vous avez désactivé le site. 
+---
+= Suppression d'un serveur de gestion des clés (KMS)
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Dans certains cas, vous pouvez supprimer un serveur de gestion des clés. Par exemple, vous pouvez vouloir supprimer un KMS spécifique au site si vous avez désactivé le site.
+
+.Avant de commencer
+* Vous avez passé en revue le link:kms-considerations-and-requirements.html["considérations et conditions requises pour l'utilisation d'un serveur de gestion des clés"].
+* Vous êtes connecté au Grid Manager à l'aide d'un link:../admin/web-browser-requirements.html["navigateur web pris en charge"].
+* Vous disposez de l'autorisation d'accès racine.
+
+
+.Description de la tâche
+Vous pouvez supprimer un KMS dans les cas suivants :
+
+* Vous pouvez supprimer un KMS spécifique au site si le site a été désactivé ou si le site ne contient aucun nœud d'appliance lorsque le chiffrement de nœud est activé.
+* Vous pouvez supprimer le KMS par défaut si un KMS spécifique au site existe déjà pour chaque site sur lequel des nœuds d'appliance sont activés pour que le chiffrement des nœuds soit activé.
+
+
+.Étapes
+. Sélectionnez *CONFIGURATION* > *sécurité* > *serveur de gestion des clés*.
++
+La page serveur de gestion des clés s'affiche et affiche tous les serveurs de gestion des clés qui ont été configurés.
+
+. Sélectionnez le KMS à supprimer, puis sélectionnez *actions* > *Supprimer*.
++
+Vous pouvez également supprimer un KMS en sélectionnant le nom KMS dans la table et en sélectionnant *Supprimer* dans la page de détails KMS.
+
+. Vérifiez que ce qui suit est vrai :
++
+** Vous supprimez un KMS spécifique au site pour un site qui n'a aucun nœud d'appliance pour lequel le chiffrement des nœuds est activé.
+** Vous supprimez le KMS par défaut, mais un KMS spécifique au site existe déjà pour chaque site avec chiffrement des nœuds.
+
+
+. Sélectionnez *Oui*.
++
+La configuration KMS est supprimée.
+
+

@@ -1,0 +1,18 @@
+---
+permalink: maintain/decommissioning-multiple-storage-nodes.html 
+sidebar: sidebar 
+keywords: storagegrid, decommission nodes, storage node, multiple storage nodes 
+summary: Si vous devez supprimer plusieurs nœuds de stockage, vous pouvez les désaffecter de manière séquentielle ou parallèle. 
+---
+= Désaffectation de plusieurs nœuds de stockage
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Si vous devez supprimer plusieurs nœuds de stockage, vous pouvez les désaffecter de manière séquentielle ou parallèle.
+
+* Si vous mettez hors service les nœuds de stockage de façon séquentielle, vous devez attendre la fin du déclassement du premier nœud de stockage avant de procéder à la mise hors service du prochain nœud de stockage.
+* Si vous mettez hors service les nœuds de stockage en parallèle, les nœuds de stockage traitent simultanément les tâches de désaffectation de tous les nœuds de stockage qui sont désaffectés. Cela peut entraîner la désactivation temporaire de la suppression dans les grilles lorsque cette fonctionnalité est activée de toutes les copies permanentes d'un fichier.
+

@@ -1,0 +1,160 @@
+---
+permalink: s3/get-object.html 
+sidebar: sidebar 
+keywords: get object 
+summary: 'Vous pouvez utiliser la requête D"objet GET S3 pour récupérer un objet à partir d"un compartiment S3.' 
+---
+= OBTENIR l'objet
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Vous pouvez utiliser la requête D'objet GET S3 pour récupérer un objet à partir d'un compartiment S3.
+
+
+
+== OBTENIR un objet et des objets partitionnés
+
+Vous pouvez utiliser le `partNumber` paramètre de demande pour récupérer une partie spécifique d'un objet partitionné ou segmenté. Le `x-amz-mp-parts-count` l'élément de réponse indique le nombre de pièces dont dispose l'objet.
+
+Vous pouvez définir `partNumber` à 1 pour les objets segmentés/multisegments et les objets non segmentés/non-partitionnés ; cependant, le `x-amz-mp-parts-count` l'élément de réponse n'est renvoyé que pour les objets segmentés ou partitionnés.
+
+
+
+== Caractères UTF-8 dans les métadonnées utilisateur
+
+StorageGRID n'analyse ni n'interprète pas les caractères UTF-8 qui se sont échappés dans les métadonnées définies par l'utilisateur. LES requêtes GET pour un objet avec des caractères UTF-8 échappés dans les métadonnées définies par l'utilisateur ne renvoient pas le `x-amz-missing-meta` en-tête si le nom ou la valeur de la clé comporte des caractères non imprimables.
+
+
+
+== En-tête de demande non pris en charge
+
+L'en-tête de demande suivant n'est pas pris en charge et renvoie `XNotImplemented`:
+
+* `x-amz-website-redirect-location`
+
+
+
+
+== Gestion des versions
+
+Si un `versionId` la sous-ressource n'est pas spécifiée, l'opération extrait la version la plus récente de l'objet dans un compartiment multiversion. Si la version actuelle de l'objet est un marqueur de suppression, un état « non trouvé » est renvoyé avec le `x-amz-delete-marker` réponse en-tête réglée sur `true`.
+
+
+
+== En-têtes de demande pour chiffrement côté serveur avec clés de chiffrement fournies par le client (SSE-C)
+
+Utilisez les trois en-têtes si l'objet est chiffré avec une clé unique que vous avez fournie.
+
+* `x-amz-server-side-encryption-customer-algorithm`: Spécifiez `AES256`.
+* `x-amz-server-side-encryption-customer-key`: Spécifiez votre clé de cryptage pour l'objet.
+* `x-amz-server-side-encryption-customer-key-MD5`: Spécifiez le résumé MD5 de la clé de chiffrement de l'objet.
+
+
+
+IMPORTANT: Les clés de chiffrement que vous fournissez ne sont jamais stockées. Si vous perdez une clé de chiffrement, vous perdez l'objet correspondant. Avant d'utiliser des clés fournies par le client pour sécuriser les données d'objet, consultez les points à prendre en compte dans la section link:using-server-side-encryption.html["Utilisez le cryptage côté serveur"].
+
+
+
+== Comportement de L'objet GET pour les objets de pool de stockage cloud
+
+Si un objet a été stocké dans un link:../ilm/what-cloud-storage-pool-is.html["Pool de stockage cloud"], Le comportement d'une requête GET Object dépend de l'état de l'objet. Voir link:head-object.html["Objet TÊTE"] pour en savoir plus.
+
+
+NOTE: Si un objet est stocké dans un pool de stockage cloud et qu'une ou plusieurs copies de cet objet existent également dans la grille, L'OBTENTION des demandes d'objet tente d'extraire les données de la grille avant de les récupérer depuis le pool de stockage cloud.
+
+[cols="1a,1a"]
+|===
+| État de l'objet | Comportement de L'objet GET 
+
+
+ a| 
+Les objets sont ingéré dans StorageGRID mais pas encore évalués par ILM, ou objet stocké dans un pool de stockage traditionnel ou au moyen d'un code d'effacement
+ a| 
+`200 OK`
+
+Une copie de l'objet est récupérée.
+
+
+
+ a| 
+Objet dans Cloud Storage Pool, mais pas encore migré vers un état non récupérable
+ a| 
+`200 OK`
+
+Une copie de l'objet est récupérée.
+
+
+
+ a| 
+L'objet a été transféré à un état non récupérable
+ a| 
+`403 Forbidden`, `InvalidObjectState`
+
+Utiliser un link:post-object-restore.html["Restauration POST-objet"] demande de restauration de l'objet à un état récupérable.
+
+
+
+ a| 
+Objet en cours de restauration à partir d'un état non récupérable
+ a| 
+`403 Forbidden`, `InvalidObjectState`
+
+Attendez que la demande DE restauration POST Object soit terminée.
+
+
+
+ a| 
+Objet entièrement restauré dans le pool de stockage cloud
+ a| 
+`200 OK`
+
+Une copie de l'objet est récupérée.
+
+|===
+
+
+=== Objets partitionnés ou segmentés dans un pool de stockage cloud
+
+Si vous avez téléchargé un objet partitionné ou si StorageGRID le divise en segments, StorageGRID détermine si l'objet est disponible dans le pool de stockage cloud en échantillonant un sous-ensemble de parties ou de segments de l'objet. Dans certains cas, une demande GET Object peut retourner de manière incorrecte `200 OK` lorsque certaines parties de l'objet ont déjà été migrées à un état non récupérable ou lorsque certaines parties de l'objet n'ont pas encore été restaurées.
+
+Dans ces cas :
+
+* La demande GET Object peut renvoyer certaines données mais s'arrête à mi-chemin du transfert.
+* Une requête GET Object suivante peut revenir `403 Forbidden`.
+
+
+
+
+== OBTENEZ la réplication objet et inter-grid
+
+Si vous utilisez link:../admin/grid-federation-overview.html["fédération des grilles"] et link:../tenant/grid-federation-manage-cross-grid-replication.html["réplication entre plusieurs grilles"] Est activé pour un compartiment. Le client S3 peut vérifier l'état de réplication d'un objet en envoyant une requête GET Object. La réponse inclut la réponse spécifique à StorageGRID `x-ntap-sg-cgr-replication-status` en-tête de réponse, qui aura l'une des valeurs suivantes :
+
+[cols="1a,2a"]
+|===
+| Grille | État de la réplication 
+
+
+ a| 
+Source
+ a| 
+* *SUCCÈS* : la réplication a réussi.
+* *EN ATTENTE* : l'objet n'a pas encore été répliqué.
+* *ÉCHEC* : la réplication a échoué avec une défaillance permanente. L'utilisateur doit résoudre l'erreur.
+
+
+
+
+ a| 
+Destination
+ a| 
+*RÉPLIQUE* : l'objet a été répliqué à partir de la grille source.
+
+|===
+
+NOTE: StorageGRID ne prend pas en charge le `x-amz-replication-status` en-tête.
+
+.Informations associées
+link:s3-operations-tracked-in-audit-logs.html["Opérations S3 suivies dans les journaux d'audit"]

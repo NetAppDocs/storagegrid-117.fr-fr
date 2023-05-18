@@ -1,0 +1,37 @@
+---
+permalink: maintain/considerations-for-decommissioning-storage-nodes.html 
+sidebar: sidebar 
+keywords: storagegrid, decommission 
+summary: 'Si vous prévoyez de désactiver un nœud de stockage, vous devez comprendre comment StorageGRID gère les données d"objet et les métadonnées sur ce nœud.' 
+---
+= Facteurs à prendre en compte concernant la désaffectation des nœuds de stockage
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Si vous prévoyez de désactiver un nœud de stockage, vous devez comprendre comment StorageGRID gère les données d'objet et les métadonnées sur ce nœud.
+
+Lors de la mise hors service des nœuds de stockage, les facteurs et restrictions suivants s'appliquent :
+
+* Le système doit en permanence inclure suffisamment de nœuds de stockage pour répondre aux exigences opérationnelles, notamment le quorum ADC et la politique ILM active. Pour satisfaire à cette restriction, vous devrez peut-être ajouter un nouveau nœud de stockage dans une opération d'extension avant de pouvoir désactiver un nœud de stockage existant.
+* Si le nœud de stockage est déconnecté lors de la mise hors service, le système doit reconstruire les données à l'aide des données des nœuds de stockage connectés, ce qui peut entraîner une perte de données.
+* Lorsque vous supprimez un nœud de stockage, de grands volumes de données d'objet doivent être transférés sur le réseau. Bien que ces transferts ne puissent pas affecter le fonctionnement normal du système, ils peuvent avoir un impact sur la quantité totale de bande passante réseau consommée par le système StorageGRID.
+* Les tâches associées à la mise hors service des nœuds de stockage ont une priorité inférieure aux tâches associées aux opérations normales du système. Cette mise hors service n'interfère pas avec le fonctionnement normal du système StorageGRID et n'a pas besoin d'être planifiée pour une période d'inactivité du système. Comme le déclassement est effectué en arrière-plan, il est difficile d'estimer la durée du processus. En général, la mise hors service s'effectue plus rapidement lorsque le système est silencieux, ou lorsqu'un seul nœud de stockage est retiré à la fois.
+* La mise hors service d'un nœud de stockage peut prendre plusieurs jours, voire des semaines. Planifier cette procédure en conséquence. Bien que le processus de mise hors service soit conçu pour ne pas affecter le fonctionnement du système, il peut limiter d'autres procédures. En général, les mises à niveau ou les extensions du système doivent être effectuées avant de supprimer les nœuds grid.
+* Les procédures de mise hors service qui impliquent des nœuds de stockage peuvent être suspendues au cours de certaines étapes pour permettre à d'autres procédures de maintenance de s'exécuter si nécessaire, et reprises une fois terminées.
+* Vous ne pouvez pas exécuter les opérations de réparation des données sur des nœuds de grille lorsqu'une tâche de désaffectation est en cours d'exécution.
+* Vous ne devez pas apporter de modifications à la règle ILM pendant la désaffectation d'un nœud de stockage.
+* Lorsque vous supprimez un nœud de stockage, les données du nœud sont migrées vers d'autres nœuds de la grille. Toutefois, ces données ne sont pas entièrement supprimées du nœud mis hors service. Pour supprimer les données de manière permanente et sécurisée, vous devez effacer les disques du nœud de la grille désaffectée une fois la procédure de mise hors service terminée.
+* Lorsque vous désaffectez un nœud de stockage, les alertes et alarmes suivantes peuvent être émises et vous recevrez peut-être des notifications SNMP et des e-mails connexes :
++
+** *Impossible de communiquer avec l'alerte Node*. Cette alerte est déclenchée lorsque vous désaffectez un nœud de stockage qui inclut le service ADC. L'alerte est résolue une fois l'opération de mise hors service terminée.
+** Alarme VSTU (Etat de vérification d'objet). Cette alarme de niveau de notification indique que le nœud de stockage passe en mode maintenance pendant le processus de mise hors service.
+** Alarme CASA (État de la banque de données). Cette alarme de niveau majeur indique que la base de données Cassandra est en panne parce que les services ont cessé.
+
+
+
+
+.Informations associées
+link:restoring-object-data-to-storage-volume.html["Restaurez les données d'objet sur le volume de stockage"]

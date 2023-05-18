@@ -1,0 +1,33 @@
+---
+permalink: installconfig/connecting-power-cords-and-applying-power-sg5700.html 
+sidebar: sidebar 
+keywords: storagegrid, sg5700, storage node, storage appliance, wire, wiring, cabling, cable, Connecting, connect, power cords, power, applying power, apply power, turn on, power up, ac, ac power 
+summary: 'Lorsque vous mettez l"appliance sous tension, les deux contrôleurs démarrent.' 
+---
+= Branchement des câbles d'alimentation et mise en œuvre de l'alimentation (SG5700)
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Lorsque vous mettez l'appliance sous tension, les deux contrôleurs démarrent.
+
+.Avant de commencer
+Les deux interrupteurs doivent être éteints avant de brancher l'appareil.
+
+
+CAUTION: *Risque d'électrocution* -- avant de brancher les cordons d'alimentation, assurez-vous que les deux interrupteurs de l'appareil sont éteints.
+
+.Étapes
+. Vérifiez que les deux interrupteurs de l'appareil sont éteints.
+. Branchez les deux cordons d'alimentation à l'appareil.
+. Connectez les deux cordons d'alimentation à différentes unités de distribution de l'alimentation dans l'armoire ou le rack.
+. Allumez les deux interrupteurs de l'appareil.
++
+** N'éteignez pas les interrupteurs d'alimentation pendant le processus de mise sous tension.
+** Les ventilateurs sont très bruyants lors du premier démarrage. Le bruit est normal au démarrage.
+
+
+. Une fois les contrôleurs démarrés, vérifiez leur affichage à sept segments.
+

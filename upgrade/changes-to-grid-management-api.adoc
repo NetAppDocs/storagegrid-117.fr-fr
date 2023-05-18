@@ -1,0 +1,37 @@
+---
+permalink: upgrade/changes-to-grid-management-api.html 
+sidebar: sidebar 
+keywords: grid management api, api, api version, swagger, rest api 
+summary: 'StorageGRID 11.7 utilise la version 3 de l"API de gestion du grid. La version 3 dégénère la version 2 ; cependant, les versions 1 et 2 sont toujours prises en charge.' 
+---
+= Modifications apportées à l'API de gestion du grid
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+StorageGRID 11.7 utilise la version 3 de l'API de gestion du grid. La version 3 dégénère la version 2 ; cependant, les versions 1 et 2 sont toujours prises en charge.
+
+
+IMPORTANT: Vous pouvez continuer à utiliser les versions 1 et 2 de l'API de gestion avec StorageGRID 11.7. Cependant, la prise en charge de ces versions de l'API sera supprimée dans une prochaine version de StorageGRID. Après la mise à niveau vers StorageGRID 11.7, les API v1 et v2 obsolètes peuvent être désactivées à l'aide du `PUT /grid/config/management` API.
+
+Pour en savoir plus, rendez-vous sur link:../admin/using-grid-management-api.html["Utilisez l'API de gestion du grid"].
+
+
+
+== Afficher les noms désormais inclus dans les réponses aux demandes d'intégrité de nœud
+
+Lié au nouveau link:../maintain/rename-grid-site-node-overview.html["Procédure : renommer la grille, les sites et les nœuds"], Après avoir renommé un site ou un nœud, le nom de l'élément (son nom système) et son nom d'affichage sont tous deux renvoyés par l'API *node-Health*.
+
+
+
+== Création d'un compartiment et de clés d'accès pour un nouveau locataire S3
+
+Nouveau `s3Bucket` et `s3AccessKey` Des options ont été ajoutées à l'API *accounts*. Lorsque vous créez un compte de locataire S3 à l'aide de l'API de gestion du grid, vous pouvez éventuellement créer un compartiment pour ce locataire, ainsi que l'ID de clé d'accès et la clé secrète de l'utilisateur root du locataire.
+
+
+
+== Peut modifier l'état de stockage du nœud de stockage
+
+Vous pouvez utiliser les nouveaux noeuds finaux de l'API *node-Storage-state* pour déterminer et modifier l'état du stockage dans un noeud de stockage (en ligne, hors ligne, en lecture seule).

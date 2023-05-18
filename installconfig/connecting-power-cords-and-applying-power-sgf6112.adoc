@@ -1,0 +1,31 @@
+---
+permalink: installconfig/connecting-power-cords-and-applying-power-sgf6112.html 
+sidebar: sidebar 
+keywords: storagegrid, sgf6112, wire, wiring, cabling, cable, Connecting, connect, power cords, power, applying power, apply power, turn on, power up, ac, ac power 
+summary: 'Après avoir branché les câbles réseau, vous êtes prêt à alimenter l"appareil.' 
+---
+= Branchement des câbles d'alimentation et mise sous tension (SGF6112)
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Après avoir branché les câbles réseau, vous êtes prêt à alimenter l'appareil.
+
+.Étapes
+. Connectez un cordon d'alimentation à chacune des deux unités d'alimentation de l'appareil.
+. Branchez ces deux cordons d'alimentation à deux unités de distribution d'alimentation différentes dans l'armoire ou le rack.
+. Si le bouton d'alimentation situé à l'avant de l'appareil n'est pas allumé en bleu, appuyez sur le bouton pour mettre l'appareil sous tension.
++
+N'appuyez pas de nouveau sur le bouton d'alimentation pendant le processus de mise sous tension.
+
++
+Le voyant du bloc d'alimentation doit être allumé en vert sans clignoter.
+
+. En cas d'erreur, corrigez tout problème.
+. Si vous avez retiré le cadre avant, fixez-le à l'appareil.
+
+
+.Informations associées
+link:viewing-status-indicators.html["Afficher les indicateurs d'état"]

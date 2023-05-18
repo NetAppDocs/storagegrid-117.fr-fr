@@ -1,0 +1,25 @@
+= 
+:allow-uri-read: 
+
+
+Les messages AutoSupport incluent des informations telles que :
+
+* Version du logiciel StorageGRID
+* Version du système d'exploitation
+* Informations sur les attributs au niveau du système et de l'emplacement
+* Alertes et alarmes récentes (système hérité)
+* État actuel de toutes les tâches de la grille, y compris les données historiques
+* Utilisation de la base de données du nœud d'administration
+* Nombre d'objets perdus ou manquants
+* Paramètres de configuration de la grille
+* Entités NMS
+* Règle ILM active
+* Fichier de spécification de grille provisionné
+* Les mesures de diagnostic
+
+
+Vous pouvez activer la fonctionnalité AutoSupport et les options AutoSupport individuelles lors de la première installation de StorageGRID, ou vous pouvez les activer ultérieurement. Si AutoSupport n'est pas activé, un message s'affiche sur le tableau de bord du Gestionnaire de grille. Le message inclut un lien vers la page de configuration de AutoSupport.
+
+image::../media/autosupport_disabled_message.png[Message désactivé AutoSupport]
+
+Si vous fermez le message, il n'apparaîtra plus tant que le cache de votre navigateur n'aura pas été effacé, même si AutoSupport reste désactivé.

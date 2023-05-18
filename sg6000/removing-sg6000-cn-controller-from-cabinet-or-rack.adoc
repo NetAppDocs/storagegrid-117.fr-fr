@@ -1,0 +1,54 @@
+---
+permalink: sg6000/removing-sg6000-cn-controller-from-cabinet-or-rack.html 
+sidebar: sidebar 
+keywords: storagegrid, sg6000, storage node, storage appliance, remove, removing, removal, cabinet, rack, controller, sg6000-cn 
+summary: 'Retirez le contrôleur SG6000-CN d"une armoire ou d"un rack pour accéder au capot supérieur ou pour déplacer le contrôleur à un autre emplacement.' 
+---
+= Retirez le contrôleur SG6000-CN de l'armoire ou du rack
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Retirez le contrôleur SG6000-CN d'une armoire ou d'un rack pour accéder au capot supérieur ou pour déplacer le contrôleur à un autre emplacement.
+
+.Avant de commencer
+* Vous disposez d'étiquettes pour identifier chaque câble connecté au contrôleur SG6000-CN.
+* Vous avez installé physiquement le contrôleur SG6000-CN où vous effectuez des opérations de maintenance dans le centre de données.
++
+link:locating-controller-in-data-center.html["Localiser le contrôleur dans le data Center"]
+
+* Vous avez arrêté le contrôleur SG6000-CN.
++
+link:shutting-down-sg6000-cn-controller.html["Arrêtez le contrôleur SG6000-CN"]
+
++
+
+CAUTION: N'arrêtez pas le contrôleur à l'aide de l'interrupteur d'alimentation.
+
+
+
+.Étapes
+. Etiqueter puis débrancher les câbles d'alimentation du contrôleur.
+. Enroulez l'extrémité du bracelet antistatique autour de votre poignet et fixez l'extrémité du clip à une masse métallique afin d'éviter toute décharge statique.
+. Etiqueter puis débrancher les câbles de données du contrôleur et les émetteurs-récepteurs SFP+ ou SFP28.
++
+
+IMPORTANT: Pour éviter toute dégradation des performances, ne tordez pas, ne pliez pas, ne pincez pas ou ne montez pas sur les câbles.
+
+. Desserrez les deux vis imperdables du panneau avant du contrôleur.
++
+image::../media/sg6060_rack_retaining_screws.png[Vis de fixation du rack SG6060]
+
+. Faites glisser le contrôleur SG6000-CN vers l'avant pour le sortir du rack jusqu'à ce que les rails de montage soient complètement étendus et que vous entendiez les loquets des deux côtés cliquent.
++
+Le capot supérieur du contrôleur est accessible.
+
+. Facultatif : si vous retirez complètement le contrôleur de l'armoire ou du rack, suivez les instructions du kit de rails pour retirer le contrôleur des rails.
+
+
+Après le remplacement de la pièce, renvoyez la pièce défectueuse à NetApp, en suivant les instructions RMA (retour de matériel) livrées avec le kit. Voir la https://["Retour de pièce et amp ; remplacements"^] pour plus d'informations.
+
+.Informations associées
+link:removing-sg6000-cn-controller-cover.html["Déposer le couvercle du contrôleur SG6000-CN"]

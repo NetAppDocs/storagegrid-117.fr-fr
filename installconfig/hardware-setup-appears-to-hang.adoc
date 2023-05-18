@@ -1,0 +1,80 @@
+---
+permalink: installconfig/hardware-setup-appears-to-hang.html 
+sidebar: sidebar 
+keywords: storage node, storage appliance, troubleshoot, troubleshooting, hardware, setup, hang, hangs, fails, failure, stop, terminate, terminates, stuck 
+summary: 'Le programme d"installation de l"appliance StorageGRID peut ne pas être disponible si des pannes matérielles ou des erreurs de câblage empêchent les contrôleurs de stockage ou le contrôleur de l"appliance d"effectuer leur démarrage.' 
+---
+= La configuration matérielle semble suspendue (SG6000 ou SG5700)
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Le programme d'installation de l'appliance StorageGRID peut ne pas être disponible si des pannes matérielles ou des erreurs de câblage empêchent les contrôleurs de stockage ou le contrôleur de l'appliance d'effectuer leur démarrage.
+
+.Étapes
+[role="tabbed-block"]
+====
+.SG6000
+--
+. Pour les contrôleurs de stockage, surveiller les codes sur les affichages à sept segments.
++
+Pendant l'initialisation du matériel pendant la mise sous tension, les deux affichages à sept segments affichent une séquence de codes. Lorsque le matériel démarre correctement, les deux affichages à sept segments s'affichent `99`.
+
+. Examinez les voyants du contrôleur SG6000-CN ainsi que les codes d'erreur et de démarrage affichés dans le contrôleur BMC.
+. Si vous avez besoin d'aide pour résoudre un problème, contactez le support technique.
+
+
+--
+.SG5700
+--
+. Observez les codes sur les affichages à sept segments.
++
+Pendant l'initialisation du matériel pendant la mise sous tension, les deux affichages à sept segments affichent une séquence de codes. Lorsque le matériel démarre correctement, les sept segments affichent des codes différents pour chaque contrôleur.
+
+. Examiner les codes sur l'affichage à sept segments du contrôleur E5700SG.
++
+
+NOTE: L'installation et le provisionnement prennent du temps. Certaines phases d'installation ne rapportent pas les mises à jour au programme d'installation de l'appliance StorageGRID pendant plusieurs minutes.
+
++
+En cas d'erreur, l'affichage à sept segments clignote une séquence, telle QU'IL.
+
+. Pour comprendre la signification de ces codes, consultez les ressources suivantes :
++
+[cols="1a,2a"]
+|===
+| Contrôleur | Référence 
+
+
+ a| 
+Contrôleur E5700SG
+ a| 
+** "Indicateurs d'état sur le contrôleur E5700SG"
+** « Erreur : erreur lors de la synchronisation avec le logiciel SANtricity OS »
+
+
+
+
+ a| 
+Contrôleur E2800
+ a| 
+_E5700 et E2800 System Monitoring Guide_
+
+*Remarque :* les codes décrits pour le contrôleur E-Series E5700 ne s'appliquent pas au contrôleur E5700SG de l'appliance.
+
+|===
+. Si ce n'est pas le cas, contactez le support technique.
+
+
+--
+====
+.Informations associées
+* link:viewing-status-indicators.html["Afficher les indicateurs d'état"]
+* http://["Site de documentation sur les systèmes NetApp E-Series"^]
+* link:he-error-error-synchronizing-with-santricity-os-software.html["Erreur : erreur de synchronisation avec le logiciel SANtricity OS"]
+* https://["Guide de surveillance des systèmes E5700 et E2800"^]
+* link:viewing-boot-up-codes-for-sg6000-cn-controller.html["Afficher les codes de démarrage (contrôleur SG6000-CN)"]
+* link:viewing-error-codes-for-sg6000-cn-controller.html["Afficher les codes d'erreur (contrôleur SG6000-CN)"]
+

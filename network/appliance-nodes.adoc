@@ -1,0 +1,26 @@
+---
+permalink: network/appliance-nodes.html 
+sidebar: sidebar 
+keywords: networking for appliance, port bond mode 
+summary: Vous pouvez configurer les ports réseau sur les appliances StorageGRID de sorte à utiliser les modes de liaison de ports qui répondent à vos exigences en matière de débit, de redondance et de basculement. 
+---
+= Nœuds d'appliance
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Vous pouvez configurer les ports réseau sur les appliances StorageGRID de sorte à utiliser les modes de liaison de ports qui répondent à vos exigences en matière de débit, de redondance et de basculement.
+
+Les ports 10/25 GbE des appliances StorageGRID peuvent être configurés en mode de liaison fixe ou agrégée pour les connexions au réseau Grid et au réseau client.
+
+Les ports réseau d'administration 1 GbE peuvent être configurés en mode indépendant ou en mode sauvegarde active pour les connexions au réseau d'administration.
+
+Pour plus d'informations sur les modes de port de votre appareil, consultez :
+
+* link:../installconfig/port-bond-modes-for-sgf6112.html["Modes de liaison de port (SGF6112)"]
+* link:../installconfig/port-bond-modes-for-sg6000-cn-controller.html["Modes de liaison du port (contrôleur SG6000-CN)"]
+* link:../installconfig/port-bond-modes-for-e5700sg-controller-ports.html["Modes de liaison des ports (contrôleur E5700SG)"]
+* link:../installconfig/port-bond-modes-for-sg100-and-sg1000.html["Modes de liaison de port (SG100 et SG1000)"]
+

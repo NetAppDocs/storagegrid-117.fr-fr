@@ -1,0 +1,68 @@
+---
+permalink: monitor/monitoring-information-lifecycle-management.html 
+sidebar: sidebar 
+keywords: lifecycle management, lifecycle, monitoring, ILM, information lifecycle management 
+summary: 'Le système de gestion du cycle de vie des informations \(ILM\) permet la gestion des données de tous les objets stockés sur la grille. Vous devez surveiller les opérations ILM pour déterminer si la grille peut traiter la charge actuelle ou si d"autres ressources sont requises.' 
+---
+= Contrôle la gestion du cycle de vie des informations
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Le système de gestion du cycle de vie des informations (ILM) assure la gestion des données de tous les objets stockés sur la grille. Vous devez surveiller les opérations ILM pour déterminer si la grille peut traiter la charge actuelle ou si d'autres ressources sont requises.
+
+.Description de la tâche
+Le système StorageGRID gère les objets en appliquant la règle ILM active. La politique ILM et les règles ILM associées déterminent le nombre de copies, le type de copies créées, le lieu où les copies sont placées, ainsi que la durée de conservation de chaque copie.
+
+L'ingestion d'objets et d'autres activités liées aux objets peuvent dépasser la vitesse à laquelle StorageGRID peut évaluer la gestion des règles ILM. Le système peut ainsi mettre en file d'attente des objets dont les instructions de placement des règles ILM ne peuvent pas être exécutées en temps quasi réel. Vous pouvez contrôler si StorageGRID maintient les actions du client en transcritant l'attribut attente - client.
+
+Pour tracer cet attribut :
+
+. Connectez-vous au Grid Manager.
+. Dans le tableau de bord, localisez l'entrée *Awaiting - client* dans l'onglet information Lifecycle Management (ILM).
+. Cliquez sur l'icône du graphique image:../media/icon_chart_new_for_11_5.png["Icône de graphique"].
+
+
+Le graphique illustre une situation dans laquelle le nombre d'objets en attente d'évaluation ILM a temporairement augmenté de façon non viable, puis a finalement diminué. Une telle tendance indique que la gestion du cycle de vie des informations (ILM) n'a été temporairement pas respectée en temps réel.
+
+image::../media/ilm_awaiting_client_vs_time.gif[En attente - client vs Histogramme]
+
+Des pics temporaires dans le graphique d'attente - client doivent être attendus. Si la valeur affichée sur le graphique continue d'augmenter et ne diminue jamais, la grille nécessite davantage de ressources pour fonctionner efficacement : plus de nœuds de stockage ou, si la règle ILM place les objets à distance, plus de bande passante réseau.
+
+Vous pouvez approfondir l'analyse des files d'attente ILM à l'aide de la page *NOEUDS*.
+
+.Étapes
+. Sélectionnez *NOEUDS*.
+. Sélectionnez *_grid name_* > *ILM*.
+. Positionnez le curseur sur le graphique de la file d'attente ILM pour voir la valeur des attributs suivants à un moment donné :
++
+** *Objets mis en file d'attente (à partir des opérations client)* : nombre total d'objets en attente d'évaluation ILM en raison des opérations client (par exemple, ingestion).
+** *Objets mis en file d'attente (de toutes les opérations)* : nombre total d'objets en attente d'évaluation ILM.
+** *Taux d'acquisition (objets/s)* : vitesse à laquelle les objets de la grille sont analysés et mis en file d'attente pour ILM.
+** *Taux d'évaluation (objets/s)* : taux actuel auquel les objets sont évalués par rapport à la politique ILM de la grille.
+
+
+. Dans la section ILM Queue, observez les attributs suivants.
++
+
+NOTE: La section ILM Queue est incluse uniquement pour la grille. Ces informations ne s'affichent pas dans l'onglet ILM d'un site ou d'un nœud de stockage.
+
++
+** *Période d'acquisition - estimé* : temps estimé pour effectuer une analyse ILM complète de tous les objets.
++
+
+NOTE: Une analyse complète ne garantit pas l'application du ILM à tous les objets.
+
+** *Réparations tentées* : nombre total d'opérations de réparation d'objet pour les données répliquées qui ont été tentées. Ce nombre est incrémenté chaque fois qu'un nœud de stockage tente de réparer un objet à haut risque. Les réparations ILM à haut risque sont hiérarchisées si le grid est occupé.
++
+
+NOTE: La réparation d'un même objet peut être de nouveau incrémentée si la réplication a échoué après la réparation.
+
+
+
++
+Ces attributs peuvent être utiles lorsque vous surveillez la progression de la récupération de volume du nœud de stockage. Si le nombre de réparations effectuées a cessé d'augmenter et qu'une analyse complète a été effectuée, la réparation est probablement terminée.
+
+

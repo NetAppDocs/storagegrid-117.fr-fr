@@ -1,0 +1,362 @@
+---
+permalink: installconfig/gathering-installation-information-sg6100.html 
+sidebar: sidebar 
+keywords: storagegrid, sg6100, sgf6112, install, information, site, pre-install, preparing, prepare, preinstall, info, preparation 
+summary: 'À l"aide des tableaux suivants, notez les informations requises pour chaque réseau que vous connectez à l"appliance. Ces valeurs sont nécessaires pour installer et configurer le matériel.' 
+---
+= Collecte des informations d'installation (SGF6112)
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+À l'aide des tableaux suivants, notez les informations requises pour chaque réseau que vous connectez à l'appliance. Ces valeurs sont nécessaires pour installer et configurer le matériel.
+
+
+TIP: Au lieu d'utiliser les tableaux, utilisez le manuel fourni avec ConfigBuilder. Le manuel ConfigBuilder vous permet de télécharger les informations système et de générer un fichier JSON pour effectuer automatiquement certaines étapes de configuration dans le programme d'installation de l'appliance StorageGRID. Voir link:automating-appliance-installation-and-configuration.html["Automatisez l'installation et la configuration de l'appliance"].
+
+
+
+== Vérifiez la version de StorageGRID
+
+Avant d'installer une appliance SGF6112, vérifiez que votre système StorageGRID utilise la version requise du logiciel StorageGRID.
+
+[cols="1a,2a"]
+|===
+| Appliance | Version StorageGRID requise 
+
+
+ a| 
+SGF6112
+ a| 
+11.7 ou version ultérieure (dernier correctif recommandé)
+
+|===
+
+
+== Ports d'administration et de maintenance
+
+Le réseau d'administration pour StorageGRID est un réseau facultatif, utilisé pour l'administration et la maintenance du système. L'appliance se connecte au réseau d'administration à l'aide des ports suivants de l'appliance.
+
+La figure suivante présente les ports RJ-45 de l'appliance SG6112.
+
+image::../media/sg6100_rj_45_ports_circled.png[Ports RJ-45 SG6112]
+
+[cols="2a,1a"]
+|===
+| Informations nécessaires | Votre valeur 
+
+
+ a| 
+Réseau admin activé
+ a| 
+Choisir une option :
+
+* Non
+* Oui (par défaut)
+
+
+
+
+ a| 
+Mode de liaison réseau
+ a| 
+Choisir une option :
+
+* Indépendant (par défaut)
+* Sauvegarde active-Backup
+
+
+
+
+ a| 
+Port de commutateur pour le port gauche entouré dans le schéma (port actif par défaut pour le mode de liaison réseau indépendante)
+ a| 
+
+
+
+ a| 
+Port de commutateur pour le port droit entouré dans le diagramme (mode de liaison réseau Active-Backup uniquement)
+ a| 
+
+
+
+ a| 
+Adresse MAC du port réseau d'administration
+
+*Remarque :* l'étiquette d'adresse MAC située à l'avant de l'appliance répertorie l'adresse MAC du port de gestion BMC. Pour déterminer l'adresse MAC du port réseau Admin, vous devez ajouter *2* au numéro hexadécimal sur l'étiquette. Par exemple, si l'adresse MAC de l'étiquette se termine par *09*, l'adresse MAC du port d'administration se terminera par *0B*. Si l'adresse MAC de l'étiquette se termine dans *(_y_)FF*, l'adresse MAC du port d'administration se terminera dans *(_y_+1)01*. Vous pouvez facilement effectuer ce calcul en ouvrant Calculator sous Windows, en le définissant en mode programmateur, en sélectionnant Hex, en saisissant l'adresse MAC, puis en tapant *+ 2 =*.
+ a| 
+
+
+
+ a| 
+Adresse IP attribuée par DHCP pour le port réseau d'administration, si disponible après la mise sous tension
+
+*Remarque :* vous pouvez déterminer l'adresse IP attribuée par DHCP en utilisant l'adresse MAC pour rechercher l'adresse IP attribuée.
+ a| 
+* Adresse IPv4 (CIDR) :
+* Passerelle :
+
+
+
+
+ a| 
+Adresse IP statique que vous envisagez d'utiliser pour le nœud d'appliance sur le réseau d'administration
+
+*Remarque :* si votre réseau n'a pas de passerelle, spécifiez la même adresse IPv4 statique pour la passerelle.
+ a| 
+* Adresse IPv4 (CIDR) :
+* Passerelle :
+
+
+
+
+ a| 
+Sous-réseaux du réseau d'administration (CIDR)
+ a| 
+
+|===
+
+
+== Ports réseau
+
+Les quatre ports réseau de l'appliance se connectent au réseau StorageGRID Grid et au réseau client en option.
+
+[cols="2a,1a"]
+|===
+| Informations nécessaires | Votre valeur 
+
+
+ a| 
+Vitesse de liaison
+ a| 
+Pour le SGF6112, choisissez l'une des options suivantes :
+
+* Auto (par défaut)
+* 10 GbE
+* 25 GbE
+
+
+
+
+ a| 
+Mode de liaison du port
+ a| 
+Choisir une option :
+
+* Fixe (par défaut)
+* Agrégat
+
+
+
+
+ a| 
+Port de commutation pour le port 1 (réseau client pour mode fixe)
+ a| 
+
+
+
+ a| 
+Port de commutation pour le port 2 (réseau grille pour mode fixe)
+ a| 
+
+
+
+ a| 
+Port de commutation pour le port 3 (réseau client pour mode fixe)
+ a| 
+
+
+
+ a| 
+Port de commutation pour le port 4 (réseau Grid pour mode fixe)
+ a| 
+
+|===
+
+
+== Ports réseau de la grille
+
+Le réseau Grid Network pour StorageGRID est un réseau requis, utilisé pour l'ensemble du trafic StorageGRID interne. L'appliance se connecte au réseau Grid à l'aide des quatre ports réseau.
+
+[cols="2a,1a"]
+|===
+| Informations nécessaires | Votre valeur 
+
+
+ a| 
+Mode de liaison réseau
+ a| 
+Choisir une option :
+
+* Sauvegarde active/active (par défaut)
+* LACP (802.3ad)
+
+
+
+
+ a| 
+Balisage VLAN activé
+ a| 
+Choisir une option :
+
+* Non (par défaut)
+* Oui.
+
+
+
+
+ a| 
+Balise VLAN (si le balisage VLAN est activé)
+ a| 
+Entrez une valeur comprise entre 0 et 4095 :
+
+
+
+ a| 
+Adresse IP attribuée par DHCP pour le réseau Grid, si disponible après la mise sous tension
+ a| 
+* Adresse IPv4 (CIDR) :
+* Passerelle :
+
+
+
+
+ a| 
+Adresse IP statique que vous prévoyez d'utiliser pour le nœud de l'appliance sur le réseau Grid
+
+*Remarque :* si votre réseau n'a pas de passerelle, spécifiez la même adresse IPv4 statique pour la passerelle.
+ a| 
+* Adresse IPv4 (CIDR) :
+* Passerelle :
+
+
+
+
+ a| 
+Sous-réseaux du réseau de grille (CIDR)
+ a| 
+
+
+
+ a| 
+Réglage de l'unité de transmission maximale (MTU) (facultatif). Vous pouvez utiliser la valeur par défaut 1500 ou définir la valeur MTU sur une valeur adaptée aux trames jumbo, par exemple 9000.
+ a| 
+
+|===
+
+
+== Ports réseau client
+
+Le réseau client pour StorageGRID est un réseau facultatif, généralement utilisé pour fournir l'accès du protocole client à la grille. Le serveur se connecte au réseau client à l'aide des quatre ports réseau.
+
+[cols="2a,1a"]
+|===
+| Informations nécessaires | Votre valeur 
+
+
+ a| 
+Réseau client activé
+ a| 
+Choisir une option :
+
+* Non (par défaut)
+* Oui.
+
+
+
+
+ a| 
+Mode de liaison réseau
+ a| 
+Choisir une option :
+
+* Sauvegarde active/active (par défaut)
+* LACP (802.3ad)
+
+
+
+
+ a| 
+Balisage VLAN activé
+ a| 
+Choisir une option :
+
+* Non (par défaut)
+* Oui.
+
+
+
+
+ a| 
+Balise VLAN (si le marquage VLAN est activé)
+ a| 
+Entrez une valeur comprise entre 0 et 4095 :
+
+
+
+ a| 
+Adresse IP attribuée par DHCP pour le réseau client, si disponible après la mise sous tension
+ a| 
+* Adresse IPv4 (CIDR) :
+* Passerelle :
+
+
+
+
+ a| 
+Adresse IP statique que vous prévoyez d'utiliser pour le nœud de l'appliance sur le réseau client
+
+*Remarque :* si le réseau client est activé, la route par défaut du serveur utilise la passerelle indiquée ici.
+ a| 
+* Adresse IPv4 (CIDR) :
+* Passerelle :
+
+
+|===
+
+
+== Ports réseau de gestion BMC
+
+Vous pouvez accéder à l'interface BMC sur l'appliance à l'aide du port de gestion 1 GbE entouré dans le schéma. Ce port prend en charge la gestion à distance du matériel du contrôleur via Ethernet en utilisant la norme IPMI (Intelligent Platform Management interface).
+
+
+NOTE: Vous pouvez activer ou désactiver l'accès IPMI à distance pour tous les dispositifs contenant un contrôleur BMC en utilisant le point de terminaison privé de l'API de gestion, PUT /private/bmc.
+
+La figure suivante présente le port de gestion BMC sur l'appliance SG6112.
+
+image::../media/sgf6112_cn_bmc_management_port.png[Port de gestion SG6100]
+
+[cols="2a,1a"]
+|===
+| Informations nécessaires | Votre valeur 
+
+
+ a| 
+Port de commutateur Ethernet vous vous connectez au port de gestion du contrôleur BMC (encerclé dans le diagramme)
+ a| 
+
+
+
+ a| 
+Adresse IP attribuée par DHCP pour le réseau de gestion BMC, si disponible après la mise sous tension
+ a| 
+* Adresse IPv4 (CIDR) :
+* Passerelle :
+
+
+
+
+ a| 
+Adresse IP statique que vous prévoyez d'utiliser pour le port de gestion BMC
+ a| 
+* Adresse IPv4 (CIDR) :
+* Passerelle :
+
+
+|===
+.Informations associées
+* link:cabling-appliance-sgf6112.html["Cable appliance (SGF6112)"]
+* link:setting-ip-configuration.html["Configurez les adresses IP StorageGRID"]
+

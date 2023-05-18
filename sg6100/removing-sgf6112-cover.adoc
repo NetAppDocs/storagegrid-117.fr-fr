@@ -1,0 +1,36 @@
+---
+permalink: sg6100/removing-sgf6112-cover.html 
+sidebar: sidebar 
+keywords: storagegrid, sg6100, sgf6112, storage node, storage appliance, cover, remove, removing, removal 
+summary: 'Retirez le couvercle de l"appareil pour accéder aux composants internes à des fins d"entretien.' 
+---
+= Retirer le couvercle du SGF6112
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Retirez le couvercle de l'appareil pour accéder aux composants internes à des fins d'entretien.
+
+.Avant de commencer
+Retirez l'appareil de l'armoire ou du rack pour accéder au capot supérieur.
+
+link:reinstalling-sgf6112-into-cabinet-or-rack.html#remove-from-rack["Retirez le SGF6112 de l'armoire ou du rack"]
+
+.Étapes
+. Assurez-vous que le loquet du capot du SGF6112 n'est pas verrouillé. Si nécessaire, tournez le verrou en plastique bleu d'un quart de tour dans le sens de déverrouillage, comme illustré sur le verrou.
+. Faites pivoter le loquet vers le haut et vers l'arrière du châssis SGF6112 jusqu'à ce qu'il s'arrête, puis soulevez avec précaution le capot du châssis et mettez-le de côté.
++
+image::../media/sg6060_cover_latch_open.jpg[SGF6112 ouverture du loquet du capot]
+
++
+
+IMPORTANT: Enroulez l'extrémité de la sangle d'un bracelet antistatique autour de votre poignet et fixez l'extrémité de la pince à une terre métallique pour éviter toute décharge statique lors d'une intervention à l'intérieur du SGF6112.
+
+
+
+Après le remplacement de la pièce, renvoyez la pièce défectueuse à NetApp, en suivant les instructions RMA (retour de matériel) livrées avec le kit. Voir la https://["Retour de pièce et amp ; remplacements"^] pour plus d'informations.
+
+.Informations associées
+link:replace-nic-in-sgf6112.html["Remplacez la carte réseau"]

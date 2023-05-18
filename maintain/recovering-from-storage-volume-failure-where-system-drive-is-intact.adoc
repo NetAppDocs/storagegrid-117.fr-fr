@@ -1,0 +1,21 @@
+---
+permalink: maintain/recovering-from-storage-volume-failure-where-system-drive-is-intact.html 
+sidebar: sidebar 
+keywords: storagegrid, recover, storage volume failure, volume failure, system drive intact 
+summary: Vous devez effectuer une série de tâches pour restaurer un nœud de stockage logiciel dans lequel un ou plusieurs volumes de stockage du nœud de stockage sont défaillants, mais le lecteur système est intact. Si seuls les volumes de stockage ont échoué, le nœud de stockage est toujours disponible pour le système StorageGRID. 
+---
+= Restaurez les données après une panne du volume de stockage, où le disque système est intact : flux de travail
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Vous devez effectuer une série de tâches pour restaurer un nœud de stockage logiciel dans lequel un ou plusieurs volumes de stockage du nœud de stockage sont défaillants, mais le lecteur système est intact. Si seuls les volumes de stockage ont échoué, le nœud de stockage est toujours disponible pour le système StorageGRID.
+
+
+NOTE: Cette procédure de restauration s'applique uniquement aux nœuds de stockage basés sur logiciel. Si les volumes de stockage ont échoué sur un nœud de stockage de l'appliance, suivez la procédure ci-dessous : link:recovering-storagegrid-appliance-storage-node.html["Restaurez le nœud de stockage de l'appliance"].
+
+Comme indiqué dans le schéma de workflow, vous devez identifier et démonter les volumes de stockage défaillants, restaurer les volumes, reconstruire la base de données Cassandra et restaurer les données d'objet.
+
+image::../media/storage_node_recovery_storage_vol_only.gif[organigramme de la restauration du volume de stockage]

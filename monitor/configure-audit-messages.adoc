@@ -1,0 +1,229 @@
+---
+permalink: monitor/configure-audit-messages.html 
+sidebar: sidebar 
+keywords: audit messages, configure syslog server, configure external syslog server. log destinations 
+summary: 'Tous les nœuds StorageGRID génèrent des messages d"audit pour suivre l"activité et les événements système. Vous pouvez régler les niveaux d"audit pour augmenter ou diminuer le type et le nombre de messages d"audit enregistrés.' 
+---
+= Configurez les messages d'audit et les destinations des journaux
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Les messages d'audit et les journaux enregistrent les activités du système et les événements de sécurité. Ils constituent les outils essentiels de surveillance et de dépannage. Vous pouvez régler les niveaux d'audit pour augmenter ou diminuer le type et le nombre de messages d'audit enregistrés. Vous pouvez éventuellement définir les en-têtes de requête HTTP que vous souhaitez inclure dans les messages d'audit client en lecture et écriture. Vous pouvez également configurer un serveur syslog externe et modifier la destination des informations d'audit.
+
+Pour plus d'informations sur les messages d'audit, reportez-vous à la section link:../audit/index.html["Examiner les journaux d'audit"].
+
+.Avant de commencer
+* Vous êtes connecté au Grid Manager à l'aide d'un link:../admin/web-browser-requirements.html["navigateur web pris en charge"].
+* Vous disposez d'autorisations d'accès à la racine ou à la maintenance.
+
+
+.Description de la tâche
+Tous les nœuds StorageGRID génèrent des messages d'audit et des journaux pour suivre l'activité et les événements du système. Par défaut, les informations d'audit sont envoyées au journal d'audit des nœuds d'administration. Vous pouvez régler les niveaux d'audit pour augmenter ou diminuer le type et le nombre de messages d'audit enregistrés dans le journal d'audit. Vous pouvez également configurer des informations d'audit qui seront stockées temporairement sur les nœuds d'origine pour une collecte manuelle.
+
+
+IMPORTANT: Si vous disposez d'une grande grille, utilisez plusieurs types d'applications S3 ou souhaitez conserver toutes les données d'audit, configurez un serveur syslog externe et enregistrez les informations d'audit à distance. L'utilisation d'un serveur externe réduit l'impact sur les performances de la journalisation des messages d'audit sans réduire l'exhaustivité des données d'audit. Voir link:../monitor/considerations-for-external-syslog-server.html["Considérations relatives au serveur syslog externe"] pour plus d'informations.
+
+
+
+== Modifier les niveaux de messages d'audit dans le journal d'audit
+
+Vous pouvez définir un niveau d'audit différent pour chacune des catégories de messages suivantes dans le journal d'audit :
+
+[cols="1a,3a"]
+|===
+| Catégorie de vérification | Description 
+
+
+ a| 
+Système
+ a| 
+Par défaut, ce niveau est défini sur Normal. Voir link:../audit/system-audit-messages.html["Messages d'audit système"].
+
+
+
+ a| 
+Stockage
+ a| 
+Par défaut, ce niveau est défini sur erreur. Voir link:../audit/object-storage-audit-messages.html["Messages d'audit du stockage objet"].
+
+
+
+ a| 
+Gestion
+ a| 
+Par défaut, ce niveau est défini sur Normal. Voir link:../audit/management-audit-message.html["Message d'audit de gestion"].
+
+
+
+ a| 
+Lectures du client
+ a| 
+Par défaut, ce niveau est défini sur Normal. Voir link:../audit/client-read-audit-messages.html["Messages d'audit de lecture du client"].
+
+
+
+ a| 
+Écritures des clients
+ a| 
+Par défaut, ce niveau est défini sur Normal. Voir link:../audit/client-write-audit-messages.html["Écrire des messages d'audit client"].
+
+
+
+ a| 
+Les opérations ILM
+ a| 
+Par défaut, ce niveau est défini sur Normal. Voir link:../audit/ilm-audit-messages.html["Messages d'audit des opérations ILM"].
+
+|===
+
+NOTE: Ces valeurs par défaut s'appliquent si vous avez installé StorageGRID à l'origine à l'aide de la version 10.3 ou ultérieure. Si vous avez mis à niveau à partir d'une version antérieure de StorageGRID, la valeur par défaut pour toutes les catégories est Normal.
+
+
+NOTE: Durant les mises à niveau, les configurations des niveaux d'audit ne seront pas effectives immédiatement.
+
+.Étapes
+. Sélectionnez *CONFIGURATION* > *surveillance* > *serveur d'audit et syslog*.
+. Pour chaque catégorie de message d'audit, sélectionnez un niveau d'audit dans la liste déroulante :
++
+[cols="1a,3a"]
+|===
+| Niveau d'audit | Description 
+
+
+ a| 
+Éteint
+ a| 
+Aucun message d'audit de la catégorie n'est enregistré.
+
+
+
+ a| 
+Erreur
+ a| 
+Seuls les messages d'erreur sont consignés--les messages d'audit pour lesquels le code de résultat n'a pas été « réussi » (CMC).
+
+
+
+ a| 
+Normale
+ a| 
+Les messages transactionnels standard sont consignés--les messages répertoriés dans ces instructions pour la catégorie.
+
+
+
+ a| 
+Débogage
+ a| 
+Obsolète. Ce niveau se comporte de la même manière que le niveau d'audit normal.
+
+|===
++
+Les messages inclus pour tout niveau particulier incluent ceux qui seraient consignés aux niveaux supérieurs. Par exemple, le niveau Normal inclut tous les messages d'erreur.
+
++
+
+NOTE: Si vous n'avez pas besoin d'un enregistrement détaillé des opérations de lecture du client pour vos applications S3, vous pouvez éventuellement définir le paramètre *lecture du client* sur *erreur* pour diminuer le nombre de messages d'audit enregistrés dans le journal d'audit.
+
+. Éventuellement, sous *en-têtes de protocole d'audit*, définissez les en-têtes de requête HTTP que vous souhaitez inclure dans les messages d'audit de lecture et d'écriture du client. Utilisez un astérisque (\*) comme caractère générique pour qu'il corresponde à zéro ou à plusieurs caractères. Utilisez la séquence d'échappement (\*) pour faire correspondre un astérisque littéral.
++
+
+NOTE: Les en-têtes de protocole d'audit ne s'appliquent qu'aux demandes S3 et Swift.
+
+. Sélectionnez *Ajouter un autre en-tête* pour créer des en-têtes supplémentaires, si nécessaire.
++
+Lorsque des en-têtes HTTP sont trouvés dans une requête, ils sont inclus dans le message d'audit sous le champ HTRH.
+
++
+
+NOTE: Les en-têtes de requête de protocole d'audit ne sont consignés que si le niveau d'audit pour *lecture client* ou *écriture client* n'est pas *off*.
+
+. Sélectionnez *Enregistrer*
++
+Une bannière verte indique que votre configuration a été enregistrée avec succès.
+
+
+
+
+
+== Utiliser un serveur syslog externe
+
+Vous pouvez configurer un serveur syslog externe si vous souhaitez enregistrer les informations d'audit à distance.
+
+* Pour enregistrer les informations d'audit sur un serveur syslog externe, accédez à link:../monitor/configuring-syslog-server.html["Configurer un serveur syslog externe"].
+* Si vous n'utilisez pas de serveur syslog externe, accédez à <<Select-audit-information-destinations,Sélectionnez les destinations des informations d'audit>>.
+
+
+
+
+== Sélectionnez les destinations des informations d'audit
+
+Vous pouvez spécifier l'emplacement d'envoi des journaux d'audit, des journaux d'événements de sécurité et des journaux d'application.
+
+
+NOTE: Certaines destinations sont disponibles uniquement si vous utilisez un serveur syslog externe. Voir link:../monitor/configuring-syslog-server.html["Configurer un serveur syslog externe"] pour configurer un serveur syslog externe.
+
+
+NOTE: Pour plus d'informations sur les journaux du logiciel StorageGRID, reportez-vous à la section link:../monitor/storagegrid-software-logs.html#["Journaux du logiciel StorageGRID"].
+
+. Sur la page Audit and syslog Server, sélectionnez la destination des informations d'audit dans les options répertoriées :
++
+[cols="1a,2a"]
+|===
+| Option | Description 
+
+
+ a| 
+Par défaut (nœuds d'administration/nœuds locaux)
+ a| 
+Les messages d'audit sont envoyés au journal d'audit (`audit.log`) Sur le nœud d'administration, les journaux d'événements de sécurité et les journaux d'applications sont stockés sur les nœuds où ils ont été générés (également appelés « nœud local »).
+
+
+
+ a| 
+Serveur syslog externe
+ a| 
+Les informations d'audit sont envoyées à un serveur syslog externe et enregistrées sur le nœud local. Le type d'information envoyée dépend de la façon dont vous avez configuré le serveur syslog externe. Cette option n'est activée qu'après avoir configuré un serveur syslog externe.
+
+
+
+ a| 
+Nœud d'administration et serveur syslog externe
+ a| 
+Les messages d'audit sont envoyés au journal d'audit (`audit.log`) Sur le nœud d'administration, les informations d'audit sont envoyées au serveur syslog externe et enregistrées sur le nœud local. Le type d'information envoyée dépend de la façon dont vous avez configuré le serveur syslog externe. Cette option n'est activée qu'après avoir configuré un serveur syslog externe.
+
+
+
+ a| 
+Nœuds locaux uniquement
+ a| 
+Aucune information d'audit n'est envoyée à un nœud d'administration ou à un serveur syslog distant. Les informations d'audit sont enregistrées uniquement sur les nœuds qui les ont générées.
+
+*Remarque*: StorageGRID supprime périodiquement ces journaux locaux dans une rotation pour libérer de l'espace. Lorsque le fichier journal d'un nœud atteint 1 Go, le fichier existant est enregistré et un nouveau fichier journal est démarré. La limite de rotation du journal est de 21 fichiers. Lorsque la 22e version du fichier journal est créée, le fichier journal le plus ancien est supprimé. En moyenne, environ 20 Go de données de journalisation sont stockés sur chaque nœud.
+
+|===
++
+
+NOTE: Les informations d'audit générées sur chaque nœud local sont stockées dans `/var/local/log/localaudit.log`
+
+. Sélectionnez *Enregistrer*.
++
+Un message d'avertissement s'affiche.
+
+. Sélectionnez *OK* pour confirmer que vous souhaitez modifier la destination des informations d'audit.
++
+Une bannière verte s'affiche pour vous informer que votre configuration d'audit a été enregistrée.
+
++
+Les nouveaux journaux sont envoyés aux destinations que vous avez sélectionnées. Les journaux existants restent à leur emplacement actuel.
+
+
+
+.Informations associées
+link:../monitor/considerations-for-external-syslog-server.html["Considérations relatives au serveur syslog externe"]
+
+link:../admin/index.html["Administrer StorageGRID"]
+
+link:../troubleshoot/troubleshooting-syslog-server.html["Dépanner le serveur syslog externe"]

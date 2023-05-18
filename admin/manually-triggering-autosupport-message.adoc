@@ -1,0 +1,31 @@
+---
+permalink: admin/manually-triggering-autosupport-message.html 
+sidebar: sidebar 
+keywords: autosupport, how to send asup message 
+summary: Pour aider le support technique à résoudre les problèmes liés à votre système StorageGRID, vous pouvez déclencher manuellement un message AutoSupport à envoyer. 
+---
+= Déclencher manuellement un message AutoSupport
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Pour aider le support technique à résoudre les problèmes liés à votre système StorageGRID, vous pouvez déclencher manuellement un message AutoSupport à envoyer.
+
+.Avant de commencer
+* Vous devez être connecté au Grid Manager à l'aide d'un link:../admin/web-browser-requirements.html["navigateur web pris en charge"].
+* Vous devez disposer de l'accès racine ou d'une autre autorisation de configuration de grille.
+
+
+.Étapes
+. Sélectionnez *SUPPORT* > *Outils* > *AutoSupport*.
+. Dans l'onglet *Paramètres*, sélectionnez *Envoyer AutoSupport* déclenché par l'utilisateur.
++
+StorageGRID tente d'envoyer un message AutoSupport au support technique. Si la tentative réussit, les valeurs *résultat le plus récent* et *dernier temps* réussi dans l'onglet *Résultats* sont mises à jour. En cas de problème, la valeur *résultat* la plus récente est mise à jour sur "échec" et StorageGRID n'essaie pas d'envoyer à nouveau le message AutoSupport.
+
++
+
+NOTE: Après avoir envoyé un message AutoSupport déclenché par l'utilisateur, actualisez la page AutoSupport de votre navigateur après 1 minute pour accéder aux résultats les plus récents.
+
+

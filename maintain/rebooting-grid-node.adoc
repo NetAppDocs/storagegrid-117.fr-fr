@@ -1,0 +1,22 @@
+---
+permalink: maintain/rebooting-grid-node.html 
+sidebar: sidebar 
+keywords: reboot grid node 
+summary: Vous pouvez redémarrer un nœud de grille à partir de Grid Manager ou depuis le shell de commande du nœud. 
+---
+= Redémarrer le nœud grid : présentation
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Vous pouvez redémarrer un nœud grid à partir de Grid Manager ou depuis le shell de commande du nœud.
+
+Lorsque vous redémarrez un nœud de la grille, celui-ci s'arrête et redémarre. Tous les services sont redémarrés automatiquement.
+
+Si vous prévoyez de redémarrer les nœuds de stockage, notez les éléments suivants :
+
+* Si une règle ILM spécifie un comportement d'ingestion de Double allocation ou d'équilibrage et qu'il n'est pas possible de créer immédiatement toutes les copies requises, StorageGRID valide immédiatement tous les objets nouvellement ingérés dans deux nœuds de stockage sur le même site et évalue ce contrôle par la suite. Si vous souhaitez redémarrer deux ou plusieurs nœuds de stockage sur un site donné, il se peut que vous ne puissiez pas accéder à ces objets pendant la durée du redémarrage.
+* Pour vous assurer que vous pouvez accéder à tous les objets lors du redémarrage d'un nœud de stockage, arrêtez de les ingérer sur un site pendant environ une heure avant de redémarrer le nœud.
+

@@ -1,0 +1,33 @@
+---
+permalink: admin/updating-storagegrid-license-information.html 
+sidebar: sidebar 
+keywords: storagegrid license, update license, add storage capacity 
+summary: Vous devez mettre à jour les informations de licence de votre système StorageGRID à tout moment que les conditions de votre modification de licence changent. Par exemple, vous devez mettre à jour les informations de licence si vous achetez de la capacité de stockage supplémentaire pour votre grid. 
+---
+= Mettez à jour les informations de licence StorageGRID
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Vous devez mettre à jour les informations de licence de votre système StorageGRID à tout moment que les conditions de votre modification de licence changent. Par exemple, vous devez mettre à jour les informations de licence si vous achetez de la capacité de stockage supplémentaire pour votre grid.
+
+
+NOTE: Si vous devez modifier les conditions de votre licence ou si vous souhaitez fusionner, fractionner ou redistribuer une licence existante, contactez le support pour ouvrir un dossier d'assistance non technique.
+
+.Avant de commencer
+* Vous avez un nouveau fichier de licence à appliquer à votre système StorageGRID.
+* Vous disposez d'autorisations d'accès spécifiques.
+* Vous avez la phrase secrète pour le provisionnement.
+
+
+.Étapes
+. Sélectionnez *MAINTENANCE* > *système* > *Licence*.
+. Entrez la phrase de passe de provisionnement pour votre système StorageGRID dans la zone de texte *phrase de passe de provisionnement*, puis sélectionnez *Parcourir*.
+. Dans la boîte de dialogue Ouvrir, localisez et sélectionnez le nouveau fichier de licence (`.txt`) Et sélectionnez *Ouvrir*.
++
+Le nouveau fichier de licence est validé et affiché.
+
+. Sélectionnez *Enregistrer*.
+

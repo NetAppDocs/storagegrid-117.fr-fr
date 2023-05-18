@@ -1,0 +1,51 @@
+---
+permalink: ilm/enabling-s3-object-lock-globally.html 
+sidebar: sidebar 
+keywords: enable s3 object lock, object lock 
+summary: 'Si un compte de locataire S3 doit respecter les exigences réglementaires lors de la sauvegarde des données d"objet, vous devez activer le verrouillage objet S3 pour l"intégralité de votre système StorageGRID. L"activation du paramètre de verrouillage d"objet S3 global permet aux locataires S3 de créer et de gérer des compartiments et des objets avec le verrouillage d"objet S3.' 
+---
+= Activez le verrouillage global des objets S3
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Si un compte de locataire S3 doit respecter les exigences réglementaires lors de la sauvegarde des données d'objet, vous devez activer le verrouillage objet S3 pour l'intégralité de votre système StorageGRID. L'activation du paramètre de verrouillage d'objet S3 global permet aux locataires S3 de créer et de gérer des compartiments et des objets avec le verrouillage d'objet S3.
+
+.Avant de commencer
+* Vous disposez de l'autorisation d'accès racine.
+* Vous êtes connecté au Grid Manager à l'aide d'un link:../admin/web-browser-requirements.html["navigateur web pris en charge"].
+* Vous avez examiné le workflow de verrouillage d'objet S3 et vous en avez pris connaissance.
+* Vous avez confirmé que la règle par défaut de la politique ILM active est conforme. Voir link:creating-default-ilm-rule.html["Créez une règle ILM par défaut"] pour plus d'informations.
+
+
+.Description de la tâche
+Un administrateur de grid doit activer le paramètre global de verrouillage d'objet S3 pour permettre aux utilisateurs locataires de créer de nouveaux compartiments pour lesquels le verrouillage d'objet S3 est activé. Une fois ce paramètre activé, il ne peut pas être désactivé.
+
+
+NOTE: Le paramètre conformité globale est obsolète. Si vous avez activé ce paramètre à l'aide d'une version précédente de StorageGRID, le paramètre verrouillage objet S3 est activé automatiquement. Vous pouvez continuer à utiliser StorageGRID pour gérer les paramètres des compartiments conformes existants ; cependant, vous ne pouvez pas créer de nouveaux compartiments conformes. Pour plus de détails, voir https://["Base de connaissances NetApp : comment gérer des compartiments conformes aux ancienne génération dans StorageGRID 11.5"^].
+
+.Étapes
+. Sélectionnez *CONFIGURATION* > *système* > *verrouillage objet S3*.
++
+La page Paramètres de verrouillage d'objet S3 s'affiche.
+
+. Sélectionnez *Activer le verrouillage d'objet S3*.
+. Sélectionnez *appliquer*.
++
+Une boîte de dialogue de confirmation s'affiche et vous rappelle que vous ne pouvez pas désactiver le verrouillage d'objet S3 après son activation.
+
+. Si vous êtes sûr de vouloir activer définitivement le verrouillage d'objet S3 pour l'ensemble du système, sélectionnez *OK*.
++
+Lorsque vous sélectionnez *OK*:
+
++
+** Si la règle par défaut de la règle ILM active est conforme, le verrouillage d'objet S3 est désormais activé pour l'ensemble de la grille et ne peut pas être désactivé.
+** Si la règle par défaut n'est pas conforme, une erreur s'affiche. Vous devez créer et activer une nouvelle règle ILM qui inclut une règle de conformité comme règle par défaut. Sélectionnez *OK*. Créez ensuite une nouvelle règle proposée, simulez-la et activez-la. Voir link:creating-ilm-policy.html["Création de la règle ILM"] pour obtenir des instructions.
+
+
+
+
+.Une fois que vous avez terminé
+Une fois que vous avez activé le paramètre de verrouillage d'objet S3 global, vous pouvez le vouloir link:creating-proposed-ilm-policy.html["Création d'une règle ILM"]. Une fois le paramètre activé, la règle ILM peut éventuellement inclure une règle par défaut conforme et une règle par défaut non compatible. Par exemple, vous pouvez utiliser une règle non conforme qui ne possède pas de filtres pour les objets dans des compartiments pour lesquels le verrouillage d'objet S3 n'est pas activé.

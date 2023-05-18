@@ -1,0 +1,27 @@
+---
+permalink: admin/grid-federation-workflow.html 
+sidebar: sidebar 
+keywords: grid federation workflow, cross-grid replication, account clone, cgr, disaster recovery 
+summary: 'En tant qu"administrateur du grid, vous devez vous coordonner étroitement avec les utilisateurs locataires pour établir et utiliser une connexion de fédération de grid entre deux systèmes StorageGRID afin d"effectuer le clone du compte et la réplication intergrid.' 
+---
+= Flux de travail de fédération de grille
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+En tant qu'administrateur du grid, vous devez vous coordonner étroitement avec les utilisateurs locataires pour établir et utiliser une connexion de fédération de grid entre deux systèmes StorageGRID afin d'effectuer le clone du compte et la réplication intergrid.
+
+Le diagramme du flux de travail présente les étapes générales que les administrateurs du grid et les utilisateurs de tenant effectueront pour établir une connexion de fédération de grid entre deux grilles et pour configurer le clone de compte et la réplication entre les grilles.
+
+Après avoir créé une connexion de fédération de grille entre deux grilles, l'administrateur de grille crée un ou plusieurs nouveaux comptes de tenant et attribue une autorisation pour déterminer qui peut utiliser la connexion. Une fois le nouveau tenant enregistré, StorageGRID crée automatiquement un tenant identique sur l'autre grid.
+
+Une fois le nouveau tenant disponible sur les deux grilles, les utilisateurs de tenant peuvent effectuer les opérations suivantes :
+
+* Dans la grille source du locataire, créez de nouveaux utilisateurs et groupes de locataires, qui sont automatiquement clonés dans la grille de destination du locataire.
+* À partir de la grille source du locataire, créez des clés d'accès S3, qui peuvent être clonées sur la grille de destination du locataire.
+* Créez de nouvelles rubriques sur les deux grilles et activez éventuellement la réplication multigrille dans une direction ou dans les deux directions.
+
+
+image:../media/grid-federation-workflow.png["Flux de travail de fédération de grille"]

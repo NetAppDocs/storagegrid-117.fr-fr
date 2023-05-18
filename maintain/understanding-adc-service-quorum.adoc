@@ -1,0 +1,27 @@
+---
+permalink: maintain/understanding-adc-service-quorum.html 
+sidebar: sidebar 
+keywords: storagegrid, recover, adc, adc quorum 
+summary: 'Vous ne pourrez peut-être pas désaffecter certains nœuds de stockage sur un site de data Center si trop peu de services administrative Domain Controller \(ADC\) seraient conservés après le déclassement. Ce service, qui se trouve sur certains nœuds de stockage, conserve les informations de topologie grid et fournit les services de configuration à la grille. Le système StorageGRID nécessite que le quorum des services ADC soit disponible sur chaque site et à tout moment.' 
+---
+= Comprendre le quorum ADC
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Vous ne pourrez peut-être pas désaffecter certains nœuds de stockage sur un site de data Center si trop peu de services ADC (administrative Domain Controller) seront conservés après la mise hors service. Ce service, qui se trouve sur certains nœuds de stockage, conserve les informations de topologie grid et fournit les services de configuration à la grille. Le système StorageGRID nécessite que le quorum des services ADC soit disponible sur chaque site et à tout moment.
+
+Vous ne pouvez pas désaffecter un nœud de stockage si le retrait du nœud entraînerait la non-conformité du quorum ADC. Pour satisfaire le quorum ADC lors d'une mise hors service, un minimum de trois nœuds de stockage doivent être disponibles sur chaque site de data Center. Si un site de data Center dispose de plus de trois nœuds de stockage avec le service ADC, la majorité simple de ces nœuds doit rester disponible après la désaffectation ((0.5 * `_Storage Nodes with ADC_`) + 1).
+
+Supposons par exemple qu'un site de data Center inclut actuellement six nœuds de stockage avec des services ADC et que vous voulez désaffecter trois nœuds de stockage. En raison de l'exigence de quorum ADC, vous devez effectuer deux procédures de mise hors service, comme suit :
+
+* Lors de la première procédure de mise hors service, vous devez vous assurer que quatre nœuds de stockage avec services ADC restent disponibles ((0.5 * 6) +1) . Cela signifie que vous ne pouvez désaffecter que deux nœuds de stockage au départ.
+* Dans la deuxième procédure de mise hors service, vous pouvez supprimer le troisième nœud de stockage car le quorum ADC ne requiert désormais que trois services ADC pour rester disponibles ((0.5 * 4) + 1).
+
+
+Si vous devez désaffecter un nœud de stockage mais que vous ne pouvez pas le faire en raison de l'exigence de quorum ADC, vous devez ajouter un nouveau nœud de stockage dans une extension et spécifier qu'il doit disposer d'un service ADC. Vous pouvez ensuite désaffecter le nœud de stockage existant.
+
+.Informations associées
+link:../expand/index.html["Développez votre grille"]

@@ -1,0 +1,63 @@
+---
+permalink: s3/support-for-storagegrid-platform-services.html 
+sidebar: sidebar 
+keywords: platform services, cloudmirror replication, notifications, search integration 
+summary: 'La plateforme StorageGRID permet aux comptes locataires d"StorageGRID d"utiliser des services tels qu"un compartiment S3 distant, un point de terminaison SNS (« simple notification Service ») ou un cluster Elasticsearch afin d"élargir les services fournis par un grid.' 
+---
+= La prise en charge des services de plateforme StorageGRID
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+La plateforme StorageGRID permet aux comptes locataires d'StorageGRID d'utiliser des services tels qu'un compartiment S3 distant, un point de terminaison SNS (simple notification Service) ou un cluster Elasticsearch afin d'élargir les services fournis par un grid.
+
+Le tableau suivant récapitule les services de plateforme disponibles et les API S3 utilisés pour les configurer.
+
+[cols="1a,2a,1a"]
+|===
+| Service de plateforme | Objectif | API S3 utilisée pour configurer le service 
+
+
+ a| 
+Réplication CloudMirror
+ a| 
+Réplique les objets à partir d'un compartiment StorageGRID source vers le compartiment S3 distant configuré.
+ a| 
+PUT Bucket Replication (réplication de compartiment) (voir link:operations-on-buckets.html["Opérations sur les compartiments"])
+
+
+
+ a| 
+Notifications
+ a| 
+Envoie des notifications sur les événements d'un compartiment StorageGRID source vers un point de terminaison SNS (simple notification Service) configuré.
+ a| 
+Notification PUT Bucket (PLACER le compartiment) (voir link:operations-on-buckets.html["Opérations sur les compartiments"])
+
+
+
+ a| 
+Intégration de la recherche
+ a| 
+Envoie les métadonnées d'objet des objets stockés dans un compartiment StorageGRID vers un index Elasticsearch configuré.
+ a| 
+link:put-bucket-metadata-notification-configuration-request.html["CONFIGURATION de notification des métadonnées de compartiment"]
+
+*Remarque :* il s'agit d'une API S3 personnalisée StorageGRID.
+
+|===
+L'administrateur du grid doit activer les services de plateforme pour un compte de locataire avant de pouvoir les utiliser. Voir link:../admin/index.html["Administrer StorageGRID"]. Ensuite, un administrateur de tenant doit créer un noeud final qui représente le service distant dans le compte de tenant. Cette étape est requise avant la configuration d'un service. Voir link:../tenant/index.html["Utilisez un compte de locataire"].
+
+
+
+== Recommandations relatives à l'utilisation des services de plate-forme
+
+Avant d'utiliser les services de plateforme, vous devez connaître les recommandations suivantes :
+
+* NetApp recommande de ne pas autoriser plus de 100 locataires actifs avec les demandes S3 nécessitant la réplication CloudMirror, les notifications et l'intégration de la recherche. Avec plus de 100 locataires actifs, les performances des clients S3 sont plus lentes.
+* Si la gestion des versions et la réplication CloudMirror sont activées pour un compartiment S3 dans le système StorageGRID, NetApp recommande que la gestion des versions du compartiment S3 soit également activée sur le terminal de destination. Cela permet à la réplication CloudMirror de générer des versions d'objet similaires sur le noeud final.
+* La réplication CloudMirror n'est pas prise en charge si le compartiment source est activé pour le verrouillage objet S3.
+* La réplication CloudMirror échoue avec une erreur AccessDenied si la conformité héritée du compartiment de destination est activée.
+

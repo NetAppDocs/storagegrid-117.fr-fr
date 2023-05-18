@@ -1,0 +1,55 @@
+---
+permalink: installconfig/connecting-power-cords-and-applying-power-sg6000.html 
+sidebar: sidebar 
+keywords: storagegrid, sg6000, storage node, storage appliance, wire, wiring, cabling, cable, Connecting, connect, power cords, power, applying power, apply power, turn on, power up, ac, ac power 
+summary: 'Une fois les câbles réseau connectés, vous pouvez alimenter le contrôleur SG6000-CN et les deux contrôleurs de stockage ou les tiroirs d"extension en option.' 
+---
+= Branchement des câbles d'alimentation et alimentation (SG6000)
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Une fois les câbles réseau connectés, vous pouvez alimenter le contrôleur SG6000-CN et les deux contrôleurs de stockage ou les tiroirs d'extension en option.
+
+.Étapes
+. Vérifier que les deux contrôleurs du tiroir de contrôleur de stockage sont éteints
++
+
+CAUTION: *Risque d'électrocution* -- avant de connecter les cordons d'alimentation, assurez-vous que les interrupteurs d'alimentation de chacun des deux contrôleurs de stockage sont éteints.
+
+. Si vous disposez de tiroirs d'extension, vérifiez que les deux boutons d'alimentation du module sont éteints.
++
+
+CAUTION: *Risque d'électrocution* -- avant de connecter les cordons d'alimentation, assurez-vous que les deux commutateurs d'alimentation de chacun des étagères d'extension sont éteints.
+
+. Connectez un cordon d'alimentation à chacune des deux unités d'alimentation du contrôleur SG6000-CN.
+. Branchez ces deux cordons d'alimentation à deux unités de distribution d'alimentation différentes dans l'armoire ou le rack.
+. Connectez un cordon d'alimentation à chacune des deux unités d'alimentation du tiroir de contrôleur de stockage.
+. Si vous disposez de tiroirs d'extension, connectez un cordon d'alimentation à chacune des deux unités d'alimentation de chaque tiroir d'extension.
+. Connectez les deux câbles d'alimentation de chaque tiroir de stockage (y compris les tiroirs d'extension en option) à deux unités PDU différentes dans l'armoire ou le rack.
+. Si le bouton d'alimentation situé à l'avant du contrôleur SG6000-CN n'est pas actuellement allumé en bleu, appuyez sur le bouton pour mettre le contrôleur sous tension.
++
+N'appuyez pas de nouveau sur le bouton d'alimentation pendant le processus de mise sous tension.
+
+. Allumer les deux boutons d'alimentation à l'arrière du tiroir du contrôleur de stockage. Si vous avez des tiroirs d'extension, mettez les deux commutateurs d'alimentation sur tension pour chaque tiroir.
++
+** N'éteignez pas les interrupteurs d'alimentation pendant le processus de mise sous tension.
+** Au premier démarrage, les ventilateurs du tiroir de contrôleur de stockage et les tiroirs d'extension en option peuvent être très bruyants. Le bruit est normal au démarrage.
+
+
+. Une fois les composants démarrés, vérifiez leur état.
++
+** Vérifiez l'affichage des sept segments à l'arrière de chaque contrôleur de stockage. Pour plus d'informations, reportez-vous à l'article sur l'affichage des codes d'état de démarrage.
+** Vérifiez que le bouton d'alimentation situé à l'avant du contrôleur SG6000-CN est allumé.
+
+
+. En cas d'erreur, corrigez tout problème.
+. Si vous avez déposé le cadre avant, fixez-le au contrôleur SG6000-CN.
+
+
+.Informations associées
+* link:viewing-status-indicators.html["Afficher les indicateurs d'état"]
+* link:../sg6000/reinstalling-sg6000-cn-controller-into-cabinet-or-rack.html["Réinstallez le contrôleur SG6000-CN dans l'armoire ou le rack"]
+

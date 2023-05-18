@@ -1,0 +1,49 @@
+---
+permalink: vmware/index.html 
+sidebar: sidebar 
+keywords: vmware 
+summary: 'L"installation d"un système StorageGRID dans un environnement VMware comprend trois étapes principales.' 
+---
+= Installer VMware : présentation
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+L'installation d'un système StorageGRID dans un environnement VMware comprend trois étapes principales.
+
+. *Préparation*: Pendant la planification et la préparation, vous effectuez les tâches suivantes :
++
+** En savoir plus sur les exigences en matière de performances, de stockage et de matériel, de logiciels et de machines virtuelles pour StorageGRID.
+** Découvrez les détails de link:../network/index.html["La mise en réseau StorageGRID"] vous pouvez ainsi configurer votre réseau de façon appropriée.
+** Identifiez et préparez les serveurs physiques que vous prévoyez d'utiliser pour héberger vos nœuds de grid StorageGRID.
+** Sur les serveurs que vous avez préparés :
++
+*** Installation de l'hyperviseur VMware vSphere
+*** Configurer les hôtes ESX
+*** Installer et configurer VMware vSphere et vCenter
+
+
+
+
+. *Déploiement* : déployez des nœuds de grille à l'aide du client Web VMware vSphere. Lorsque vous déployez des nœuds grid, ils sont créés dans le cadre du système StorageGRID et connectés à un ou plusieurs réseaux.
++
+.. Utilisez le client Web VMware vSphere, un fichier .vmdk et un ensemble de modèles de fichiers .ovf pour déployer les nœuds basés sur logiciel en tant que machines virtuelles (VM) sur les serveurs que vous avez préparés à l'étape 1.
+.. Utilisez le programme d'installation de l'appliance StorageGRID pour déployer les nœuds d'appliance StorageGRID.
++
+
+NOTE: Les instructions d'installation et d'intégration spécifiques au matériel ne sont pas incluses dans la procédure d'installation de StorageGRID. Pour savoir comment installer les appliances StorageGRID, consultez le link:../installconfig/index.html["Démarrage rapide pour l'installation du matériel"] pour trouver les instructions relatives à votre appareil.
+
+
+
+. *Configuration* : lorsque tous les nœuds ont été déployés, utilisez le gestionnaire de grille pour configurer la grille et terminer l'installation.
+
+
+Ces instructions recommandent une approche standard de déploiement et de configuration d'un système StorageGRID dans un environnement VMware. Voir également les informations sur les approches alternatives suivantes :
+
+* Utilisez le script deploy-vsphere-ovftool.sh Bash (disponible dans l'archive d'installation) pour déployer des nœuds grid dans VMware vSphere.
+* Automatiser le déploiement et la configuration du système StorageGRID à l'aide d'un script de configuration Python (fourni dans l'archive d'installation).
+* Automatisez le déploiement et la configuration des nœuds grid d'appliance avec un script de configuration Python (disponible dans l'archive de l'installation ou depuis le programme d'installation de l'appliance StorageGRID).
+* Si vous êtes un développeur avancé de déploiements StorageGRID, utilisez les API REST d'installation pour automatiser l'installation des nœuds grid d'StorageGRID.
+

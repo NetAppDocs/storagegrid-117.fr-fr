@@ -1,0 +1,46 @@
+---
+permalink: sg6000/reinstalling-fibre-channel-hba.html 
+sidebar: sidebar 
+keywords: storagegrid, sg6000, storage node, storage appliance, sg6000-cn, hba, host bus adapter, fibre channel, fiber channel, install, installing, installation, reinstall, reinstalling, reinstallation 
+summary: 'L"adaptateur HBA Fibre Channel de remplacement est installé au même emplacement que celui qui a été retiré.' 
+---
+= Réinstallez l'adaptateur HBA Fibre Channel
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+L'adaptateur HBA Fibre Channel de remplacement est installé au même emplacement que celui qui a été retiré.
+
+.Avant de commencer
+* Vous disposez de l'adaptateur HBA Fibre Channel de remplacement approprié.
+* Vous avez supprimé l'adaptateur HBA Fibre Channel existant.
++
+link:removing-fibre-channel-hba.html["Retirez l'adaptateur HBA Fibre Channel"]
+
+
+
+.Étapes
+. Enroulez l'extrémité du bracelet antistatique autour de votre poignet et fixez l'extrémité du clip à une masse métallique afin d'éviter toute décharge statique.
+. Retirer le HBA Fibre Channel de remplacement de son emballage.
+. Avec le loquet bleu de l'adaptateur en position ouverte, alignez l'adaptateur HBA Fibre Channel avec son connecteur sur le dispositif de montage. Appuyez ensuite avec précaution sur l'adaptateur pour l'insérer dans le connecteur jusqu'à ce qu'il soit bien en place.
++
+image::../media/sg6060_fc_hba_location.jpg[SG6060 HBA Fibre Channel dans l'assemblage de montage]
+
++
+L'ensemble carte de montage comprend deux adaptateurs : un adaptateur HBA Fibre Channel et un adaptateur réseau Ethernet. Le HBA Fibre Channel est indiqué sur l'illustration.
+
+. Repérez le trou d'alignement de l'ensemble de montage (entouré de cercles) qui s'aligne sur une goupille de guidage de la carte système pour assurer le positionnement correct de l'ensemble de montage.
++
+image::../media/sg6060_riser_alignment_hole.jpg[Trou d'alignement sur l'ensemble de montage SG6060]
+
+. Positionnez l'ensemble de montage dans le châssis, en vous assurant qu'il est aligné avec le connecteur et la broche de guidage de la carte système, puis insérez l'ensemble de montage.
+. Appuyez avec précaution sur l'ensemble de montage pour le mettre en place le long de sa ligne centrale, à côté des trous marqués en bleu, jusqu'à ce qu'il soit bien en place.
+. Retirez les capuchons de protection des ports HBA Fibre Channel sur lesquels vous devez réinstaller les câbles.
+
+
+.Une fois que vous avez terminé
+Si vous ne disposez d'aucune autre procédure de maintenance à effectuer dans le contrôleur, réinstallez le capot du contrôleur.
+
+link:reinstalling-sg6000-cn-controller-cover.html["Réinstallez le couvercle du contrôleur SG6000-CN"]

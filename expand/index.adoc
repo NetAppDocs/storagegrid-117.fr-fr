@@ -1,0 +1,37 @@
+---
+permalink: expand/index.html 
+sidebar: sidebar 
+keywords: expand grid 
+summary: Utilisez ces instructions pour étendre la capacité ou les capacités de votre système StorageGRID sans interrompre les opérations système. 
+---
+= Développez votre grille : présentation
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Utilisez ces instructions pour étendre la capacité ou les capacités de votre système StorageGRID sans interrompre les opérations système.
+
+
+
+== À propos de ces instructions
+
+Procédez à une extension StorageGRID pour ajouter des volumes de stockage aux nœuds de stockage, aux nouveaux nœuds grid à un site existant ou à un nouveau site.
+
+Ces instructions s'adresse aux équipes techniques responsables de la configuration et de la prise en charge du système StorageGRID après son installation.
+
+
+
+== Flux de travail d'extension
+
+La raison pour laquelle vous exécutez l'extension détermine le nombre de nouveaux nœuds de chaque type que vous devez ajouter et l'emplacement de ces nouveaux nœuds. Par exemple, les exigences en matière de nœuds sont différentes si vous effectuez une extension pour augmenter la capacité de stockage, ajouter de la capacité des métadonnées ou ajouter de la redondance ou de nouvelles fonctionnalités.
+
+Comme indiqué dans le workflow, les étapes d'extension dépendent de l'ajout ou non de volumes de stockage à un nœud de stockage, de l'ajout de nœuds à un site existant ou de l'ajout d'un nouveau site. Dans tous les cas, vous pouvez effectuer l'extension sans interrompre le fonctionnement de votre système actuel.
+
+Les étapes d'ajout de nœuds dépendent également de l'ajout d'appliances StorageGRID ou d'hôtes exécutant VMware ou Linux.
+
+
+NOTE: « Linux » désigne un déploiement Red Hat® Enterprise Linux®, Ubuntu®, CentOS ou Debian®. Utilisez le https://["Matrice d'interopérabilité NetApp (IMT)"^] pour obtenir une liste des versions prises en charge.
+
+image::../media/expansion_workflow.png[organigramme montrant un aperçu du processus d'expansion]

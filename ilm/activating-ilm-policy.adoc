@@ -1,0 +1,54 @@
+---
+permalink: ilm/activating-ilm-policy.html 
+sidebar: sidebar 
+keywords: activate ilm policy, information lifecycle policy 
+summary: Une fois que vous avez ajouté des règles ILM à une politique ILM proposée, que vous simulez la règle et que vous la confirmez, vous êtes prêt à activer la règle proposée. 
+---
+= Activation de la règle ILM
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Une fois que vous avez ajouté des règles ILM à une politique ILM proposée, que vous simulez la règle et que vous la confirmez, vous êtes prêt à activer la règle proposée.
+
+.Avant de commencer
+* Vous êtes connecté au Grid Manager à l'aide d'un link:../admin/web-browser-requirements.html["navigateur web pris en charge"].
+* Vous avez link:../admin/admin-group-permissions.html["autorisations d'accès spécifiques"].
+* Vous avez enregistré et simulé la règle ILM proposée.
+
+
+
+CAUTION: Les erreurs de la règle ILM peuvent entraîner des pertes de données irrécupérables. Examinez attentivement et simulez la stratégie avant de l'activer pour confirmer qu'elle fonctionnera comme prévu. + lorsque vous activez une nouvelle règle ILM, StorageGRID l'utilise pour gérer tous les objets, y compris les objets existants et les objets nouvellement acquis. Avant d'activer une nouvelle règle ILM, vérifiez toutes les modifications du placement des objets répliqués et soumis au code d'effacement. La modification de l'emplacement d'un objet existant peut entraîner des problèmes de ressources temporaires lorsque les nouveaux placements sont évalués et implémentés.
+
+.Description de la tâche
+Lorsque vous activez une règle ILM, le système distribue la nouvelle règle à tous les nœuds. Cependant, la nouvelle règle active peut ne pas être appliquée tant que tous les nœuds du grid ne sont pas disponibles pour recevoir la nouvelle règle. Dans certains cas, le système attend d'implémenter une nouvelle stratégie active pour s'assurer que les objets de grille ne sont pas accidentellement supprimés.
+
+* Si vous apportez des modifications de règles qui augmentent la redondance ou la durabilité des données, ces modifications sont immédiatement mises en œuvre. Par exemple, si vous activez une nouvelle règle incluant une règle à trois copies au lieu d'une règle à deux copies, cette règle sera immédiatement implémentée car elle accroît la redondance des données.
+* Si vous apportez des modifications à des règles susceptibles de réduire la redondance ou la durabilité des données, ces modifications ne seront pas implémentées tant que tous les nœuds de la grille ne sont pas disponibles. Par exemple, si vous activez une nouvelle stratégie qui utilise une règle à deux copies au lieu d'une règle à trois copies, la nouvelle stratégie s'affiche dans l'onglet Stratégie active, mais elle ne prend effet que lorsque tous les nœuds sont en ligne et disponibles.
+
+
+.Étapes
+. Lorsque vous êtes prêt à activer une stratégie proposée, sélectionnez *règles ILM* > *stratégie proposée*, puis *activer*.
++
+Un message d'avertissement s'affiche, vous invitant à confirmer que vous souhaitez activer la stratégie proposée.
+
++
+Une invite apparaît dans le message d'avertissement si la règle par défaut ne conserve pas les objets indéfiniment. Dans cet exemple, le diagramme de rétention montre que la règle par défaut supprimera les objets au bout de 730 jours (2 ans). Vous devez taper *730* dans la zone de texte pour confirmer que tous les objets qui ne correspondent pas à une autre règle de la stratégie seront supprimés de StorageGRID après 730 jours.
+
++
+image::../media/ilm_policy_default_rule_not_forever_prompt.png[La règle ILM par défaut n'invite pas toujours]
+
+. Sélectionnez *OK*.
+
+
+.Résultat
+Lorsqu'une nouvelle règle ILM a été activée :
+
+* La stratégie s'affiche dans l'onglet règle active. La date de début indique la date et l'heure d'activation de la police.
+* La règle de gestion précédemment active apparaît dans l'onglet Historique des règles. Les entrées de date de début et de date de fin indiquent quand la police est devenue active et quand elle n'était plus en vigueur.
+
+
+.Informations associées
+link:example-6-changing-ilm-policy.html["Exemple 6 : modification d'une règle ILM"]

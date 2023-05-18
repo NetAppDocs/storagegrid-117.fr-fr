@@ -1,0 +1,130 @@
+---
+permalink: maintain/decommissioning-connected-grid-nodes.html 
+sidebar: sidebar 
+keywords: storagegrid, decommission, connected nodes, decommission node 
+summary: Vous pouvez mettre hors service et supprimer définitivement les nœuds connectés à la grille. 
+---
+= Désaffectation des nœuds connectés
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Vous pouvez mettre hors service et supprimer définitivement les nœuds connectés à la grille.
+
+.Avant de commencer
+* Vous comprenez les exigences et link:considerations-for-decommissioning-grid-nodes.html["facteurs à prendre en compte lors de la mise hors service des nœuds"].
+* Vous avez réuni tous les documents requis.
+* Vous avez vérifié qu'aucun travail de réparation de données n'est actif.
+* Vous avez confirmé que la restauration du nœud de stockage n'est pas en cours dans la grille. Si c'est le cas, attendez que toute reconstruction Cassandra effectuée dans le cadre de la restauration soit terminée. Vous pouvez ensuite procéder au déclassement.
+* Vous avez vérifié que d'autres procédures de maintenance ne seront pas exécutées alors que la procédure de mise hors service du nœud est en cours d'exécution, à moins que la procédure de mise hors service du nœud soit interrompue.
+* Vous avez la phrase secrète pour le provisionnement.
+* Les nœuds de la grille sont connectés.
+* La colonne *décomposition possible* du ou des nœuds que vous souhaitez désaffecter comporte une coche verte.
++
+
+NOTE: La mise hors service ne démarre pas si un ou plusieurs volumes sont hors ligne (démontés) ou s'ils sont en ligne (montés) mais en état d'erreur.
+
++
+
+NOTE: Si un ou plusieurs volumes sont déconnectés alors qu'une mise hors service est en cours, le processus de mise hors service se termine une fois ces volumes remis en ligne.
+
+* Tous les nœuds de la grille ont une état normal (vert) image:../media/icon_alert_green_checkmark.png["icône de coche verte"]. Si l'une de ces icônes apparaît dans la colonne *Santé*, vous devez essayer de résoudre le problème :
++
+[cols="1a,1a,3a"]
+|===
+| Icône | Couleur | Gravité 
+
+
+ a| 
+image:../media/icon_alarm_yellow_notice.gif["icône carrée jaune"]
+ a| 
+Jaune
+ a| 
+Avertissement
+
+
+
+ a| 
+image:../media/icon_alert_yellow_minor.png["icône orange clair en forme de losange"]
+ a| 
+Orange clair
+ a| 
+Mineur
+
+
+
+ a| 
+image:../media/icon_alert_orange_major.png["icône losange orange foncé"]
+ a| 
+Orange foncé
+ a| 
+Majeur
+
+
+
+ a| 
+image:../media/icon_alert_red_critical.png["icône x rouge"]
+ a| 
+Rouge
+ a| 
+Primordial
+
+|===
+* Si vous avez précédemment mis hors service un nœud de stockage déconnecté, les tâches de réparation des données ont toutes été effectuées avec succès. Voir link:checking-data-repair-jobs.html["Vérifier les travaux de réparation des données"].
+
+
+
+IMPORTANT: Ne supprimez pas la machine virtuelle ou d'autres ressources d'un nœud de grille avant d'y être invité dans cette procédure.
+
+.Étapes
+. Dans la page nœuds de décomposition, cochez la case correspondant à chaque nœud de grille que vous souhaitez désaffecter.
+. Saisissez la phrase secrète pour le provisionnement.
++
+Le bouton *Start Decommission* est activé.
+
+. Cliquez sur *Start Decommission*.
+. Vérifiez la liste des nœuds dans la boîte de dialogue de confirmation, puis cliquez sur *OK*.
++
+La procédure de mise hors service du nœud démarre et la progression est affichée pour chaque nœud. Au cours de la procédure, un nouveau progiciel de récupération est généré pour afficher le changement de configuration de la grille.
+
++
+image::../media/decommission_nodes_procedure_in_progress.png[capture d'écran du déclassement du nœud en cours]
+
++
+
+IMPORTANT: Ne mettez pas un nœud de stockage hors ligne après le démarrage de la procédure de mise hors service. La modification de l'état peut entraîner l'absence de copie de contenu vers d'autres emplacements.
+
+. Dès que le nouveau progiciel de récupération est disponible, cliquez sur le lien ou sélectionnez *MAINTENANCE* > *système* > *paquet de récupération* pour accéder à la page du progiciel de récupération. Ensuite, téléchargez le `.zip` fichier.
++
+Reportez-vous aux instructions pour link:downloading-recovery-package.html["Téléchargement du progiciel de restauration"].
+
++
+
+NOTE: Téléchargez le progiciel de récupération dès que possible pour vous assurer que vous pouvez récupérer votre grille si un problème survient pendant la procédure de mise hors service.
+
+. Surveillez régulièrement la page nœuds de mise hors service pour vous assurer que tous les nœuds sélectionnés sont correctement mis hors service.
++
+La désaffectation des nœuds de stockage peut prendre plusieurs jours ou semaines. Lorsque toutes les tâches sont terminées, la liste de sélection de nœud apparaît à nouveau avec un message de réussite.
+
++
+image::../media/decommission_nodes_procedure_complete.png[capture d'écran indiquant que la mise hors service est terminée]
+
+. Suivez l'étape appropriée pour votre plate-forme. Par exemple :
++
+** *Linux* : vous pouvez détacher les volumes et supprimer les fichiers de configuration de nœud que vous avez créés lors de l'installation.
+** *VMware*: Vous pouvez utiliser l'option vCenter "Supprimer du disque" pour supprimer la machine virtuelle. Il se peut également que vous deviez supprimer tous les disques de données qui sont indépendants de la machine virtuelle.
+** *Appliance StorageGRID* : le nœud de l'appliance revient automatiquement à un état non déployé où vous pouvez accéder au programme d'installation de l'appliance StorageGRID. Vous pouvez mettre l'appareil hors tension ou l'ajouter à un autre système StorageGRID.
+
+
+
+
+Suivez cette procédure une fois la procédure de mise hors service du nœud terminée :
+
+* Assurez-vous que les disques du nœud de la grille mis hors service sont nettoyés. Utilisez un outil ou un service d'effacement de données disponible dans le commerce pour supprimer définitivement et de manière sécurisée les données des lecteurs.
+* Si vous avez désaffecté un nœud de l'appliance et que les données de l'appliance ont été protégées par chiffrement des nœuds, utilisez le programme d'installation de l'appliance StorageGRID pour effacer la configuration du serveur de gestion des clés (effacer KMS). Si vous souhaitez ajouter l'appliance à une autre grille, vous devez effacer la configuration KMS. Pour obtenir des instructions, reportez-vous à la section link:../commonhardware/monitoring-node-encryption-in-maintenance-mode.html["Surveillez le chiffrement des nœuds en mode de maintenance"].
+
+
+.Informations associées
+link:../rhel/index.html["Installez Red Hat Enterprise Linux ou CentOS"]

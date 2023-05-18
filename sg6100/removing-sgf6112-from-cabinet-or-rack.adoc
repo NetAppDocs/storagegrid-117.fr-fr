@@ -1,0 +1,54 @@
+---
+permalink: sg6100/removing-sgf6112-from-cabinet-or-rack.html 
+sidebar: sidebar 
+keywords: storagegrid, sg6100, storage node, storage appliance, remove, removing, removal, cabinet, rack, appliance, sgf6112 
+summary: 'Retirez le SGF6112 d"une armoire ou d"un rack pour accéder au capot supérieur ou pour déplacer l"appareil vers un autre emplacement.' 
+---
+= Retirez le SGF6112 de l'armoire ou du rack
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Retirez le SGF6112 d'une armoire ou d'un rack pour accéder au capot supérieur ou pour déplacer l'appareil vers un autre emplacement.
+
+.Avant de commencer
+* Vous disposez d'étiquettes pour identifier chaque câble connecté au SGF6112.
+* Vous avez physiquement localisé le SGF6112 où vous effectuez la maintenance dans le data Center.
++
+link:locating-sgf6112-in-data-center.html["Localisez le SGF6112 dans le data Center"]
+
+* Vous avez arrêté le SGF6112.
++
+link:shut-down-sgf6112.html["Arrêtez le SGF6112"]
+
++
+
+CAUTION: N'éteignez pas l'appareil à l'aide de l'interrupteur d'alimentation.
+
+
+
+.Étapes
+. Etiquetez puis débranchez les câbles d'alimentation de l'appareil.
+. Enroulez l'extrémité du bracelet antistatique autour de votre poignet et fixez l'extrémité du clip à une masse métallique afin d'éviter toute décharge statique.
+. Etiquetez puis débranchez les câbles de données de l'appliance et les émetteurs-récepteurs SFP+ ou SFP28.
++
+
+IMPORTANT: Pour éviter toute dégradation des performances, ne tordez pas, ne pliez pas, ne pincez pas ou ne montez pas sur les câbles.
+
+. Desserrez les deux vis imperdables situées sur le panneau avant de l'appareil.
++
+image::../media/sg6060_rack_retaining_screws.png[Vis de fixation du rack SGF6112]
+
+. Faites glisser le SGF6112 vers l'avant pour le sortir du rack jusqu'à ce que les rails de montage soient complètement sortis et que vous entendiez un clic sur les loquets des deux côtés.
++
+Le capot supérieur de l'appareil est accessible.
+
+. Facultatif : si vous retirez complètement l'appareil de l'armoire ou du rack, suivez les instructions du kit de rails pour retirer l'appareil des rails.
+
+
+Après le remplacement de la pièce, renvoyez la pièce défectueuse à NetApp, en suivant les instructions RMA (retour de matériel) livrées avec le kit. Voir la https://["Retour de pièce et amp ; remplacements"^] pour plus d'informations.
+
+.Informations associées
+link:removing-sgf6112-cover.html["Retirer le couvercle du SGF6112"]

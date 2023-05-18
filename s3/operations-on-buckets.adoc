@@ -1,0 +1,395 @@
+---
+permalink: s3/operations-on-buckets.html 
+sidebar: sidebar 
+keywords: bucket, buckets, operations on buckets 
+summary: Le système StorageGRID prend en charge un maximum de 1,000 compartiments pour chaque compte de locataire S3. 
+---
+= Opérations sur les compartiments
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Le système StorageGRID prend en charge un maximum de 1,000 compartiments pour chaque compte de locataire S3.
+
+Les restrictions relatives aux noms de compartiment respectent les restrictions régionales standard AWS, mais vous devez les restreindre à une nomenclature DNS pour prendre en charge les demandes de type hébergement virtuel S3.
+
+Pour plus d'informations, reportez-vous aux sections suivantes :
+
+* https://["Documentation Amazon Web Services (AWS) : restrictions et limites des compartiments"^]
+* link:../admin/configuring-s3-api-endpoint-domain-names.html["Configuration des noms de domaine de terminaux S3"]
+
+
+Les opérations GET Bucket (List Objects) et GET compartiment versions prennent en charge les contrôles de cohérence StorageGRID.
+
+Vous pouvez vérifier si les mises à jour de l'heure du dernier accès sont activées ou désactivées pour les compartiments individuels.
+
+Le tableau suivant décrit la façon dont StorageGRID implémente les opérations des compartiments de l'API REST S3. Pour effectuer l'une de ces opérations, les informations d'identification d'accès nécessaires doivent être fournies pour le compte.
+
+[cols="1a,3a"]
+|===
+| Fonctionnement | Mise en place 
+
+
+ a| 
+SUPPRIMER le compartiment
+ a| 
+Cette opération supprime le godet.
+
+
+
+ a| 
+SUPPRIMER les godets
+ a| 
+Cette opération supprime la configuration CORS pour le compartiment.
+
+
+
+ a| 
+SUPPRIMER le chiffrement du compartiment
+ a| 
+Cette opération supprime le chiffrement par défaut du compartiment. Les objets chiffrés existants restent chiffrés, mais aucun nouvel objet ajouté au compartiment n'est chiffré.
+
+
+
+ a| 
+SUPPRIMER le cycle de vie du compartiment
+ a| 
+Cette opération supprime la configuration du cycle de vie du compartiment. Voir link:create-s3-lifecycle-configuration.html["Création de la configuration du cycle de vie S3"].
+
+
+
+ a| 
+SUPPRIMER la règle de compartiment
+ a| 
+Cette opération supprime la règle attachée au compartiment.
+
+
+
+ a| 
+SUPPRIMER la réplication du compartiment
+ a| 
+Cette opération supprime la configuration de réplication attachée au compartiment.
+
+
+
+ a| 
+SUPPRIMER le balisage du compartiment
+ a| 
+Cette opération utilise le `tagging` sous-ressource pour supprimer toutes les balises d'un compartiment.
+
+
+
+ a| 
+RUBRIQUE GET
+
+(ListObjects)
+
+(ListObjectsV2)
+ a| 
+Cette opération renvoie une partie ou la totalité (jusqu'à 1,000) des objets dans un godet. La classe de stockage pour les objets peut avoir l'une ou l'autre des deux valeurs, même si l'objet a été ingéré avec le `REDUCED_REDUNDANCY` option de classe de stockage :
+
+* `STANDARD`, Qui indique que l'objet est stocké dans un pool de stockage composé de nœuds de stockage.
+* `GLACIER`, Qui indique que l'objet a été déplacé vers le compartiment externe spécifié par le pool de stockage cloud.
+
+
+Si le compartiment contient un grand nombre de clés supprimées qui ont le même préfixe, la réponse peut inclure une partie `CommonPrefixes` qui ne contiennent pas de clés.
+
+
+
+ a| 
+OBTENIR les versions d'objet de compartiment
+
+(ListObjectVersions)
+ a| 
+Avec accès EN LECTURE sur un godet, cette opération avec le `versions` sous-ressource répertorie les métadonnées de toutes les versions des objets dans le compartiment.
+
+
+
+ a| 
+OBTENIR l'acl du compartiment
+ a| 
+Cette opération renvoie une réponse positive et l'ID, le DisplayName et l'autorisation du propriétaire du compartiment, indiquant que le propriétaire a un accès complet au compartiment.
+
+
+
+ a| 
+OBTENIR les godets
+ a| 
+Cette opération renvoie le `cors` configuration du compartiment.
+
+
+
+ a| 
+CHIFFREMENT des compartiments
+ a| 
+Cette opération renvoie la configuration de cryptage par défaut pour le compartiment.
+
+
+
+ a| 
+OPTIMISEZ le cycle de vie des compartiments
+
+(GetBucketLifecycleConfiguration)
+ a| 
+Cette opération retourne la configuration du cycle de vie du godet. Voir link:create-s3-lifecycle-configuration.html["Création de la configuration du cycle de vie S3"].
+
+
+
+ a| 
+ACCÉDER à l'emplacement du compartiment
+ a| 
+Cette opération renvoie la région définie à l'aide de `LocationConstraint` Élément dans la demande PUT Bucket. Si la région du godet est de `us-east-1`, une chaîne vide est renvoyée pour la région.
+
+
+
+ a| 
+GET Bucket notification
+
+(GetBucketNotifationConfiguration)
+ a| 
+Cette opération renvoie la configuration de notification attachée au compartiment.
+
+
+
+ a| 
+GET Bucket policy
+ a| 
+Cette opération renvoie la politique attachée au godet.
+
+
+
+ a| 
+RÉPLICATION des compartiments
+ a| 
+Cette opération renvoie la configuration de réplication attachée au compartiment.
+
+
+
+ a| 
+GET Bucket tagging
+ a| 
+Cette opération utilise le `tagging` sous-ressource pour renvoyer toutes les balises d'un compartiment.
+
+
+
+ a| 
+GESTION des versions des compartiments
+ a| 
+Cette implémentation utilise le `versioning` sous-ressource pour retourner l'état de gestion des versions d'un compartiment.
+
+* _Blank_: La gestion des versions n'a jamais été activée (le compartiment est « non versionné »)
+* Activé : la gestion des versions est activée
+* Suspendu : la gestion des versions a déjà été activée et est suspendue
+
+
+
+
+ a| 
+OBTENIR la configuration de verrouillage d'objet
+ a| 
+Cette opération renvoie le mode de rétention par défaut du compartiment et la période de conservation par défaut, si configuré.
+
+Voir link:../s3/use-s3-api-for-s3-object-lock.html["Utilisez l'API REST S3 pour configurer le verrouillage objet S3"].
+
+
+
+ a| 
+Godet DE TÊTE
+ a| 
+Cette opération détermine si un compartiment existe et que vous êtes autorisé à y accéder.
+
+Cette opération renvoie :
+
+* `x-ntap-sg-bucket-id`: L'UUID du godet au format UUID.
+* `x-ntap-sg-trace-id`: ID de trace unique de la demande associée.
+
+
+
+
+ a| 
+PLACER le godet
+ a| 
+Cette opération crée un nouveau godet. C'est en créant le compartiment que vous devenez le propriétaire.
+
+* Les noms de compartiment doivent être conformes aux règles suivantes :
++
+** Il doit être unique sur chaque système StorageGRID (et pas seulement au sein du compte du locataire).
+** Doit être conforme DNS.
+** Doit contenir au moins 3 caractères et pas plus de 63 caractères.
+** Peut être une série d'une ou plusieurs étiquettes, avec des étiquettes adjacentes séparées par un point. Chaque étiquette doit commencer et se terminer par une lettre ou un chiffre en minuscules et ne peut utiliser que des lettres minuscules, des chiffres et des tirets.
+** Ne doit pas ressembler à une adresse IP au format texte.
+** Ne doit pas utiliser de périodes dans des demandes de type hébergement virtuel. Les périodes provoquera des problèmes avec la vérification du certificat générique du serveur.
+
+
+* Par défaut, les compartiments sont créés dans le `us-east-1` région ; cependant, vous pouvez utiliser le `LocationConstraint` elément de demande dans le corps de la demande pour spécifier une région différente. Lorsque vous utilisez le `LocationConstraint` Elément, vous devez spécifier le nom exact d'une région qui a été définie à l'aide du gestionnaire de grille ou de l'API de gestion de grille. Contactez votre administrateur système si vous ne connaissez pas le nom de région que vous devez utiliser.
++
+*Remarque* : une erreur se produit si votre demande PUT Bucket utilise une région qui n'a pas été définie dans StorageGRID.
+
+* Vous pouvez inclure le `x-amz-bucket-object-lock-enabled` Demander l'en-tête pour créer un compartiment avec le verrouillage objet S3 activé. Voir link:../s3/use-s3-api-for-s3-object-lock.html["Utilisez l'API REST S3 pour configurer le verrouillage objet S3"].
++
+Vous devez activer le verrouillage d'objet S3 lors de la création du compartiment. Une fois un compartiment créé, vous ne pouvez ni ajouter ni désactiver le verrouillage objet S3. Le verrouillage objet S3 requiert la gestion des versions de compartiment, qui est activée automatiquement lors de la création du compartiment.
+
+
+
+
+
+ a| 
+PLACEZ les godets
+ a| 
+Cette opération définit la configuration du CORS pour un compartiment afin que le compartiment puisse traiter les demandes d'origine croisée. Le partage de ressources d'origine croisée (CORS) est un mécanisme de sécurité qui permet aux applications Web clientes d'un domaine d'accéder aux ressources d'un domaine différent. Supposons par exemple que vous utilisez un compartiment S3 nommé `images` pour stocker des graphiques. En définissant la configuration CORS pour le `images` le champ permet d'afficher les images de ce compartiment sur le site web `+http://www.example.com+`.
+
+
+
+ a| 
+PUT Bucket Encryption
+ a| 
+Cette opération définit l'état de cryptage par défaut d'un compartiment existant. Lorsque le chiffrement au niveau du compartiment est activé, tout nouvel objet ajouté au compartiment est chiffré.StorageGRID prend en charge le chiffrement côté serveur avec des clés gérées par StorageGRID. Lorsque vous spécifiez la règle de configuration de cryptage côté serveur, définissez l' `SSEAlgorithm` paramètre à `AES256`, et n'utilisez pas le `KMSMasterKeyID` paramètre.
+
+La configuration de cryptage par défaut du compartiment est ignorée si la demande de téléchargement d'objet spécifie déjà le cryptage (c'est-à-dire, si la demande inclut le `x-amz-server-side-encryption-*` en-tête de demande).
+
+
+
+ a| 
+CYCLE de vie des compartiments
+
+(Configuration PutBucketLifecycleConfiguration)
+ a| 
+Cette opération crée une nouvelle configuration de cycle de vie pour le compartiment ou remplace une configuration de cycle de vie existante. StorageGRID prend en charge jusqu'à 1,000 règles de cycle de vie dans une configuration cycle de vie. Chaque règle peut inclure les éléments XML suivants :
+
+* Expiration (jours, date)
+* NonactuelVersionExp (Nontactut Days)
+* Filtre (préfixe, étiquette)
+* État
+* ID
+
+
+StorageGRID ne prend pas en charge les actions suivantes :
+
+* AbortIncompleMultipartUpload
+* ExpiredObjectDeleteMarker
+* Transition
+
+
+Voir link:create-s3-lifecycle-configuration.html["Création de la configuration du cycle de vie S3"]. Pour comprendre comment l'action d'expiration d'un cycle de vie de compartiment interagit avec les instructions de placement ILM, reportez-vous à la section link:../ilm/how-ilm-operates-throughout-objects-life.html["Fonctionnement de ILM tout au long de la vie d'un objet"].
+
+*Remarque* : la configuration du cycle de vie des compartiments peut être utilisée avec des compartiments avec le verrouillage d'objet S3 activé, mais la configuration du cycle de vie des compartiments n'est pas prise en charge pour les compartiments conformes hérités.
+
+
+
+ a| 
+PUT Bucket notification
+
+(PutBucketNotifationConfiguration)
+ a| 
+Cette opération configure les notifications pour le compartiment à l'aide du XML de configuration de notification inclus dans le corps de la demande. Vous devez connaître les détails d'implémentation suivants :
+
+* StorageGRID prend en charge les rubriques SNS (simple notification Service) comme destinations. Les points finaux SQS (simple Queue Service) ou Lambda d'Amazon ne sont pas pris en charge.
+* La destination des notifications doit être spécifiée comme URN d'un terminal StorageGRID. Les terminaux peuvent être créés à l'aide du Gestionnaire de locataires ou de l'API de gestion des locataires.
++
+Le noeud final doit exister pour que la configuration des notifications réussisse. Si le noeud final n'existe pas, un `400 Bad Request` l'erreur est renvoyée avec le code `InvalidArgument`.
+
+* Vous ne pouvez pas configurer de notification pour les types d'événements suivants. Ces types d'événements sont *non* pris en charge.
++
+** `s3:ReducedRedundancyLostObject`
+** `s3:ObjectRestore:Completed`
+
+
+* Les notifications d'événements envoyées par StorageGRID utilisent le format JSON standard, sauf qu'elles n'incluent pas certaines clés et utilisent des valeurs spécifiques pour d'autres, comme illustré dans la liste suivante :
++
+** *EventSource*
++
+`sgws:s3`
+
+** *AwsRegion*
++
+non inclus
+
+** *x-amz-id-2*
++
+non inclus
+
+** *arn*
++
+`urn:sgws:s3:::bucket_name`
+
+
+
+
+
+
+
+ a| 
+PUT Bucket policy
+ a| 
+Cette opération définit la politique associée au compartiment.
+
+
+
+ a| 
+RÉPLICATION des compartiments
+ a| 
+Cette opération est configurée link:../tenant/understanding-cloudmirror-replication-service.html["Réplication StorageGRID CloudMirror"] Pour le compartiment utilisant le XML de configuration de réplication fourni dans le corps de la requête. Pour la réplication CloudMirror, vous devez connaître les détails d'implémentation suivants :
+
+* StorageGRID ne prend en charge que le V1 de la configuration de la réplication. Cela signifie que StorageGRID ne prend pas en charge l'utilisation de `Filter` Elément pour les règles, et suit les conventions V1 pour la suppression des versions d'objet. Pour plus d'informations, reportez-vous à la https://["Documentation Amazon S3 sur la configuration de la réplication"^].
+* La réplication des compartiments peut être configurée sur les compartiments avec ou sans version.
+* Vous pouvez spécifier un compartiment de destination différent dans chaque règle du XML de configuration de réplication. Un compartiment source peut être répliqué sur plusieurs compartiments de destination.
+* Les compartiments de destination doivent être spécifiés en tant que URN des terminaux StorageGRID, tel que spécifié dans le Gestionnaire de locataires ou l'API de gestion des locataires. Voir link:../tenant/configuring-cloudmirror-replication.html["Configurez la réplication CloudMirror"].
++
+Le noeud final doit exister pour que la configuration de réplication réussisse. Si le noeud final n'existe pas, la demande échoue en tant que `400 Bad Request`. Le message d'erreur indique : `Unable to save the replication policy. The specified endpoint URN does not exist: _URN_.`
+
+* Vous n'avez pas besoin de spécifier un `Role` Dans le XML de configuration. Cette valeur n'est pas utilisée par StorageGRID et sera ignorée si elle a été soumise.
+* Si vous omettez la classe de stockage du XML de configuration, StorageGRID utilise le `STANDARD` classe de stockage par défaut.
+* Si vous supprimez un objet du compartiment source ou que vous supprimez le compartiment source lui-même, le comportement de réplication inter-région est le suivant :
++
+** Si vous supprimez l'objet ou le compartiment avant sa réplication, l'objet/le compartiment n'est pas répliqué et vous n'êtes pas averti.
+** Si vous supprimez l'objet ou le compartiment après sa réplication, StorageGRID suit le comportement de suppression Amazon S3 standard pour la version V1 de la réplication multi-région.
+
+
+
+
+
+
+ a| 
+PUT Bucket tagging
+ a| 
+Cette opération utilise le `tagging` sous-ressource pour ajouter ou mettre à jour un ensemble de balises pour un compartiment. Lors de l'ajout de balises de compartiment, tenez compte des limites suivantes :
+
+* StorageGRID et Amazon S3 prennent en charge jusqu'à 50 balises pour chaque compartiment.
+* Les étiquettes associées à un compartiment doivent avoir des clés d'étiquette uniques. Une clé de balise peut comporter jusqu'à 128 caractères Unicode.
+* Les valeurs de balise peuvent comporter jusqu'à 256 caractères Unicode.
+* Les clés et les valeurs sont sensibles à la casse
+
+
+
+
+ a| 
+GESTION des versions du compartiment
+ a| 
+Cette implémentation utilise le `versioning` sous-ressource pour définir l'état de gestion des versions d'un compartiment existant. Vous pouvez définir l'état de la gestion des versions à l'aide de l'une des valeurs suivantes :
+
+* Activé : permet la gestion des versions des objets dans le compartiment. Tous les objets ajoutés au compartiment reçoivent un ID de version unique.
+* Suspendu : désactive la gestion des versions des objets dans le compartiment. Tous les objets ajoutés au compartiment reçoivent l'ID de version `null`.
+
+
+
+
+ a| 
+CONFIGURATION du verrouillage de l'objet
+ a| 
+Cette opération configure ou supprime le mode de conservation par défaut du compartiment et la période de conservation par défaut.
+
+Si la période de conservation par défaut est modifiée, la conservation jusqu'à la date des versions d'objet existantes reste la même et n'est pas recalculée en utilisant la nouvelle période de conservation par défaut.
+
+Voir link:../s3/use-s3-api-for-s3-object-lock.html["Utilisez l'API REST S3 pour configurer le verrouillage objet S3"] pour des informations détaillées.
+
+|===
+.Informations associées
+link:consistency-controls.html["Contrôles de cohérence"]
+
+link:get-bucket-last-access-time-request.html["HEURE du dernier accès au compartiment"]
+
+link:bucket-and-group-access-policies.html["Utilisez les règles d'accès au compartiment et au groupe"]
+
+link:s3-operations-tracked-in-audit-logs.html["Opérations S3 suivies dans les journaux d'audit"]

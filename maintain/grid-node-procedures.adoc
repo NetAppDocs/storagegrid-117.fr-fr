@@ -1,0 +1,22 @@
+---
+permalink: maintain/grid-node-procedures.html 
+sidebar: sidebar 
+keywords: storagegrid, grid node procedure 
+summary: Vous devrez peut-être effectuer des procédures sur un nœud de grid spécifique. Bien que vous puissiez effectuer certaines de ces procédures à partir de Grid Manager, la plupart des procédures nécessitent que vous accédiez à Server Manager à partir de la ligne de commande. 
+---
+= Procédures de nœud de grille : présentation
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Vous devrez peut-être effectuer des procédures sur un nœud de grid spécifique. Bien que vous puissiez effectuer quelques-unes de ces procédures à partir de Grid Manager, la plupart des procédures nécessitent d'accéder à Server Manager à partir de la ligne de commande du nœud.
+
+Server Manager s'exécute sur chaque nœud de la grille pour superviser le démarrage et l'arrêt des services et pour s'assurer que les services rejoignent et quittent aisément le système StorageGRID. Server Manager surveille également les services sur chaque nœud de la grille et tente automatiquement de redémarrer les services qui signalent les pannes.
+
+
+IMPORTANT: Vous ne devez accéder à Server Manager que si le support technique vous a demandé de le faire.
+
+
+NOTE: Vous devez fermer la session de shell de commande en cours et vous déconnecter une fois que vous avez terminé avec Server Manager. Entrez : `exit`

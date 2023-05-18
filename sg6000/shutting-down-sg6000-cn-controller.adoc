@@ -1,0 +1,79 @@
+---
+permalink: sg6000/shutting-down-sg6000-cn-controller.html 
+sidebar: sidebar 
+keywords: storagegrid, sg6000, storage node, storage appliance, power off, turn off, shut off, shutdown, shut down, sg6000-cn, controller 
+summary: Arrêtez le contrôleur SG6000-CN pour effectuer la maintenance du matériel. 
+---
+= Arrêtez le contrôleur SG6000-CN
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Arrêtez le contrôleur SG6000-CN pour effectuer la maintenance du matériel.
+
+.Avant de commencer
+* Vous avez installé physiquement le contrôleur SG6000-CN nécessitant une maintenance dans le centre de données. Voir link:locating-controller-in-data-center.html["Localiser le contrôleur dans le data Center"].
+
+
+.Description de la tâche
+Pour éviter les interruptions de service, vérifiez que tous les autres nœuds de stockage sont connectés à la grille avant d'arrêter le contrôleur ou d'arrêter le contrôleur durant une fenêtre de maintenance planifiée en cas d'interruption de service. Voir les informations sur link:../monitor/monitoring-system-health.html#monitor-node-connection-states["contrôle de l'état de connexion du nœud"].
+
+
+IMPORTANT: Si vous avez déjà utilisé une règle ILM pour créer une seule copie d'un objet, vous devez arrêter le contrôleur durant la fenêtre de maintenance planifiée. Sinon, vous risquez de perdre temporairement l'accès à ces objets au cours de cette procédure. + Voir les informations sur la gestion des objets avec la gestion du cycle de vie des informations.
+
+.Étapes
+. Arrêtez le contrôleur SG6000-CN.
++
+
+CAUTION: Vous devez effectuer un arrêt contrôlé de l'appliance en entrant les commandes indiquées ci-dessous. Il est recommandé d'effectuer un arrêt contrôlé lorsque cela est possible pour éviter les alertes inutiles, vérifier que les journaux complets sont disponibles et éviter toute interruption de service.
+
++
+.. Si vous n'avez pas encore ouvert de session sur le nœud grid, connectez-vous à l'aide de PuTTY ou d'un autre client ssh :
++
+... Saisissez la commande suivante : `ssh admin@_grid_node_IP_`
+... Entrez le mot de passe indiqué dans le `Passwords.txt` fichier.
+... Entrez la commande suivante pour passer à la racine : `su -`
+... Entrez le mot de passe indiqué dans le `Passwords.txt` fichier.
++
+Lorsque vous êtes connecté en tant que root, l'invite passe de `$` à `#`.
+
+
+
+.. Arrêtez le contrôleur SG6000-CN : +
+`*shutdown -h now*`
++
+Cette commande peut prendre jusqu'à 10 minutes.
+
+
+
+. Utilisez l'une des méthodes suivantes pour vérifier que le contrôleur SG6000-CN est hors tension :
++
+** Observer la LED bleue d'alimentation à l'avant du contrôleur et vérifier qu'elle est éteinte.
++
+image::../media/sg6060_front_panel_power_led_off.jpg[Del d'alimentation du panneau avant SG6060 - éteinte]
+
+** Observez les LED vertes des deux blocs d'alimentation à l'arrière du contrôleur et vérifiez qu'ils clignotent à une fréquence régulière (environ un clignotement par seconde).
++
+image::../media/sg6060_rear_panel_power_led_on.jpg[LED d'alimentation du panneau arrière SG6060]
+
+** Utilisez l'interface du contrôleur BMC :
++
+... Accéder à l'interface du contrôleur BMC.
++
+link:../installconfig/accessing-bmc-interface.html["Accéder à l'interface BMC"]
+
+... Sélectionnez *Power Control*.
+... Vérifiez que les actions d'alimentation indiquent que l'hôte est actuellement éteint.
++
+image::../media/bmc_power_control_page_controller_off.png[Page de contrôle de l'alimentation du contrôleur BMC - contrôleur désactivé]
+
+
+
+
+
+
+
+.Informations associées
+link:removing-sg6000-cn-controller-from-cabinet-or-rack.html["Retirez le contrôleur SG6000-CN de l'armoire ou du rack"]

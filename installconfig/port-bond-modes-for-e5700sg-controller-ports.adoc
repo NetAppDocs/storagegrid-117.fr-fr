@@ -1,0 +1,102 @@
+---
+permalink: installconfig/port-bond-modes-for-e5700sg-controller-ports.html 
+sidebar: sidebar 
+keywords: storagegrid, sg5700, storage node, storage appliance, port bond, port bonding, port bond mode, port-bond mode, Network bond, Network bonding, Network bond mode, Network-bond mode, fixed, Aggregate, 10/25-gbe, 10/25 gbe, e5700sg, independent, active-backup, active backup, 1-gbe, 1 gbe 
+summary: 'Lors de la configuration de liaisons réseau pour les ports de contrôleur E5700SG, vous pouvez utiliser la liaison de port pour les ports 10/25-GbE qui se connectent au réseau Grid et au réseau client en option, ainsi que les ports de gestion 1-GbE qui se connectent au réseau Admin en option. La liaison de ports contribue à protéger vos données en fournissant des chemins redondants entre les réseaux StorageGRID et l"appliance.' 
+---
+= Modes de liaison des ports (contrôleur E5700SG)
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Quand link:configuring-network-links.html["configuration des liens réseau"] Pour le contrôleur E5700SG, vous pouvez utiliser la liaison de port pour les ports 10/25-GbE qui se connectent au réseau Grid et au réseau client en option, ainsi que les ports de gestion 1-GbE qui se connectent au réseau d'administration en option. La liaison de ports contribue à protéger vos données en fournissant des chemins redondants entre les réseaux StorageGRID et l'appliance.
+
+
+
+== Modes de liaison réseau pour les ports 10/25 GbE
+
+Les ports réseau 10/25-GbE du contrôleur E5700SG prennent en charge le mode de liaison de port fixe ou le mode de liaison de port agrégé pour les connexions réseau Grid et réseau client.
+
+
+
+=== Mode de liaison de port fixe
+
+Le mode fixe est la configuration par défaut pour les ports réseau 10/25 GbE.
+
+image::../media/e5700sg_fixed_port.gif[Ports utilisés pour le mode de liaison de port fixe]
+
+[cols="1a,3a"]
+|===
+| Légende | Quels ports sont liés 
+
+
+ a| 
+C
+ a| 
+Les ports 1 et 3 sont liés ensemble pour le réseau client, si ce réseau est utilisé.
+
+
+
+ a| 
+G
+ a| 
+Les ports 2 et 4 sont liés ensemble pour le réseau de grille.
+
+|===
+Si vous utilisez le mode liaison de port fixe, vous pouvez utiliser l'un des deux modes de liaison réseau : active-Backup ou Link Aggregation Control Protocol (LACP).
+
+* En mode sauvegarde active (par défaut), un seul port est actif à la fois. Si le port actif tombe en panne, son port de sauvegarde fournit automatiquement une connexion de basculement. Le port 4 fournit un chemin de sauvegarde pour le port 2 (réseau Grid) et le port 3 fournit un chemin de sauvegarde pour le port 1 (réseau client).
+* En mode LACP, chaque paire de ports forme un canal logique entre le contrôleur et le réseau, ce qui permet d'augmenter le débit. En cas de défaillance d'un port, l'autre port continue de fournir le canal. Le débit est réduit, mais la connectivité n'est pas affectée.
+
+
+
+NOTE: Si vous n'avez pas besoin de connexions redondantes, vous ne pouvez utiliser qu'un seul port pour chaque réseau. Notez cependant qu'une alarme est déclenchée dans le Gestionnaire de grille après l'installation de StorageGRID, ce qui indique qu'un câble est débranché. Vous pouvez accuser réception de cette alarme en toute sécurité pour l'effacer.
+
+
+
+=== Mode de liaison du port agrégé
+
+Le mode de liaison de port agrégé étend considérablement l'ensemble de chaque réseau StorageGRID et fournit des chemins de basculement supplémentaires.
+
+image::../media/e5700sg_aggregate_port.gif[Ports utilisés pour le mode de liaison du port agrégé]
+
+[cols="1a,3a"]
+|===
+| Légende | Quels ports sont liés 
+
+
+ a| 
+1
+ a| 
+Tous les ports connectés sont regroupés en une seule liaison LACP, ce qui permet d'utiliser tous les ports pour le trafic Grid Network et client Network.
+
+|===
+Si vous prévoyez d'utiliser le mode de liaison du port agrégé :
+
+* Vous devez utiliser le mode lien réseau LACP.
+* Vous devez spécifier une balise VLAN unique pour chaque réseau. Cette balise VLAN sera ajoutée à chaque paquet réseau pour s'assurer que le trafic réseau est acheminé vers le réseau approprié.
+* Les ports doivent être connectés aux switchs capables de prendre en charge VLAN et LACP. Si plusieurs commutateurs participent au lien LACP, les switchs doivent prendre en charge les groupes d'agrégation de liens multi-châssis (MLAG), ou un équivalent.
+* Vous savez comment configurer les commutateurs pour utiliser VLAN, LACP et MLAG, ou équivalent.
+
+
+Si vous ne souhaitez pas utiliser les quatre ports 10/25-GbE, vous pouvez utiliser un, deux ou trois ports. L'utilisation de plusieurs ports permet de maximiser la possibilité qu'une certaine connectivité réseau reste disponible en cas de défaillance de l'un des ports 10/25 GbE.
+
+
+NOTE: Si vous choisissez d'utiliser moins de quatre ports, sachez qu'une ou plusieurs alarmes seront déclenchées dans le Gestionnaire de grille après l'installation de StorageGRID, ce qui indique que les câbles sont débranchés. Vous pouvez accuser réception des alarmes en toute sécurité pour les effacer.
+
+
+
+== Modes de liaison réseau pour les ports de gestion 1 GbE
+
+Pour les deux ports de gestion 1 GbE du contrôleur E5700SG, vous pouvez choisir le mode de liaison réseau indépendant ou le mode de liaison réseau Active-Backup pour vous connecter au réseau d'administration facultatif.
+
+En mode indépendant, seul le port de gestion 1 est connecté au réseau d'administration. Ce mode ne fournit pas de chemin redondant. Le port de gestion 2 est laissé non câblé et disponible pour les connexions locales temporaires (utilisez l'adresse IP 169.254.0.1)
+
+En mode sauvegarde active, les ports de gestion 1 et 2 sont connectés au réseau Admin. Un seul port est actif à la fois. Si le port actif tombe en panne, son port de sauvegarde fournit automatiquement une connexion de basculement. Le fait de lier ces deux ports physiques à un port de gestion logique fournit un chemin redondant au réseau Admin.
+
+
+NOTE: Si vous devez établir une connexion locale temporaire au contrôleur E5700SG lorsque les ports de gestion 1 GbE sont configurés pour le mode sauvegarde active/active, retirez les câbles des deux ports de gestion, branchez votre câble temporaire sur le port de gestion 2 et accédez à l'appliance via l'adresse IP 169.254.0.1.
+
+image::../media/e5700sg_bonded_management_ports.gif[Port de gestion autonome E5700SG]

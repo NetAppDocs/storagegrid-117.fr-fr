@@ -1,0 +1,576 @@
+---
+permalink: monitor/configuring-syslog-server.html 
+sidebar: sidebar 
+keywords: audit messages, syslog server, configure external syslog server 
+summary: 'Si vous souhaitez enregistrer les journaux d"audit, les journaux d"application et les journaux d"événements de sécurité dans un emplacement en dehors de votre grille, utilisez cette procédure pour configurer un serveur syslog externe.' 
+---
+= Configurer un serveur syslog externe
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Si vous souhaitez enregistrer les journaux d'audit, les journaux d'application et les journaux d'événements de sécurité dans un emplacement en dehors de votre grille, utilisez cette procédure pour configurer un serveur syslog externe.
+
+.Avant de commencer
+* Vous êtes connecté au Grid Manager à l'aide d'un link:../admin/web-browser-requirements.html["navigateur web pris en charge"].
+* Vous disposez d'autorisations d'accès à la racine ou à la maintenance.
+* Vous disposez d'un serveur syslog avec la capacité de recevoir et stocker les fichiers journaux. Pour plus d'informations, voir link:../monitor/considerations-for-external-syslog-server.html["Considérations relatives au serveur syslog externe"].
+* Vous disposez des certifications serveur et client appropriées si vous prévoyez d'utiliser TLS ou RELP/TLS.
+
+
+.Description de la tâche
+Si vous souhaitez envoyer des informations d'audit à un serveur syslog externe, vous devez d'abord configurer le serveur externe.
+
+L'envoi d'informations d'audit à un serveur syslog externe vous permet de :
+
+* Collectez et gérez plus efficacement les informations d'audit, telles que les messages d'audit, les journaux d'application et les événements de sécurité
+* Réduisez le trafic réseau sur vos nœuds d'administration car les informations d'audit sont transférées directement des différents nœuds de stockage vers le serveur syslog externe, sans passer par un nœud d'administration
++
+
+CAUTION: Lorsque les journaux sont envoyés à un serveur syslog externe, les journaux uniques supérieurs à 8192 octets sont tronqués à la fin du message pour se conformer aux limitations communes dans les implémentations de serveur syslog externes.
+
++
+
+NOTE: Pour optimiser les options de restauration complète des données en cas de défaillance du serveur syslog externe, jusqu'à 20 Go de journaux locaux d'enregistrements d'audit (localaudit.log) sont conservés sur chaque nœud.
+
++
+
+NOTE: Si les options de configuration disponibles dans cette procédure ne sont pas suffisamment flexibles pour répondre à vos besoins, des options de configuration supplémentaires peuvent être appliquées à l'aide de l'API privée `audit-destinations` terminaux. Par exemple, il est possible d'utiliser différents serveurs syslog pour différents groupes de nœuds.
+
+
+
+
+
+== Configurez le serveur externe
+
+
+
+=== Accéder à l'assistant
+
+Pour démarrer, accédez à l'assistant configurer le serveur syslog externe.
+
+.Étapes
+. Sélectionnez *CONFIGURATION* > *surveillance* > *serveur d'audit et syslog*.
+. Sur la page Audit and syslog Server, sélectionnez *Configure External syslog Server*. Si vous avez déjà configuré un serveur syslog externe, sélectionnez *Modifier serveur syslog externe*.
++
+L'assistant configurer le serveur syslog externe s'affiche.
+
+
+
+
+
+=== Entrez les informations du journal système
+
+Vous devez fournir les informations dont StorageGRID a besoin pour accéder au serveur syslog externe.
+
+.Étapes
+. Pour l'étape *Entrez les informations syslog* de l'assistant, entrez un nom de domaine complet valide ou une adresse IPv4 ou IPv6 pour le serveur syslog externe dans le champ *Host*.
+. Entrez le port de destination sur le serveur syslog externe (doit être un entier compris entre 1 et 65535). Le port par défaut est 514.
+. Sélectionnez le protocole utilisé pour envoyer les informations d'audit au serveur syslog externe.
++
+Il est recommandé d'utiliser *TLS* ou *RELP/TLS*. Vous devez télécharger un certificat de serveur pour utiliser l'une de ces options. L'utilisation de certificats permet de sécuriser les connexions entre votre grille et le serveur syslog externe. Pour plus d'informations, voir link:../admin/using-storagegrid-security-certificates.html["Gérer les certificats de sécurité"].
+
++
+Toutes les options de protocole requièrent la prise en charge par le serveur syslog externe ainsi que sa configuration. Vous devez choisir une option compatible avec le serveur syslog externe.
+
++
+
+NOTE: Le protocole RELP (fiable Event Logging Protocol) étend la fonctionnalité du protocole syslog afin de fournir des messages d'événement fiables. L'utilisation de RELP peut aider à éviter la perte d'informations d'audit si votre serveur syslog externe doit redémarrer.
+
+. Sélectionnez *Continuer*.
+. [[attach-certificate]]si vous avez sélectionné *TLS* ou *RELP/TLS*, téléchargez les certificats suivants :
++
+** *Certificats CA serveur* : un ou plusieurs certificats CA de confiance pour la vérification du serveur syslog externe (dans le codage PEM). Si omis, le certificat d'autorité de certification de la grille par défaut sera utilisé. Le fichier que vous téléchargez ici peut être un bundle CA.
+** *Certificat client* : certificat client pour l'authentification sur le serveur syslog externe (dans le codage PEM).
+** *Clé privée client* : clé privée pour le certificat client (dans le codage PEM).
++
+
+NOTE: Si vous utilisez un certificat client, vous devez également utiliser une clé privée client. Si vous fournissez une clé privée chiffrée, vous devez également fournir la phrase de passe. L'utilisation d'une clé privée chiffrée n'est pas un avantage majeur en matière de sécurité, car la clé et la phrase de passe doivent être stockées. Si elles sont disponibles, il est recommandé de recourir à une clé privée non chiffrée pour plus de simplicité.
+
++
+... Sélectionnez *Parcourir* pour le certificat ou la clé que vous souhaitez utiliser.
+... Sélectionnez le fichier de certificat ou le fichier de clé.
+... Sélectionnez *Ouvrir* pour charger le fichier.
++
+Une coche verte s'affiche en regard du nom du fichier de certificat ou de clé, vous informant qu'il a été téléchargé avec succès.
+
+
+
+
+
+. Sélectionnez *Continuer*.
+
+
+
+
+=== Gérer le contenu du journal système
+
+Vous pouvez sélectionner les informations à envoyer au serveur syslog externe.
+
+.Étapes
+. Pour l'étape *gérer le contenu syslog* de l'assistant, sélectionnez chaque type d'informations d'audit que vous souhaitez envoyer au serveur syslog externe.
++
+** *Envoyer les journaux d'audit* : envoie les événements StorageGRID et les activités système
+** *Envoyer des événements de sécurité* : envoie des événements de sécurité tels qu'une tentative d'ouverture de session par un utilisateur non autorisé ou une ouverture de session par un utilisateur en tant que root
+** *Envoyer les journaux d'application* : envoie les fichiers journaux utiles pour le dépannage, notamment :
++
+*** `bycast-err.log`
+*** `bycast.log`
+*** `jaeger.log`
+*** `nms.log` (Nœuds d'administration uniquement)
+*** `prometheus.log`
+*** `raft.log`
+*** `hagroups.log`
+
+
+
+
+. Utilisez les menus déroulants pour sélectionner la gravité et l'installation (type de message) de la catégorie d'informations d'audit que vous souhaitez envoyer.
++
+Si vous sélectionnez *Passthrough* pour la gravité et l'installation, les informations envoyées au serveur syslog distant recevront la même gravité et les mêmes fonctions qu'lorsqu'il est connecté localement au nœud. La définition de l'installation et de la gravité peut vous aider à agréger les journaux de manière personnalisable pour faciliter l'analyse.
+
++
+
+NOTE: Pour plus d'informations sur les journaux du logiciel StorageGRID, reportez-vous à la section link:../monitor/storagegrid-software-logs.html["Journaux du logiciel StorageGRID"].
+
++
+.. Pour *gravité*, sélectionnez *passe-système* si vous souhaitez que chaque message envoyé au syslog externe ait la même valeur de gravité que dans le syslog local.
++
+Pour les journaux d'audit, si vous sélectionnez *Passthrough*, la gravité est 'info'.
+
++
+Pour les événements de sécurité, si vous sélectionnez *Passthrough*, les valeurs de gravité sont générées par la distribution Linux sur les nœuds.
+
++
+Pour les journaux d'application, si vous sélectionnez *Passthrough*, les niveaux de gravité varient entre 'info' et 'avis', selon le problème. Par exemple, l'ajout d'un serveur NTP et la configuration d'un groupe HA donnent la valeur « INFO », tandis que l'arrêt délibéré du service SSM ou RSM donne la valeur « notification ».
+
+.. Si vous ne souhaitez pas utiliser la valeur passthrough, sélectionnez une valeur de gravité comprise entre 0 et 7.
++
+La valeur sélectionnée sera appliquée à tous les messages de ce type. Les informations sur les différents niveaux de gravité seront perdues lorsque vous choisissez de remplacer la gravité par une valeur fixe.
+
++
+[cols="1a,3a"]
+|===
+| Gravité | Description 
+
+
+ a| 
+0
+ a| 
+Urgence : le système est inutilisable
+
+
+
+ a| 
+1
+ a| 
+Alerte : une action doit être effectuée immédiatement
+
+
+
+ a| 
+2
+ a| 
+Critique : conditions critiques
+
+
+
+ a| 
+3
+ a| 
+Erreur : conditions d'erreur
+
+
+
+ a| 
+4
+ a| 
+Avertissement : conditions d'avertissement
+
+
+
+ a| 
+5
+ a| 
+Remarque : condition normale mais significative
+
+
+
+ a| 
+6
+ a| 
+Information : messages d'information
+
+
+
+ a| 
+7
+ a| 
+Débogage : messages de niveau débogage
+
+|===
+.. Pour *Facility*, sélectionnez *Passthrough* si vous souhaitez que chaque message envoyé au syslog externe ait la même valeur que dans le syslog local.
++
+Pour les journaux d'audit, si vous sélectionnez *Passthrough*, la fonction envoyée au serveur syslog externe est « local7 ».
+
++
+Pour les événements de sécurité, si vous sélectionnez *passe-système*, les valeurs de l'établissement sont générées par la distribution linux sur les nœuds.
+
++
+Pour les journaux d'application, si vous sélectionnez *passe-système*, les journaux d'application envoyés au serveur syslog externe ont les valeurs d'installation suivantes :
+
++
+[cols="1a,2a"]
+|===
+| Journal de l'application | Valeur passe-système 
+
+
+ a| 
+bycast.log
+ a| 
+utilisateur ou démon
+
+
+
+ a| 
+bycast-err.log
+ a| 
+utilisateur, démon, local3 ou local4
+
+
+
+ a| 
+jaeger.log
+ a| 
+localis2
+
+
+
+ a| 
+nms.log
+ a| 
+local3
+
+
+
+ a| 
+prometheus.log
+ a| 
+local4
+
+
+
+ a| 
+raft.log
+ a| 
+local5
+
+
+
+ a| 
+hagroups.log
+ a| 
+local6
+
+|===
+.. Si vous ne souhaitez pas utiliser la valeur passthrough, sélectionnez la valeur de l'installation comprise entre 0 et 23.
++
+La valeur sélectionnée sera appliquée à tous les messages de ce type. Les informations sur les différentes installations seront perdues lorsque vous choisissez de remplacer l'établissement par une valeur fixe.
+
++
+[cols="1a,3a"]
+|===
+| Installation | Description 
+
+
+ a| 
+0
+ a| 
+kern (messages du noyau)
+
+
+
+ a| 
+1
+ a| 
+utilisateur (messages de niveau utilisateur)
+
+
+
+ a| 
+2
+ a| 
+e-mail
+
+
+
+ a| 
+3
+ a| 
+démon (démons système)
+
+
+
+ a| 
+4
+ a| 
+auth (messages de sécurité/d'autorisation)
+
+
+
+ a| 
+5
+ a| 
+syslog (messages générés en interne par syslogd)
+
+
+
+ a| 
+6
+ a| 
+lpr (sous-système d'imprimante ligne)
+
+
+
+ a| 
+7
+ a| 
+news (sous-système d'informations réseau)
+
+
+
+ a| 
+8
+ a| 
+UCP
+
+
+
+ a| 
+9
+ a| 
+cron (démon d'horloge)
+
+
+
+ a| 
+10
+ a| 
+sécurité (messages de sécurité/d'autorisation)
+
+
+
+ a| 
+11
+ a| 
+FTP
+
+
+
+ a| 
+12
+ a| 
+NTP
+
+
+
+ a| 
+13
+ a| 
+audit journal (audit du journal)
+
+
+
+ a| 
+14
+ a| 
+alerte journal (alerte de journal)
+
+
+
+ a| 
+15
+ a| 
+horloge (démon d'horloge)
+
+
+
+ a| 
+16
+ a| 
+localis0
+
+
+
+ a| 
+17
+ a| 
+local1
+
+
+
+ a| 
+18
+ a| 
+localis2
+
+
+
+ a| 
+19
+ a| 
+local3
+
+
+
+ a| 
+20
+ a| 
+local4
+
+
+
+ a| 
+21
+ a| 
+local5
+
+
+
+ a| 
+22
+ a| 
+local6
+
+
+
+ a| 
+23
+ a| 
+localis7
+
+|===
+
+
+. Sélectionnez *Continuer*.
+
+
+
+
+=== Envoyer des messages de test
+
+Avant de commencer à utiliser un serveur syslog externe, vous devez demander à tous les nœuds de votre grille d'envoyer des messages de test au serveur syslog externe. Ces messages de test vous aideront à valider l'intégralité de votre infrastructure de collecte de journaux avant de vous engager à envoyer des données au serveur syslog externe.
+
+
+CAUTION: N'utilisez pas la configuration du serveur syslog externe tant que vous n'avez pas confirmé que le serveur syslog externe a reçu un message test de chaque nœud de votre grille et que le message a été traité comme prévu.
+
+.Étapes
+. Si vous ne souhaitez pas envoyer de messages de test parce que vous êtes certain que votre serveur syslog externe est correctement configuré et peut recevoir des informations d'audit de tous les nœuds de votre grille, sélectionnez *Ignorer et terminer*.
++
+Une bannière verte s'affiche, indiquant que votre configuration a été correctement enregistrée.
+
+. Sinon, sélectionnez *Envoyer les messages de test* (recommandé).
++
+Les résultats de test apparaissent en permanence sur la page jusqu'à ce que vous arrêiez le test. Pendant que le test est en cours, vos messages d'audit continuent d'être envoyés à vos destinations précédemment configurées.
+
+. Si vous recevez des erreurs, corrigez-les et sélectionnez à nouveau *Envoyer des messages de test*.
++
+Voir link:../troubleshoot/troubleshooting-syslog-server.html["Dépannage du serveur syslog externe"] pour vous aider à résoudre toutes les erreurs.
+
+. Attendez qu'une bannière verte indique que tous les nœuds ont réussi le test.
+. Vérifiez votre serveur syslog pour déterminer si les messages de test sont reçus et traités comme prévu.
++
+
+IMPORTANT: Si vous utilisez UDP, vérifiez l'ensemble de votre infrastructure de collecte de journaux. Le protocole UDP ne permet pas une détection d'erreur aussi rigoureuse que les autres protocoles.
+
+. Sélectionnez *Arrêter et Terminer*.
++
+Vous revenez à la page *Audit and syslog Server*. Une bannière verte s'affiche pour vous informer que la configuration de votre serveur syslog a bien été enregistrée.
+
++
+
+NOTE: Vos informations d'audit StorageGRID ne sont pas envoyées au serveur syslog externe tant que vous n'avez pas sélectionné une destination qui inclut le serveur syslog externe.
+
+
+
+
+
+== Sélectionnez les destinations des informations d'audit
+
+Vous pouvez spécifier l'emplacement d'envoi des journaux d'événements de sécurité, des journaux d'application et des journaux de messages d'audit.
+
+
+NOTE: Pour plus d'informations sur les journaux du logiciel StorageGRID, reportez-vous à la section link:../monitor/storagegrid-software-logs.html["Journaux du logiciel StorageGRID"].
+
+.Étapes
+. Sur la page Audit and syslog Server, sélectionnez la destination des informations d'audit dans les options répertoriées :
++
+[cols="1a,2a"]
+|===
+| Option | Description 
+
+
+ a| 
+Par défaut (nœuds d'administration/nœuds locaux)
+ a| 
+Les messages d'audit sont envoyés au journal d'audit (`audit.log`) Sur le nœud d'administration, les journaux d'événements de sécurité et les journaux d'applications sont stockés sur les nœuds où ils ont été générés (également appelés « nœud local »).
+
+
+
+ a| 
+Serveur syslog externe
+ a| 
+Les informations d'audit sont envoyées à un serveur syslog externe et enregistrées sur le nœud local. Le type d'information envoyée dépend de la façon dont vous avez configuré le serveur syslog externe. Cette option n'est activée qu'après avoir configuré un serveur syslog externe.
+
+
+
+ a| 
+Nœud d'administration et serveur syslog externe
+ a| 
+Les messages d'audit sont envoyés au journal d'audit (`audit.log`) Sur le nœud d'administration, les informations d'audit sont envoyées au serveur syslog externe et enregistrées sur le nœud local. Le type d'information envoyée dépend de la façon dont vous avez configuré le serveur syslog externe. Cette option n'est activée qu'après avoir configuré un serveur syslog externe.
+
+
+
+ a| 
+Nœuds locaux uniquement
+ a| 
+Aucune information d'audit n'est envoyée à un nœud d'administration ou à un serveur syslog distant. Les informations d'audit sont enregistrées uniquement sur les nœuds qui les ont générées.
+
+*Remarque*: StorageGRID supprime périodiquement ces journaux locaux dans une rotation pour libérer de l'espace. Lorsque le fichier journal d'un nœud atteint 1 Go, le fichier existant est enregistré et un nouveau fichier journal est démarré. La limite de rotation du journal est de 21 fichiers. Lorsque la 22e version du fichier journal est créée, le fichier journal le plus ancien est supprimé. En moyenne, environ 20 Go de données de journalisation sont stockés sur chaque nœud.
+
+|===
++
+
+NOTE: Les informations d'audit générées sur chaque nœud local sont stockées dans `/var/local/log/localaudit.log`
+
+. Sélectionnez *Enregistrer*. Ensuite, sélectionnez *OK* pour accepter la modification de la destination du journal.
+. Si vous avez sélectionné *serveur syslog externe* ou *nœuds Admin et serveur syslog externe* comme destination pour les informations d'audit, un avertissement supplémentaire s'affiche. Passez en revue le texte d'avertissement.
++
+
+IMPORTANT: Vous devez confirmer que le serveur syslog externe peut recevoir des messages StorageGRID de test.
+
+. Sélectionnez *OK* pour confirmer que vous souhaitez modifier la destination des informations d'audit.
++
+Une bannière verte s'affiche pour vous informer que la configuration de votre audit a bien été enregistrée.
+
++
+Les nouveaux journaux sont envoyés aux destinations que vous avez sélectionnées. Les journaux existants restent à leur emplacement actuel.
+
+
+
+.Informations associées
+link:../audit/index.html["Présentation du message d'audit"]
+
+link:../monitor/configure-audit-messages.html["Configurez les messages d'audit et les destinations des journaux"]
+
+link:../audit/system-audit-messages.html["Messages d'audit système"]
+
+link:../audit/object-storage-audit-messages.html["Messages d'audit du stockage objet"]
+
+link:../audit/management-audit-message.html["Message d'audit de gestion"]
+
+link:../audit/client-read-audit-messages.html["Messages d'audit de lecture du client"]
+
+link:../admin/index.html["Administrer StorageGRID"]

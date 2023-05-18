@@ -1,0 +1,36 @@
+---
+permalink: sg6000/removing-sg6000-cn-controller-cover.html 
+sidebar: sidebar 
+keywords: storagegrid, sg6000, storage node, storage appliance, sg6000-cn, controller, cover, remove, removing, removal 
+summary: Retirer le capot du contrôleur pour accéder aux composants internes en vue de leur maintenance. 
+---
+= Déposer le couvercle du contrôleur SG6000-CN
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Retirer le capot du contrôleur pour accéder aux composants internes en vue de leur maintenance.
+
+.Avant de commencer
+Retirez le contrôleur de l'armoire ou du rack pour accéder au capot supérieur.
+
+link:removing-sg6000-cn-controller-from-cabinet-or-rack.html["Retirez le contrôleur SG6000-CN de l'armoire ou du rack"]
+
+.Étapes
+. Assurez-vous que le loquet du capot du contrôleur SG6000-CN n'est pas verrouillé. Si nécessaire, tournez le verrou en plastique bleu d'un quart de tour dans le sens de déverrouillage, comme illustré sur le verrou.
+. Faites pivoter le loquet vers le haut et vers l'arrière du châssis du contrôleur SG6000-CN jusqu'à ce qu'il s'arrête, puis soulevez avec précaution le capot du châssis et mettez-le de côté.
++
+image::../media/sg6060_cover_latch_open.jpg[Loquet du capot SG6060 ouvert]
+
++
+
+IMPORTANT: Enroulez l'extrémité du bracelet antistatique autour de votre poignet et fixez l'extrémité du clip à une masse métallique pour éviter toute décharge statique lors du travail à l'intérieur du contrôleur SG6000-CN.
+
+
+
+Après le remplacement de la pièce, renvoyez la pièce défectueuse à NetApp, en suivant les instructions RMA (retour de matériel) livrées avec le kit. Voir la https://["Retour de pièce et amp ; remplacements"^] pour plus d'informations.
+
+.Informations associées
+link:removing-fibre-channel-hba.html["Retirez l'adaptateur HBA Fibre Channel"]

@@ -1,0 +1,40 @@
+---
+permalink: installconfig/troubleshooting-connection-issues-sgf6112.html 
+sidebar: sidebar 
+keywords: storagegrid, sgf6112, sg6100, troubleshoot, troubleshooting, connection 
+summary: 'Si vous rencontrez des problèmes de connexion lors de l"installation de l"appliance StorageGRID, vous devez effectuer les actions correctives indiquées.' 
+---
+= Résolution des problèmes de connexion (SGF6112)
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Si vous rencontrez des problèmes de connexion lors de l'installation de l'appliance StorageGRID, vous devez effectuer les actions correctives indiquées.
+
+
+
+== Connexion à l'appareil impossible
+
+Si vous ne parvenez pas à vous connecter à l'appliance de services, il se peut qu'il y ait un problème de réseau ou que l'installation matérielle n'ait pas été effectuée correctement.
+
+.Étapes
+. Essayez d'envoyer une requête ping à l'appareil à l'aide de l'adresse IP de l'appareil : +
+`*ping _appliance_IP_*`
+. Si vous ne recevez aucune réponse de la commande ping, confirmez que vous utilisez la bonne adresse IP.
++
+Vous pouvez utiliser l'adresse IP de l'appliance sur le réseau Grid, le réseau Admin ou le réseau client.
+
+. Si l'adresse IP est correcte, vérifiez le câblage de l'appliance, les émetteurs-récepteurs QSFP ou SFP et la configuration du réseau.
+. Si l'accès physique à l'appareil est disponible, vous pouvez utiliser une connexion directe à l'adresse IP locale de liaison permanente `169.254.0.1` pour vérifier la configuration de la mise en réseau du contrôleur et la mettre à jour si nécessaire. Pour obtenir des instructions détaillées, reportez-vous à l'étape 2 de la section link:accessing-storagegrid-appliance-installer.html["Accédez au programme d'installation de l'appliance StorageGRID"].
++
+Si ce n'est pas le cas, contactez le support technique.
+
+. Si la commande ping a réussi, ouvrez un navigateur Web.
+. Entrez l'URL du programme d'installation de l'appliance StorageGRID : +
+`*https://_appliances_controller_IP_:8443*`
++
+La page d'accueil s'affiche.
+
+

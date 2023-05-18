@@ -1,0 +1,35 @@
+---
+permalink: upgrade/impact-of-upgrade-on-groups-and-user-accounts.html 
+sidebar: sidebar 
+keywords: upgrade, permissions 
+summary: 'Vous devez comprendre l"impact de la mise à niveau StorageGRID, afin de pouvoir mettre à jour les groupes et les comptes utilisateur de manière appropriée une fois la mise à niveau terminée.' 
+---
+= Impact d'une mise à niveau sur les groupes et les comptes d'utilisateurs
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Vous devez comprendre l'impact de la mise à niveau StorageGRID, afin de pouvoir mettre à jour les groupes et les comptes utilisateur de manière appropriée une fois la mise à niveau terminée.
+
+
+
+== Modification des autorisations et des options de groupe
+
+Après la mise à niveau vers StorageGRID 11.7, vous pouvez éventuellement attribuer la nouvelle autorisation suivante aux groupes d'utilisateurs locataires.
+
+[cols="1a,2a"]
+|===
+| Autorisations | Description 
+
+
+ a| 
+Gestionnaire de locataires > gérer les objets avec la console S3
+ a| 
+Associée à l'autorisation gérer tous les compartiments, cette autorisation permet aux utilisateurs d'accéder à link:../tenant/use-s3-console.html["Console S3 expérimentale"] À partir de la page compartiments.
+
+Les utilisateurs qui disposent de cette autorisation mais qui ne disposent pas de l'autorisation gérer tous les compartiments peuvent toujours naviguer directement vers la console S3 expérimentale.
+
+|===
+Voir link:../tenant/tenant-management-permissions.html["Autorisations de gestion des locataires"].

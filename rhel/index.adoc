@@ -1,0 +1,51 @@
+---
+permalink: rhel/index.html 
+sidebar: sidebar 
+keywords: red hat enterprise linux, rhel, centos linux 
+summary: 'L"installation d"un système StorageGRID dans un environnement Red Hat Enterprise Linux (RHEL) ou CentOS Linux comprend trois étapes principales.' 
+---
+= Installez Red Hat Enterprise Linux ou CentOS: Présentation
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+L'installation d'un système StorageGRID dans un environnement Red Hat Enterprise Linux (RHEL) ou CentOS Linux comprend trois étapes principales.
+
+. *Préparation*: Pendant la planification et la préparation, vous effectuez les tâches suivantes :
++
+** En savoir plus sur les besoins matériels et de stockage pour StorageGRID.
+** Découvrez les détails de link:../network/index.html["La mise en réseau StorageGRID"] vous pouvez ainsi configurer votre réseau de façon appropriée.
+** Identifiez et préparez les serveurs physiques ou virtuels que vous prévoyez d'utiliser pour héberger vos nœuds de grid StorageGRID.
+** Sur les serveurs que vous avez préparés :
++
+*** Installez Linux
+*** Configurez le réseau hôte
+*** Configurer le stockage de l'hôte
+*** Poser le moteur de mise en conteneurs
+*** Installez les services d'hôte StorageGRID
+
+
+
+
+. *Déploiement* : déployez des nœuds de la grille à l'aide de l'interface utilisateur appropriée. Lorsque vous déployez des nœuds grid, ils sont créés dans le cadre du système StorageGRID et connectés à un ou plusieurs réseaux.
++
+.. Utilisez la ligne de commande Linux et les fichiers de configuration des nœuds pour déployer des nœuds de grille logiciels sur les hôtes que vous avez préparés à l'étape 1.
+.. Utilisez le programme d'installation de l'appliance StorageGRID pour déployer les nœuds d'appliance StorageGRID.
++
+
+NOTE: Les instructions d'installation et d'intégration spécifiques au matériel ne sont pas incluses dans la procédure d'installation de StorageGRID. Pour savoir comment installer les appliances StorageGRID, consultez le link:../installconfig/index.html["Démarrage rapide pour l'installation du matériel"] pour trouver les instructions relatives à votre appareil.
+
+
+
+. *Configuration* : lorsque tous les nœuds ont été déployés, utilisez le gestionnaire de grille pour configurer la grille et terminer l'installation.
+
+
+Ces instructions recommandent une approche standard de déploiement et de configuration d'un système StorageGRID. Voir également les informations sur les approches alternatives suivantes :
+
+* Utilisez une structure d'orchestration standard comme Ansible, Puppet ou Chef pour installer RHEL ou CentOS, configurer le réseau et le stockage, installer le moteur de conteneur et le service hôte StorageGRID, et déployer des nœuds grid virtuels.
+* Automatiser le déploiement et la configuration du système StorageGRID à l'aide d'un script de configuration Python (fourni dans l'archive d'installation).
+* Automatisez le déploiement et la configuration des nœuds grid d'appliance avec un script de configuration Python (disponible dans l'archive de l'installation ou depuis le programme d'installation de l'appliance StorageGRID).
+* Si vous êtes un développeur avancé de déploiements StorageGRID, utilisez les API REST d'installation pour automatiser l'installation des nœuds grid d'StorageGRID.
+

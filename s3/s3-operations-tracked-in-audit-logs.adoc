@@ -1,0 +1,51 @@
+---
+permalink: s3/s3-operations-tracked-in-audit-logs.html 
+sidebar: sidebar 
+keywords: audit log actions tracked 
+summary: 'Plusieurs opérations de compartiment et les opérations d"objets sont suivies dans les journaux d"audit de StorageGRID.' 
+---
+= Opérations S3 suivies dans les journaux d'audit
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Plusieurs opérations de compartiment et les opérations d'objets sont suivies dans les journaux d'audit de StorageGRID.
+
+
+
+== Les opérations des compartiments sont suivies dans les journaux d'audit
+
+* SUPPRIMER le compartiment
+* SUPPRIMER le balisage du compartiment
+* SUPPRIMER plusieurs objets
+* OBTENIR le compartiment (liste d'objets)
+* OBTENIR les versions d'objet de compartiment
+* GET Bucket tagging
+* Godet DE TÊTE
+* PLACER le godet
+* METTEZ le godet en conformité
+* PUT Bucket tagging
+* GESTION des versions du compartiment
+
+
+
+
+== Opérations d'objet suivies dans les journaux d'audit
+
+* Chargement de pièces multiples complet
+* Télécharger la pièce (lorsque la règle ILM utilise les comportements d'ingestion équilibrés ou stricts)
+* Télécharger la pièce - Copier (lorsque la règle ILM utilise les comportements d'ingestion équilibrés ou stricts)
+* SUPPRIMER l'objet
+* OBTENIR l'objet
+* Objet TÊTE
+* Restauration POST-objet
+* PLACER l'objet
+* PLACER l'objet - Copier
+
+
+.Informations associées
+link:operations-on-buckets.html["Opérations sur les compartiments"]
+
+link:operations-on-objects.html["Opérations sur les objets"]

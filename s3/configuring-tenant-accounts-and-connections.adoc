@@ -1,0 +1,166 @@
+---
+permalink: s3/configuring-tenant-accounts-and-connections.html 
+sidebar: sidebar 
+keywords: configuring, tenant, connections 
+summary: Pour configurer StorageGRID pour accepter les connexions à partir des applications client, vous devez créer un ou plusieurs comptes de tenant et configurer les connexions. 
+---
+= Configurez les comptes et les connexions des locataires
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Pour configurer StorageGRID pour accepter les connexions à partir des applications client, vous devez créer un ou plusieurs comptes de tenant et configurer les connexions.
+
+
+
+== Créez et configurez des comptes de locataire S3
+
+Un compte de locataire S3 est requis avant que les clients d'API S3 ne puissent stocker et récupérer des objets sur StorageGRID. Chaque compte de locataire possède son propre ID de compte, ses propres groupes, utilisateurs, compartiments et objets.
+
+Les comptes de locataires S3 sont créés par un administrateur grid StorageGRID à l'aide de Grid Manager ou de l'API de gestion du grid. Voir link:../admin/managing-tenants.html["Gérer les locataires"] pour plus d'informations. Une fois le compte d'un locataire S3 créé, les utilisateurs peuvent accéder au gestionnaire des locataires pour gérer les groupes, les utilisateurs, les clés d'accès et les compartiments. Voir link:../tenant/index.html["Utilisez un compte de locataire"] pour plus d'informations.
+
+
+TIP: Les locataires S3 peuvent créer et gérer des clés d'accès S3 et des compartiments avec le gestionnaire de locataires. Ils doivent utiliser une application client S3 pour ingérer et gérer les objets. Voir link:../s3/index.html["UTILISEZ L'API REST S3"] pour plus d'informations.
+
+
+
+== Comment configurer les connexions client
+
+Un administrateur du grid fait des choix de configuration qui affectent la façon dont les clients S3 se connectent à StorageGRID pour stocker et récupérer les données. La connexion d'StorageGRID à une application S3 se fait en quatre étapes de base :
+
+* Effectuez les tâches requises dans StorageGRID, en fonction de la façon dont l'application client se connecte à StorageGRID.
+* Utilisez StorageGRID pour obtenir les valeurs dont l'application a besoin pour se connecter à la grille. Vous pouvez l'un ou l'autre link:../admin/use-s3-setup-wizard.html["Utilisez l'assistant d'installation S3"] Ou configurez chaque entité StorageGRID manuellement.
+* Utilisez l'application S3 pour terminer la connexion à StorageGRID. Créez des entrées DNS pour associer des adresses IP à tous les noms de domaine que vous prévoyez d'utiliser.
+* Effectuez des tâches continues dans l'application et dans StorageGRID afin de gérer et de surveiller le stockage objet au fil du temps.
+
+
+Pour plus de détails sur ces étapes, reportez-vous à la section link:../admin/configuring-client-connections.html["Configurer les connexions client"].
+
+
+
+=== Informations requises pour les connexions client
+
+Pour stocker ou récupérer des objets, les applications client S3 se connectent au service Load Balancer, qui est inclus sur tous les nœuds d'administration et les nœuds de passerelle, ou au service LDR (local distribution Router), qui est inclus sur tous les nœuds de stockage.
+
+Les applications client peuvent se connecter à StorageGRID en utilisant l'adresse IP d'un nœud grid et le numéro de port du service sur ce nœud. Vous pouvez également créer des groupes haute disponibilité de nœuds d'équilibrage de la charge pour fournir des connexions haute disponibilité utilisant des adresses IP virtuelles (VIP). Si vous souhaitez vous connecter à StorageGRID à l'aide d'un nom de domaine complet (FQDN) au lieu d'une adresse IP ou VIP, vous pouvez configurer des entrées DNS.
+
+Voir link:../admin/summary-ip-addresses-and-ports-for-client-connections.html["Résumé : adresses IP et ports pour les connexions client"] pour en savoir plus.
+
+
+
+=== Choisissez d'utiliser des connexions HTTPS ou HTTP
+
+Lorsque les connexions client sont effectuées à l'aide d'un noeud final Load Balancer, les connexions doivent être effectuées à l'aide du protocole (HTTP ou HTTPS) spécifié pour ce noeud final. Pour utiliser HTTP pour les connexions client aux nœuds de stockage, vous devez activer son utilisation.
+
+Par défaut, lorsque les applications client se connectent aux nœuds de stockage, elles doivent utiliser le protocole HTTPS chiffré pour toutes les connexions. Vous pouvez également activer des connexions HTTP moins sécurisées en sélectionnant *CONFIGURATION* > *Paramètres de sécurité* > *réseau et objets* > *Activer HTTP pour les connexions de noeud de stockage* dans le gestionnaire de grille. Par exemple, une application client peut utiliser HTTP lors du test de la connexion à un noeud de stockage dans un environnement non-production.
+
+
+CAUTION: Soyez prudent lorsque vous activez HTTP pour une grille de production car les requêtes et les réponses seront envoyées sans cryptage.
+
+.Informations associées
+link:../admin/index.html["Administrer StorageGRID"]
+
+link:benefits-of-active-idle-and-concurrent-http-connections.html["Avantages des connexions HTTP actives, inactives et simultanées"]
+
+
+
+== Noms de domaine de terminaux S3 pour les requêtes S3
+
+Avant d'utiliser les noms de domaine de terminaux S3 pour les demandes client, un administrateur StorageGRID doit configurer le système pour qu'il accepte les connexions qui utilisent les noms de domaine de terminaux S3 dans les demandes de type chemin d'accès S3 et de type hébergement virtuel S3.
+
+.Description de la tâche
+Pour pouvoir utiliser des demandes de style hébergement virtuel S3, un administrateur grid doit effectuer les tâches suivantes :
+
+* Utilisez le Gestionnaire de grille pour ajouter les noms de domaine de points de terminaison S3 au système StorageGRID.
+* Vérifiez que le certificat utilisé par le client pour les connexions HTTPS à StorageGRID est signé pour tous les noms de domaine requis par le client.
++
+Par exemple, si le terminal du domaine de terminal du service d'API S3 est `s3.company.com`, L'administrateur de la grille doit s'assurer que le certificat utilisé pour les connexions HTTPS a `s3.company.com` En tant que nom commun du sujet et dans les autres noms du sujet, et `*.s3.company.com` Dans les autres noms du sujet.
+
+* link:../maintain/configuring-dns-servers.html["Configurer le serveur DNS"] Utilisé par le client pour inclure des enregistrements DNS qui correspondent aux noms de domaine du noeud final S3, y compris tous les enregistrements génériques requis.
+
+
+Si le client se connecte à l'aide du service Load Balancer, le certificat que l'administrateur de la grille configure est le certificat du noeud final de l'équilibreur de charge utilisé par le client.
+
+
+NOTE: Chaque terminal de l'équilibreur de charge possède son propre certificat, et chaque terminal peut être configuré pour reconnaître différents noms de domaine de terminal S3.
+
+Si le client se connecte aux nœuds de stockage, le certificat que l'administrateur de la grille configure est le certificat de serveur personnalisé unique utilisé pour la grille.
+
+Reportez-vous aux instructions pour link:../admin/index.html["Administration d'StorageGRID"] pour en savoir plus.
+
+Une fois ces étapes terminées, vous pouvez utiliser des requêtes de type hébergement virtuel.
+
+
+
+== Testez la configuration de l'API REST S3
+
+Vous pouvez utiliser l'interface de ligne de commande d'Amazon Web Services (AWS CLI) pour tester votre connexion au système et vérifier que vous pouvez lire et écrire des objets sur le système.
+
+.Avant de commencer
+* Vous avez téléchargé et installé l'interface de ligne de commandes AWS depuis https://["aws.amazon.com/cli"^].
+* Vous avez créé un compte de locataire S3 dans le système StorageGRID.
+* Vous avez créé une clé d'accès dans le compte de locataire.
+
+
+.Étapes
+. Configurez les paramètres de l'interface de ligne de commande AWS pour utiliser le compte que vous avez créé dans le système StorageGRID :
++
+.. Passer en mode configuration : `aws configure`
+.. Entrez l'ID de clé d'accès du compte que vous avez créé.
+.. Entrez la clé d'accès secrète pour le compte que vous avez créé.
+.. Entrez la région par défaut à utiliser, par exemple US-East-1.
+.. Entrez le format de sortie par défaut à utiliser ou appuyez sur *entrée* pour sélectionner JSON.
+
+
+. Créer un compartiment.
++
+Cet exemple suppose que vous avez configuré un noeud final d'équilibreur de charge pour utiliser l'adresse IP 10.96.101.17 et le port 10443.
+
++
+[listing]
+----
+aws s3api --endpoint-url https://10.96.101.17:10443
+--no-verify-ssl create-bucket --bucket testbucket
+----
++
+Si le compartiment est créé avec succès, l'emplacement du compartiment est renvoyé, comme illustré dans l'exemple suivant :
+
++
+[listing]
+----
+"Location": "/testbucket"
+----
+. Télécharger un objet.
++
+[listing]
+----
+aws s3api --endpoint-url https://10.96.101.17:10443 --no-verify-ssl
+put-object --bucket testbucket --key s3.pdf --body C:\s3-test\upload\s3.pdf
+----
++
+Si l'objet est téléchargé avec succès, un ETAG est renvoyé, qui est un hachage des données de l'objet.
+
+. Répertorier le contenu du compartiment pour vérifier que l'objet a été téléchargé.
++
+[listing]
+----
+aws s3api --endpoint-url https://10.96.101.17:10443 --no-verify-ssl
+list-objects --bucket testbucket
+----
+. Supprimez l'objet.
++
+[listing]
+----
+aws s3api --endpoint-url https://10.96.101.17:10443 --no-verify-ssl
+delete-object --bucket testbucket --key s3.pdf
+----
+. Supprimer le compartiment.
++
+[listing]
+----
+aws s3api --endpoint-url https://10.96.101.17:10443 --no-verify-ssl
+delete-bucket --bucket testbucket
+----
+

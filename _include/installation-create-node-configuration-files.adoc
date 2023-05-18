@@ -1,0 +1,691 @@
+= Où placer les fichiers de configuration des nœuds ?
+:allow-uri-read: 
+
+
+
+
+== Où placer les fichiers de configuration des nœuds ?
+
+Vous devez placer le fichier de configuration de chaque noeud StorageGRID dans le `/etc/storagegrid/nodes` répertoire de l'hôte sur lequel le nœud va s'exécuter. Par exemple, si vous prévoyez d'exécuter un nœud d'administration, un nœud de passerelle et un nœud de stockage sur HostA, vous devez placer trois fichiers de configuration de nœud dans `/etc/storagegrid/nodes` Sur HostA. Vous pouvez créer les fichiers de configuration directement sur chaque hôte à l'aide d'un éditeur de texte, tel que vim ou nano, ou les créer ailleurs et les déplacer vers chaque hôte.
+
+
+
+== Comment nommer les fichiers de configuration du nœud ?
+
+Les noms des fichiers de configuration sont importants. Le format est `node-name.conf`, où `node-name` est un nom que vous attribuez au nœud. Ce nom apparaît dans le programme d'installation StorageGRID et sert aux opérations de maintenance de nœud, telles que la migration de nœud.
+
+Les noms de nœud doivent respecter les règles suivantes :
+
+* Doit être unique
+* Doit commencer par une lettre
+* Peut contenir les caractères A à Z et a à z
+* Peut contenir les chiffres 0 à 9
+* Peut contenir un ou plusieurs traits d'Union (-)
+* Ne doit pas comporter plus de 32 caractères, sans le `.conf` extension
+
+
+Tous les fichiers dans `/etc/storagegrid/nodes` qui ne suivent pas ces conventions de dénomination ne seront pas analysées par le service hôte.
+
+Si une topologie multisite est planifiée pour votre grille, il se peut qu'un schéma de nommage de nœud type soit :
+
+[listing]
+----
+site-nodetype-nodenumber.conf
+----
+Par exemple, vous pouvez utiliser `dc1-adm1.conf` Pour le premier nœud d'administration dans Data Center 1, et `dc2-sn3.conf` Pour le troisième nœud de stockage dans Data Center 2. Toutefois, vous pouvez utiliser n'importe quel schéma, à condition que tous les noms de nœud suivent les règles d'attribution de nom.
+
+
+
+== Que contient un fichier de configuration de nœud ?
+
+Les fichiers de configuration contiennent des paires clé/valeur, avec une clé et une valeur par ligne. Pour chaque paire clé/valeur, vous devez respecter les règles suivantes :
+
+* La clé et la valeur doivent être séparées par un signe égal (`=`) et blanc facultatif.
+* Les clés ne peuvent pas contenir d'espace.
+* Les valeurs peuvent contenir des espaces intégrés.
+* Tout espace blanc de début ou de fin est ignoré.
+
+
+Certaines clés sont requises pour chaque nœud, tandis que d'autres sont optionnelles ou uniquement nécessaires pour certains types de nœuds.
+
+Le tableau définit les valeurs acceptables pour toutes les clés prises en charge. Dans la colonne du milieu :
+
+*R*: Requis + BP: Meilleures pratiques + O: Facultatif
+
+[cols="2a,1a,4a"]
+|===
+| Clé | R, BP OU O ? | Valeur 
+
+
+ a| 
+IP_ADMIN
+ a| 
+PA
+ a| 
+Adresse IPv4 du réseau Grid du nœud d'administration principal de la grille à laquelle ce nœud appartient. Utilisez la même valeur que celle spécifiée pour GRID_NETWORK_IP pour le nœud de grille avec NODE_TYPE = VM_Admin_Node et ADMIN_ROLE = Primary. Si vous omettez ce paramètre, le nœud tente de détecter un nœud d'administration principal à l'aide de mDNS.
+
+link:how-grid-nodes-discover-primary-admin-node.html["Mode de détection des nœuds du grid sur le nœud d'administration principal"]
+
+*Remarque* : cette valeur est ignorée et peut être interdite sur le noeud d'administration principal.
+
+
+
+ a| 
+CONFIG_RÉSEAU_ADMIN
+ a| 
+O
+ a| 
+DHCP, STATIQUE OU DÉSACTIVÉ
+
+
+
+ a| 
+ADMIN_NETWORK_ESL
+ a| 
+O
+ a| 
+Liste de sous-réseaux séparés par des virgules en notation CIDR à laquelle ce nœud doit communiquer à l'aide de la passerelle Admin Network.
+
+Exemple : `172.16.0.0/21,172.17.0.0/21`
+
+
+
+ a| 
+PASSERELLE_RÉSEAU_ADMIN
+ a| 
+O (*R*)
+ a| 
+Adresse IPv4 de la passerelle réseau d'administration locale pour ce nœud. Doit être sur le sous-réseau défini par ADMIN_NETWORK_IP et ADMIN_NETWORK_MASK. Cette valeur est ignorée pour les réseaux configurés par DHCP.
+
+*Remarque* : ce paramètre est requis si ADMIN_NETWORK_ESL est spécifié.
+
+Exemples :
+
+`1.1.1.1`
+
+`10.224.4.81`
+
+
+
+ a| 
+IP_RÉSEAU_ADMIN
+ a| 
+O
+ a| 
+Adresse IPv4 de ce nœud sur le réseau d'administration. Cette clé n'est requise que lorsque ADMIN_NETWORK_CONFIG = STATIQUE ; ne la spécifiez pas pour d'autres valeurs.
+
+Exemples :
+
+`1.1.1.1`
+
+`10.224.4.81`
+
+
+
+ a| 
+ADMIN_NETWORK_MAC
+ a| 
+O
+ a| 
+Adresse MAC de l'interface réseau Admin dans le conteneur.
+
+Ce champ est facultatif. Si elle est omise, une adresse MAC est générée automatiquement.
+
+Doit être composé de 6 paires de chiffres hexadécimaux séparés par deux-points.
+
+Exemple : `b2:9c:02:c2:27:10`
+
+
+
+ a| 
+ADMIN_NETWORK_MASK
+ a| 
+O
+ a| 
+Masque de réseau IPv4 pour ce nœud, sur le réseau d'administration. Cette clé n'est requise que lorsque ADMIN_NETWORK_CONFIG = STATIQUE ; ne la spécifiez pas pour d'autres valeurs.
+
+Exemples :
+
+`255.255.255.0`
+
+`255.255.248.0`
+
+
+
+ a| 
+MTU_RÉSEAU_ADMIN
+ a| 
+O
+ a| 
+Unité de transmission maximale (MTU) pour ce nœud sur le réseau Admin. Ne spécifiez pas si ADMIN_NETWORK_CONFIG = DHCP. Si elle est spécifiée, la valeur doit être comprise entre 1280 et 9216. Si omis, 1500 est utilisé.
+
+Si vous souhaitez utiliser des trames jumbo, définissez la valeur MTU sur une valeur adaptée aux trames jumbo, comme 9000. Sinon, conservez la valeur par défaut.
+
+*IMPORTANT* : la valeur MTU du réseau doit correspondre à la valeur configurée sur le port du commutateur auquel le nœud est connecté. Dans le cas contraire, des problèmes de performances réseau ou une perte de paquets peuvent se produire.
+
+Exemples :
+
+`1500`
+
+`8192`
+
+
+
+ a| 
+CIBLE_RÉSEAU_ADMIN
+ a| 
+PA
+ a| 
+Nom de l'unité hôte que vous utiliserez pour accéder au réseau d'administration par le nœud StorageGRID. Seuls les noms d'interface réseau sont pris en charge. En général, vous utilisez un nom d'interface différent de celui spécifié pour GRID_NETWORK_TARGET ou CLIENT_NETWORK_TARGET.
+
+*Remarque* : n'utilisez pas de périphérique de liaison ou de pont comme cible réseau. Configurez un VLAN (ou une autre interface virtuelle) sur le périphérique de liaison, ou utilisez un pont et une paire Ethernet virtuelle (veth).
+
+*Meilleure pratique*:spécifiez une valeur même si ce nœud ne possède pas d'adresse IP de réseau Admin initialement. Vous pouvez ensuite ajouter une adresse IP de réseau d'administration plus tard, sans avoir à reconfigurer le nœud sur l'hôte.
+
+Exemples :
+
+`bond0.1002`
+
+`ens256`
+
+
+
+ a| 
+TYPE_CIBLE_RÉSEAU_ADMIN
+ a| 
+O
+ a| 
+Interface
+
+(Il s'agit de la seule valeur prise en charge.)
+
+
+
+ a| 
+ADMIN_NETWORK_TARGET_TYPE_INTERFACE_CLONE_MAC
+ a| 
+PA
+ a| 
+Vrai ou faux
+
+Définissez la clé sur « true » pour que le conteneur StorageGRID utilise l'adresse MAC de l'interface hôte cible sur le réseau d'administration.
+
+*Meilleure pratique:* dans les réseaux où le mode promiscuous serait nécessaire, utilisez la clé ADMIN_NETWORK_TARGET_TYPE_INTERFACE_CLONE_MAC.
+
+Pour plus de détails sur le clonage MAC :
+
+link:../rhel/configuring-host-network.html#considerations-and-recommendations-for-mac-address-cloning["Considérations et recommandations relatives au clonage d'adresses MAC (Red Hat Enterprise Linux ou CentOS)"]
+
+link:../ubuntu/configuring-host-network.html#considerations-and-recommendations-for-mac-address-cloning["Considérations et recommandations relatives au clonage d'adresses MAC (Ubuntu ou Debian)"]
+
+
+
+ a| 
+RÔLE_ADMINISTRATEUR
+ a| 
+*R*
+ a| 
+Primaire ou non primaire
+
+Cette clé n'est requise que lorsque NODE_TYPE = VM_Admin_Node ; ne la spécifiez pas pour d'autres types de nœuds.
+
+
+
+ a| 
+JOURNAUX_AUDIT_BLOC_PÉRIPHÉRIQUE
+ a| 
+*R*
+ a| 
+Chemin et nom du fichier spécial de périphérique de bloc ce nœud utilisera pour le stockage persistant des journaux d'audit. Cette clé n'est requise que pour les nœuds avec TYPE_NOEUD = VM_Admin_noeud ; ne la spécifiez pas pour d'autres types de noeuds.
+
+Exemples :
+
+`/dev/disk/by-path/pci-0000:03:00.0-scsi-0:0:0:0`
+
+`/dev/disk/by-id/wwn-0x600a09800059d6df000060d757b475fd`
+
+`/dev/mapper/sgws-adm1-audit-logs`
+
+
+
+ a| 
+BLOCK_DEVICE_RANGEDB_000
+
+BLOCK_DEVICE_RANGEDB_001
+
+BLOCK_DEVICE_RANGEDB_002
+
+BLOCK_DEVICE_RANGEDB_003
+
+BLOCK_DEVICE_RANGEDB_004
+
+BLOCK_DEVICE_RANGEDB_005
+
+BLOCK_DEVICE_RANGEDB_006
+
+BLOCK_DEVICE_RANGEDB_007
+
+BLOCK_DEVICE_RANGEDB_008
+
+BLOCK_DEVICE_RANGEDB_009
+
+BLOCK_DEVICE_RANGEDB_010
+
+BLOCK_DEVICE_RANGEDB_011
+
+BLOCK_DEVICE_RANGEDB_012
+
+BLOCK_DEVICE_RANGEDB_013
+
+BLOCK_DEVICE_RANGEDB_014
+
+BLOCK_DEVICE_RANGEDB_015
+ a| 
+*R*
+ a| 
+Chemin et nom du fichier spécial de périphérique de bloc ce nœud utilisera pour le stockage objet permanent. Cette clé n'est requise que pour les nœuds avec TYPE_NOEUD = VM_Storage_noeud ; ne la spécifiez pas pour d'autres types de noeuds.
+
+Seul LE BLOC_DEVICE_RANGEDB_000 est requis ; le reste est facultatif. Le dispositif de bloc spécifié pour BLOCK_DEVICE_RANGEDB_000 doit être d'au moins 4 To ; les autres peuvent être plus petits.
+
+Ne laissez pas d'espace. Si vous spécifiez BLOCK_DEVICE_RANGEDB_005, vous devez également spécifier BLOCK_DEVICE_RANGEDB_004.
+
+*Remarque* : pour la compatibilité avec les déploiements existants, les clés à deux chiffres sont prises en charge pour les nœuds mis à niveau.
+
+Exemples :
+
+`/dev/disk/by-path/pci-0000:03:00.0-scsi-0:0:0:0`
+
+`/dev/disk/by-id/wwn-0x600a09800059d6df000060d757b475fd`
+
+`/dev/mapper/sgws-sn1-rangedb-000`
+
+
+
+ a| 
+BLOQUER_LES_TABLES_PÉRIPHÉRIQUES
+ a| 
+*R*
+ a| 
+Chemin et nom du fichier spécial de l'unité de bloc ce noeud sera utilisé pour le stockage persistant des tables de base de données. Cette clé n'est requise que pour les nœuds avec TYPE_NOEUD = VM_Admin_noeud ; ne la spécifiez pas pour d'autres types de noeuds.
+
+Exemples :
+
+`/dev/disk/by-path/pci-0000:03:00.0-scsi-0:0:0:0`
+
+`/dev/disk/by-id/wwn-0x600a09800059d6df000060d757b475fd`
+
+`/dev/mapper/sgws-adm1-tables`
+
+
+
+ a| 
+BLOCK_DEVICE_VAR_LOCAL
+ a| 
+*R*
+ a| 
+Chemin et nom du fichier spécial de périphérique de bloc ce nœud utilisera pour son stockage persistant /var/local.
+
+Exemples :
+
+`/dev/disk/by-path/pci-0000:03:00.0-scsi-0:0:0:0`
+
+`/dev/disk/by-id/wwn-0x600a09800059d6df000060d757b475fd`
+
+`/dev/mapper/sgws-sn1-var-local`
+
+
+
+ a| 
+CONFIG_RÉSEAU_CLIENT
+ a| 
+O
+ a| 
+DHCP, STATIQUE OU DÉSACTIVÉ
+
+
+
+ a| 
+PASSERELLE_RÉSEAU_CLIENT
+ a| 
+O
+ a| 
+Adresse IPv4 de la passerelle réseau client locale pour ce nœud, qui doit se trouver sur le sous-réseau défini par CLIENT_NETWORK_IP et CLIENT_NETWORK_MASK. Cette valeur est ignorée pour les réseaux configurés par DHCP.
+
+Exemples :
+
+`1.1.1.1`
+
+`10.224.4.81`
+
+
+
+ a| 
+IP_RÉSEAU_CLIENT
+ a| 
+O
+ a| 
+Adresse IPv4 de ce nœud sur le réseau client. Cette clé n'est requise que lorsque CLIENT_NETWORK_CONFIG = STATIQUE ; ne la spécifiez pas pour d'autres valeurs.
+
+Exemples :
+
+`1.1.1.1`
+
+`10.224.4.81`
+
+
+
+ a| 
+CLIENT_RÉSEAU_MAC
+ a| 
+O
+ a| 
+Adresse MAC de l'interface réseau client dans le conteneur.
+
+Ce champ est facultatif. Si elle est omise, une adresse MAC est générée automatiquement.
+
+Doit être composé de 6 paires de chiffres hexadécimaux séparés par deux-points.
+
+Exemple : `b2:9c:02:c2:27:20`
+
+
+
+ a| 
+MASQUE_RÉSEAU_CLIENT
+ a| 
+O
+ a| 
+Masque de réseau IPv4 pour ce nœud sur le réseau client. Cette clé n'est requise que lorsque CLIENT_NETWORK_CONFIG = STATIQUE ; ne la spécifiez pas pour d'autres valeurs.
+
+Exemples :
+
+`255.255.255.0`
+
+`255.255.248.0`
+
+
+
+ a| 
+MTU_CLIENT_RÉSEAU
+ a| 
+O
+ a| 
+Unité de transmission maximale (MTU) pour ce nœud sur le réseau client. Ne spécifiez pas si CLIENT_NETWORK_CONFIG = DHCP. Si elle est spécifiée, la valeur doit être comprise entre 1280 et 9216. Si omis, 1500 est utilisé.
+
+Si vous souhaitez utiliser des trames jumbo, définissez la valeur MTU sur une valeur adaptée aux trames jumbo, comme 9000. Sinon, conservez la valeur par défaut.
+
+*IMPORTANT* : la valeur MTU du réseau doit correspondre à la valeur configurée sur le port du commutateur auquel le nœud est connecté. Dans le cas contraire, des problèmes de performances réseau ou une perte de paquets peuvent se produire.
+
+Exemples :
+
+`1500`
+
+`8192`
+
+
+
+ a| 
+CIBLE_RÉSEAU_CLIENT
+ a| 
+PA
+ a| 
+Nom du périphérique hôte que vous utiliserez pour accéder au réseau client par le nœud StorageGRID. Seuls les noms d'interface réseau sont pris en charge. En général, vous utilisez un nom d'interface différent de celui spécifié pour GRID_NETWORK_TARGET ou ADMIN_NETWORK_TARGET.
+
+*Remarque* : n'utilisez pas de périphérique de liaison ou de pont comme cible réseau. Configurez un VLAN (ou une autre interface virtuelle) sur le périphérique de liaison, ou utilisez un pont et une paire Ethernet virtuelle (veth).
+
+*Meilleure pratique :* Indiquez une valeur même si ce nœud ne possède pas d'adresse IP de réseau client au départ. Vous pouvez ensuite ajouter une adresse IP du réseau client ultérieurement, sans avoir à reconfigurer le nœud sur l'hôte.
+
+Exemples :
+
+`bond0.1003`
+
+`ens423`
+
+
+
+ a| 
+TYPE_CIBLE_RÉSEAU_CLIENT
+ a| 
+O
+ a| 
+Interface
+
+(Cette valeur est prise en charge uniquement.)
+
+
+
+ a| 
+CLIENT_RÉSEAU_CIBLE_TYPE_INTERFACE_CLONE_MAC
+ a| 
+PA
+ a| 
+Vrai ou faux
+
+Définissez la clé sur « true » pour que le conteneur StorageGRID utilise l'adresse MAC de l'interface cible hôte sur le réseau client.
+
+*Meilleure pratique:* dans les réseaux où le mode promiscuous serait nécessaire, utilisez plutôt la clé CLIENT_NETWORK_TARGET_TYPE_INTERFACE_CLONE_MAC.
+
+Pour plus de détails sur le clonage MAC :
+
+link:../rhel/configuring-host-network.html#considerations-and-recommendations-for-mac-address-cloning["Considérations et recommandations relatives au clonage d'adresses MAC (Red Hat Enterprise Linux ou CentOS)"]
+
+link:../ubuntu/configuring-host-network.html#considerations-and-recommendations-for-mac-address-cloning["Considérations et recommandations relatives au clonage d'adresses MAC (Ubuntu ou Debian)"]
+
+
+
+ a| 
+CONFIG_RÉSEAU_GRID
+ a| 
+PA
+ a| 
+STATIQUE ou DHCP
+
+(Statique par défaut si non spécifié.)
+
+
+
+ a| 
+PASSERELLE_RÉSEAU_GRILLE
+ a| 
+*R*
+ a| 
+Adresse IPv4 de la passerelle réseau Grid locale pour ce nœud, qui doit se trouver sur le sous-réseau défini par GRID_NETWORK_IP et GRID_NETWORK_MASK. Cette valeur est ignorée pour les réseaux configurés par DHCP.
+
+Si le réseau Grid est un sous-réseau unique sans passerelle, utilisez soit l'adresse de passerelle standard pour le sous-réseau (X. Y.1), soit la valeur DE GRID_NETWORK_IP de ce nœud. Ces valeurs simplifient les extensions potentielles du réseau Grid.
+
+
+
+ a| 
+IP_RÉSEAU_GRID
+ a| 
+*R*
+ a| 
+Adresse IPv4 de ce nœud sur le réseau Grid. Cette clé n'est requise que lorsque GRID_NETWORK_CONFIG = STATIQUE ; ne la spécifiez pas pour d'autres valeurs.
+
+Exemples :
+
+`1.1.1.1`
+
+`10.224.4.81`
+
+
+
+ a| 
+GRID_RÉSEAU_MAC
+ a| 
+O
+ a| 
+Adresse MAC de l'interface réseau de la grille dans le conteneur.
+
+Ce champ est facultatif. Si elle est omise, une adresse MAC est générée automatiquement.
+
+Doit être composé de 6 paires de chiffres hexadécimaux séparés par deux-points.
+
+Exemple : `b2:9c:02:c2:27:30`
+
+
+
+ a| 
+GRID_NETWORK_MASK
+ a| 
+O
+ a| 
+Masque de réseau IPv4 pour ce nœud sur le réseau Grid. Cette clé n'est requise que lorsque GRID_NETWORK_CONFIG = STATIQUE ; ne la spécifiez pas pour d'autres valeurs.
+
+Exemples :
+
+`255.255.255.0`
+
+`255.255.248.0`
+
+
+
+ a| 
+GRID_NETWORK_MTU
+ a| 
+O
+ a| 
+Unité de transmission maximale (MTU) pour ce nœud sur le réseau Grid. Ne spécifiez pas si GRID_NETWORK_CONFIG = DHCP. Si elle est spécifiée, la valeur doit être comprise entre 1280 et 9216. Si omis, 1500 est utilisé.
+
+Si vous souhaitez utiliser des trames jumbo, définissez la valeur MTU sur une valeur adaptée aux trames jumbo, comme 9000. Sinon, conservez la valeur par défaut.
+
+*IMPORTANT* : la valeur MTU du réseau doit correspondre à la valeur configurée sur le port du commutateur auquel le nœud est connecté. Dans le cas contraire, des problèmes de performances réseau ou une perte de paquets peuvent se produire.
+
+*IMPORTANT* : pour des performances réseau optimales, tous les nœuds doivent être configurés avec des valeurs MTU similaires sur leurs interfaces réseau Grid. L'alerte *Grid Network MTU mismatch* est déclenchée en cas de différence importante dans les paramètres MTU pour le réseau Grid sur les nœuds individuels. Les valeurs MTU ne doivent pas nécessairement être identiques pour tous les types de réseau.
+
+Exemples :
+
+1500 8192
+
+
+
+ a| 
+CIBLE_RÉSEAU_GRILLE
+ a| 
+*R*
+ a| 
+Nom de l'unité hôte que vous utiliserez pour accéder au réseau Grid par le nœud StorageGRID. Seuls les noms d'interface réseau sont pris en charge. En général, vous utilisez un nom d'interface différent de celui spécifié pour ADMIN_NETWORK_TARGET ou CLIENT_NETWORK_TARGET.
+
+*Remarque* : n'utilisez pas de périphérique de liaison ou de pont comme cible réseau. Configurez un VLAN (ou une autre interface virtuelle) sur le périphérique de liaison, ou utilisez un pont et une paire Ethernet virtuelle (veth).
+
+Exemples :
+
+`bond0.1001`
+
+`ens192`
+
+
+
+ a| 
+TYPE_CIBLE_RÉSEAU_GRILLE
+ a| 
+O
+ a| 
+Interface
+
+(Il s'agit de la seule valeur prise en charge.)
+
+
+
+ a| 
+GRID_NETWORK_TARGET_TYPE_INTERFACE_CLONE_MAC
+ a| 
+*BP*
+ a| 
+Vrai ou faux
+
+Définissez la valeur de la clé sur « true » pour que le conteneur StorageGRID utilise l'adresse MAC de l'interface cible de l'hôte sur le réseau de la grille.
+
+*Meilleure pratique:* dans les réseaux où le mode promiscuous serait nécessaire, utilisez la clé GRID_NETWORK_TARGET_TYPE_INTERFACE_CLONE_MAC.
+
+Pour plus de détails sur le clonage MAC :
+
+link:../rhel/configuring-host-network.html#considerations-and-recommendations-for-mac-address-cloning["Considérations et recommandations relatives au clonage d'adresses MAC (Red Hat Enterprise Linux ou CentOS)"]
+
+link:../ubuntu/configuring-host-network.html#considerations-and-recommendations-for-mac-address-cloning["Considérations et recommandations relatives au clonage d'adresses MAC (Ubuntu ou Debian)"]
+
+
+
+ a| 
+INTERFACES_TARGET_nnnn
+ a| 
+O
+ a| 
+Nom et description facultative d'une interface supplémentaire que vous souhaitez ajouter à ce nœud. Vous pouvez ajouter plusieurs interfaces supplémentaires à chaque nœud.
+
+Pour _nnnn_, spécifiez un numéro unique pour chaque entrée INTERFACES_TARGET que vous ajoutez.
+
+Pour la valeur, spécifiez le nom de l'interface physique sur l'hôte bare-Metal. Ensuite, si vous le souhaitez, ajoutez une virgule et fournissez une description de l'interface, qui s'affiche sur la page des interfaces VLAN et sur la page des groupes haute disponibilité.
+
+Par exemple : `INTERFACES_TARGET_01=ens256, Trunk`
+
+Si vous ajoutez une interface de jonction, vous devez configurer une interface VLAN dans StorageGRID. Si vous ajoutez une interface d'accès, vous pouvez l'ajouter directement à un groupe haute disponibilité ; il n'est pas nécessaire de configurer une interface VLAN.
+
+
+
+ a| 
+RAM_MAXIMALE
+ a| 
+O
+ a| 
+Quantité maximale de RAM que ce nœud est autorisé à consommer. Si cette clé est omise, le nœud n'a aucune restriction de mémoire. Lorsque vous définissez ce champ pour un nœud de niveau production, indiquez une valeur inférieure d'au moins 24 Go et de 16 à 32 Go à la mémoire RAM totale du système.
+
+*Remarque* : la valeur de la RAM affecte l'espace réservé des métadonnées réelles d'un nœud. Voir la link:../admin/managing-object-metadata-storage.html["Description de l'espace réservé aux métadonnées"].
+
+Le format de ce champ est `<number><unit>`, où `<unit>` peut être `b`, `k`, `m`, ou `g`.
+
+Exemples :
+
+`24g`
+
+`38654705664b`
+
+*Remarque* : si vous souhaitez utiliser cette option, vous devez activer la prise en charge du noyau pour les groupes de mémoire.
+
+
+
+ a| 
+TYPE_NŒUD
+ a| 
+*R*
+ a| 
+Type de nœud :
+
+VM_Admin_Node VM_Storage_Node VM_Archive_Node VM_API_Gateway
+
+
+
+ a| 
+SCHÉMA DE PORT
+ a| 
+O
+ a| 
+Permet de remapper tout port utilisé par un nœud pour les communications internes de nœud de grille ou les communications externes. Le remappage des ports est nécessaire si les stratégies de mise en réseau d'entreprise limitent un ou plusieurs ports utilisés par StorageGRID, comme décrit dans link:../network/internal-grid-node-communications.html["Communications internes sur les nœuds de la grille"] ou link:../network/external-communications.html["Communications externes"].
+
+*IMPORTANT* : ne mappez pas les ports que vous prévoyez d'utiliser pour configurer les noeuds finaux de l'équilibreur de charge.
+
+*Remarque* : si seul PORT_REMAPPAGE est défini, le mappage que vous spécifiez est utilisé pour les communications entrantes et sortantes. Si PORT_REMAPPAGE_INBOUND est également spécifié, PORT_REMAPPAGE s'applique uniquement aux communications sortantes.
+
+Le format utilisé est : `<network type>/<protocol>/<default port used by grid node>/<new port>`, où `<network type>` est un grid, un administrateur ou un client. le protocole est tcp ou udp.
+
+Par exemple :
+
+`PORT_REMAP = client/tcp/18082/443`
+
+
+
+ a| 
+PORT_REMAPPAGE_ENTRANT
+ a| 
+O
+ a| 
+Mappe de nouveau les communications entrantes sur le port spécifié. Si vous spécifiez PORT_REMAP_INBOUND mais que vous ne spécifiez pas de valeur pour PORT_REMAP, les communications sortantes pour le port sont inchangées.
+
+*IMPORTANT* : ne mappez pas les ports que vous prévoyez d'utiliser pour configurer les noeuds finaux de l'équilibreur de charge.
+
+Le format utilisé est : `<network type>/<protocol:>/<remapped port >/<default port used by grid node>`, où `<network type>` est un grid, un administrateur ou un client. le protocole est tcp ou udp.
+
+Par exemple :
+
+`PORT_REMAP_INBOUND = grid/tcp/3022/22`
+
+|===

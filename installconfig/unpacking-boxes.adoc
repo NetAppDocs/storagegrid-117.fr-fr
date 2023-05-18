@@ -1,0 +1,398 @@
+---
+permalink: installconfig/unpacking-boxes.html 
+sidebar: sidebar 
+keywords: unpack, unbox, prepare, inventory, components, contents 
+summary: 'Avant d"installer l"appareil StorageGRID, déballez toutes les boîtes et comparez le contenu aux éléments du bordereau d"expédition.' 
+---
+= Déballez les boîtes
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Avant d'installer votre appareil StorageGRID, déballez toutes les boîtes et comparez le contenu aux éléments figurant sur le bordereau d'expédition.
+
+
+
+== Appliances SGF6112
+
+
+
+=== Sous-jacent
+
+[cols="1a,4a"]
+|===
+| Élément | À quoi ressemble-t-il 
+
+
+ a| 
+SGF6112
+ a| 
+image::../media/sg6000_cn_front_without_bezel.gif[Disques frontaux, appliance SGF6112]
+
+
+
+ a| 
+Kit de rails avec instructions
+ a| 
+image::../media/rail_kit.gif[Kit de rails]
+
+
+
+ a| 
+Panneau avant
+ a| 
+image::../media/sgf_6112_front_bezel.png[Panneau avant]
+
+|===
+
+
+=== Cordons d'alimentation
+
+La livraison d'une appliance SGF6112 inclut les cordons d'alimentation suivants.
+
+
+TIP: Il se peut que votre armoire soit équipée de cordons d'alimentation spéciaux à la place des câbles d'alimentation fournis avec l'appliance.
+
+[cols="1a,4a"]
+|===
+| Élément | À quoi ressemble-t-il 
+
+
+ a| 
+Deux cordons d'alimentation pour votre pays
+ a| 
+image::../media/power_cords.gif[Cordons d'alimentation]
+
+|===
+
+
+== Appliances SG6000
+
+
+
+=== Matériel SG6060
+
+[cols="1a,4a"]
+|===
+| Élément | À quoi ressemble-t-il 
+
+
+ a| 
+Contrôleur SG6000-CN
+ a| 
+image::../media/sg6000_cn_front_without_bezel.gif[Contrôleur SG6000-CN]
+
+
+
+ a| 
+Tiroir contrôleur E2860 sans disque installé
+ a| 
+image::../media/de460c_table_size.gif[Appliance SG5760 4U]
+
+
+
+ a| 
+Deux encadrements avant
+ a| 
+image::../media/sg6000_front_bezels_for_table.gif[Encadrements avant]
+
+
+
+ a| 
+Deux kits de rails avec instructions
+ a| 
+image::../media/rail_kit.gif[Kit de rails]
+
+
+
+ a| 
+60 disques (2 SSD et 58 NL-SAS)
+ a| 
+image::../media/sg5760_drive.gif[Lecteur]
+
+
+
+ a| 
+Quatre poignées
+ a| 
+image::../media/handles.gif[Poignées SG5760]
+
+
+
+ a| 
+Supports arrière et écrous à cage pour l'installation en rack à trous carrés
+ a| 
+image::../media/back_brackets_table_size.gif[Supports arrière et écrous de cage pour SG5760]
+
+|===
+
+
+=== Tiroir d'extension SG6060
+
+[cols="1a,4a"]
+|===
+| Élément | À quoi ressemble-t-il 
+
+
+ a| 
+Tiroir d'extension sans disque installé
+ a| 
+image::../media/de460c_table_size.gif[Appliance SG5760 4U]
+
+
+
+ a| 
+Panneau avant
+ a| 
+image::../media/front_bezel_for_table_de460c.gif[Panneau avant DE460C]
+
+
+
+ a| 
+60 disques NL-SAS
+ a| 
+image::../media/sg5760_drive.gif[Lecteur]
+
+
+
+ a| 
+Un kit de rails avec instructions
+ a| 
+image::../media/rail_kit.gif[Kit de rails]
+
+
+
+ a| 
+Quatre poignées
+ a| 
+image::../media/handles.gif[Poignées SG5760]
+
+
+
+ a| 
+Supports arrière et écrous à cage pour l'installation en rack à trous carrés
+ a| 
+image::../media/back_brackets_table_size.gif[Supports arrière et écrous de cage pour SG5760]
+
+|===
+
+
+=== Matériel SGF6024
+
+[cols="1a,4a"]
+|===
+| Élément | À quoi ressemble-t-il 
+
+
+ a| 
+Contrôleur SG6000-CN
+ a| 
+image::../media/sg6000_cn_front_without_bezel.gif[Contrôleur SG6000-CN]
+
+
+
+ a| 
+Baie Flash EF570 installée avec 24 disques SSD (Flash
+ a| 
+image::../media/de224c_with_drives.gif[Tiroir contrôleur EF570]
+
+
+
+ a| 
+Deux encadrements avant
+ a| 
+image::../media/sgf6024_front_bezels_for_table.png[Encadrements avant SG6024]
+
+
+
+ a| 
+Deux kits de rails avec instructions
+ a| 
+image::../media/rail_kit.gif[Kit de rails]
+
+
+
+ a| 
+Têtes de gondole des tablettes
+ a| 
+image::../media/endcaps.png[Têtes de gondole]
+
+|===
+
+
+=== Câbles et connecteurs
+
+La livraison d'un système SG6000 inclut les câbles et connecteurs suivants.
+
+
+TIP: Il se peut que votre armoire soit équipée de cordons d'alimentation spéciaux à la place des câbles d'alimentation fournis avec l'appliance.
+
+[cols="1a,4a"]
+|===
+| Élément | À quoi ressemble-t-il 
+
+
+ a| 
+Quatre cordons d'alimentation pour votre pays
+ a| 
+image::../media/power_cords.gif[Cordons d'alimentation]
+
+
+
+ a| 
+Câbles optiques et émetteurs-récepteurs SFP
+ a| 
+image::../media/fc_cable_and_sfp.gif[Câbles optiques et SFP]
+
+* Quatre câbles optiques pour les ports d'interconnexion FC
+* Quatre émetteurs-récepteurs SFP+ prenant en charge le protocole FC 16 Gbit/s.
+
+
+
+
+ a| 
+En option : deux câbles SAS pour connecter chaque tiroir d'extension SG6060
+ a| 
+image::../media/sas_cable.gif[Câbles SAS]
+
+|===
+
+
+== Appliances SG5700
+
+
+
+=== Sous-jacent
+
+[cols="1a,4a"]
+|===
+| Élément | À quoi ressemble-t-il 
+
+
+ a| 
+Appliance SG5712 avec 12 disques installés
+ a| 
+image::../media/de212c_table_size.gif[Appliance SG5712 2U]
+
+
+
+ a| 
+Appliance SG5760 sans disque installé
+ a| 
+image::../media/de460c_table_size.gif[Appliance SG5760 4U]
+
+
+
+ a| 
+Panneau avant de l'appareil
+ a| 
+image::../media/sg5700_front_bezels.gif[Encadrements de SG5712 et SG5760]
+
+
+
+ a| 
+Kit de rails avec instructions
+ a| 
+image::../media/rail_kit.gif[Kit de rails]
+
+
+
+ a| 
+SG5760 : 60 disques
+ a| 
+image::../media/sg5760_drive.gif[Lecteur]
+
+
+
+ a| 
+SG5760 : poignées
+ a| 
+image::../media/handles.gif[Poignées SG5760]
+
+
+
+ a| 
+SG5760 : supports arrière et écrous cage pour une installation en rack à trous carrés
+ a| 
+image::../media/back_brackets_table_size.gif[Supports arrière et écrous de cage pour SG5760]
+
+|===
+
+
+=== Câbles et connecteurs
+
+La livraison d'une appliance SG5700 inclut les câbles et connecteurs suivants.
+
+
+TIP: Il se peut que votre armoire soit équipée de cordons d'alimentation spéciaux à la place des câbles d'alimentation fournis avec l'appliance.
+
+[cols="1a,4a"]
+|===
+| Élément | À quoi ressemble-t-il 
+
+
+ a| 
+Deux cordons d'alimentation pour votre pays
+ a| 
+image::../media/power_cords.gif[Cordons d'alimentation]
+
+
+
+ a| 
+Câbles optiques et émetteurs-récepteurs SFP
+ a| 
+image::../media/fc_cable_and_sfp.gif[Câbles optiques et SFP]
+
+* Deux câbles optiques pour les ports d'interconnexion FC
+* Huit émetteurs-récepteurs SFP+, compatibles avec les quatre ports d'interconnexion FC 16 Gbit/s et les quatre ports réseau 10 GbE
+
+
+|===
+
+
+== Appliances SG100 et SG1000
+
+
+
+=== Sous-jacent
+
+[cols="1a,4a"]
+|===
+| Élément | À quoi ressemble-t-il 
+
+
+ a| 
+SG100 ou SG1000
+ a| 
+image::../media/sg6000_cn_front_without_bezel.gif[Disques frontaux SG 100 ou appareil de services SG1000]
+
+
+
+ a| 
+Kit de rails avec instructions
+ a| 
+image::../media/rail_kit.gif[Kit de rails]
+
+|===
+
+
+=== Cordons d'alimentation
+
+La livraison d'une appliance SG100 ou SG1000 inclut les cordons d'alimentation suivants.
+
+
+TIP: Il se peut que votre armoire soit équipée de cordons d'alimentation spéciaux à la place des câbles d'alimentation fournis avec l'appliance.
+
+[cols="1a,4a"]
+|===
+| Élément | À quoi ressemble-t-il 
+
+
+ a| 
+Deux cordons d'alimentation pour votre pays
+ a| 
+image::../media/power_cords.gif[Cordons d'alimentation]
+
+|===

@@ -1,0 +1,87 @@
+---
+permalink: admin/kms-viewing-details.html 
+sidebar: sidebar 
+keywords: view kms, view key management server 
+summary: 'Vous pouvez afficher des informations sur chaque serveur de gestion des clés \(KMS\) dans votre système StorageGRID, notamment l"état actuel du serveur et des certificats client.' 
+---
+= Afficher les détails du KMS
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Vous pouvez afficher des informations sur chaque serveur de gestion des clés (KMS) de votre système StorageGRID, notamment l'état actuel des certificats serveur et client.
+
+.Étapes
+. Sélectionnez *CONFIGURATION* > *sécurité* > *serveur de gestion des clés*.
++
+La page serveur de gestion des clés s'affiche. L'onglet Détails de la configuration affiche tous les serveurs de gestion des clés configurés.
+
+. Examinez les informations du tableau pour chaque KMS.
++
+[cols="1a,2a"]
+|===
+| Champ | Description 
+
+
+ a| 
+Nom KM
+ a| 
+Nom descriptif du KMS.
+
+
+
+ a| 
+Nom de la clé
+ a| 
+Alias de clé pour le client StorageGRID dans le KMS.
+
+
+
+ a| 
+Gère les clés pour
+ a| 
+Site StorageGRID associé au KMS
+
+Ce champ affiche le nom d'un site StorageGRID spécifique ou *sites non gérés par un autre KMS (KMS par défaut).*
+
+
+
+ a| 
+Nom d'hôte
+ a| 
+Le nom de domaine complet ou l'adresse IP du KMS.
+
+S'il existe un cluster de deux serveurs de gestion des clés, le nom de domaine complet ou l'adresse IP des deux serveurs sont répertoriés. S'il y a plus de deux serveurs de gestion des clés dans un cluster, le nom de domaine complet ou l'adresse IP du premier KMS est répertorié avec le nombre de serveurs de gestion des clés supplémentaires dans le cluster.
+
+Par exemple : `10.10.10.10 and 10.10.10.11` ou `10.10.10.10 and 2 others`.
+
+Pour afficher tous les noms d'hôtes d'un cluster, ouvrez un KMS et sélectionnez *Modifier* ou *actions* > *Modifier*.
+
+
+
+ a| 
+Expiration du certificat
+ a| 
+État actuel du certificat de serveur, du certificat d'autorité de certification facultatif et du certificat client : valide, expiré, proche de l'expiration ou inconnu.
+
+*Note:* il peut prendre StorageGRID jusqu'à 30 minutes pour obtenir les mises à jour de l'expiration du certificat. Vous devez actualiser votre navigateur Web pour voir les valeurs actuelles.
+
+|===
+. Si l'expiration du certificat est inconnue, attendez jusqu'à 30 minutes, puis actualisez votre navigateur Web.
++
+
+NOTE: Immédiatement après l'ajout d'un KMS, l'expiration du certificat sur la page Key Management Server apparaît comme Inconnu. Le statut réel de chaque certificat peut prendre jusqu'à 30 minutes pour StorageGRID. Vous devez actualiser votre navigateur Web pour voir l'état réel.
+
+. Si la colonne expiration du certificat indique qu'un certificat a expiré ou qu'il est sur le point d'expirer, répondez au problème dès que possible.
++
+Lorsque les alertes *KMS CA Certificate expiration*, *KMS client Certificate expiration* et *KMS Server Certificate expiration* sont déclenchées, notez la description de chaque alerte et effectuez les actions recommandées.
+
++
+
+CAUTION: Vous devez corriger tout problème de certificat dès que possible pour maintenir l'accès aux données.
+
+. Pour afficher les détails du certificat pour ce KMS, sélectionnez le nom KMS dans le tableau.
+. Sur la page de résumé KMS, examinez les métadonnées et le certificat PEM pour le certificat du serveur et le certificat du client. Si nécessaire, sélectionnez *Modifier le certificat* pour remplacer un certificat par un nouveau.
+

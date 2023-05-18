@@ -1,0 +1,245 @@
+---
+permalink: upgrade/whats-new.html 
+sidebar: sidebar 
+keywords: what is new in StorageGRID 11.7 
+summary: Cette version de StorageGRID présente les fonctions suivantes. 
+---
+= Nouveautés d'StorageGRID 11.7
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Cette version de StorageGRID présente les fonctionnalités et modifications fonctionnelles suivantes.
+
+
+
+== Nouvelles fonctionnalités
+
+
+
+=== fédération des grilles
+
+Vous pouvez configurer une connexion de fédération de grille entre deux systèmes StorageGRID pour cloner les informations de compte de locataire et répliquer des objets de compartiment entre les grilles à des fins de reprise après incident. Voir link:../admin/grid-federation-overview.html["Qu'est-ce que la fédération de grille ?"], link:../admin/grid-federation-what-is-account-clone.html["Qu'est-ce que le clone de compte"], et link:../admin/grid-federation-what-is-cross-grid-replication.html["Qu'est-ce que la réplication cross-grid"].
+
+
+
+=== Meilleure disponibilité en lecture
+
+Le contrôle de cohérence read-after-New-write (par défaut) a été amélioré pour être plus disponible. Les requêtes GET/HEAD pour des objets inexistants réussiront avec jusqu'à un nœud de stockage hors ligne sur chaque site. Il n'est plus nécessaire de définir les compartiments sur le contrôle de cohérence disponible pour ce scénario. Par exemple, les applications qui vérifient l'existence d'un objet avant sa création fonctionneront correctement en lecture après une nouvelle écriture, même pendant la mise à niveau logicielle lorsqu'un nœud de stockage est hors ligne.
+
+
+
+=== Renommez la grille, les sites et les nœuds
+
+Une nouvelle procédure de maintenance vous permet de modifier les noms d'affichage affichés dans le Gestionnaire de grille. Vous pouvez mettre à jour les noms d'affichage en toute sécurité et à tout moment. Voir link:../maintain/rename-grid-site-node-overview.html["Renommez la grille, les sites et les nœuds"].
+
+
+
+=== Assistant d'installation de FabricPool et S3
+
+L'assistant d'installation de FabricPool et S3 vous guide à chaque étape de configuration d'StorageGRID pour une utilisation avec ONTAP FabricPool ou une autre application client S3 et génère un fichier que vous pouvez utiliser lorsque vous entrez les valeurs requises dans une autre application. Voir link:../fabricpool/use-fabricpool-setup-wizard.html["Utilisez l'assistant d'installation FabricPool"] et link:../admin/use-s3-setup-wizard.html["Utilisation de l'assistant d'installation S3"].
+
+En relation avec cette modification, une bannière s'affiche désormais sur le tableau de bord pour rappeler aux nouveaux utilisateurs de configurer link:../admin/configuring-s3-api-endpoint-domain-names.html["Noms de domaine de terminaux S3"] Pour les demandes de type hébergement virtuel S3 et la configuration link:../monitor/email-alert-notifications.html["notifications par e-mail pour les alertes"].
+
+
+
+=== Contrôles de pare-feu
+
+La page de contrôle du pare-feu vous permet de gérer l'accès externe aux ports sur les nœuds de votre grille et de définir les adresses hôtes et les sous-réseaux IP autorisés à accéder aux ports fermés. La nouvelle page inclut également les paramètres réseau client non approuvé, qui vous permettent désormais de sélectionner des ports supplémentaires que vous souhaitez ouvrir lorsque le réseau client non approuvé est configuré. Voir link:../admin/configure-firewall-controls.html["Configurer le pare-feu interne"].
+
+
+
+=== Stratégies de sécurité améliorées
+
+Vous pouvez désormais déterminer quels protocoles et chiffrements sont utilisés pour établir des connexions TLS sécurisées avec les applications client et des connexions SSH sécurisées avec les services StorageGRID internes. Voir link:../admin/manage-tls-ssh-policy.html["Gestion des règles TLS et SSH"].
+
+
+
+=== Modifications du noeud final de l'équilibreur de charge
+
+Quand link:../admin/configuring-load-balancer-endpoints.html["configuration des terminaux d'équilibrage de charge"], vous pouvez maintenant :
+
+* Autorisez tous les locataires à accéder au point final (par défaut) ou spécifiez une liste de locataires autorisés ou bloqués afin d'améliorer l'isolation de sécurité entre les locataires et leurs points finaux.
+* Utilisez le mode de liaison *Node Type* pour demander aux clients d'utiliser l'adresse IP (ou le nom de domaine complet correspondant) d'un nœud Admin ou l'adresse IP d'un nœud Gateway, en fonction du type de nœud que vous sélectionnez.
+
+
+
+
+== Appliance 100 % Flash SGF6112
+
+La nouvelle appliance de stockage StorageGRID SGF6112 présente une conception compacte avec contrôleur de calcul et contrôleur de stockage intégré dans un châssis 1U. L'appliance prend en charge 12 disques NVMe SSD avec une capacité de stockage allant jusqu'à 15.3 To par disque. Les disques SSD font partie d'un système RAID qui fournit un stockage objet résilient. Voir link:../installconfig/hardware-description-sg6100.html["Appliance SGF6112 : présentation"].
+
+
+
+== Autres améliorations de Grid Manager
+
+
+
+=== Améliorations des règles ILM
+
+L'assistant ILM amélioré facilite la définition des filtres, la saisie des périodes et des placements, ainsi que l'affichage des diagrammes de conservation. Les profils de code d'effacement sont créés automatiquement lorsque vous sélectionnez un pool de stockage et un schéma EC pour un placement. Pour les nouvelles installations StorageGRID 11.7 (et non les mises à niveau), un pool de stockage est automatiquement créé pour chaque site et la nouvelle règle par défaut *1 copie par site* garantit que les nouvelles installations multi-sites auront une protection contre les pertes de site par défaut. Voir link:../ilm/index.html["Gestion des objets avec ILM"].
+
+
+
+=== Tableau de bord personnalisable
+
+Vous pouvez désormais configurer des tableaux de bord personnalisés pour Grid Manager. Voir link:../monitor/viewing-dashboard.html["Affichez et gérez le tableau de bord"].
+
+
+
+=== Interface de restauration de volume
+
+La restauration du volume de stockage vous permet de restaurer les données d'objet en cas de défaillance d'un volume de stockage. Pour StorageGRID 11.7, vous pouvez lancer la restauration de volumes à partir du Gestionnaire de grille en plus de la méthode existante de saisie manuelle des commandes. L'utilisation de Grid Manager est désormais la méthode préférée pour restaurer les données d'objet. Voir link:../maintain/restoring-volume.html["Restaurez les données d'objet à l'aide de Grid Manager"].
+
+
+
+=== Interface de mise à niveau et de correctif
+
+Lorsque vous effectuez une mise à niveau vers StorageGRID 11.7, vous pouvez appliquer le dernier correctif 11.7 en même temps. La page de mise à niveau StorageGRID affiche le chemin de mise à niveau recommandé et renvoie directement aux pages de téléchargement correctes. Voir link:performing-upgrade.html["Effectuer la mise à niveau"].
+
+
+
+=== Unités pour les valeurs de stockage
+
+Vous pouvez maintenant sélectionner les unités de base 10 ou 2 pour les valeurs de stockage affichées dans le Gestionnaire de grille et le Gestionnaire de locataires. Sélectionnez la liste déroulante utilisateur dans le coin supérieur droit du Gestionnaire de grille ou du Gestionnaire de locataires, puis sélectionnez *Préférences utilisateur*.
+
+
+
+=== Accédez à MIB depuis Grid Manager
+
+Vous pouvez désormais accéder aux fichiers MIB compatibles SNMP à partir de Grid Manager à l'aide de la page agent SNMP. Voir link:../monitor/access-snmp-mib.html["Accéder aux fichiers MIB"].
+
+
+
+=== Nuances de stockage personnalisées pour les nouveaux nœuds
+
+Lorsque vous effectuez une extension pour ajouter un nouveau site ou de nouveaux nœuds de stockage, vous pouvez désormais attribuer une note de stockage personnalisée à chaque nouveau nœud. Voir link:../expand/performing-expansion.html["Réaliser une extension"].
+
+
+
+== Mises à jour du Gestionnaire des locataires
+
+
+
+=== Réplication entre plusieurs grilles
+
+Comptes de tenant qui ont l'autorisation d'utiliser un <<grid-federation,connexion de fédération de grille>> Elle peut cloner des groupes de locataires, des utilisateurs et des clés S3 d'une grille à une autre et utiliser la réplication inter-grid pour répliquer les objets de compartiment entre deux grilles. Voir link:../tenant/grid-federation-account-clone.html["Cloner des groupes de locataires et des utilisateurs"] et link:../tenant/grid-federation-manage-cross-grid-replication.html["Gérer la réplication entre les grilles"].
+
+
+
+=== Supprimez tous les objets du compartiment
+
+Les utilisateurs de tenant Manager peuvent désormais supprimer tous les objets d'un compartiment. Voir link:../tenant/deleting-s3-bucket-objects.html["Supprime les objets du compartiment"].
+
+
+
+=== Conservation par défaut du verrouillage objet S3
+
+Les utilisateurs de tenant Manager peuvent désormais activer et configurer la conservation par défaut lors de la création de compartiments S3 Object Lock. Voir link:../tenant/creating-s3-bucket.html["Créer un compartiment S3"].
+
+
+
+== Mises à jour S3
+
+
+
+=== Mode de gouvernance S3 Object Lock
+
+Lorsque vous spécifiez les paramètres de verrouillage objet S3 pour un objet ou les paramètres de conservation par défaut d'un compartiment, vous pouvez désormais utiliser le mode de gouvernance. Ce mode de rétention permet aux utilisateurs disposant d'une autorisation spéciale de contourner certains paramètres de rétention. Voir link:../tenant/using-s3-object-lock.html["Utilisez le verrouillage d'objet S3 pour conserver les objets"] et link:../s3/use-s3-api-for-s3-object-lock.html["Utilisez l'API REST S3 pour configurer le verrouillage objet S3"].
+
+
+
+=== Règle de groupe S3 pour la réduction des attaques par ransomware
+
+Lorsqu'elle est ajoutée en tant que règle de groupe pour un compte de locataire S3, l'exemple de règle permet de limiter les attaques par ransomware. Elle empêche la suppression définitive des anciennes versions d'objets. Voir link:../tenant/creating-groups-for-s3-tenant.html["Créez des groupes pour un locataire S3"].
+
+
+
+=== Seuil NewerNoncurrentVersions pour les compartiments S3
+
+Le `NewerNoncurrentVersions` L'action dans la configuration du cycle de vie du compartiment spécifie le nombre de versions non actuelles conservées dans un compartiment S3 versionné. Ce seuil remplace les règles de cycle de vie fournies par ILM. Voir link:../ilm/how-objects-are-deleted.html["Comment supprimer les objets"].
+
+
+
+=== Mises à jour de S3 Select
+
+S3 SelectObjectContent prend désormais en charge les objets parquet. En outre, vous pouvez désormais utiliser S3 Select avec les terminaux d'administration et d'équilibrage de la charge de passerelle qui sont des nœuds bare Metal exécutant un noyau avec cgroup v2 activé. Voir link:../s3/select-object-content.html["S3 SelectObjectContent"].
+
+
+
+== Autres améliorations
+
+
+
+=== Objet du certificat facultatif
+
+Le champ objet du certificat est désormais facultatif. Si ce champ est laissé vide, le certificat généré utilise le premier nom de domaine ou l'adresse IP comme nom commun de l'objet (CN). Voir link:../admin/using-storagegrid-security-certificates.html["Gérer les certificats de sécurité"].
+
+
+
+=== Catégorie de messages d'audit ILM et nouveaux messages
+
+Une catégorie de messages d'audit a été ajoutée pour les opérations ILM et comprend les messages IDEL, LKCU et ORLM. Cette nouvelle catégorie est définie sur *Normal*. Voir link:../audit/ilm-audit-messages.html["Messages d'audit des opérations ILM"].
+
+De plus, de nouveaux messages de vérification ont été ajoutés pour prendre en charge la nouvelle fonctionnalité 11.7 :
+
+* link:../audit/bror-bucket-read-only-request.html["BROR : demande en lecture seule du compartiment"]
+* link:../audit/cgrr-cross-grid-replication-request.html["CGRR : demande de réplication croisée"]
+* link:../audit/ebdl-empty-bucket-delete.html["EBDL : suppression du compartiment vide"]
+* link:../audit/ebkr-empty-bucket-request.html["EBKR : demande de godet vide"]
+* link:../audit/s3-select-request.html["S3SL: S3 Select Request"]
+
+
+
+
+=== Nouvelles alertes
+
+Les nouvelles alertes suivantes ont été ajoutées pour StorageGRID 11.7 :
+
+* Panne du lecteur DAS de l'appliance détectée
+* Reconstruction des disques DAS du dispositif
+* Panne du ventilateur de l'appareil détectée
+* Défaillance de la carte réseau de l'appareil détectée
+* Avertissement critique sur les disques SSD de l'appliance
+* Échec de l'envoi du message AutoSupport
+* Erreur d'écriture surdimensionnée Cassandra
+* Échec de la demande permanente de réplication entre les grilles
+* Ressources de réplication intergrid indisponibles
+* Impact sur les performances de débogage
+* Expiration du certificat de fédération GRID
+* Le paramètre de cohérence du compartiment FabricPool n'est pas pris en charge
+* Échec de la configuration du pare-feu
+* Échec de la connexion de fédération de grille
+* Panne du ventilateur du dispositif de stockage détectée
+* Le nœud de stockage n'est pas dans l'état de stockage souhaité
+* Le volume de stockage nécessite votre attention
+* Le volume de stockage doit être restauré
+* Volume de stockage hors ligne
+* Configuration de trace activée
+* La restauration de volume n'a pas pu démarrer la réparation des données répliquées
+
+
+
+
+=== Modifications de la documentation
+
+* Découvrez dans ce guide de référence rapide comment StorageGRID prend en charge les API Amazon simple Storage Service (S3). Voir link:../s3/quick-reference-support-for-aws-apis.html["Référence rapide : demandes d'API S3 prises en charge"].
+* La nouvelle link:../primer/quick-start.html["Démarrage rapide de StorageGRID"] Le répertorie les étapes générales de configuration et d'utilisation d'un système StorageGRID et fournit des liens vers les instructions correspondantes.
+* Les instructions d'installation du matériel de l'appliance ont été combinées et consolidées pour faciliter l'utilisation. Un guide de démarrage rapide a été ajouté pour guider l'installation du matériel. Voirlink:../installconfig/index.html["Démarrage rapide pour l'installation du matériel"].
+* Les instructions de maintenance communes à tous les modèles d'appliance ont été combinées, consolidées et déplacées vers la section de maintenance du site doc. Voir link:../commonhardware/index.html["Maintenance de nœuds communs : présentation"].
+* Les instructions de maintenance spécifiques à chaque modèle d'appareil ont également été déplacées vers la section de maintenance :
++
+link:../sg6100/index.html["Maintenance du matériel SGF6112"]
+
++
+link:../sg6000/index.html["Maintenance du matériel SG6000"]
+
++
+link:../sg5700/index.html["Maintenance du matériel SG5700"]
+
++
+link:../sg100-1000/index.html["Maintenance du matériel SG100 et SG1000"]
+
+

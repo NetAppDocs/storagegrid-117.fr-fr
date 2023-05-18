@@ -1,0 +1,994 @@
+---
+permalink: s3/quick-reference-support-for-aws-apis.html 
+sidebar: sidebar 
+keywords: Amazon s3, API, request headers, s3 support, request syntax, supported, aws s3 
+summary: 'Cette page explique comment StorageGRID prend en charge les API Amazon simple Storage Service (S3).' 
+---
+= Référence rapide : demandes d'API S3 prises en charge
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Cette page explique comment StorageGRID prend en charge les API Amazon simple Storage Service (S3).
+
+Cette page inclut uniquement les opérations S3 prises en charge par StorageGRID.
+
+
+NOTE: Pour afficher la documentation AWS pour chaque opération, sélectionnez le lien dans l'en-tête.
+
+
+
+== Paramètres de requête URI courants et en-têtes de requête
+
+Sauf mention contraire, les paramètres de requête URI courants suivants sont pris en charge :
+
+* `versionId` (comme requis pour les opérations d'objet)
+
+
+Sauf mention contraire, les en-têtes de requête courants suivants sont pris en charge :
+
+* `Authorization`
+* `Connection`
+* `Content-Length`
+* `Content-MD5`
+* `Content-Type`
+* `Date`
+* `Expect`
+* `Host`
+* `x-amz-date`
+
+
+.Informations associées
+* link:../s3/s3-rest-api-supported-operations-and-limitations.html["Détails de l'implémentation de l'API REST S3"]
+* https://["Référence de l'API Amazon simple Storage Service : en-têtes de demande communs"^]
+
+
+
+
+== https://["AbortMultipartUpload"^]
+
+.Paramètres de requête URI et en-têtes de requête
+StorageGRID prend en charge tous les <<common-params,paramètres et en-têtes communs>> Pour cette demande, plus ce paramètre de requête URI supplémentaire :
+
+* `uploadId`
+
+
+.Corps de la demande
+Aucune
+
+.Documentation StorageGRID
+link:operations-for-multipart-uploads.html["Opérations pour les téléchargements partitionnés"]
+
+
+
+== https://["CompleteMultipartUpload"^]
+
+.Paramètres de requête URI et en-têtes de requête
+StorageGRID prend en charge tous les <<common-params,paramètres et en-têtes communs>> Pour cette demande, plus ce paramètre de requête URI supplémentaire :
+
+* `uploadId`
+
+
+.Demander des balises XML de corps
+StorageGRID prend en charge les balises XML de corps de requête suivantes :
+
+* `CompleteMultipartUpload`
+* `Part`
+* `ETag`
+* `PartNumber`
+
+
+.Documentation StorageGRID
+link:complete-multipart-upload.html["Chargement de pièces multiples complet"]
+
+
+
+== https://["Objet de copie"^]
+
+.Paramètres de requête URI et en-têtes de requête
+StorageGRID prend en charge tous les <<common-params,paramètres et en-têtes communs>> pour cette demande, plus les en-têtes supplémentaires suivants :
+
+* `x-amz-copy-source`
+* `x-amz-copy-source-if-match`
+* `x-amz-copy-source-if-modified-since`
+* `x-amz-copy-source-if-none-match`
+* `x-amz-copy-source-if-unmodified-since`
+* `x-amz-copy-source-server-side-encryption-customer-algorithm`
+* `x-amz-copy-source-server-side-encryption-customer-key`
+* `x-amz-copy-source-server-side-encryption-customer-key-MD5`
+* `x-amz-metadata-directive`
+* `x-amz-object-lock-legal-hold`
+* `x-amz-object-lock-mode`
+* `x-amz-object-lock-retain-until-date`
+* `x-amz-server-side-encryption`
+* `x-amz-server-side-encryption-customer-algorithm`
+* `x-amz-server-side-encryption-customer-key`
+* `x-amz-server-side-encryption-customer-key-MD5`
+* `x-amz-storage-class`
+* `x-amz-tagging`
+* `x-amz-tagging-directive`
+* `x-amz-meta-<metadata-name>`
+
+
+.Corps de la demande
+Aucune
+
+.Documentation StorageGRID
+link:put-object-copy.html["PLACER une copie d'objet"]
+
+
+
+== https://["CreateBucket"^]
+
+.Paramètres de requête URI et en-têtes de requête
+StorageGRID prend en charge tous les <<common-params,paramètres et en-têtes communs>> pour cette demande, plus les en-têtes supplémentaires suivants :
+
+* `x-amz-bucket-object-lock-enabled`
+
+
+.Corps de la demande
+StorageGRID prend en charge tous les paramètres du corps de demande définis par l'API REST Amazon S3 au moment de l'implémentation.
+
+.Documentation StorageGRID
+link:operations-on-buckets.html["Opérations sur les compartiments"]
+
+
+
+== https://["CreateMultipartUpload"^]
+
+.Paramètres de requête URI et en-têtes de requête
+StorageGRID prend en charge tous les <<common-params,paramètres et en-têtes communs>> pour cette demande, plus les en-têtes supplémentaires suivants :
+
+* `Cache-Control`
+* `Content-Disposition`
+* `Content-Encoding`
+* `Content-Language`
+* `Expires`
+* `x-amz-server-side-encryption`
+* `x-amz-storage-class`
+* `x-amz-server-side-encryption-customer-algorithm`
+* `x-amz-server-side-encryption-customer-key`
+* `x-amz-server-side-encryption-customer-key-MD5`
+* `x-amz-tagging`
+* `x-amz-object-lock-mode`
+* `x-amz-object-lock-retain-until-date`
+* `x-amz-object-lock-legal-hold`
+* `x-amz-meta-<metadata-name>`
+
+
+.Corps de la demande
+Aucune
+
+.Documentation StorageGRID
+link:initiate-multipart-upload.html["Lancer le téléchargement de pièces multiples"]
+
+
+
+== https://["DeleteBucket"^]
+
+.Paramètres de requête URI et en-têtes de requête
+StorageGRID prend en charge tous les <<common-params,paramètres et en-têtes communs>> pour cette demande.
+
+.Documentation StorageGRID
+link:operations-on-buckets.html["Opérations sur les compartiments"]
+
+
+
+== https://["DeleteBuckeCors"^]
+
+.Paramètres de requête URI et en-têtes de requête
+StorageGRID prend en charge tous les <<common-params,paramètres et en-têtes communs>> pour cette demande.
+
+.Corps de la demande
+Aucune
+
+.Documentation StorageGRID
+link:operations-on-buckets.html["Opérations sur les compartiments"]
+
+
+
+== https://["DeleteBuckeEncryption"^]
+
+.Paramètres de requête URI et en-têtes de requête
+StorageGRID prend en charge tous les <<common-params,paramètres et en-têtes communs>> pour cette demande.
+
+.Corps de la demande
+Aucune
+
+.Documentation StorageGRID
+link:operations-on-buckets.html["Opérations sur les compartiments"]
+
+
+
+== https://["DeleteBuckeLifecycle"^]
+
+.Paramètres de requête URI et en-têtes de requête
+StorageGRID prend en charge tous les <<common-params,paramètres et en-têtes communs>> pour cette demande.
+
+.Corps de la demande
+Aucune
+
+.Documentation StorageGRID
+* link:operations-on-buckets.html["Opérations sur les compartiments"]
+* link:create-s3-lifecycle-configuration.html["Création de la configuration du cycle de vie S3"]
+
+
+
+
+== https://["DeleteBucketPolicy"^]
+
+.Paramètres de requête URI et en-têtes de requête
+StorageGRID prend en charge tous les <<common-params,paramètres et en-têtes communs>> pour cette demande.
+
+.Corps de la demande
+Aucune
+
+.Documentation StorageGRID
+link:operations-on-buckets.html["Opérations sur les compartiments"]
+
+
+
+== https://["DeleteBuckeReplication"^]
+
+.Paramètres de requête URI et en-têtes de requête
+StorageGRID prend en charge tous les <<common-params,paramètres et en-têtes communs>> pour cette demande.
+
+.Corps de la demande
+Aucune
+
+.Documentation StorageGRID
+link:operations-on-buckets.html["Opérations sur les compartiments"]
+
+
+
+== https://["DeleteBucketTagging"^]
+
+.Paramètres de requête URI et en-têtes de requête
+StorageGRID prend en charge tous les <<common-params,paramètres et en-têtes communs>> pour cette demande.
+
+.Corps de la demande
+Aucune
+
+.Documentation StorageGRID
+link:operations-on-buckets.html["Opérations sur les compartiments"]
+
+
+
+== https://["DeleteObject"^]
+
+.Paramètres de requête URI et en-têtes de requête
+StorageGRID prend en charge tous les <<common-params,paramètres et en-têtes communs>> pour cette demande, plus cet en-tête de demande supplémentaire :
+
+* `x-amz-bypass-governance-retention`
+
+
+.Corps de la demande
+Aucune
+
+.Documentation StorageGRID
+link:operations-on-objects.html["Opérations sur les objets"]
+
+
+
+== https://["DeleteObjects"^]
+
+.Paramètres de requête URI et en-têtes de requête
+StorageGRID prend en charge tous les <<common-params,paramètres et en-têtes communs>> pour cette demande, plus cet en-tête de demande supplémentaire :
+
+* `x-amz-bypass-governance-retention`
+
+
+.Corps de la demande
+StorageGRID prend en charge tous les paramètres du corps de demande définis par l'API REST Amazon S3 au moment de l'implémentation.
+
+.Documentation StorageGRID
+link:operations-on-objects.html["Opérations sur les objets"] (SUPPRIMER plusieurs objets)
+
+
+
+== https://["DeleteObjectTagging"^]
+
+StorageGRID prend en charge tous les <<common-params,paramètres et en-têtes communs>> pour cette demande.
+
+.Corps de la demande
+Aucune
+
+.Documentation StorageGRID
+link:operations-on-objects.html["Opérations sur les objets"]
+
+
+
+== https://["GetBucketAcl"^]
+
+.Paramètres de requête URI et en-têtes de requête
+StorageGRID prend en charge tous les <<common-params,paramètres et en-têtes communs>> pour cette demande.
+
+.Corps de la demande
+Aucune
+
+.Documentation StorageGRID
+link:operations-on-buckets.html["Opérations sur les compartiments"]
+
+
+
+== https://["GetBucketCors"^]
+
+.Paramètres de requête URI et en-têtes de requête
+StorageGRID prend en charge tous les <<common-params,paramètres et en-têtes communs>> pour cette demande.
+
+.Corps de la demande
+Aucune
+
+.Documentation StorageGRID
+link:operations-on-buckets.html["Opérations sur les compartiments"]
+
+
+
+== https://["GetBucketEncryption"^]
+
+.Paramètres de requête URI et en-têtes de requête
+StorageGRID prend en charge tous les <<common-params,paramètres et en-têtes communs>> pour cette demande.
+
+.Corps de la demande
+Aucune
+
+.Documentation StorageGRID
+link:operations-on-buckets.html["Opérations sur les compartiments"]
+
+
+
+== https://["GetBucketLifecycleConfiguration"^]
+
+.Paramètres de requête URI et en-têtes de requête
+StorageGRID prend en charge tous les <<common-params,paramètres et en-têtes communs>> pour cette demande.
+
+.Corps de la demande
+Aucune
+
+.Documentation StorageGRID
+* link:operations-on-buckets.html["Opérations sur les compartiments"] (GET Bucket Lifecycle)
+* link:create-s3-lifecycle-configuration.html["Création de la configuration du cycle de vie S3"]
+
+
+
+
+== https://["GetBuckeLocation"^]
+
+.Paramètres de requête URI et en-têtes de requête
+StorageGRID prend en charge tous les <<common-params,paramètres et en-têtes communs>> pour cette demande.
+
+.Corps de la demande
+Aucune
+
+.Documentation StorageGRID
+link:operations-on-buckets.html["Opérations sur les compartiments"]
+
+
+
+== https://["GetBucketNotifationConfiguration"^]
+
+.Paramètres de requête URI et en-têtes de requête
+StorageGRID prend en charge tous les <<common-params,paramètres et en-têtes communs>> pour cette demande.
+
+.Corps de la demande
+Aucune
+
+.Documentation StorageGRID
+link:operations-on-buckets.html["Opérations sur les compartiments"] (GET Bucket notification)
+
+
+
+== https://["GetBucketPolicy"^]
+
+.Paramètres de requête URI et en-têtes de requête
+StorageGRID prend en charge tous les <<common-params,paramètres et en-têtes communs>> pour cette demande.
+
+.Corps de la demande
+Aucune
+
+.Documentation StorageGRID
+link:operations-on-buckets.html["Opérations sur les compartiments"]
+
+
+
+== https://["GetBuckeReplication"^]
+
+.Paramètres de requête URI et en-têtes de requête
+StorageGRID prend en charge tous les <<common-params,paramètres et en-têtes communs>> pour cette demande.
+
+.Corps de la demande
+Aucune
+
+.Documentation StorageGRID
+link:operations-on-buckets.html["Opérations sur les compartiments"]
+
+
+
+== https://["GetBucketTagging"^]
+
+.Paramètres de requête URI et en-têtes de requête
+StorageGRID prend en charge tous les <<common-params,paramètres et en-têtes communs>> pour cette demande.
+
+.Corps de la demande
+Aucune
+
+.Documentation StorageGRID
+link:operations-on-buckets.html["Opérations sur les compartiments"]
+
+
+
+== https://["GetBucketVersioning"^]
+
+.Paramètres de requête URI et en-têtes de requête
+StorageGRID prend en charge tous les <<common-params,paramètres et en-têtes communs>> pour cette demande.
+
+.Corps de la demande
+Aucune
+
+.Documentation StorageGRID
+link:operations-on-buckets.html["Opérations sur les compartiments"]
+
+
+
+== https://["GetObject"^]
+
+.Paramètres de requête URI et en-têtes de requête
+StorageGRID prend en charge tous les <<common-params,paramètres et en-têtes communs>> Pour cette demande, plus les paramètres de requête URI supplémentaires suivants :
+
+* `partNumber`
+* `response-cache-control`
+* `response-content-disposition`
+* `response-content-encoding`
+* `response-content-language`
+* `response-content-type`
+* `response-expires`
+
+
+Et ces en-têtes de demande supplémentaires :
+
+* `Range`
+* `x-amz-server-side-encryption-customer-algorithm`
+* `x-amz-server-side-encryption-customer-key`
+* `x-amz-server-side-encryption-customer-key-MD5`
+* `If-Match`
+* `If-Modified-Since`
+* `If-None-Match`
+* `If-Unmodified-Since`
+
+
+.Corps de la demande
+Aucune
+
+.Documentation StorageGRID
+link:get-object.html["OBTENIR l'objet"]
+
+
+
+== https://["GetObjectAcl"^]
+
+.Paramètres de requête URI et en-têtes de requête
+StorageGRID prend en charge tous les <<common-params,paramètres et en-têtes communs>> pour cette demande.
+
+.Corps de la demande
+Aucune
+
+.Documentation StorageGRID
+link:operations-on-objects.html["Opérations sur les objets"]
+
+
+
+== https://["GetObjectLegalHold"^]
+
+.Paramètres de requête URI et en-têtes de requête
+StorageGRID prend en charge tous les <<common-params,paramètres et en-têtes communs>> pour cette demande.
+
+.Corps de la demande
+Aucune
+
+.Documentation StorageGRID
+link:../s3/use-s3-api-for-s3-object-lock.html["Utilisez l'API REST S3 pour configurer le verrouillage objet S3"]
+
+
+
+== https://["GetObjectLockConfiguration"^]
+
+.Paramètres de requête URI et en-têtes de requête
+StorageGRID prend en charge tous les <<common-params,paramètres et en-têtes communs>> pour cette demande.
+
+.Corps de la demande
+Aucune
+
+.Documentation StorageGRID
+link:../s3/use-s3-api-for-s3-object-lock.html["Utilisez l'API REST S3 pour configurer le verrouillage objet S3"]
+
+
+
+== https://["GetObjectRetention"^]
+
+.Paramètres de requête URI et en-têtes de requête
+StorageGRID prend en charge tous les <<common-params,paramètres et en-têtes communs>> pour cette demande.
+
+.Corps de la demande
+Aucune
+
+.Documentation StorageGRID
+link:../s3/use-s3-api-for-s3-object-lock.html["Utilisez l'API REST S3 pour configurer le verrouillage objet S3"]
+
+
+
+== https://["GetObjectTagging"^]
+
+.Paramètres de requête URI et en-têtes de requête
+StorageGRID prend en charge tous les <<common-params,paramètres et en-têtes communs>> pour cette demande.
+
+.Corps de la demande
+Aucune
+
+.Documentation StorageGRID
+link:operations-on-objects.html["Opérations sur les objets"]
+
+
+
+== https://["Godet principal"^]
+
+.Paramètres de requête URI et en-têtes de requête
+StorageGRID prend en charge tous les <<common-params,paramètres et en-têtes communs>> pour cette demande.
+
+.Corps de la demande
+Aucune
+
+.Documentation StorageGRID
+link:operations-on-buckets.html["Opérations sur les compartiments"]
+
+
+
+== https://["Objet principal"^]
+
+.Paramètres de requête URI et en-têtes de requête
+StorageGRID prend en charge tous les <<common-params,paramètres et en-têtes communs>> pour cette demande, plus les en-têtes supplémentaires suivants :
+
+* `x-amz-server-side-encryption-customer-algorithm`
+* `x-amz-server-side-encryption-customer-key`
+* `x-amz-server-side-encryption-customer-key-MD5`
+* `If-Match`
+* `If-Modified-Since`
+* `If-None-Match`
+* `If-Unmodified-Since`
+* `Range`
+
+
+.Corps de la demande
+Aucune
+
+.Documentation StorageGRID
+link:head-object.html["Objet TÊTE"]
+
+
+
+== https://["Listseaux"^]
+
+.Paramètres de requête URI et en-têtes de requête
+StorageGRID prend en charge tous les <<common-params,paramètres et en-têtes communs>> pour cette demande.
+
+.Corps de la demande
+Aucune
+
+.Documentation StorageGRID
+link:operations-on-the-service.html["Opérations sur le service et gt ; OBTENIR le service"]
+
+
+
+== https://["ListMultipartUploads"^]
+
+.Paramètres de requête URI et en-têtes de requête
+StorageGRID prend en charge tous les <<common-params,paramètres et en-têtes communs>> pour cette demande, plus les paramètres supplémentaires suivants :
+
+* `delimiter`
+* `encoding-type`
+* `key-marker`
+* `max-uploads`
+* `prefix`
+* `upload-id-marker`
+
+
+.Corps de la demande
+Aucune
+
+.Documentation StorageGRID
+link:list-multipart-uploads.html["Liste des téléchargements partitionnés"]
+
+
+
+== https://["ListObjects"^]
+
+.Paramètres de requête URI et en-têtes de requête
+StorageGRID prend en charge tous les <<common-params,paramètres et en-têtes communs>> pour cette demande, plus les paramètres supplémentaires suivants :
+
+* `delimiter`
+* `encoding-type`
+* `marker`
+* `max-keys`
+* `prefix`
+
+
+.Corps de la demande
+Aucune
+
+.Documentation StorageGRID
+link:operations-on-buckets.html["Opérations sur les compartiments"] (TÉLÉCHARGER le compartiment)
+
+
+
+== https://["ListentsV2"^]
+
+.Paramètres de requête URI et en-têtes de requête
+StorageGRID prend en charge tous les <<common-params,paramètres et en-têtes communs>> pour cette demande, plus les paramètres supplémentaires suivants :
+
+* `continuation-token`
+* `delimiter`
+* `encoding-type`
+* `fetch-owner`
+* `max-keys`
+* `prefix`
+* `start-after`
+
+
+.Corps de la demande
+Aucune
+
+.Documentation StorageGRID
+link:operations-on-buckets.html["Opérations sur les compartiments"] (TÉLÉCHARGER le compartiment)
+
+
+
+== https://["ListObjectVersions"^]
+
+.Paramètres de requête URI et en-têtes de requête
+StorageGRID prend en charge tous les <<common-params,paramètres et en-têtes communs>> pour cette demande, plus les paramètres supplémentaires suivants :
+
+* `delimiter`
+* `encoding-type`
+* `key-marker`
+* `max-keys`
+* `prefix`
+* `version-id-marker`
+
+
+.Corps de la demande
+Aucune
+
+.Documentation StorageGRID
+link:operations-on-buckets.html["Opérations sur les compartiments"] (OBTENIR les versions d'objet compartiment)
+
+
+
+== https://["ListParts"^]
+
+.Paramètres de requête URI et en-têtes de requête
+StorageGRID prend en charge tous les <<common-params,paramètres et en-têtes communs>> pour cette demande, plus les paramètres supplémentaires suivants :
+
+* `max-parts`
+* `part-number-marker`
+* `uploadId`
+
+
+.Corps de la demande
+Aucune
+
+.Documentation StorageGRID
+link:list-multipart-uploads.html["Liste des téléchargements partitionnés"]
+
+
+
+== https://["PutBucketCors"^]
+
+.Paramètres de requête URI et en-têtes de requête
+StorageGRID prend en charge tous les <<common-params,paramètres et en-têtes communs>> pour cette demande.
+
+.Corps de la demande
+StorageGRID prend en charge tous les paramètres du corps de demande définis par l'API REST Amazon S3 au moment de l'implémentation.
+
+.Documentation StorageGRID
+link:operations-on-buckets.html["Opérations sur les compartiments"]
+
+
+
+== https://["PutBucketEncryption"^]
+
+.Paramètres de requête URI et en-têtes de requête
+StorageGRID prend en charge tous les <<common-params,paramètres et en-têtes communs>> pour cette demande.
+
+.Demander des balises XML de corps
+StorageGRID prend en charge les balises XML de corps de requête suivantes :
+
+* `ServerSideEncryptionConfiguration`
+* `Rule`
+* `ApplyServerSideEncryptionByDefault`
+* `SSEAlgorithm`
+
+
+.Documentation StorageGRID
+link:operations-on-buckets.html["Opérations sur les compartiments"]
+
+
+
+== https://["PutBucketLifecycleConfiguration"^]
+
+.Paramètres de requête URI et en-têtes de requête
+StorageGRID prend en charge tous les <<common-params,paramètres et en-têtes communs>> pour cette demande.
+
+.Demander des balises XML de corps
+StorageGRID prend en charge les balises XML de corps de requête suivantes :
+
+* `NewerNoncurrentVersions`
+* `LifecycleConfiguration`
+* `Rule`
+* `Expiration`
+* `Days`
+* `Filter`
+* `And`
+* `Prefix`
+* `Tag`
+* `Key`
+* `Value`
+* `Prefix`
+* `Tag`
+* `Key`
+* `Value`
+* `ID`
+* `NoncurrentVersionExpiration`
+* `NoncurrentDays`
+* `Prefix`
+* `Status`
+
+
+.Documentation StorageGRID
+* link:operations-on-buckets.html["Opérations sur les compartiments"] (Cycle de vie DU godet PUT)
+* link:create-s3-lifecycle-configuration.html["Création de la configuration du cycle de vie S3"]
+
+
+
+
+== https://["PutBucketNotifationConfiguration"^]
+
+.Paramètres de requête URI et en-têtes de requête
+StorageGRID prend en charge tous les <<common-params,paramètres et en-têtes communs>> pour cette demande.
+
+.Demander des balises XML de corps
+StorageGRID prend en charge les balises XML de corps de requête suivantes :
+
+* `Prefix`
+* `Suffix`
+* `NotificationConfiguration`
+* `TopicConfiguration`
+* `Event`
+* `Filter`
+* `S3Key`
+* `FilterRule`
+* `Name`
+* `Value`
+* `Id`
+* `Topic`
+
+
+.Documentation StorageGRID
+link:operations-on-buckets.html["Opérations sur les compartiments"] (Notification PUT Bucket)
+
+
+
+== https://["PutBuckePolicy"^]
+
+.Paramètres de requête URI et en-têtes de requête
+StorageGRID prend en charge tous les <<common-params,paramètres et en-têtes communs>> pour cette demande.
+
+.Corps de la demande
+Pour plus d'informations sur les champs de corps JSON pris en charge, reportez-vous à la sectionlink:bucket-and-group-access-policies.html["Utilisez les règles d'accès au compartiment et au groupe"].
+
+
+
+== https://["PutBuckeReplication"^]
+
+.Paramètres de requête URI et en-têtes de requête
+StorageGRID prend en charge tous les <<common-params,paramètres et en-têtes communs>> pour cette demande.
+
+.Demander des balises XML de corps
+* `ReplicationConfiguration`
+* `Status`
+* `Prefix`
+* `Destination`
+* `Bucket`
+* `StorageClass`
+* `Rule`
+
+
+.Documentation StorageGRID
+link:operations-on-buckets.html["Opérations sur les compartiments"]
+
+
+
+== https://["Étiquetage PutBucketTagging"^]
+
+.Paramètres de requête URI et en-têtes de requête
+StorageGRID prend en charge tous les <<common-params,paramètres et en-têtes communs>> pour cette demande.
+
+.Corps de la demande
+StorageGRID prend en charge tous les paramètres du corps de demande définis par l'API REST Amazon S3 au moment de l'implémentation.
+
+.Documentation StorageGRID
+link:operations-on-buckets.html["Opérations sur les compartiments"]
+
+
+
+== https://["PutBuckeVersioning"^]
+
+.Paramètres de requête URI et en-têtes de requête
+StorageGRID prend en charge tous les <<common-params,paramètres et en-têtes communs>> pour cette demande.
+
+.Demander les paramètres du corps
+StorageGRID prend en charge les paramètres de corps de demande suivants :
+
+* `VersioningConfiguration`
+* `Status`
+
+
+.Documentation StorageGRID
+link:operations-on-buckets.html["Opérations sur les compartiments"]
+
+
+
+== https://["PutObject"^]
+
+.Paramètres de requête URI et en-têtes de requête
+StorageGRID prend en charge tous les <<common-params,paramètres et en-têtes communs>> pour cette demande, plus les en-têtes supplémentaires suivants :
+
+* `Cache-Control`
+* `Content-Disposition`
+* `Content-Encoding`
+* `Content-Language`
+* `x-amz-server-side-encryption`
+* `x-amz-storage-class`
+* `x-amz-server-side-encryption-customer-algorithm`
+* `x-amz-server-side-encryption-customer-key`
+* `x-amz-server-side-encryption-customer-key-MD5`
+* `x-amz-tagging`
+* `x-amz-object-lock-mode`
+* `x-amz-object-lock-retain-until-date`
+* `x-amz-object-lock-legal-hold`
+* `x-amz-meta-<metadata-name>`
+
+
+.Corps de la demande
+* Données binaires de l'objet
+
+
+.Documentation StorageGRID
+link:put-object.html["PLACER l'objet"]
+
+
+
+== https://["PutObjectLegalHold"^]
+
+.Paramètres de requête URI et en-têtes de requête
+StorageGRID prend en charge tous les <<common-params,paramètres et en-têtes communs>> pour cette demande.
+
+.Corps de la demande
+StorageGRID prend en charge tous les paramètres du corps de demande définis par l'API REST Amazon S3 au moment de l'implémentation.
+
+.Documentation StorageGRID
+link:use-s3-api-for-s3-object-lock.html["Utilisez l'API REST S3 pour configurer le verrouillage objet S3"]
+
+
+
+== https://["PutObjectLockConfiguration"^]
+
+.Paramètres de requête URI et en-têtes de requête
+StorageGRID prend en charge tous les <<common-params,paramètres et en-têtes communs>> pour cette demande.
+
+.Corps de la demande
+StorageGRID prend en charge tous les paramètres du corps de demande définis par l'API REST Amazon S3 au moment de l'implémentation.
+
+.Documentation StorageGRID
+link:use-s3-api-for-s3-object-lock.html["Utilisez l'API REST S3 pour configurer le verrouillage objet S3"]
+
+
+
+== https://["PutObjectRetention"^]
+
+.Paramètres de requête URI et en-têtes de requête
+StorageGRID prend en charge tous les <<common-params,paramètres et en-têtes communs>> pour cette demande, plus cet en-tête supplémentaire :
+
+* `x-amz-bypass-governance-retention`
+
+
+.Corps de la demande
+StorageGRID prend en charge tous les paramètres du corps de demande définis par l'API REST Amazon S3 au moment de l'implémentation.
+
+.Documentation StorageGRID
+link:use-s3-api-for-s3-object-lock.html["Utilisez l'API REST S3 pour configurer le verrouillage objet S3"]
+
+
+
+== https://["Marquage PutObject"^]
+
+.Paramètres de requête URI et en-têtes de requête
+StorageGRID prend en charge tous les <<common-params,paramètres et en-têtes communs>> pour cette demande.
+
+.Corps de la demande
+StorageGRID prend en charge tous les paramètres du corps de demande définis par l'API REST Amazon S3 au moment de l'implémentation.
+
+.Documentation StorageGRID
+link:operations-on-objects.html["Opérations sur les objets"]
+
+
+
+== https://["SelectObjectContent"^]
+
+.Paramètres de requête URI et en-têtes de requête
+StorageGRID prend en charge tous les <<common-params,paramètres et en-têtes communs>> pour cette demande.
+
+.Corps de la demande
+Pour plus d'informations sur les champs de corps pris en charge, reportez-vous aux sections suivantes :
+
+* link:use-s3-select.html["Utiliser S3 Select"]
+* link:select-object-content.html["Sélectionnez contenu de l'objet"]
+
+
+
+
+== https://["UploadPart"^]
+
+.Paramètres de requête URI et en-têtes de requête
+StorageGRID prend en charge tous les <<common-params,paramètres et en-têtes communs>> Pour cette demande, plus les paramètres de requête URI supplémentaires suivants :
+
+* `partNumber`
+* `uploadId`
+
+
+Et ces en-têtes de demande supplémentaires :
+
+* `x-amz-server-side-encryption-customer-algorithm`
+* `x-amz-server-side-encryption-customer-key`
+* `x-amz-server-side-encryption-customer-key-MD5`
+
+
+.Corps de la demande
+* Données binaires de la pièce
+
+
+.Documentation StorageGRID
+link:upload-part.html["Télécharger la pièce"]
+
+
+
+== https://["UploadPartCopy"^]
+
+.Paramètres de requête URI et en-têtes de requête
+StorageGRID prend en charge tous les <<common-params,paramètres et en-têtes communs>> Pour cette demande, plus les paramètres de requête URI supplémentaires suivants :
+
+* `partNumber`
+* `uploadId`
+
+
+Et ces en-têtes de demande supplémentaires :
+
+* `x-amz-copy-source`
+* `x-amz-copy-source-if-match`
+* `x-amz-copy-source-if-modified-since`
+* `x-amz-copy-source-if-none-match`
+* `x-amz-copy-source-if-unmodified-since`
+* `x-amz-copy-source-range`
+* `x-amz-server-side-encryption-customer-algorithm`
+* `x-amz-server-side-encryption-customer-key`
+* `x-amz-server-side-encryption-customer-key-MD5`
+* `x-amz-copy-source-server-side-encryption-customer-algorithm`
+* `x-amz-copy-source-server-side-encryption-customer-key`
+* `x-amz-copy-source-server-side-encryption-customer-key-MD5`
+
+
+.Corps de la demande
+Aucune
+
+.Documentation StorageGRID
+link:upload-part-copy.html["Télécharger la pièce - Copier"]

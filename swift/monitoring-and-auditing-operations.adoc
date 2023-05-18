@@ -1,0 +1,136 @@
+---
+permalink: swift/monitoring-and-auditing-operations.html 
+sidebar: sidebar 
+keywords: monitor operations, audit operations 
+summary: 'Vous pouvez surveiller les charges de travail et l"efficacité des opérations client en visualisant les tendances de transaction pour l"ensemble du grid ou pour des nœuds spécifiques. Vous pouvez utiliser des messages d"audit pour surveiller les opérations et les transactions des clients.' 
+---
+= Surveiller et auditer les opérations
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Vous pouvez surveiller les charges de travail et l'efficacité des opérations client en visualisant les tendances de transaction pour l'ensemble du grid ou pour des nœuds spécifiques. Vous pouvez utiliser des messages d'audit pour surveiller les opérations et les transactions des clients.
+
+
+
+== Contrôler les taux d'entrée et de récupération des objets
+
+Vous pouvez surveiller les taux d'entrée et de récupération des objets, ainsi que les mesures relatives au nombre d'objets, aux requêtes et à la vérification. Vous pouvez afficher le nombre de tentatives de lecture, d'écriture et de modification d'objets du système StorageGRID ayant échoué et réussies par les applications client.
+
+.Étapes
+. Connectez-vous au Grid Manager à l'aide d'un link:../admin/web-browser-requirements.html["navigateur web pris en charge"].
+. Sur le tableau de bord, sélectionnez *Performance* > *S3 Operations* ou *Performance* > *Swift Operations*.
++
+Cette section récapitule le nombre d'opérations client effectuées par votre système StorageGRID. La moyenne des débits de protocole est calculée au cours des deux dernières minutes.
+
+. Sélectionnez *NOEUDS*.
+. Dans la page d'accueil noeuds (niveau de déploiement), cliquez sur l'onglet *Load Balancer*.
++
+Les graphiques présentent les tendances de tout le trafic client dirigé vers les terminaux d'équilibreur de charge dans la grille. Vous pouvez sélectionner un intervalle de temps en heures, jours, semaines, mois ou années, vous pouvez également appliquer un intervalle personnalisé.
+
+. Dans la page d'accueil noeuds (niveau de déploiement), cliquez sur l'onglet *objets*.
++
+Le graphique montre les taux d'entrée et de récupération de l'intégralité de votre système StorageGRID en octets par seconde et en octets totaux. Vous pouvez sélectionner un intervalle de temps en heures, jours, semaines, mois ou années, vous pouvez également appliquer un intervalle personnalisé.
+
+. Pour afficher les informations relatives à un noeud de stockage particulier, sélectionnez-le dans la liste de gauche, puis cliquez sur l'onglet *objets*.
++
+Le tableau affiche les taux d'entrée et de récupération de l'objet pour ce nœud de stockage. L'onglet inclut également des mesures pour le nombre d'objets, les requêtes et la vérification. Vous pouvez cliquer sur les étiquettes pour afficher les définitions de ces mesures.
+
++
+image::../media/nodes_storage_node_objects_help.png[Capture d'écran de noeuds > _Storage Node_ > objets > aide sur les attributs]
+
+. Si vous voulez encore plus de détails :
++
+.. Sélectionnez *SUPPORT* > *Outils* > *topologie de grille*.
+.. Sélectionnez *_site_* > *Présentation* > *main*.
++
+La section opérations d'API affiche un récapitulatif des informations sur l'ensemble de la grille.
+
+.. Sélectionnez *_Storage Node_* > *LDR* > *_client application_* > *Présentation* > *main*
++
+La section opérations affiche un récapitulatif des informations sur le nœud de stockage sélectionné.
+
+
+
+
+
+
+
+== Examiner les journaux d'audit
+
+Les messages d'audit sont générés par les services StorageGRID et stockés dans des fichiers journaux texte. Des messages d'audit spécifiques aux API dans les journaux d'audit fournissent des données stratégiques de sécurité, d'exploitation et de surveillance des performances qui vous aideront à évaluer l'état de votre système.
+
+.Avant de commencer
+* Vous devez disposer d'autorisations d'accès spécifiques.
+* Vous devez avoir le `Passwords.txt` fichier.
+* Vous devez connaître l'adresse IP d'un nœud d'administration.
+
+
+.Description de la tâche
+Le link:../audit/audit-message-flow-and-retention.html["fichier journal d'audit actif"] est nommé `audit.log`, Et il est stocké sur des nœuds d'administration.
+
+Une fois par jour, le fichier audit.log actif est enregistré et un nouveau fichier audit.log est lancé. Le nom du fichier enregistré indique quand il a été enregistré, au format `yyyy-mm-dd.txt`.
+
+Après un jour, le fichier enregistré est compressé et renommé, au format `yyyy-mm-dd.txt.gz`, qui conserve la date originale.
+
+Cet exemple montre le fichier audit.log actif, le fichier de la veille (2018-04-15.txt) et le fichier compressé de la veille (`2018-04-14.txt.gz`).
+
+[listing]
+----
+audit.log
+2018-04-15.txt
+2018-04-14.txt.gz
+----
+.Étapes
+. Connectez-vous à un nœud d'administration :
++
+.. Saisissez la commande suivante : `ssh admin@_primary_Admin_Node_IP_`
+.. Entrez le mot de passe indiqué dans le `Passwords.txt` fichier.
+.. Entrez la commande suivante pour passer à la racine : `su -`
+.. Entrez le mot de passe indiqué dans le `Passwords.txt` fichier.
++
+Lorsque vous êtes connecté en tant que root, l'invite passe de `$` à `#`.
+
+
+
+. Accédez au répertoire contenant les fichiers journaux d'audit :``cd /var/local/audit/export``
+. Afficher le fichier journal d'audit actuel ou enregistré, selon les besoins.
+
+
+
+
+=== Les opérations Swift sont suivies dans les journaux d'audit
+
+Toutes les opérations de SUPPRESSION de stockage, D'OBTENTION, DE TÊTE, DE POST et DE PUT réussies sont suivies dans le link:../audit/audit-messages-main.html["Journal d'audit StorageGRID"]. Les échecs ne sont pas consignés, ni les demandes d'informations, d'authentification ou D'OPTIONS.
+
+Les informations sont suivies pour les opérations Swift suivantes.
+
+
+
+==== Opérations sur le compte
+
+* link:account-operations.html["OBTENIR un compte"]
+* link:account-operations.html["Compte PRINCIPAL"]
+
+
+
+
+==== Opérations sur les conteneurs
+
+* link:container-operations.html["SUPPRIMER le conteneur"]
+* link:container-operations.html["CONTENEUR"]
+* link:container-operations.html["Conteneur DE TÊTE"]
+* link:container-operations.html["PLACER le conteneur"]
+
+
+
+
+==== Opérations sur l'objet
+
+* link:object-operations.html["SUPPRIMER l'objet"]
+* link:object-operations.html["OBJET GET"]
+* link:object-operations.html["Objet TÊTE"]
+* link:object-operations.html["PLACER l'objet"]
+
