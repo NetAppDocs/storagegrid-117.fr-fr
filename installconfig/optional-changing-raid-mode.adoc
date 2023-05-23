@@ -78,4 +78,4 @@ Où `_E5700SG_Controller_IP_` Est l'une des adresses IP du contrôleur E5700SG.
 --
 ====
 .Informations associées
-http://["Site de documentation sur les systèmes NetApp E-Series"^]
+http://mysupport.netapp.com/info/web/ECMP1658252.html["Site de documentation sur les systèmes NetApp E-Series"^]

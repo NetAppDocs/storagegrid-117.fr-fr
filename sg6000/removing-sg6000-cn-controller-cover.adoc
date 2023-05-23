@@ -30,7 +30,7 @@ IMPORTANT: Enroulez l'extrémité du bracelet antistatique autour de votre poign
 
 
 
-Après le remplacement de la pièce, renvoyez la pièce défectueuse à NetApp, en suivant les instructions RMA (retour de matériel) livrées avec le kit. Voir la https://["Retour de pièce et amp ; remplacements"^] pour plus d'informations.
+Après le remplacement de la pièce, renvoyez la pièce défectueuse à NetApp, en suivant les instructions RMA (retour de matériel) livrées avec le kit. Voir la https://mysupport.netapp.com/site/info/rma["Retour de pièce et amp ; remplacements"^] pour plus d'informations.
 
 .Informations associées
 link:removing-fibre-channel-hba.html["Retirez l'adaptateur HBA Fibre Channel"]

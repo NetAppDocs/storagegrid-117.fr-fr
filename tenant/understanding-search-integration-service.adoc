@@ -35,7 +35,7 @@ Après avoir ajouté le XML de configuration de notification des métadonnées �
 * Exécutez une action sur tous les objets déjà dans le compartiment pour déclencher un message de notification des métadonnées à envoyer à la destination.
 
 
-Le service d'intégration de recherche StorageGRID prend en charge un cluster Elasticsearch. Comme pour les autres services de plate-forme, la destination est spécifiée dans le noeud final dont l'URN est utilisé dans le XML de configuration du service. Utilisez le https://["Matrice d'interopérabilité NetApp"^] Afin de déterminer les versions prises en charge par Elasticsearch.
+Le service d'intégration de recherche StorageGRID prend en charge un cluster Elasticsearch. Comme pour les autres services de plate-forme, la destination est spécifiée dans le noeud final dont l'URN est utilisé dans le XML de configuration du service. Utilisez le https://imt.netapp.com/matrix/#welcome["Matrice d'interopérabilité NetApp"^] Afin de déterminer les versions prises en charge par Elasticsearch.
 
 .Informations associées
 link:configuration-xml-for-search-configuration.html["XML de configuration pour l'intégration de la recherche"]

@@ -14,11 +14,11 @@ summary: 'Pour les contrôleurs de stockage qui utilisent actuellement SANtricit
 Pour les contrôleurs de stockage qui utilisent actuellement SANtricity OS 08.42.20.00 (11.42) ou version ultérieure, vous devez utiliser le gestionnaire grid pour appliquer une mise à niveau.
 
 .Avant de commencer
-* Vous avez consulté le https://["Matrice d'interopérabilité NetApp (IMT)"^] Pour vérifier que la version de SANtricity OS utilisée pour la mise à niveau est compatible avec votre appliance.
+* Vous avez consulté le https://imt.netapp.com/matrix/#welcome["Matrice d'interopérabilité NetApp (IMT)"^] Pour vérifier que la version de SANtricity OS utilisée pour la mise à niveau est compatible avec votre appliance.
 * Vous avez le link:../admin/admin-group-permissions.html["Maintenance ou autorisation d'accès racine"].
 * Vous êtes connecté au Grid Manager à l'aide d'un link:../admin/web-browser-requirements.html["navigateur web pris en charge"].
 * Vous avez la phrase secrète pour le provisionnement.
-* Vous avez accès à https://["Téléchargement NetApp : appliance StorageGRID"^].
+* Vous avez accès à https://mysupport.netapp.com/site/products/all/details/storagegrid-appliance/downloads-tab["Téléchargement NetApp : appliance StorageGRID"^].
 
 
 .Description de la tâche
@@ -36,7 +36,7 @@ NOTE: Cette procédure met automatiquement à niveau la NVSRAM vers la version l
 IMPORTANT: Veillez à appliquer le dernier correctif StorageGRID avant de commencer cette procédure. Voir link:../maintain/storagegrid-hotfix-procedure.html["Procédure de correctif StorageGRID"] pour plus d'informations.
 
 .Étapes
-. [[download-santricity-os]] Téléchargez le nouveau fichier du logiciel SANtricity OS depuis le site https://["Téléchargement NetApp : appliance StorageGRID"^].
+. [[download-santricity-os]] Téléchargez le nouveau fichier du logiciel SANtricity OS depuis le site https://mysupport.netapp.com/site/products/all/details/storagegrid-appliance/downloads-tab["Téléchargement NetApp : appliance StorageGRID"^].
 +
 Veillez à choisir la version de système d'exploitation SANtricity pour vos contrôleurs de stockage.
 
@@ -195,6 +195,6 @@ NOTE: Pour les nœuds avec un état de nécessite une intervention, utilisez le 
 
 
 .Informations associées
-https://["Matrice d'interopérabilité NetApp"^]
+https://mysupport.netapp.com/matrix["Matrice d'interopérabilité NetApp"^]
 
 link:upgrading-santricity-os-on-storage-controllers-using-maintenance-mode-sg6000.html["Mettre à niveau le système d'exploitation SANtricity sur les contrôleurs de stockage à l'aide du mode de maintenance"]

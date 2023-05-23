@@ -215,7 +215,7 @@ CAUTION: Pour les référentiels d'identité qui ne sont pas ActiveDirectory ou 
 
 === Recouvrements de memberOf et de raffint
 
-Les recouvrements de membre et de raffinage doivent être activés. Pour plus d'informations, reportez-vous aux instructions relatives à la maintenance de l'adhésion au groupe inverse dans lehttp://["Documentation OpenLDAP : version 2.4 - Guide de l'administrateur"^].
+Les recouvrements de membre et de raffinage doivent être activés. Pour plus d'informations, reportez-vous aux instructions relatives à la maintenance de l'adhésion au groupe inverse dans lehttp://www.openldap.org/doc/admin24/index.html["Documentation OpenLDAP : version 2.4 - Guide de l'administrateur"^].
 
 
 
@@ -231,4 +231,4 @@ Vous devez configurer les attributs OpenLDAP suivants avec les mots-clés d'inde
 
 De plus, assurez-vous que les champs mentionnés dans l'aide pour le nom d'utilisateur sont indexés pour des performances optimales.
 
-Reportez-vous aux informations relatives à la maintenance de l'adhésion au groupe inverse dans lehttp://["Documentation OpenLDAP : version 2.4 - Guide de l'administrateur"^].
+Reportez-vous aux informations relatives à la maintenance de l'adhésion au groupe inverse dans lehttp://www.openldap.org/doc/admin24/index.html["Documentation OpenLDAP : version 2.4 - Guide de l'administrateur"^].

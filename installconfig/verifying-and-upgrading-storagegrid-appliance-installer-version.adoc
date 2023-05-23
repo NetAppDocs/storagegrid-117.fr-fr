@@ -27,7 +27,7 @@ Le programme d'installation de l'appliance StorageGRID se met automatiquement à
 +
 Le second chiffre des deux versions doit correspondre. Par exemple, si votre système StorageGRID exécute la version 11.*6*._x_._y_, la version du programme d'installation de l'appliance StorageGRID doit être 3.*6*._z_.
 
-. Si l'appliance dispose d'une version de niveau inférieur du programme d'installation de l'appliance StorageGRID, passez à https://["Téléchargement NetApp : appliance StorageGRID"^].
+. Si l'appliance dispose d'une version de niveau inférieur du programme d'installation de l'appliance StorageGRID, passez à https://mysupport.netapp.com/site/products/all/details/storagegrid-appliance/downloads-tab["Téléchargement NetApp : appliance StorageGRID"^].
 +
 Connectez-vous avec le nom d'utilisateur et le mot de passe de votre compte NetApp.
 

@@ -31,9 +31,9 @@ NOTE: Vous devez créer une application d'entreprise pour chaque nœud d'adminis
 == Accéder à Azure AD
 
 .Étapes
-. Connectez-vous au https://["Portail Azure"^].
-. Accédez à https://["Azure Active Directory"^].
-. Sélectionnez https://["Les applications d'entreprise"^].
+. Connectez-vous au https://portal.azure.com["Portail Azure"^].
+. Accédez à https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade["Azure Active Directory"^].
+. Sélectionnez https://portal.azure.com/#blade/Microsoft_AAD_IAM/StartboardApplicationsMenuBlade/Overview/menuId/["Les applications d'entreprise"^].
 
 
 

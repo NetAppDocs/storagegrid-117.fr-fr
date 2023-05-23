@@ -110,4 +110,4 @@ IMPORTANT: Les clés de chiffrement que vous fournissez ne sont jamais stockées
 
 
 .Informations associées
-https://["Guide pour les développeurs Amazon S3 : protection des données à l'aide du chiffrement côté serveur avec clés de chiffrement fournies par le client (SSE-C)"^]
+https://docs.aws.amazon.com/AmazonS3/latest/dev/ServerSideEncryptionCustomerKeys.html["Guide pour les développeurs Amazon S3 : protection des données à l'aide du chiffrement côté serveur avec clés de chiffrement fournies par le client (SSE-C)"^]

@@ -13,9 +13,9 @@ summary: 'Pour optimiser le fonctionnement du contrôleur de stockage, vous deve
 [role="lead"]
 Pour optimiser le fonctionnement du contrôleur de stockage, vous devez effectuer une mise à niveau vers la dernière version de maintenance du système d'exploitation SANtricity compatible avec votre appliance StorageGRID.
 
-Consulter le https://["Matrice d'interopérabilité NetApp (IMT)"^] pour déterminer la version que vous devez utiliser.
+Consulter le https://imt.netapp.com/matrix/#welcome["Matrice d'interopérabilité NetApp (IMT)"^] pour déterminer la version que vous devez utiliser.
 
-Téléchargez le nouveau fichier du logiciel SANtricity OS sur https://["Téléchargement NetApp : appliance StorageGRID"^].
+Téléchargez le nouveau fichier du logiciel SANtricity OS sur https://mysupport.netapp.com/site/products/all/details/storagegrid-appliance/downloads-tab["Téléchargement NetApp : appliance StorageGRID"^].
 
 Utilisez l'une des procédures suivantes basées sur la version de SANtricity OS actuellement installée :
 

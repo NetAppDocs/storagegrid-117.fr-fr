@@ -117,7 +117,7 @@ Aucune action requise.
 
 *Alertes résolues* : vous pouvez rechercher et afficher un historique des alertes qui ont été résolues.
 
-Vous pouvez également regarder la vidéo : https://["Vidéo : présentation des alertes pour StorageGRID 11.7"^]
+Vous pouvez également regarder la vidéo : https://netapp.hosted.panopto.com/Panopto/Pages/Viewer.aspx?id=18df5a3d-bf19-4a9e-8922-afbd009b141b["Vidéo : présentation des alertes pour StorageGRID 11.7"^]
 
 [link=https://netapp.hosted.panopto.com/Panopto/Pages/Viewer.aspx?id=18df5a3d-bf19-4a9e-8922-afbd009b141b]
 image::../media/video-screenshot-alert-overview-117.png[Vidéo : présentation des alertes pour StorageGRID 11.7]

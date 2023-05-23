@@ -14,7 +14,7 @@ summary: 'Pour les contrôleurs de stockage qui utilisent actuellement SANtricit
 Pour les contrôleurs de stockage qui utilisent actuellement SANtricity OS antérieurs à la version 08.42.20.00 (11.42), vous devez utiliser la procédure du mode de maintenance pour appliquer une mise à niveau.
 
 .Avant de commencer
-* Vous avez consulté le https://["Matrice d'interopérabilité NetApp (IMT)"^] Pour vérifier que la version de SANtricity OS utilisée pour la mise à niveau est compatible avec votre appliance.
+* Vous avez consulté le https://imt.netapp.com/matrix/#welcome["Matrice d'interopérabilité NetApp (IMT)"^] Pour vérifier que la version de SANtricity OS utilisée pour la mise à niveau est compatible avec votre appliance.
 * Si l'appliance StorageGRID s'exécute sur un système StorageGRID, vous avez placé le contrôleur SG6000-CN dans link:../commonhardware/placing-appliance-into-maintenance-mode.html["mode maintenance"].
 +
 
@@ -59,6 +59,6 @@ image::../media/nodes_menu.png[Le nœud d'appliance a rejoint la grille]
 
 
 .Informations associées
-https://["Matrice d'interopérabilité NetApp"^]
+https://imt.netapp.com/matrix/#welcome["Matrice d'interopérabilité NetApp"^]
 
 link:upgrading-santricity-os-on-storage-controllers-using-grid-manager-sg6000.html["Mettez à niveau le système d'exploitation SANtricity sur les contrôleurs de stockage à l'aide de Grid Manager"]

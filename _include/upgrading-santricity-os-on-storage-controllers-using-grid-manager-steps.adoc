@@ -3,11 +3,11 @@
 
 
 .Avant de commencer
-* Vous avez consulté le https://["Matrice d'interopérabilité NetApp (IMT)"^] Pour vérifier que la version de SANtricity OS utilisée pour la mise à niveau est compatible avec votre appliance.
+* Vous avez consulté le https://imt.netapp.com/matrix/#welcome["Matrice d'interopérabilité NetApp (IMT)"^] Pour vérifier que la version de SANtricity OS utilisée pour la mise à niveau est compatible avec votre appliance.
 * Vous avez le link:../admin/admin-group-permissions.html["Maintenance ou autorisation d'accès racine"].
 * Vous êtes connecté au Grid Manager à l'aide d'un link:../admin/web-browser-requirements.html["navigateur web pris en charge"].
 * Vous avez la phrase secrète pour le provisionnement.
-* Vous avez accès à https://["Téléchargement NetApp : appliance StorageGRID"^].
+* Vous avez accès à https://mysupport.netapp.com/site/products/all/details/storagegrid-appliance/downloads-tab["Téléchargement NetApp : appliance StorageGRID"^].
 
 
 .Description de la tâche
@@ -25,7 +25,7 @@ NOTE: Cette procédure met automatiquement à niveau la NVSRAM vers la version l
 IMPORTANT: Veillez à appliquer le dernier correctif StorageGRID avant de commencer cette procédure. Voir link:../maintain/storagegrid-hotfix-procedure.html["Procédure de correctif StorageGRID"] pour plus d'informations.
 
 .Étapes
-. [[download-santricity-os]] Téléchargez le nouveau fichier du logiciel SANtricity OS depuis le site https://["Téléchargement NetApp : appliance StorageGRID"^].
+. [[download-santricity-os]] Téléchargez le nouveau fichier du logiciel SANtricity OS depuis le site https://mysupport.netapp.com/site/products/all/details/storagegrid-appliance/downloads-tab["Téléchargement NetApp : appliance StorageGRID"^].
 +
 Veillez à choisir la version de système d'exploitation SANtricity pour vos contrôleurs de stockage.
 

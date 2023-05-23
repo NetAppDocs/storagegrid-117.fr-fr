@@ -37,7 +37,7 @@ Vous devez link:downloading-and-extracting-storagegrid-installation-files.html["
  a| 
 Le logiciel et la documentation VMware
  a| 
-Lors de l'installation, vous utilisez le client Web VMware vSphere pour déployer des nœuds grid virtuels sur des machines virtuelles. Pour les versions prises en charge, reportez-vous à la section https://["Matrice d'interopérabilité NetApp"^].
+Lors de l'installation, vous utilisez le client Web VMware vSphere pour déployer des nœuds grid virtuels sur des machines virtuelles. Pour les versions prises en charge, reportez-vous à la section https://imt.netapp.com/matrix/#welcome["Matrice d'interopérabilité NetApp"^].
 
 
 

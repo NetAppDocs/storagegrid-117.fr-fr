@@ -56,4 +56,4 @@ Documentation StorageGRID
 
 |===
 .Informations associées
-https://["Matrice d'interopérabilité NetApp"^]
+https://imt.netapp.com/matrix/#welcome["Matrice d'interopérabilité NetApp"^]

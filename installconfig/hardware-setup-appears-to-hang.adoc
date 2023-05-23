@@ -72,9 +72,9 @@ _E5700 et E2800 System Monitoring Guide_
 ====
 .Informations associées
 * link:viewing-status-indicators.html["Afficher les indicateurs d'état"]
-* http://["Site de documentation sur les systèmes NetApp E-Series"^]
+* http://mysupport.netapp.com/info/web/ECMP1658252.html["Site de documentation sur les systèmes NetApp E-Series"^]
 * link:he-error-error-synchronizing-with-santricity-os-software.html["Erreur : erreur de synchronisation avec le logiciel SANtricity OS"]
-* https://["Guide de surveillance des systèmes E5700 et E2800"^]
+* https://library.netapp.com/ecmdocs/ECMLP2588751/html/frameset.html["Guide de surveillance des systèmes E5700 et E2800"^]
 * link:viewing-boot-up-codes-for-sg6000-cn-controller.html["Afficher les codes de démarrage (contrôleur SG6000-CN)"]
 * link:viewing-error-codes-for-sg6000-cn-controller.html["Afficher les codes d'erreur (contrôleur SG6000-CN)"]
 

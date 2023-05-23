@@ -11,7 +11,7 @@ summary: 'Vous devez installer Ubuntu ou Debian sur tous les hôtes de la grille
 
 
 [role="lead"]
-Vous devez installer Linux sur tous les hôtes du grid. Utilisez le https://["Matrice d'interopérabilité NetApp (IMT)"^] pour obtenir une liste des versions prises en charge.
+Vous devez installer Linux sur tous les hôtes du grid. Utilisez le https://imt.netapp.com/matrix/#welcome["Matrice d'interopérabilité NetApp (IMT)"^] pour obtenir une liste des versions prises en charge.
 
 
 IMPORTANT: Assurez-vous que votre système d'exploitation est mis à niveau vers le noyau Linux 4.15 ou supérieur.

@@ -56,8 +56,8 @@ Si des nœuds sont déployés sur des hôtes Linux, vous devez link:linux-instal
 Documentation StorageGRID
  a| 
 * link:../release-notes/index.html["Notes de mise à jour"] Pour StorageGRID 11.7 (connexion requise). Lisez-les attentivement avant de commencer la mise à niveau.
-* https://["Guide de résolution des mises à niveau logicielles StorageGRID"^] pour la version majeure vers laquelle vous effectuez la mise à niveau (connexion requise)
-* Autre https://["Documentation StorageGRID 11.7"^], selon les besoins.
+* https://kb.netapp.com/Advice_and_Troubleshooting/Hybrid_Cloud_Infrastructure/StorageGRID/StorageGRID_software_upgrade_resolution_guide["Guide de résolution des mises à niveau logicielles StorageGRID"^] pour la version majeure vers laquelle vous effectuez la mise à niveau (connexion requise)
+* Autre https://docs.netapp.com/us-en/storagegrid-117/index.html["Documentation StorageGRID 11.7"^], selon les besoins.
 
 
 |===

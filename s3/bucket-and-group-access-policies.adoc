@@ -173,7 +173,7 @@ Autres considérations :
 * Vous pouvez utiliser l'astérisque (*) comme caractère générique pour correspondre à zéro ou plus de caractères dans la clé d'objet.
 * Les caractères internationaux, qui peuvent être spécifiés dans la clé d'objet, doivent être codés à l'aide de JSON UTF-8 ou de séquences d'échappement JSON \u. Le codage pourcentage n'est pas pris en charge.
 +
-https://["Syntaxe RFC 2141 URN"^]
+https://www.ietf.org/rfc/rfc2141.txt["Syntaxe RFC 2141 URN"^]
 
 +
 Le corps de requête HTTP pour l'opération de stratégie PUT Bucket doit être codé avec charset=UTF-8.

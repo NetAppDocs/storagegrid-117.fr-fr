@@ -19,7 +19,7 @@ Vous devez utiliser la version de StorageGRID en cours d'exécution sur la grill
 . Déterminez quelle version du logiciel est actuellement installée. Dans la partie supérieure du Gestionnaire de grille, sélectionnez l'icône d'aide et sélectionnez *About*.
 . Accédez à la page de téléchargements NetApp pour StorageGRID.
 +
-https://["Téléchargement NetApp : StorageGRID"^]
+https://mysupport.netapp.com/site/products/all/details/storagegrid/downloads-tab["Téléchargement NetApp : StorageGRID"^]
 
 . Sélectionnez la version de StorageGRID en cours d'exécution sur la grille.
 +

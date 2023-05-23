@@ -53,4 +53,4 @@ Un équilibreur de charge tiers est recommandé pour le trafic client non fiable
 
 == Réduction des ransomwares
 
-Protégez vos données d'objet contre les attaques par ransomware en suivant les recommandations du https://["Protégez vos données contre les ransomwares avec StorageGRID"^].
+Protégez vos données d'objet contre les attaques par ransomware en suivant les recommandations du https://www.netapp.com/media/69498-tr-4921.pdf["Protégez vos données contre les ransomwares avec StorageGRID"^].

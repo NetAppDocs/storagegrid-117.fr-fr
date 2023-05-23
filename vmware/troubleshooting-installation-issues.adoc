@@ -22,7 +22,7 @@ Voici les principaux fichiers journaux d'installation dont le support technique 
 .Informations associées
 Pour savoir comment accéder aux fichiers journaux, reportez-vous à la section link:../monitor/logs-files-reference.html["Référence des fichiers journaux"].
 
-Si vous avez besoin d'aide supplémentaire, contactez https://["Support NetApp"^].
+Si vous avez besoin d'aide supplémentaire, contactez https://mysupport.netapp.com/site/global/dashboard["Support NetApp"^].
 
 
 

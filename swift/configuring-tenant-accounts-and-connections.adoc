@@ -174,7 +174,7 @@ Vous pouvez utiliser l'interface de ligne de commandes Swift pour tester votre c
 .Avant de commencer
 * Vous devez avoir téléchargé et installé python-swaftclient, le client de ligne de commande Swift.
 +
-https://["SwiftStack: python-swftclient"^]
+https://platform.swiftstack.com/docs/integration/python-swiftclient.html["SwiftStack: python-swftclient"^]
 
 * Vous devez disposer d'un compte de locataire Swift dans le système StorageGRID.
 

@@ -24,7 +24,7 @@ NOTE: Pour créer la règle ILM par défaut d'une règle, suivez la procédure l
 * Vous avez configuré tous les pools de stockage cloud que vous prévoyez d'utiliser. Voir link:creating-cloud-storage-pool.html["Création d'un pool de stockage cloud"].
 * Vous connaissez le link:data-protection-options-for-ingest.html["options d'ingestion"].
 * Si vous devez créer une règle compatible pour une utilisation avec le verrouillage d'objet S3, vous connaissez le link:requirements-for-s3-object-lock.html["Conditions requises pour le verrouillage d'objet S3"].
-* Vous pouvez également regarder la vidéo : https://["Vidéo : règles de gestion du cycle de vie de l'information dans StorageGRID 11.7"^].
+* Vous pouvez également regarder la vidéo : https://netapp.hosted.panopto.com/Panopto/Pages/Viewer.aspx?id=6baa2e69-95b7-4bcf-a0ff-afbd0092231c["Vidéo : règles de gestion du cycle de vie de l'information dans StorageGRID 11.7"^].
 +
 [link=https://netapp.hosted.panopto.com/Panopto/Pages/Viewer.aspx?id=6baa2e69-95b7-4bcf-a0ff-afbd0092231c]
 image::../media/video-screenshot-ilm-rules-117.png[Vidéo : règles de gestion du cycle de vie de l'information dans StorageGRID 11.7]

@@ -13,7 +13,7 @@ summary: 'Vous pouvez envoyer des messages AutoSupport E-Series SANtricity Syste
 [role="lead"]
 Vous pouvez envoyer des messages AutoSupport E-Series SANtricity System Manager au support technique par l'intermédiaire d'un nœud d'administration StorageGRID plutôt que du port de gestion de l'appliance de stockage.
 
-Voir https://["Matériel E-Series AutoSupport"^] Pour en savoir plus sur l'utilisation de AutoSupport avec les appliances E-Series.
+Voir https://docs.netapp.com/us-en/e-series-santricity/sm-support/autosupport-feature-overview.html["Matériel E-Series AutoSupport"^] Pour en savoir plus sur l'utilisation de AutoSupport avec les appliances E-Series.
 
 .Avant de commencer
 * Vous êtes connecté au Grid Manager à l'aide d'un link:../admin/web-browser-requirements.html["navigateur web pris en charge"].
@@ -34,7 +34,7 @@ Les messages AutoSupport E-Series contiennent des informations détaillées sur 
 Vous pouvez configurer une adresse de serveur proxy spéciale dans le Gestionnaire système SANtricity pour transmettre des messages AutoSupport via un nœud d'administration StorageGRID sans utiliser le port de gestion de l'appliance. Les messages AutoSupport transmis de cette façon sont envoyés par le link:../admin/what-admin-node-is.html["Nœud d'administration de l'expéditeur préféré"], et ils utilisent n'importe quel link:../admin/configuring-admin-proxy-settings.html["Paramètres du proxy d'administration"] Qui ont été configurés dans le Gestionnaire de grille.
 
 
-NOTE: Cette procédure permet uniquement de configurer un serveur proxy StorageGRID pour les messages AutoSupport E-Series. Pour en savoir plus sur la configuration des baies E-Series AutoSupport, consultez le https://["Documentation NetApp E-Series et SANtricity"^].
+NOTE: Cette procédure permet uniquement de configurer un serveur proxy StorageGRID pour les messages AutoSupport E-Series. Pour en savoir plus sur la configuration des baies E-Series AutoSupport, consultez le https://mysupport.netapp.com/info/web/ECMP1658252.html["Documentation NetApp E-Series et SANtricity"^].
 
 .Étapes
 . Dans le Gestionnaire de grille, sélectionnez *NOEUDS*.

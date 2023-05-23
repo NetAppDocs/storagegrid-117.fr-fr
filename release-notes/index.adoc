@@ -13,4 +13,4 @@ summary: 'Obtention d"informations spécifiques à la version sur les nouvelles 
 [role="lead"]
 Obtention d'informations spécifiques à la version sur les nouvelles fonctionnalités, les fonctions supprimées ou obsolètes, les problèmes résolus et les problèmes connus.
 
-Connectez-vous au site de support NetApp à https://["Afficher ou télécharger un fichier PDF"^] Contenant les notes de version de StorageGRID 11.7.
+Connectez-vous au site de support NetApp à https://library.netapp.com/ecm/ecm_download_file/ECMLP2884438["Afficher ou télécharger un fichier PDF"^] Contenant les notes de version de StorageGRID 11.7.

@@ -84,4 +84,4 @@ Remplacement d'un tiroir disque dans les tiroirs E2860
 .Informations associées
 link:replacing-e2800-controller.html["Remplacement du contrôleur E2800"]
 
-http://["Site de documentation sur les systèmes NetApp E-Series"^]
+http://mysupport.netapp.com/info/web/ECMP1658252.html["Site de documentation sur les systèmes NetApp E-Series"^]

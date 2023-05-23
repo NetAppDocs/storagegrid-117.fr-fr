@@ -14,7 +14,7 @@ summary: 'Avant d"installer l"appliance, assurez-vous que le site et l"armoire o
 Avant d'installer l'appliance, assurez-vous que le site et l'armoire ou le rack que vous souhaitez utiliser correspondent aux spécifications d'une appliance StorageGRID.
 
 .Étapes
-. Vérifier que le site répond aux exigences en matière de température, d'humidité, d'altitude, de débit d'air, de dissipation thermique, câblage, alimentation et mise à la terre. Voir la https://["NetApp Hardware Universe"^] pour en savoir plus.
+. Vérifier que le site répond aux exigences en matière de température, d'humidité, d'altitude, de débit d'air, de dissipation thermique, câblage, alimentation et mise à la terre. Voir la https://hwu.netapp.com["NetApp Hardware Universe"^] pour en savoir plus.
 . Vérifiez que votre emplacement fournit la tension correcte de l'alimentation secteur :
 +
 [cols="1a,1a"]

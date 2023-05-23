@@ -56,6 +56,6 @@ Pour éviter les problèmes d'expiration des certificats, suivez les bonnes prat
 * Utiliser un certificat d'autorité de certification signé publiquement. Si vous utilisez un certificat signé par une autorité de certification, vous pouvez utiliser l'API de gestion de grille pour automatiser la rotation des certificats. Vous pouvez ainsi remplacer les certificats dont la date d'expiration arrive à expiration sans interrompre l'activité.
 * Si vous avez généré un certificat StorageGRID auto-signé et que ce certificat est sur le point d'expirer, vous devez le remplacer manuellement dans StorageGRID et dans ONTAP avant que le certificat existant n'expire. Si un certificat auto-signé a déjà expiré, désactivez la validation du certificat dans ONTAP pour éviter toute perte d'accès.
 +
-Voir https://["Base de connaissances NetApp : comment configurer un nouveau certificat de serveur autosigné StorageGRID sur un déploiement ONTAP FabricPool existant"^] pour obtenir des instructions.
+Voir https://kb.netapp.com/Advice_and_Troubleshooting/Hybrid_Cloud_Infrastructure/StorageGRID/How_to_configure_a_new_StorageGRID_self-signed_server_certificate_on_an_existing_ONTAP_FabricPool_deployment["Base de connaissances NetApp : comment configurer un nouveau certificat de serveur autosigné StorageGRID sur un déploiement ONTAP FabricPool existant"^] pour obtenir des instructions.
 
 

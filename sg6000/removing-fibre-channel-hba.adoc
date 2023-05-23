@@ -53,4 +53,4 @@ L'ensemble carte de montage comprend deux adaptateurs : un adaptateur HBA Fibre 
 .Une fois que vous avez terminé
 link:reinstalling-fibre-channel-hba.html["Installez la carte HBA Fibre Channel de remplacement"].
 
-Après le remplacement de la pièce, renvoyez la pièce défectueuse à NetApp, en suivant les instructions RMA (retour de matériel) livrées avec le kit. Voir la https://["Retour de pièce et amp ; remplacements"^] pour plus d'informations.
+Après le remplacement de la pièce, renvoyez la pièce défectueuse à NetApp, en suivant les instructions RMA (retour de matériel) livrées avec le kit. Voir la https://mysupport.netapp.com/site/info/rma["Retour de pièce et amp ; remplacements"^] pour plus d'informations.

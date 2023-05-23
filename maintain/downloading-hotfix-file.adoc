@@ -14,7 +14,7 @@ summary: Vous devez télécharger le fichier de correctif avant de pouvoir appli
 Vous devez télécharger le fichier de correctif avant de pouvoir appliquer le correctif.
 
 .Étapes
-. Accédez à https://["Téléchargement NetApp : StorageGRID"^].
+. Accédez à https://mysupport.netapp.com/site/products/all/details/storagegrid/downloads-tab["Téléchargement NetApp : StorageGRID"^].
 . Sélectionnez la flèche vers le bas sous *logiciel disponible* pour afficher la liste des correctifs disponibles au téléchargement.
 +
 

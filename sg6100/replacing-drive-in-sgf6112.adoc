@@ -162,4 +162,4 @@ Vous pouvez vérifier l'état de la reconstruction à l'aide du Gestionnaire de 
 . Dans le Gestionnaire de grille, accédez à *NODES* > `*appliance Storage Node*` > *matériel*. Dans la section dispositif StorageGRID de la page, vérifiez que le mode RAID de stockage fonctionne correctement.
 
 
-Après le remplacement de la pièce, renvoyez la pièce défectueuse à NetApp, en suivant les instructions RMA (retour de matériel) livrées avec le kit. Voir la https://["Retour de pièce et amp ; remplacements"^] pour plus d'informations.
+Après le remplacement de la pièce, renvoyez la pièce défectueuse à NetApp, en suivant les instructions RMA (retour de matériel) livrées avec le kit. Voir la https://mysupport.netapp.com/site/info/rma["Retour de pièce et amp ; remplacements"^] pour plus d'informations.

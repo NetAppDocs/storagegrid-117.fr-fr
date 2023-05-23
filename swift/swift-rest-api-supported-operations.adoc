@@ -31,4 +31,4 @@ Les opérations de l'API Swift suivantes sont prises en charge :
 Le système StorageGRID implémente toutes les en-têtes courants pour les opérations prises en charge, comme défini par l'API de stockage objet OpenStack Swift v1.
 
 .Informations associées
-http://["OpenStack : API de stockage objet"^]
+http://docs.openstack.org/developer/swift/api/object_api_v1_overview.html["OpenStack : API de stockage objet"^]

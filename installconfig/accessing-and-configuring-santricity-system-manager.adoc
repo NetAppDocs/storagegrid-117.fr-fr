@@ -61,7 +61,7 @@ Vous pouvez utiliser SANtricity System Manager pour configurer les paramètres s
 * Alertes par e-mail, alertes SNMP ou syslog correspondant aux composants du tiroir de contrôleur de stockage
 * Paramètres de la gamme E-Series AutoSupport pour les composants du tiroir contrôleur de stockage.
 +
-Pour en savoir plus sur les systèmes E-Series AutoSupport, consultez http://["Site de documentation sur les systèmes NetApp E-Series"^].
+Pour en savoir plus sur les systèmes E-Series AutoSupport, consultez http://mysupport.netapp.com/info/web/ECMP1658252.html["Site de documentation sur les systèmes NetApp E-Series"^].
 
 * Clés de sécurité du lecteur, qui sont nécessaires pour déverrouiller des lecteurs sécurisés (cette étape est requise si la fonction de sécurité du lecteur est activée)
 * Mot de passe d'administrateur pour accéder à SANtricity System Manager

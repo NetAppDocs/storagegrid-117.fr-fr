@@ -44,7 +44,7 @@ NOTE: Pour plus de facilité, vous pouvez utiliser le lien SANtricity System Man
 
 Pour afficher des informations détaillées sur les performances au niveau de la baie de stockage et l'utilisation de la capacité, positionnez le curseur sur chaque graphique.
 
-Pour plus de détails sur l'affichage des informations accessibles depuis l'onglet SANtricity System Manager, reportez-vous à la section https://["Documentation sur les systèmes NetApp E-Series et SANtricity"^].
+Pour plus de détails sur l'affichage des informations accessibles depuis l'onglet SANtricity System Manager, reportez-vous à la section https://mysupport.netapp.com/info/web/ECMP1658252.html["Documentation sur les systèmes NetApp E-Series et SANtricity"^].
 
 .Informations associées
 * link:../sg6000/index.html["Entretenir l'appareil SG6000"]

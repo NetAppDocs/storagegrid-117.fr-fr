@@ -19,9 +19,9 @@ Avant de procéder à la mise à niveau vers StorageGRID 11.7, StorageGRID 11.6 
 Un chemin de mise à niveau possible est indiqué dans la <<Exemple : mise à niveau vers StorageGRID 11.6 à partir de la version 11.3.0.8,exemple>>.
 
 
-IMPORTANT: NetApp vous recommande fortement d'appliquer le dernier correctif pour chaque version de StorageGRID avant de procéder à la mise à niveau vers la version suivante et d'appliquer également le dernier correctif à chaque nouvelle version que vous installez. Dans certains cas, vous devez appliquer un correctif pour éviter le risque de perte de données. Voir https://["Téléchargement NetApp : StorageGRID"^] et les notes de mise à jour de chaque correctif pour en savoir plus.
+IMPORTANT: NetApp vous recommande fortement d'appliquer le dernier correctif pour chaque version de StorageGRID avant de procéder à la mise à niveau vers la version suivante et d'appliquer également le dernier correctif à chaque nouvelle version que vous installez. Dans certains cas, vous devez appliquer un correctif pour éviter le risque de perte de données. Voir https://mysupport.netapp.com/site/products/all/details/storagegrid/downloads-tab["Téléchargement NetApp : StorageGRID"^] et les notes de mise à jour de chaque correctif pour en savoir plus.
 
-Notez que vous pouvez exécuter un script pour effectuer une mise à jour de 11.3.0.13+ à 11.4.0._y_ en une étape et de 11.4.0.7+ à 11.5.0._y_ en une étape. Voir https://["Base de connaissances NetApp : comment exécuter conjointement des mises à niveau majeures et un script de hot fix pour StorageGRID"^].
+Notez que vous pouvez exécuter un script pour effectuer une mise à jour de 11.3.0.13+ à 11.4.0._y_ en une étape et de 11.4.0.7+ à 11.5.0._y_ en une étape. Voir https://kb.netapp.com/Advice_and_Troubleshooting/Hybrid_Cloud_Infrastructure/StorageGRID/How_to_run_combined_major_upgrade_and_hotfix_script_for_StorageGRID["Base de connaissances NetApp : comment exécuter conjointement des mises à niveau majeures et un script de hot fix pour StorageGRID"^].
 
 .Étapes
 . Connectez-vous au Grid Manager à l'aide d'un link:../admin/web-browser-requirements.html["navigateur web pris en charge"].
@@ -35,7 +35,7 @@ Dans StorageGRID 11.6._x.y_ numéro de version :
 ** Un *hotfix*, s'il a été appliqué, a une valeur _y_ (par exemple, 11.6.0.1).
 
 
-. Si *version* n'est pas 11.6._x.y_, passez à l' https://["Téléchargement NetApp : StorageGRID"^] pour télécharger les fichiers de chaque version précédente, y compris le dernier correctif pour chaque version.
+. Si *version* n'est pas 11.6._x.y_, passez à l' https://mysupport.netapp.com/site/products/all/details/storagegrid/downloads-tab["Téléchargement NetApp : StorageGRID"^] pour télécharger les fichiers de chaque version précédente, y compris le dernier correctif pour chaque version.
 . Obtenez les instructions de mise à niveau pour chaque version que vous avez téléchargée. Exécutez ensuite la procédure de mise à niveau du logiciel pour cette version et appliquez le dernier correctif pour cette version (fortement recommandé).
 +
 Voir la link:../maintain/storagegrid-hotfix-procedure.html["Procédure de correctif StorageGRID"].
@@ -49,7 +49,7 @@ Voir la link:../maintain/storagegrid-hotfix-procedure.html["Procédure de correc
 L'exemple suivant montre les étapes de mise à niveau de StorageGRID version 11.3.0.8 vers la version 11.6 en vue de la mise à niveau de StorageGRID 11.7.
 
 
-IMPORTANT: Vous pouvez également exécuter un script pour combiner les étapes 2 et 3 (mise à jour de 11.3.0.13+ à 11.4.0._y_) et pour combiner les étapes 4 et 5 (mise à jour de 11.4.0.7+ à 11.5.0._y_). Voir https://["Base de connaissances NetApp : comment exécuter conjointement des mises à niveau majeures et un script de hot fix pour StorageGRID"^].
+IMPORTANT: Vous pouvez également exécuter un script pour combiner les étapes 2 et 3 (mise à jour de 11.3.0.13+ à 11.4.0._y_) et pour combiner les étapes 4 et 5 (mise à jour de 11.4.0.7+ à 11.5.0._y_). Voir https://kb.netapp.com/Advice_and_Troubleshooting/Hybrid_Cloud_Infrastructure/StorageGRID/How_to_run_combined_major_upgrade_and_hotfix_script_for_StorageGRID["Base de connaissances NetApp : comment exécuter conjointement des mises à niveau majeures et un script de hot fix pour StorageGRID"^].
 
 Téléchargez et installez le logiciel dans l'ordre suivant pour préparer votre système à la mise à niveau :
 

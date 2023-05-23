@@ -392,7 +392,7 @@ NOTE: Si le contrôleur d'origine n'a pas utilisé DHCP pour l'adresse IP, le no
 . Confirmer que le nouveau contrôleur est optimal et collecter les données de support.
 
 
-Après le remplacement de la pièce, renvoyez la pièce défectueuse à NetApp, en suivant les instructions RMA (retour de matériel) livrées avec le kit. Voir la https://["Retour de pièce et amp ; remplacements"^] pour plus d'informations.
+Après le remplacement de la pièce, renvoyez la pièce défectueuse à NetApp, en suivant les instructions RMA (retour de matériel) livrées avec le kit. Voir la https://mysupport.netapp.com/site/info/rma["Retour de pièce et amp ; remplacements"^] pour plus d'informations.
 
 .Informations associées
-http://["Site de documentation sur les systèmes NetApp E-Series"^]
+http://mysupport.netapp.com/info/web/ECMP1658252.html["Site de documentation sur les systèmes NetApp E-Series"^]

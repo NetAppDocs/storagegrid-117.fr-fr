@@ -141,4 +141,4 @@ Utilisez l'interface BMC pour surveiller l'état de démarrage.
 . Vérifiez que le nœud de l'appliance s'affiche dans Grid Manager et qu'aucune alerte n'apparaît.
 
 
-Après le remplacement de la pièce, renvoyez la pièce défectueuse à NetApp, en suivant les instructions RMA (retour de matériel) livrées avec le kit. Voir la https://["Retour de pièce et amp ; remplacements"^] pour plus d'informations.
+Après le remplacement de la pièce, renvoyez la pièce défectueuse à NetApp, en suivant les instructions RMA (retour de matériel) livrées avec le kit. Voir la https://mysupport.netapp.com/site/info/rma["Retour de pièce et amp ; remplacements"^] pour plus d'informations.

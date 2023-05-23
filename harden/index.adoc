@@ -17,7 +17,7 @@ Ce document présente les directives de renforcement propres à StorageGRID. Ces
 
 Lors de l'installation et de la configuration de StorageGRID, ces instructions vous aideront à répondre aux objectifs de sécurité que vous avez définis pour la confidentialité, l'intégrité et la disponibilité des systèmes d'information.
 
-StorageGRID suit le https://["Politique de gestion des vulnérabilités de NetApp"^]. Toutes les vulnérabilités signalées sont vérifiées et traitées selon le processus de réponse aux incidents de sécurité.
+StorageGRID suit le https://security.netapp.com/policy/["Politique de gestion des vulnérabilités de NetApp"^]. Toutes les vulnérabilités signalées sont vérifiées et traitées selon le processus de réponse aux incidents de sécurité.
 
 
 

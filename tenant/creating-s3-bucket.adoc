@@ -56,7 +56,7 @@ Nom du compartiment conforme aux règles suivantes :
 ** Ne doit pas utiliser de périodes dans des demandes de type hébergement virtuel. Les périodes provoquera des problèmes avec la vérification du certificat générique du serveur.
 
 
-Pour plus d'informations, reportez-vous à la section https://["Documentation Amazon Web Services (AWS) sur les règles d'attribution de nom de compartiment"^].
+Pour plus d'informations, reportez-vous à la section https://docs.aws.amazon.com/AmazonS3/latest/userguide/bucketnamingrules.html["Documentation Amazon Web Services (AWS) sur les règles d'attribution de nom de compartiment"^].
 
 *Remarque* : vous ne pouvez pas modifier le nom du compartiment après avoir créé le compartiment.
 

@@ -264,5 +264,5 @@ Le passage du mode DE CONFORMITÉ À LA GOUVERNANCE n'est jamais autorisé.
 .Informations associées
 * link:../ilm/managing-objects-with-s3-object-lock.html["Gestion des objets avec le verrouillage d'objets S3"]
 * link:../tenant/using-s3-object-lock.html["Utilisez le verrouillage d'objet S3 pour conserver les objets"]
-* https://["Guide de l'utilisateur Amazon simple Storage Service : utilisation du verrouillage d'objets S3"^]
+* https://docs.aws.amazon.com/AmazonS3/latest/userguide/object-lock.html["Guide de l'utilisateur Amazon simple Storage Service : utilisation du verrouillage d'objets S3"^]
 

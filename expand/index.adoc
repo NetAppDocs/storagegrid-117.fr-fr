@@ -32,6 +32,6 @@ Comme indiqué dans le workflow, les étapes d'extension dépendent de l'ajout o
 Les étapes d'ajout de nœuds dépendent également de l'ajout d'appliances StorageGRID ou d'hôtes exécutant VMware ou Linux.
 
 
-NOTE: « Linux » désigne un déploiement Red Hat® Enterprise Linux®, Ubuntu®, CentOS ou Debian®. Utilisez le https://["Matrice d'interopérabilité NetApp (IMT)"^] pour obtenir une liste des versions prises en charge.
+NOTE: « Linux » désigne un déploiement Red Hat® Enterprise Linux®, Ubuntu®, CentOS ou Debian®. Utilisez le https://imt.netapp.com/matrix/#welcome["Matrice d'interopérabilité NetApp (IMT)"^] pour obtenir une liste des versions prises en charge.
 
 image::../media/expansion_workflow.png[organigramme montrant un aperçu du processus d'expansion]

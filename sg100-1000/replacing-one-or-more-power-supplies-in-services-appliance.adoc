@@ -67,4 +67,4 @@ image::../media/sg6000_cn_insert_power_supply.gif[Alimentation coulissante en SG
 . link:../installconfig/connecting-power-cords-and-applying-power-sg100-and-sg1000.html["Branchez les câbles d'alimentation aux unités remplacées et mettez-les sous tension"].
 
 
-Après le remplacement de la pièce, renvoyez la pièce défectueuse à NetApp, en suivant les instructions RMA (retour de matériel) livrées avec le kit. Voir la https://["Retour de pièce et amp ; remplacements"^] pour plus d'informations.
+Après le remplacement de la pièce, renvoyez la pièce défectueuse à NetApp, en suivant les instructions RMA (retour de matériel) livrées avec le kit. Voir la https://mysupport.netapp.com/site/info/rma["Retour de pièce et amp ; remplacements"^] pour plus d'informations.

@@ -50,7 +50,7 @@ Cet exemple montre le code XML utilisé pour activer le code commande pour un co
 </CORSConfiguration>
 ----
 +
-Pour plus d'informations sur le XML de configuration CORS, voir http://["Documentation Amazon Web Services (AWS) : guide du développeur Amazon simple Storage Service"^].
+Pour plus d'informations sur le XML de configuration CORS, voir http://docs.aws.amazon.com/AmazonS3/latest/dev/Welcome.html["Documentation Amazon Web Services (AWS) : guide du développeur Amazon simple Storage Service"^].
 
 . Sélectionnez *Afficher les compartiments* dans le tableau de bord ou sélectionnez *STOCKAGE (S3)* > *compartiments*.
 . Sélectionnez le nom du compartiment dans la table.

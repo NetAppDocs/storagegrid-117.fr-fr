@@ -32,10 +32,10 @@ Suivez ces instructions pour :
 * Consultez les bonnes pratiques FabricPool pour la section link:best-practices-for-high-availability-groups.html["Groupes HAUTE DISPONIBILITÉ"], link:best-practices-for-load-balancing.html["équilibrage de la charge"], link:best-practices-ilm.html["ILM"], et link:other-best-practices-for-storagegrid-and-fabricpool.html["plus encore"].
 * Consultez les ressources supplémentaires suivantes, qui contiennent des informations détaillées sur l'utilisation et la configuration de ONTAP et FabricPool :
 +
-https://["Tr-4598 : meilleures pratiques FabricPool dans ONTAP"^]
+https://www.netapp.com/pdf.html?item=/media/17239-tr4598pdf.pdf["Tr-4598 : meilleures pratiques FabricPool dans ONTAP"^]
 
 +
-https://["ONTAP 9 : présentation de la gestion des niveaux FabricPool avec System Manager"^]
+https://docs.netapp.com/us-en/ontap/concept_cloud_overview.html["ONTAP 9 : présentation de la gestion des niveaux FabricPool avec System Manager"^]
 
 
 

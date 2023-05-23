@@ -17,12 +17,12 @@ Vous pouvez créer des alertes personnalisées, modifier ou désactiver des aler
 
 Pour en savoir plus :
 
-* Regardez la vidéo : https://["Vidéo : présentation des alertes pour StorageGRID 11.7"^]
+* Regardez la vidéo : https://netapp.hosted.panopto.com/Panopto/Pages/Viewer.aspx?id=18df5a3d-bf19-4a9e-8922-afbd009b141b["Vidéo : présentation des alertes pour StorageGRID 11.7"^]
 +
 [link=https://netapp.hosted.panopto.com/Panopto/Pages/Viewer.aspx?id=18df5a3d-bf19-4a9e-8922-afbd009b141b]
 image::../media/video-screenshot-alert-overview-117.png[Vidéo : présentation des alertes pour StorageGRID 11.7]
 
-* Regardez la vidéo : https://["Vidéo : utilisation de metrics pour créer des alertes personnalisées dans StorageGRID 11.7"^]
+* Regardez la vidéo : https://netapp.hosted.panopto.com/Panopto/Pages/Viewer.aspx?id=61acb7ba-7683-488a-a689-afb7010088f3["Vidéo : utilisation de metrics pour créer des alertes personnalisées dans StorageGRID 11.7"^]
 +
 [link=https://netapp.hosted.panopto.com/Panopto/Pages/Viewer.aspx?id=61acb7ba-7683-488a-a689-afb7010088f3]
 image::../media/video-screenshot-alert-create-custom-117.png[Vidéo : utilisation de metrics pour créer des alertes personnalisées dans StorageGRID 11.7]

@@ -31,7 +31,7 @@ Pour activer la réplication CloudMirror pour un compartiment, vous devez créer
 
 NOTE: La réplication n'est pas prise en charge pour les compartiments source ou de destination lorsque le verrouillage d'objet S3 est activé.
 
-Pour obtenir des informations générales sur la réplication de compartiment et la configuration de celle-ci, reportez-vous à la section https://["Documentation d'Amazon simple Storage Service (S3) : réplication d'objets"^]. Pour plus d'informations sur la manière dont StorageGRID implémente GetBuckeReplication, DeleteBuckeReplication et PutBuckeReplication, reportez-vous au link:../s3/operations-on-buckets.html["Opérations sur les compartiments"].
+Pour obtenir des informations générales sur la réplication de compartiment et la configuration de celle-ci, reportez-vous à la section https://docs.aws.amazon.com/AmazonS3/latest/userguide/replication.html["Documentation d'Amazon simple Storage Service (S3) : réplication d'objets"^]. Pour plus d'informations sur la manière dont StorageGRID implémente GetBuckeReplication, DeleteBuckeReplication et PutBuckeReplication, reportez-vous au link:../s3/operations-on-buckets.html["Opérations sur les compartiments"].
 
 Si vous activez la réplication CloudMirror sur un compartiment qui contient des objets, les nouveaux objets ajoutés au compartiment sont répliqués, mais les objets existants du compartiment ne sont pas répliqués. Vous devez mettre à jour des objets existants pour déclencher la réplication.
 

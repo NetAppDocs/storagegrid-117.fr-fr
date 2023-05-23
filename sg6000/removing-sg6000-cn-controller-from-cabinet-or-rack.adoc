@@ -48,7 +48,7 @@ Le capot supérieur du contrôleur est accessible.
 . Facultatif : si vous retirez complètement le contrôleur de l'armoire ou du rack, suivez les instructions du kit de rails pour retirer le contrôleur des rails.
 
 
-Après le remplacement de la pièce, renvoyez la pièce défectueuse à NetApp, en suivant les instructions RMA (retour de matériel) livrées avec le kit. Voir la https://["Retour de pièce et amp ; remplacements"^] pour plus d'informations.
+Après le remplacement de la pièce, renvoyez la pièce défectueuse à NetApp, en suivant les instructions RMA (retour de matériel) livrées avec le kit. Voir la https://mysupport.netapp.com/site/info/rma["Retour de pièce et amp ; remplacements"^] pour plus d'informations.
 
 .Informations associées
 link:removing-sg6000-cn-controller-cover.html["Déposer le couvercle du contrôleur SG6000-CN"]

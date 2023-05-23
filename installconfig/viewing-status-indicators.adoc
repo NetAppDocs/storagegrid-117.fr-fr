@@ -275,7 +275,7 @@ image::../media/seven_segment_display_codes_for_e2800.gif[Codes d'affichage sept
 
 
 .Informations associées
-* https://["Support NetApp"^]
+* https://mysupport.netapp.com/site/global/dashboard["Support NetApp"^]
 * link:../sg6000/powering-on-sg6000-cn-controller-and-verifying-operation.html["Mettez le contrôleur SG6000-CN sous tension et vérifiez son fonctionnement"]
 
 
@@ -662,8 +662,8 @@ L'installation ou la communication avec le contrôleur E2800 est défectueuse.
 
 
 .Informations associées
-* https://["Support NetApp"^]
-* https://["Guide de surveillance des systèmes E5700 et E2800"^]
+* https://mysupport.netapp.com/site/global/dashboard["Support NetApp"^]
+* https://library.netapp.com/ecmdocs/ECMLP2588751/html/frameset.html["Guide de surveillance des systèmes E5700 et E2800"^]
 
 
 --

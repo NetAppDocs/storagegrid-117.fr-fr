@@ -24,7 +24,7 @@ Le service StorageGRID Load Balancer est installé sur tous les nœuds d'adminis
 Le service Load Balancer de chaque nœud fonctionne indépendamment lors du transfert du trafic client vers les nœuds de stockage. Par le biais d'un processus de pondération, le service Load Balancer achemine davantage de requêtes vers des nœuds de stockage avec une disponibilité de processeur supérieure.
 
 
-NOTE: Bien que le service StorageGRID Load Balancer soit le mécanisme d'équilibrage de la charge recommandé, vous pouvez à la place intégrer un équilibreur de charge tiers. Pour plus d'informations, contactez votre ingénieur commercial NetApp ou consultez https://["Tr-4626 : équilibreurs de charge mondiaux et tiers StorageGRID"^].
+NOTE: Bien que le service StorageGRID Load Balancer soit le mécanisme d'équilibrage de la charge recommandé, vous pouvez à la place intégrer un équilibreur de charge tiers. Pour plus d'informations, contactez votre ingénieur commercial NetApp ou consultez https://www.netapp.com/pdf.html?item=/media/17068-tr4626pdf.pdf["Tr-4626 : équilibreurs de charge mondiaux et tiers StorageGRID"^].
 
 
 

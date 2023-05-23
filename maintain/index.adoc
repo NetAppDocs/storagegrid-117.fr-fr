@@ -20,7 +20,7 @@ Suivez ces instructions pour entretenir votre système StorageGRID et effectuer 
 Ces instructions expliquent comment appliquer un correctif logiciel, récupérer des nœuds de la grille, récupérer un site défaillant, désaffecter des nœuds de la grille ou un site entier, effectuer la maintenance du réseau, exécuter des procédures de maintenance au niveau de l'hôte et du middleware et exécuter des procédures de nœud de la grille.
 
 
-NOTE: Dans ces instructions, « Linux » fait référence à un déploiement Red Hat® Enterprise Linux®, Ubuntu®, CentOS ou Debian®. Utilisez le https://["Matrice d'interopérabilité NetApp"^] pour obtenir une liste des versions prises en charge.
+NOTE: Dans ces instructions, « Linux » fait référence à un déploiement Red Hat® Enterprise Linux®, Ubuntu®, CentOS ou Debian®. Utilisez le https://imt.netapp.com/matrix/#welcome["Matrice d'interopérabilité NetApp"^] pour obtenir une liste des versions prises en charge.
 
 
 

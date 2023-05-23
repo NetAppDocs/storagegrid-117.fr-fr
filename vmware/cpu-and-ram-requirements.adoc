@@ -13,7 +13,7 @@ summary: 'Avant d"installer le logiciel StorageGRID, vérifiez et configurez le 
 [role="lead"]
 Avant d'installer le logiciel StorageGRID, vérifiez et configurez le matériel afin qu'il soit prêt à prendre en charge le système StorageGRID.
 
-Pour plus d'informations sur les serveurs pris en charge, reportez-vous au https://["Matrice d'interopérabilité NetApp"^].
+Pour plus d'informations sur les serveurs pris en charge, reportez-vous au https://imt.netapp.com/matrix/#welcome["Matrice d'interopérabilité NetApp"^].
 
 Chaque nœud StorageGRID nécessite au moins :
 

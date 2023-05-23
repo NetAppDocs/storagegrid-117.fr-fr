@@ -23,7 +23,7 @@ Si vous avez précédemment activé le paramètre de conformité globale, le par
 
 * link:use-s3-api-for-s3-object-lock.html["Utilisez l'API REST S3 pour configurer le verrouillage objet S3"]
 * link:../ilm/index.html["Gestion des objets avec ILM"]
-* https://["Base de connaissances NetApp : comment gérer des compartiments conformes aux ancienne génération dans StorageGRID 11.5"^]
+* https://kb.netapp.com/Advice_and_Troubleshooting/Hybrid_Cloud_Infrastructure/StorageGRID/How_to_manage_legacy_Compliant_buckets_in_StorageGRID_11.5["Base de connaissances NetApp : comment gérer des compartiments conformes aux ancienne génération dans StorageGRID 11.5"^]
 
 
 Demandes de conformité obsolètes :

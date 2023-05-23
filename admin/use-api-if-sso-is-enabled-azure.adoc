@@ -42,7 +42,7 @@ Si vous avez un problème de codage d'URL, l'erreur peut s'afficher : `Unsupport
 .Étapes
 . Installez les dépendances requises comme suit :
 +
-.. Installez Node.js (voir https://["https://nodejs.org/en/download/"^]).
+.. Installez Node.js (voir https://nodejs.org/en/download/["https://nodejs.org/en/download/"^]).
 .. Installez les modules Node.js requis (maripeteer et jsdom) :
 +
 `npm install -g <module>`

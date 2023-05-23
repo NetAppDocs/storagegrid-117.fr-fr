@@ -284,4 +284,4 @@ Boîtier de puissance (1 sur 2)
 
 |===
 .Informations associées
-http://["Site de documentation sur les systèmes NetApp E-Series"^]
+http://mysupport.netapp.com/info/web/ECMP1658252.html["Site de documentation sur les systèmes NetApp E-Series"^]

@@ -30,7 +30,7 @@ IMPORTANT: Enroulez l'extrémité de la sangle d'un bracelet antistatique autour
 
 
 
-Après le remplacement de la pièce, renvoyez la pièce défectueuse à NetApp, en suivant les instructions RMA (retour de matériel) livrées avec le kit. Voir la https://["Retour de pièce et amp ; remplacements"^] pour plus d'informations.
+Après le remplacement de la pièce, renvoyez la pièce défectueuse à NetApp, en suivant les instructions RMA (retour de matériel) livrées avec le kit. Voir la https://mysupport.netapp.com/site/info/rma["Retour de pièce et amp ; remplacements"^] pour plus d'informations.
 
 .Informations associées
 link:replace-nic-in-sgf6112.html["Remplacez la carte réseau"]

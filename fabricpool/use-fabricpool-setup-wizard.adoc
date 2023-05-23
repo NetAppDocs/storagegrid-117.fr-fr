@@ -94,7 +94,7 @@ L'association d'un seul niveau de cloud à plusieurs niveaux locaux dans un clus
 NetApp déconseille d'associer un seul Tier cloud à des tiers locaux dans plusieurs clusters.
 
 
-NOTE: Pour connaître les bonnes pratiques d'utilisation de StorageGRID avec NetApp MetroCluster™ et FabricPool Mirror, consultez le site https://["Tr-4598 : meilleures pratiques FabricPool dans ONTAP"^].
+NOTE: Pour connaître les bonnes pratiques d'utilisation de StorageGRID avec NetApp MetroCluster™ et FabricPool Mirror, consultez le site https://www.netapp.com/pdf.html?item=/media/17239-tr4598pdf.pdf["Tr-4598 : meilleures pratiques FabricPool dans ONTAP"^].
 
 
 

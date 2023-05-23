@@ -117,7 +117,7 @@ Données et métadonnées d'objet uniquement (les données de configuration du s
 
 Une méthode de chiffrement externe permet un contrôle plus précis des clés et des algorithmes de chiffrement. Peut être combiné avec les autres méthodes répertoriées.
 
-https://["Amazon simple Storage Service - Guide des développeurs : protection des données à l'aide du chiffrement côté client"^]
+https://docs.aws.amazon.com/AmazonS3/latest/dev/UsingClientSideEncryption.html["Amazon simple Storage Service - Guide des développeurs : protection des données à l'aide du chiffrement côté client"^]
 
 |===
 

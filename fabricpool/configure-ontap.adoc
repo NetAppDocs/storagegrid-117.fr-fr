@@ -22,7 +22,7 @@ Une fois que vous avez obtenu les informations StorageGRID requises, vous pouvez
 
 == Accédez à ONTAP System Manager
 
-Ces instructions expliquent comment utiliser ONTAP System Manager pour ajouter StorageGRID en tant que niveau cloud. Vous pouvez effectuer la même configuration via l'interface de ligne de commandes de ONTAP. Pour obtenir des instructions, reportez-vous à la section https://["ONTAP 9 : gestion des tiers FabricPool avec l'interface de ligne de commandes"^].
+Ces instructions expliquent comment utiliser ONTAP System Manager pour ajouter StorageGRID en tant que niveau cloud. Vous pouvez effectuer la même configuration via l'interface de ligne de commandes de ONTAP. Pour obtenir des instructions, reportez-vous à la section https://docs.netapp.com/us-en/ontap/fabricpool/index.html["ONTAP 9 : gestion des tiers FabricPool avec l'interface de ligne de commandes"^].
 
 .Étapes
 . Accédez à System Manager pour le cluster ONTAP que vous souhaitez mettre au niveau vers StorageGRID.
@@ -35,7 +35,7 @@ Ces instructions expliquent comment utiliser ONTAP System Manager pour ajouter S
 
 == Entrez les valeurs StorageGRID
 
-Voir https://["ONTAP 9 : présentation de la gestion des niveaux FabricPool avec System Manager"^] pour en savoir plus.
+Voir https://docs.netapp.com/us-en/ontap/concept_cloud_overview.html["ONTAP 9 : présentation de la gestion des niveaux FabricPool avec System Manager"^] pour en savoir plus.
 
 .Étapes
 . Remplissez le formulaire Add Cloud Tier, à l'aide du `ONTAP_FabricPool_settings___bucketname__.txt` ou les valeurs que vous avez obtenues manuellement.

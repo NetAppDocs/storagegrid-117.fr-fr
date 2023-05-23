@@ -227,7 +227,7 @@ Lorsque vous utilisez le `Authorization` En-tête pour l'authentification des de
 
 IMPORTANT: En règle générale, incluez toujours ces en-têtes dans `CanonicalHeaders` Pour s'assurer qu'ils sont vérifiés, cependant, si vous excluez ces en-têtes, StorageGRID ne renvoie pas d'erreur.
 
-Pour plus de détails, reportez-vous à https://["Calculs de signature pour l'en-tête d'autorisation : transfert de charge utile dans un seul bloc (signature AWS version 4)"^].
+Pour plus de détails, reportez-vous à https://docs.aws.amazon.com/AmazonS3/latest/API/sig-v4-header-based-auth.html["Calculs de signature pour l'en-tête d'autorisation : transfert de charge utile dans un seul bloc (signature AWS version 4)"^].
 
 .Informations associées
 link:../ilm/index.html["Gestion des objets avec ILM"]

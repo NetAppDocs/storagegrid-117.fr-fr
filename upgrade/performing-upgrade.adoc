@@ -41,7 +41,7 @@ TIP: Si aucun chemin de mise à jour n'est affiché, il se peut que votre naviga
 . Pour l'étape *Sélectionner des fichiers*, vérifiez le chemin de mise à jour.
 . Dans la section Télécharger les fichiers, sélectionnez chaque lien *Télécharger* pour télécharger les fichiers requis depuis le site de support NetApp.
 +
-Si aucun chemin de mise à jour n'est affiché, passer à l' https://["Téléchargement NetApp : StorageGRID"^] pour déterminer si une nouvelle version ou un correctif est disponible et pour télécharger les fichiers dont vous avez besoin.
+Si aucun chemin de mise à jour n'est affiché, passer à l' https://mysupport.netapp.com/site/products/all/details/storagegrid/downloads-tab["Téléchargement NetApp : StorageGRID"^] pour déterminer si une nouvelle version ou un correctif est disponible et pour télécharger les fichiers dont vous avez besoin.
 
 +
 
@@ -74,7 +74,7 @@ Vous devez télécharger la copie actuelle du fichier du package de récupérati
 IMPORTANT: Le fichier du progiciel de récupération doit être sécurisé car il contient des clés de cryptage et des mots de passe qui peuvent être utilisés pour obtenir des données du système StorageGRID.
 
 . Sélectionnez *Exécuter les précontrôles* et attendez que les précontrôles soient terminés.
-. Passez en revue les détails de chaque vérification préalable signalée et résolvez les erreurs signalées. Voir la https://["Guide de résolution des mises à niveau logicielles StorageGRID"^] Pour la version StorageGRID 11.7.
+. Passez en revue les détails de chaque vérification préalable signalée et résolvez les erreurs signalées. Voir la https://kb.netapp.com/Advice_and_Troubleshooting/Hybrid_Cloud_Infrastructure/StorageGRID/StorageGRID_software_upgrade_resolution_guide["Guide de résolution des mises à niveau logicielles StorageGRID"^] Pour la version StorageGRID 11.7.
 +
 Vous devez résoudre tous les problèmes de vérification préalable _erreurs_ avant de pouvoir mettre à niveau votre système. Cependant, vous n'avez pas besoin de corriger les _avertissements_ de prévérification avant de procéder à la mise à niveau.
 

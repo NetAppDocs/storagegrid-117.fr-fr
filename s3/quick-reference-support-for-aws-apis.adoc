@@ -42,12 +42,12 @@ Sauf mention contraire, les en-têtes de requête courants suivants sont pris en
 
 .Informations associées
 * link:../s3/s3-rest-api-supported-operations-and-limitations.html["Détails de l'implémentation de l'API REST S3"]
-* https://["Référence de l'API Amazon simple Storage Service : en-têtes de demande communs"^]
+* https://docs.aws.amazon.com/AmazonS3/latest/API/RESTCommonRequestHeaders.html["Référence de l'API Amazon simple Storage Service : en-têtes de demande communs"^]
 
 
 
 
-== https://["AbortMultipartUpload"^]
+== https://docs.aws.amazon.com/AmazonS3/latest/API/API_AbortMultipartUpload.html["AbortMultipartUpload"^]
 
 .Paramètres de requête URI et en-têtes de requête
 StorageGRID prend en charge tous les <<common-params,paramètres et en-têtes communs>> Pour cette demande, plus ce paramètre de requête URI supplémentaire :
@@ -63,7 +63,7 @@ link:operations-for-multipart-uploads.html["Opérations pour les téléchargemen
 
 
 
-== https://["CompleteMultipartUpload"^]
+== https://docs.aws.amazon.com/AmazonS3/latest/API/API_CompleteMultipartUpload.html["CompleteMultipartUpload"^]
 
 .Paramètres de requête URI et en-têtes de requête
 StorageGRID prend en charge tous les <<common-params,paramètres et en-têtes communs>> Pour cette demande, plus ce paramètre de requête URI supplémentaire :
@@ -85,7 +85,7 @@ link:complete-multipart-upload.html["Chargement de pièces multiples complet"]
 
 
 
-== https://["Objet de copie"^]
+== https://docs.aws.amazon.com/AmazonS3/latest/API/API_CopyObject.html["Objet de copie"^]
 
 .Paramètres de requête URI et en-têtes de requête
 StorageGRID prend en charge tous les <<common-params,paramètres et en-têtes communs>> pour cette demande, plus les en-têtes supplémentaires suivants :
@@ -120,7 +120,7 @@ link:put-object-copy.html["PLACER une copie d'objet"]
 
 
 
-== https://["CreateBucket"^]
+== https://docs.aws.amazon.com/AmazonS3/latest/API/API_CreateBucket.html["CreateBucket"^]
 
 .Paramètres de requête URI et en-têtes de requête
 StorageGRID prend en charge tous les <<common-params,paramètres et en-têtes communs>> pour cette demande, plus les en-têtes supplémentaires suivants :
@@ -136,7 +136,7 @@ link:operations-on-buckets.html["Opérations sur les compartiments"]
 
 
 
-== https://["CreateMultipartUpload"^]
+== https://docs.aws.amazon.com/AmazonS3/latest/API/API_CreateMultipartUpload.html["CreateMultipartUpload"^]
 
 .Paramètres de requête URI et en-têtes de requête
 StorageGRID prend en charge tous les <<common-params,paramètres et en-têtes communs>> pour cette demande, plus les en-têtes supplémentaires suivants :
@@ -166,7 +166,7 @@ link:initiate-multipart-upload.html["Lancer le téléchargement de pièces multi
 
 
 
-== https://["DeleteBucket"^]
+== https://docs.aws.amazon.com/AmazonS3/latest/API/API_DeleteBucket.html["DeleteBucket"^]
 
 .Paramètres de requête URI et en-têtes de requête
 StorageGRID prend en charge tous les <<common-params,paramètres et en-têtes communs>> pour cette demande.
@@ -176,20 +176,7 @@ link:operations-on-buckets.html["Opérations sur les compartiments"]
 
 
 
-== https://["DeleteBuckeCors"^]
-
-.Paramètres de requête URI et en-têtes de requête
-StorageGRID prend en charge tous les <<common-params,paramètres et en-têtes communs>> pour cette demande.
-
-.Corps de la demande
-Aucune
-
-.Documentation StorageGRID
-link:operations-on-buckets.html["Opérations sur les compartiments"]
-
-
-
-== https://["DeleteBuckeEncryption"^]
+== https://docs.aws.amazon.com/AmazonS3/latest/API/API_DeleteBucketCors.html["DeleteBuckeCors"^]
 
 .Paramètres de requête URI et en-têtes de requête
 StorageGRID prend en charge tous les <<common-params,paramètres et en-têtes communs>> pour cette demande.
@@ -202,7 +189,20 @@ link:operations-on-buckets.html["Opérations sur les compartiments"]
 
 
 
-== https://["DeleteBuckeLifecycle"^]
+== https://docs.aws.amazon.com/AmazonS3/latest/API/API_DeleteBucketEncryption.html["DeleteBuckeEncryption"^]
+
+.Paramètres de requête URI et en-têtes de requête
+StorageGRID prend en charge tous les <<common-params,paramètres et en-têtes communs>> pour cette demande.
+
+.Corps de la demande
+Aucune
+
+.Documentation StorageGRID
+link:operations-on-buckets.html["Opérations sur les compartiments"]
+
+
+
+== https://docs.aws.amazon.com/AmazonS3/latest/API/API_DeleteBucketLifecycle.html["DeleteBuckeLifecycle"^]
 
 .Paramètres de requête URI et en-têtes de requête
 StorageGRID prend en charge tous les <<common-params,paramètres et en-têtes communs>> pour cette demande.
@@ -217,7 +217,7 @@ Aucune
 
 
 
-== https://["DeleteBucketPolicy"^]
+== https://docs.aws.amazon.com/AmazonS3/latest/API/API_DeleteBucketPolicy.html["DeleteBucketPolicy"^]
 
 .Paramètres de requête URI et en-têtes de requête
 StorageGRID prend en charge tous les <<common-params,paramètres et en-têtes communs>> pour cette demande.
@@ -230,7 +230,7 @@ link:operations-on-buckets.html["Opérations sur les compartiments"]
 
 
 
-== https://["DeleteBuckeReplication"^]
+== https://docs.aws.amazon.com/AmazonS3/latest/API/API_DeleteBucketReplication.html["DeleteBuckeReplication"^]
 
 .Paramètres de requête URI et en-têtes de requête
 StorageGRID prend en charge tous les <<common-params,paramètres et en-têtes communs>> pour cette demande.
@@ -243,7 +243,7 @@ link:operations-on-buckets.html["Opérations sur les compartiments"]
 
 
 
-== https://["DeleteBucketTagging"^]
+== https://docs.aws.amazon.com/AmazonS3/latest/API/API_DeleteBucketTagging.html["DeleteBucketTagging"^]
 
 .Paramètres de requête URI et en-têtes de requête
 StorageGRID prend en charge tous les <<common-params,paramètres et en-têtes communs>> pour cette demande.
@@ -256,7 +256,7 @@ link:operations-on-buckets.html["Opérations sur les compartiments"]
 
 
 
-== https://["DeleteObject"^]
+== https://docs.aws.amazon.com/AmazonS3/latest/API/API_DeleteObject.html["DeleteObject"^]
 
 .Paramètres de requête URI et en-têtes de requête
 StorageGRID prend en charge tous les <<common-params,paramètres et en-têtes communs>> pour cette demande, plus cet en-tête de demande supplémentaire :
@@ -272,7 +272,7 @@ link:operations-on-objects.html["Opérations sur les objets"]
 
 
 
-== https://["DeleteObjects"^]
+== https://docs.aws.amazon.com/AmazonS3/latest/API/API_DeleteObjects.html["DeleteObjects"^]
 
 .Paramètres de requête URI et en-têtes de requête
 StorageGRID prend en charge tous les <<common-params,paramètres et en-têtes communs>> pour cette demande, plus cet en-tête de demande supplémentaire :
@@ -288,7 +288,7 @@ link:operations-on-objects.html["Opérations sur les objets"] (SUPPRIMER plusieu
 
 
 
-== https://["DeleteObjectTagging"^]
+== https://docs.aws.amazon.com/AmazonS3/latest/API/API_DeleteObjectTagging.html["DeleteObjectTagging"^]
 
 StorageGRID prend en charge tous les <<common-params,paramètres et en-têtes communs>> pour cette demande.
 
@@ -300,7 +300,7 @@ link:operations-on-objects.html["Opérations sur les objets"]
 
 
 
-== https://["GetBucketAcl"^]
+== https://docs.aws.amazon.com/AmazonS3/latest/API/API_GetBucketAcl.html["GetBucketAcl"^]
 
 .Paramètres de requête URI et en-têtes de requête
 StorageGRID prend en charge tous les <<common-params,paramètres et en-têtes communs>> pour cette demande.
@@ -313,7 +313,7 @@ link:operations-on-buckets.html["Opérations sur les compartiments"]
 
 
 
-== https://["GetBucketCors"^]
+== https://docs.aws.amazon.com/AmazonS3/latest/API/API_GetBucketCors.html["GetBucketCors"^]
 
 .Paramètres de requête URI et en-têtes de requête
 StorageGRID prend en charge tous les <<common-params,paramètres et en-têtes communs>> pour cette demande.
@@ -326,7 +326,7 @@ link:operations-on-buckets.html["Opérations sur les compartiments"]
 
 
 
-== https://["GetBucketEncryption"^]
+== https://docs.aws.amazon.com/AmazonS3/latest/API/API_GetBucketEncryption.html["GetBucketEncryption"^]
 
 .Paramètres de requête URI et en-têtes de requête
 StorageGRID prend en charge tous les <<common-params,paramètres et en-têtes communs>> pour cette demande.
@@ -339,7 +339,7 @@ link:operations-on-buckets.html["Opérations sur les compartiments"]
 
 
 
-== https://["GetBucketLifecycleConfiguration"^]
+== https://docs.aws.amazon.com/AmazonS3/latest/API/API_GetBucketLifecycleConfiguration.html["GetBucketLifecycleConfiguration"^]
 
 .Paramètres de requête URI et en-têtes de requête
 StorageGRID prend en charge tous les <<common-params,paramètres et en-têtes communs>> pour cette demande.
@@ -354,7 +354,7 @@ Aucune
 
 
 
-== https://["GetBuckeLocation"^]
+== https://docs.aws.amazon.com/AmazonS3/latest/API/API_GetBucketLocation.html["GetBuckeLocation"^]
 
 .Paramètres de requête URI et en-têtes de requête
 StorageGRID prend en charge tous les <<common-params,paramètres et en-têtes communs>> pour cette demande.
@@ -367,7 +367,7 @@ link:operations-on-buckets.html["Opérations sur les compartiments"]
 
 
 
-== https://["GetBucketNotifationConfiguration"^]
+== https://docs.aws.amazon.com/AmazonS3/latest/API/API_GetBucketNotificationConfiguration.html["GetBucketNotifationConfiguration"^]
 
 .Paramètres de requête URI et en-têtes de requête
 StorageGRID prend en charge tous les <<common-params,paramètres et en-têtes communs>> pour cette demande.
@@ -380,7 +380,7 @@ link:operations-on-buckets.html["Opérations sur les compartiments"] (GET Bucket
 
 
 
-== https://["GetBucketPolicy"^]
+== https://docs.aws.amazon.com/AmazonS3/latest/API/API_GetBucketPolicy.html["GetBucketPolicy"^]
 
 .Paramètres de requête URI et en-têtes de requête
 StorageGRID prend en charge tous les <<common-params,paramètres et en-têtes communs>> pour cette demande.
@@ -393,7 +393,7 @@ link:operations-on-buckets.html["Opérations sur les compartiments"]
 
 
 
-== https://["GetBuckeReplication"^]
+== https://docs.aws.amazon.com/AmazonS3/latest/API/API_GetBucketReplication.html["GetBuckeReplication"^]
 
 .Paramètres de requête URI et en-têtes de requête
 StorageGRID prend en charge tous les <<common-params,paramètres et en-têtes communs>> pour cette demande.
@@ -406,7 +406,7 @@ link:operations-on-buckets.html["Opérations sur les compartiments"]
 
 
 
-== https://["GetBucketTagging"^]
+== https://docs.aws.amazon.com/AmazonS3/latest/API/API_GetBucketTagging.html["GetBucketTagging"^]
 
 .Paramètres de requête URI et en-têtes de requête
 StorageGRID prend en charge tous les <<common-params,paramètres et en-têtes communs>> pour cette demande.
@@ -419,7 +419,7 @@ link:operations-on-buckets.html["Opérations sur les compartiments"]
 
 
 
-== https://["GetBucketVersioning"^]
+== https://docs.aws.amazon.com/AmazonS3/latest/API/API_GetBucketVersioning.html["GetBucketVersioning"^]
 
 .Paramètres de requête URI et en-têtes de requête
 StorageGRID prend en charge tous les <<common-params,paramètres et en-têtes communs>> pour cette demande.
@@ -432,7 +432,7 @@ link:operations-on-buckets.html["Opérations sur les compartiments"]
 
 
 
-== https://["GetObject"^]
+== https://docs.aws.amazon.com/AmazonS3/latest/API/API_GetObject.html["GetObject"^]
 
 .Paramètres de requête URI et en-têtes de requête
 StorageGRID prend en charge tous les <<common-params,paramètres et en-têtes communs>> Pour cette demande, plus les paramètres de requête URI supplémentaires suivants :
@@ -466,7 +466,7 @@ link:get-object.html["OBTENIR l'objet"]
 
 
 
-== https://["GetObjectAcl"^]
+== https://docs.aws.amazon.com/AmazonS3/latest/API/API_GetObjectAcl.html["GetObjectAcl"^]
 
 .Paramètres de requête URI et en-têtes de requête
 StorageGRID prend en charge tous les <<common-params,paramètres et en-têtes communs>> pour cette demande.
@@ -479,7 +479,7 @@ link:operations-on-objects.html["Opérations sur les objets"]
 
 
 
-== https://["GetObjectLegalHold"^]
+== https://docs.aws.amazon.com/AmazonS3/latest/API/API_GetObjectLegalHold.html["GetObjectLegalHold"^]
 
 .Paramètres de requête URI et en-têtes de requête
 StorageGRID prend en charge tous les <<common-params,paramètres et en-têtes communs>> pour cette demande.
@@ -492,7 +492,7 @@ link:../s3/use-s3-api-for-s3-object-lock.html["Utilisez l'API REST S3 pour confi
 
 
 
-== https://["GetObjectLockConfiguration"^]
+== https://docs.aws.amazon.com/AmazonS3/latest/API/API_GetObjectLockConfiguration.html["GetObjectLockConfiguration"^]
 
 .Paramètres de requête URI et en-têtes de requête
 StorageGRID prend en charge tous les <<common-params,paramètres et en-têtes communs>> pour cette demande.
@@ -505,7 +505,7 @@ link:../s3/use-s3-api-for-s3-object-lock.html["Utilisez l'API REST S3 pour confi
 
 
 
-== https://["GetObjectRetention"^]
+== https://docs.aws.amazon.com/AmazonS3/latest/API/API_GetObjectRetention.html["GetObjectRetention"^]
 
 .Paramètres de requête URI et en-têtes de requête
 StorageGRID prend en charge tous les <<common-params,paramètres et en-têtes communs>> pour cette demande.
@@ -518,7 +518,7 @@ link:../s3/use-s3-api-for-s3-object-lock.html["Utilisez l'API REST S3 pour confi
 
 
 
-== https://["GetObjectTagging"^]
+== https://docs.aws.amazon.com/AmazonS3/latest/API/API_GetObjectTagging.html["GetObjectTagging"^]
 
 .Paramètres de requête URI et en-têtes de requête
 StorageGRID prend en charge tous les <<common-params,paramètres et en-têtes communs>> pour cette demande.
@@ -531,7 +531,7 @@ link:operations-on-objects.html["Opérations sur les objets"]
 
 
 
-== https://["Godet principal"^]
+== https://docs.aws.amazon.com/AmazonS3/latest/API/API_HeadBucket.html["Godet principal"^]
 
 .Paramètres de requête URI et en-têtes de requête
 StorageGRID prend en charge tous les <<common-params,paramètres et en-têtes communs>> pour cette demande.
@@ -544,7 +544,7 @@ link:operations-on-buckets.html["Opérations sur les compartiments"]
 
 
 
-== https://["Objet principal"^]
+== https://docs.aws.amazon.com/AmazonS3/latest/API/API_HeadObject.html["Objet principal"^]
 
 .Paramètres de requête URI et en-têtes de requête
 StorageGRID prend en charge tous les <<common-params,paramètres et en-têtes communs>> pour cette demande, plus les en-têtes supplémentaires suivants :
@@ -567,7 +567,7 @@ link:head-object.html["Objet TÊTE"]
 
 
 
-== https://["Listseaux"^]
+== https://docs.aws.amazon.com/AmazonS3/latest/API/API_ListBuckets.html["Listseaux"^]
 
 .Paramètres de requête URI et en-têtes de requête
 StorageGRID prend en charge tous les <<common-params,paramètres et en-têtes communs>> pour cette demande.
@@ -580,7 +580,7 @@ link:operations-on-the-service.html["Opérations sur le service et gt ; OBTENIR 
 
 
 
-== https://["ListMultipartUploads"^]
+== https://docs.aws.amazon.com/AmazonS3/latest/API/API_ListMultipartUploads.html["ListMultipartUploads"^]
 
 .Paramètres de requête URI et en-têtes de requête
 StorageGRID prend en charge tous les <<common-params,paramètres et en-têtes communs>> pour cette demande, plus les paramètres supplémentaires suivants :
@@ -601,7 +601,7 @@ link:list-multipart-uploads.html["Liste des téléchargements partitionnés"]
 
 
 
-== https://["ListObjects"^]
+== https://docs.aws.amazon.com/AmazonS3/latest/API/API_ListObjects.html["ListObjects"^]
 
 .Paramètres de requête URI et en-têtes de requête
 StorageGRID prend en charge tous les <<common-params,paramètres et en-têtes communs>> pour cette demande, plus les paramètres supplémentaires suivants :
@@ -621,7 +621,7 @@ link:operations-on-buckets.html["Opérations sur les compartiments"] (TÉLÉCHAR
 
 
 
-== https://["ListentsV2"^]
+== https://docs.aws.amazon.com/AmazonS3/latest/API/API_ListObjectsV2.html["ListentsV2"^]
 
 .Paramètres de requête URI et en-têtes de requête
 StorageGRID prend en charge tous les <<common-params,paramètres et en-têtes communs>> pour cette demande, plus les paramètres supplémentaires suivants :
@@ -643,7 +643,7 @@ link:operations-on-buckets.html["Opérations sur les compartiments"] (TÉLÉCHAR
 
 
 
-== https://["ListObjectVersions"^]
+== https://docs.aws.amazon.com/AmazonS3/latest/API/API_ListObjectVersions.html["ListObjectVersions"^]
 
 .Paramètres de requête URI et en-têtes de requête
 StorageGRID prend en charge tous les <<common-params,paramètres et en-têtes communs>> pour cette demande, plus les paramètres supplémentaires suivants :
@@ -664,7 +664,7 @@ link:operations-on-buckets.html["Opérations sur les compartiments"] (OBTENIR le
 
 
 
-== https://["ListParts"^]
+== https://docs.aws.amazon.com/AmazonS3/latest/API/API_ListParts.html["ListParts"^]
 
 .Paramètres de requête URI et en-têtes de requête
 StorageGRID prend en charge tous les <<common-params,paramètres et en-têtes communs>> pour cette demande, plus les paramètres supplémentaires suivants :
@@ -682,7 +682,7 @@ link:list-multipart-uploads.html["Liste des téléchargements partitionnés"]
 
 
 
-== https://["PutBucketCors"^]
+== https://docs.aws.amazon.com/AmazonS3/latest/API/API_PutBucketCors.html["PutBucketCors"^]
 
 .Paramètres de requête URI et en-têtes de requête
 StorageGRID prend en charge tous les <<common-params,paramètres et en-têtes communs>> pour cette demande.
@@ -695,7 +695,7 @@ link:operations-on-buckets.html["Opérations sur les compartiments"]
 
 
 
-== https://["PutBucketEncryption"^]
+== https://docs.aws.amazon.com/AmazonS3/latest/API/API_PutBucketEncryption.html["PutBucketEncryption"^]
 
 .Paramètres de requête URI et en-têtes de requête
 StorageGRID prend en charge tous les <<common-params,paramètres et en-têtes communs>> pour cette demande.
@@ -714,7 +714,7 @@ link:operations-on-buckets.html["Opérations sur les compartiments"]
 
 
 
-== https://["PutBucketLifecycleConfiguration"^]
+== https://docs.aws.amazon.com/AmazonS3/latest/API/API_PutBucketLifecycleConfiguration.html["PutBucketLifecycleConfiguration"^]
 
 .Paramètres de requête URI et en-têtes de requête
 StorageGRID prend en charge tous les <<common-params,paramètres et en-têtes communs>> pour cette demande.
@@ -751,7 +751,7 @@ StorageGRID prend en charge les balises XML de corps de requête suivantes :
 
 
 
-== https://["PutBucketNotifationConfiguration"^]
+== https://docs.aws.amazon.com/AmazonS3/latest/API/API_PutBucketNotificationConfiguration.html["PutBucketNotifationConfiguration"^]
 
 .Paramètres de requête URI et en-têtes de requête
 StorageGRID prend en charge tous les <<common-params,paramètres et en-têtes communs>> pour cette demande.
@@ -778,7 +778,7 @@ link:operations-on-buckets.html["Opérations sur les compartiments"] (Notificati
 
 
 
-== https://["PutBuckePolicy"^]
+== https://docs.aws.amazon.com/AmazonS3/latest/API/API_PutBucketPolicy.html["PutBuckePolicy"^]
 
 .Paramètres de requête URI et en-têtes de requête
 StorageGRID prend en charge tous les <<common-params,paramètres et en-têtes communs>> pour cette demande.
@@ -788,7 +788,7 @@ Pour plus d'informations sur les champs de corps JSON pris en charge, reportez-v
 
 
 
-== https://["PutBuckeReplication"^]
+== https://docs.aws.amazon.com/AmazonS3/latest/API/API_PutBucketReplication.html["PutBuckeReplication"^]
 
 .Paramètres de requête URI et en-têtes de requête
 StorageGRID prend en charge tous les <<common-params,paramètres et en-têtes communs>> pour cette demande.
@@ -808,7 +808,7 @@ link:operations-on-buckets.html["Opérations sur les compartiments"]
 
 
 
-== https://["Étiquetage PutBucketTagging"^]
+== https://docs.aws.amazon.com/AmazonS3/latest/API/API_PutBucketTagging.html["Étiquetage PutBucketTagging"^]
 
 .Paramètres de requête URI et en-têtes de requête
 StorageGRID prend en charge tous les <<common-params,paramètres et en-têtes communs>> pour cette demande.
@@ -821,7 +821,7 @@ link:operations-on-buckets.html["Opérations sur les compartiments"]
 
 
 
-== https://["PutBuckeVersioning"^]
+== https://docs.aws.amazon.com/AmazonS3/latest/API/API_PutBucketVersioning.html["PutBuckeVersioning"^]
 
 .Paramètres de requête URI et en-têtes de requête
 StorageGRID prend en charge tous les <<common-params,paramètres et en-têtes communs>> pour cette demande.
@@ -838,7 +838,7 @@ link:operations-on-buckets.html["Opérations sur les compartiments"]
 
 
 
-== https://["PutObject"^]
+== https://docs.aws.amazon.com/AmazonS3/latest/API/API_PutObject.html["PutObject"^]
 
 .Paramètres de requête URI et en-têtes de requête
 StorageGRID prend en charge tous les <<common-params,paramètres et en-têtes communs>> pour cette demande, plus les en-têtes supplémentaires suivants :
@@ -868,7 +868,7 @@ link:put-object.html["PLACER l'objet"]
 
 
 
-== https://["PutObjectLegalHold"^]
+== https://docs.aws.amazon.com/AmazonS3/latest/API/API_PutObjectLegalHold.html["PutObjectLegalHold"^]
 
 .Paramètres de requête URI et en-têtes de requête
 StorageGRID prend en charge tous les <<common-params,paramètres et en-têtes communs>> pour cette demande.
@@ -881,7 +881,7 @@ link:use-s3-api-for-s3-object-lock.html["Utilisez l'API REST S3 pour configurer 
 
 
 
-== https://["PutObjectLockConfiguration"^]
+== https://docs.aws.amazon.com/AmazonS3/latest/API/API_PutObjectLockConfiguration.html["PutObjectLockConfiguration"^]
 
 .Paramètres de requête URI et en-têtes de requête
 StorageGRID prend en charge tous les <<common-params,paramètres et en-têtes communs>> pour cette demande.
@@ -894,7 +894,7 @@ link:use-s3-api-for-s3-object-lock.html["Utilisez l'API REST S3 pour configurer 
 
 
 
-== https://["PutObjectRetention"^]
+== https://docs.aws.amazon.com/AmazonS3/latest/API/API_PutObjectRetention.html["PutObjectRetention"^]
 
 .Paramètres de requête URI et en-têtes de requête
 StorageGRID prend en charge tous les <<common-params,paramètres et en-têtes communs>> pour cette demande, plus cet en-tête supplémentaire :
@@ -910,7 +910,7 @@ link:use-s3-api-for-s3-object-lock.html["Utilisez l'API REST S3 pour configurer 
 
 
 
-== https://["Marquage PutObject"^]
+== https://docs.aws.amazon.com/AmazonS3/latest/API/API_PutObjectTagging.html["Marquage PutObject"^]
 
 .Paramètres de requête URI et en-têtes de requête
 StorageGRID prend en charge tous les <<common-params,paramètres et en-têtes communs>> pour cette demande.
@@ -923,7 +923,7 @@ link:operations-on-objects.html["Opérations sur les objets"]
 
 
 
-== https://["SelectObjectContent"^]
+== https://docs.aws.amazon.com/AmazonS3/latest/API/API_SelectObjectContent.html["SelectObjectContent"^]
 
 .Paramètres de requête URI et en-têtes de requête
 StorageGRID prend en charge tous les <<common-params,paramètres et en-têtes communs>> pour cette demande.
@@ -937,7 +937,7 @@ Pour plus d'informations sur les champs de corps pris en charge, reportez-vous a
 
 
 
-== https://["UploadPart"^]
+== https://docs.aws.amazon.com/AmazonS3/latest/API/API_UploadPart.html["UploadPart"^]
 
 .Paramètres de requête URI et en-têtes de requête
 StorageGRID prend en charge tous les <<common-params,paramètres et en-têtes communs>> Pour cette demande, plus les paramètres de requête URI supplémentaires suivants :
@@ -962,7 +962,7 @@ link:upload-part.html["Télécharger la pièce"]
 
 
 
-== https://["UploadPartCopy"^]
+== https://docs.aws.amazon.com/AmazonS3/latest/API/API_UploadPartCopy.html["UploadPartCopy"^]
 
 .Paramètres de requête URI et en-têtes de requête
 StorageGRID prend en charge tous les <<common-params,paramètres et en-têtes communs>> Pour cette demande, plus les paramètres de requête URI supplémentaires suivants :

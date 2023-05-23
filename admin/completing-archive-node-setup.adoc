@@ -15,6 +15,6 @@ Le nœud d'archivage ne fonctionne pas après avoir terminé le processus d'inst
 
 Si nécessaire, reportez-vous à la documentation IBM suivante lorsque vous préparez votre serveur TSM pour l'intégration au nœud d'archivage d'un système StorageGRID :
 
-* http://["Guide d'installation et d'utilisation des pilotes de périphérique de bande IBM"^]
-* http://["Référence de programmation des pilotes de périphériques de bande IBM"^]
+* http://www.ibm.com/support/docview.wss?rs=577&uid=ssg1S7002972["Guide d'installation et d'utilisation des pilotes de périphérique de bande IBM"^]
+* http://www.ibm.com/support/docview.wss?rs=577&uid=ssg1S7003032["Référence de programmation des pilotes de périphériques de bande IBM"^]
 

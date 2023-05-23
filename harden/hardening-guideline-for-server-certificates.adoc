@@ -34,7 +34,7 @@ NOTE: StorageGRID gère séparément les certificats utilisés pour les terminau
 
 Lorsque vous utilisez des certificats de serveur personnalisés, suivez les instructions suivantes :
 
-* Les certificats doivent avoir un `_subjectAltName_` Correspondant aux entrées DNS de StorageGRID. Pour plus de détails, reportez-vous à la section 4.2.1.6, «sous-objet autre nom», dans https://["RFC 5280 : certificat PKIX et profil CRL"^].
+* Les certificats doivent avoir un `_subjectAltName_` Correspondant aux entrées DNS de StorageGRID. Pour plus de détails, reportez-vous à la section 4.2.1.6, «sous-objet autre nom», dans https://tools.ietf.org/html/rfc5280#section-4.2.1.6["RFC 5280 : certificat PKIX et profil CRL"^].
 * Si possible, évitez d'utiliser des certificats génériques. À l'exception de cette règle, le certificat d'un terminal de type hébergement virtuel S3 nécessite l'utilisation d'un caractère générique si les noms de compartiment ne sont pas connus à l'avance.
 * Lorsque vous devez utiliser des caractères génériques dans les certificats, vous devez prendre des mesures supplémentaires pour réduire les risques. Utilisez un motif générique comme `*.s3.example.com`, et n'utilisez pas le `s3.example.com` suffixe pour les autres applications. Ce modèle fonctionne également avec l'accès S3 de type chemin d'accès, comme `dc1-s1.s3.example.com/mybucket`.
 * Définissez les délais d'expiration du certificat sur court (par exemple, 2 mois) et utilisez l'API Grid Management pour automatiser la rotation des certificats. Ceci est particulièrement important pour les certificats génériques.

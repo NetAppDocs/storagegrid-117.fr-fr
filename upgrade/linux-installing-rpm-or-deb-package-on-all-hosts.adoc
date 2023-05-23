@@ -20,7 +20,7 @@ Si des nœuds StorageGRID sont déployés sur des hôtes Linux, vous devez tél�
 Lorsque vous effectuez une mise à niveau StorageGRID à partir du Gestionnaire de grille, vous êtes invité à télécharger l'archive de mise à niveau et tout correctif requis dans la première étape. Cependant, si vous devez télécharger des fichiers pour mettre à niveau les hôtes Linux, vous pouvez gagner du temps en téléchargeant à l'avance tous les fichiers requis.
 
 .Étapes
-. Accédez à https://["Téléchargement NetApp : StorageGRID"^].
+. Accédez à https://mysupport.netapp.com/site/products/all/details/storagegrid/downloads-tab["Téléchargement NetApp : StorageGRID"^].
 . Sélectionnez le bouton pour télécharger la dernière version ou sélectionnez une autre version dans le menu déroulant et sélectionnez *Go*.
 +
 Les versions du logiciel StorageGRID ont le format suivant : 11._x.y_. Les correctifs StorageGRID ont le format suivant : 11._x.y.z_.
@@ -48,7 +48,7 @@ La page des téléchargements de la version sélectionnée s'affiche. La page co
 
 . Si vous devez accepter un avis attention/MustRead en raison d'un correctif requis, téléchargez le correctif :
 +
-.. Revenir à https://["Téléchargement NetApp : StorageGRID"^].
+.. Revenir à https://mysupport.netapp.com/site/products/all/details/storagegrid/downloads-tab["Téléchargement NetApp : StorageGRID"^].
 .. Sélectionnez le numéro de correctif dans la liste déroulante.
 .. Acceptez à nouveau la mise en garde et le CLUF.
 .. Téléchargez et enregistrez le correctif et son fichier README.
