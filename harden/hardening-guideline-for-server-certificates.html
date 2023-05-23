@@ -42,6 +42,7 @@
   <link rel="alternate" hreflang="zh-Hant" href="https://docs.netapp.com/zh-tw/storagegrid-117/harden/hardening-guideline-for-server-certificates.html" />
   <link rel="alternate" hreflang="de" href="https://docs.netapp.com/de-de/storagegrid-117/harden/hardening-guideline-for-server-certificates.html" />
   <link rel="alternate" hreflang="es" href="https://docs.netapp.com/es-es/storagegrid-117/harden/hardening-guideline-for-server-certificates.html" />
+  <link rel="alternate" hreflang="it" href="https://docs.netapp.com/it-it/storagegrid-117/harden/hardening-guideline-for-server-certificates.html" />
   <link rel='stylesheet' href='/fr-fr/storagegrid-117/css/na-feature.css' type='text/css'><!-- Top level site integrations --><script>
     function addAdobeLaunch(adobeId) {
       var head = document.getElementsByTagName('head')[0];
@@ -311,6 +312,8 @@
           <a href="https://docs.netapp.com/de-de/storagegrid-117/harden/hardening-guideline-for-server-certificates.html" target="_self"><span translate="no" class="notranslate">Deutsch</span></a>
         </li><li>
           <a href="https://docs.netapp.com/es-es/storagegrid-117/harden/hardening-guideline-for-server-certificates.html" target="_self"><span translate="no" class="notranslate">Español</span></a>
+        </li><li>
+          <a href="https://docs.netapp.com/it-it/storagegrid-117/harden/hardening-guideline-for-server-certificates.html" target="_self"><span translate="no" class="notranslate">Italiano</span></a>
         </li></ul>
     </div>
     <!-- End Language Selector -->
@@ -15002,7 +15005,7 @@
 <p class="page-details">
   
     
-    <time datetime="2023-05-19 14:10:15 +0000">05/19/2023</time>
+    <time datetime="2023-05-23 19:11:40 +0000">05/23/2023</time>
     
   
 
@@ -15062,7 +15065,7 @@ StorageGRID gère séparément les certificats utilisés pour les terminaux de l
 <div class="ulist">
 <ul>
 <li>
-<p>Les certificats doivent avoir un <code><em>subjectAltName</em></code> Correspondant aux entrées DNS de StorageGRID. Pour plus de détails, reportez-vous à la section 4.2.1.6, «sous-objet autre nom», dans https://["RFC 5280 : certificat PKIX et profil CRL"^].</p>
+<p>Les certificats doivent avoir un <code><em>subjectAltName</em></code> Correspondant aux entrées DNS de StorageGRID. Pour plus de détails, reportez-vous à la section 4.2.1.6, «sous-objet autre nom», dans <a href="https://tools.ietf.org/html/rfc5280#section-4.2.1.6" target="_blank" rel="noopener">"RFC 5280 : certificat PKIX et profil CRL"</a>.</p>
 </li>
 <li>
 <p>Si possible, évitez d&#8217;utiliser des certificats génériques. À l&#8217;exception de cette règle, le certificat d&#8217;un terminal de type hébergement virtuel S3 nécessite l&#8217;utilisation d&#8217;un caractère générique si les noms de compartiment ne sont pas connus à l&#8217;avance.</p>
