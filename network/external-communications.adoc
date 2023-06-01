@@ -38,7 +38,7 @@ Pour utiliser des systèmes et des protocoles tels que SMTP, DNS, SSH ou DHCP, v
 Le tableau suivant indique les ports utilisés pour le trafic dans les nœuds.
 
 
-NOTE: Cette liste ne comprend pas les ports pouvant être configurés comme link:../admin/configuring-load-balancer-endpoints.html["terminaux d'équilibrage de charge"].
+NOTE: Cette liste ne comprend pas les ports pouvant être configurés comme link:../admin/configuring-load-balancer-endpoints.html["terminaux d'équilibrage de charge"] ou utilisé pour link:../monitor/configuring-syslog-server.html["serveurs syslog"].
 
 [cols="1a,1a,1a,1a,1a,4a"]
 |===

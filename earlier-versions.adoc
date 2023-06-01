@@ -4,7 +4,7 @@ permalink: earlier-versions.html
 keywords: storagegrid, earlier version, documentation, doc site, 11.5, 11.4, 11.3 
 summary: Pour consulter la documentation relative aux autres versions des logiciels NetApp StorageGRID, cliquez ici. 
 ---
-= Versions antérieures de la documentation NetApp StorageGRID
+= Autres versions de la documentation de NetApp StorageGRID
 :hardbreaks:
 :allow-uri-read: 
 :nofooter: 
