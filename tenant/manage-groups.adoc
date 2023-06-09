@@ -71,9 +71,28 @@ Si le compte de tenant dispose de l'autorisation *utiliser la connexion de féd�
 *** Si vous modifiez un groupe Swift, cochez ou décochez la case *Administrateur Swift*.
 
 
-.. Dans l'onglet *Users*, ajoutez ou supprimez des utilisateurs locaux.
+
+
+. Pour ajouter un ou plusieurs utilisateurs locaux existants au groupe :
++
+.. Sélectionnez l'onglet utilisateurs.
 +
 image::../media/manage_users.png[Gérer les utilisateurs]
+
+.. Sélectionnez *Ajouter des utilisateurs*.
+.. Sélectionnez les utilisateurs existants que vous souhaitez ajouter, puis sélectionnez *Ajouter des utilisateurs*.
++
+Un message de réussite s'affiche en haut à droite.
+
+
+
+. Pour supprimer des utilisateurs locaux du groupe :
++
+.. Sélectionnez l'onglet utilisateurs.
+.. Sélectionnez *Supprimer utilisateurs*.
+.. Sélectionnez les utilisateurs que vous souhaitez supprimer, puis sélectionnez *Supprimer utilisateurs*.
++
+Un message de réussite s'affiche en haut à droite.
 
 
 
