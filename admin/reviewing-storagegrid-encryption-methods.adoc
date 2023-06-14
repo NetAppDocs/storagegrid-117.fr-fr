@@ -25,7 +25,10 @@ Serveur de gestion des clés (KMS) dans Grid Manager
  a| 
 Vous link:kms-configuring.html["configurer un serveur de gestion des clés"] Pour le site StorageGRID et link:../installconfig/optional-enabling-node-encryption.html["activez le chiffrement des nœuds pour l'appliance"]. Ensuite, un nœud d'appliance se connecte au KMS pour demander une clé de chiffrement (KEK). Cette clé chiffre et décrypte la clé de chiffrement des données (DEK) sur chaque volume.
  a| 
-Nœuds d'appliance sur lesquels *Node Encryption* est activé pendant l'installation. Toutes les données de l'appliance sont protégées contre les pertes ou les suppressions physiques du data Center. Peut être utilisé avec certaines appliances de stockage et de services StorageGRID.
+Nœuds d'appliance sur lesquels *Node Encryption* est activé pendant l'installation. Toutes les données de l'appliance sont protégées contre les pertes ou les suppressions physiques du data Center.
+
+
+NOTE: La gestion des clés de chiffrement avec un KMS n'est prise en charge que pour les nœuds de stockage et les appliances de services.
 
 
 
