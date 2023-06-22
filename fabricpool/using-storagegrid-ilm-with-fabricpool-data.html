@@ -3318,6 +3318,8 @@
   
 
 
+
+
         </li>
       </ul>
     
@@ -10573,7 +10575,14 @@
       class=" "
     ><a class="na-navbar-padding" href="/fr-fr/storagegrid-117/fabricpool/other-best-practices-for-storagegrid-and-fabricpool.html">
         Autres meilleures pratiques
-      </a></li></ul></li></ul></li></ul></li><li 
+      </a></li></ul></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Supprimez les données FabricPool de StorageGRID"
+      data-li-level="3#" 
+      class=" "
+    ><a class="na-navbar-padding" href="/fr-fr/storagegrid-117/fabricpool/remove-fabricpool-data.html">
+        Supprimez les données FabricPool de StorageGRID
+      </a></li></ul></li></ul></li><li 
       data-pdf-exists="true" 
       data-pdf-filename="Utiliser StorageGRID"
       data-li-level="1" 
@@ -15005,7 +15014,7 @@
 <p class="page-details">
   
     
-    <time datetime="2023-05-19 14:10:15 +0000">05/19/2023</time>
+    <time datetime="2023-06-22 22:08:31 +0000">06/22/2023</time>
     
   
 
@@ -15029,6 +15038,18 @@
 </td>
 <td class="content">
 Les règles et règles ILM suivantes ne sont que des exemples. Les règles ILM sont nombreuses. Avant d&#8217;activer une nouvelle stratégie, simulez la stratégie proposée pour confirmer qu&#8217;elle fonctionnera comme destinée à protéger le contenu contre la perte. Pour en savoir plus, voir <a href="../ilm/index.html">"Gestion des objets avec ILM"</a>.
+</td>
+</tr>
+</table>
+</div>
+<div class="admonitionblock caution">
+<table>
+<tr>
+<td class="icon">
+<img src="/us-en/storagegrid-117/images/caution.svg" alt="Avertissement">
+</td>
+<td class="content">
+Pour éviter toute perte de données, n&#8217;utilisez pas de règle ILM qui expirera ou supprimera les données de Tier cloud FabricPool. Définissez la période de conservation sur <strong>Forever</strong> pour vous assurer que les objets FabricPool ne sont pas supprimés par la ILM de StorageGRID.
 </td>
 </tr>
 </table>
@@ -15125,7 +15146,19 @@ Cette condition préalable ne s&#8217;applique pas aux nouvelles installations d
 <p>Magasin du jour 0 pour toujours</p>
 </div>
 <div class="paragraph">
-<p>Stockage d&#8217;objets par code d&#8217;effacement à l&#8217;aide d&#8217;un schéma EC 2+1 à Denver.</p>
+<p>Stockez les objets par code d&#8217;effacement à l&#8217;aide d&#8217;un schéma EC 2+1 à Denver et conservez-les indéfiniment dans StorageGRID.</p>
+</div>
+<div class="admonitionblock caution">
+<table>
+<tr>
+<td class="icon">
+<img src="/us-en/storagegrid-117/images/caution.svg" alt="Avertissement">
+</td>
+<td class="content">
+Pour éviter toute perte de données, n&#8217;utilisez pas de règle ILM qui expirera ou supprimera les données de Tier cloud FabricPool.
+</td>
+</tr>
+</table>
 </div></div></td>
 </tr>
 <tr>
@@ -15233,7 +15266,7 @@ Cette condition préalable ne s&#8217;applique pas aux nouvelles installations d
 <p>Tous les objets dans tous les autres compartiments sont répliqués. Deux copies sont créées et placées sur deux nœuds de stockage différents.</p>
 </li>
 <li>
-<p>Les copies répliquées et avec code d&#8217;effacement seront conservées dans StorageGRID jusqu&#8217;à leur suppression dans ONTAP. StorageGRID ILM ne supprimera jamais ces éléments.</p>
+<p>Les copies seront conservées dans StorageGRID indéfiniment. La solution ILM de StorageGRID ne supprime pas ces objets.</p>
 </li>
 </ul>
 </div>

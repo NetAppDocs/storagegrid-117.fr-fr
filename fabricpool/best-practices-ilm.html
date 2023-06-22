@@ -3318,6 +3318,8 @@
   
 
 
+
+
         </li>
       </ul>
     
@@ -10573,7 +10575,14 @@
       class=" "
     ><a class="na-navbar-padding" href="/fr-fr/storagegrid-117/fabricpool/other-best-practices-for-storagegrid-and-fabricpool.html">
         Autres meilleures pratiques
-      </a></li></ul></li></ul></li></ul></li><li 
+      </a></li></ul></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Supprimez les données FabricPool de StorageGRID"
+      data-li-level="3#" 
+      class=" "
+    ><a class="na-navbar-padding" href="/fr-fr/storagegrid-117/fabricpool/remove-fabricpool-data.html">
+        Supprimez les données FabricPool de StorageGRID
+      </a></li></ul></li></ul></li><li 
       data-pdf-exists="true" 
       data-pdf-filename="Utiliser StorageGRID"
       data-li-level="1" 
@@ -15005,7 +15014,7 @@
 <p class="page-details">
   
     
-    <time datetime="2023-05-19 14:10:15 +0000">05/19/2023</time>
+    <time datetime="2023-06-22 22:08:31 +0000">06/22/2023</time>
     
   
 
@@ -15067,7 +15076,19 @@ La règle ILM de création d&#8217;une seule copie répliquée pendant toute pé
 </div>
 </li>
 <li>
-<p>N&#8217;utilisez pas de règle ILM pour expirer ou supprimer les données de Tier cloud FabricPool. Définissez la période de conservation dans chaque règle ILM sur « permanente » pour vous assurer que les objets FabricPool ne sont pas supprimés par la règle ILM de StorageGRID.</p>
+<p>À vos besoins <a href="remove-fabricpool-data.html">"Supprimez les données FabricPool de StorageGRID"</a>, Utilisez ONTAP pour récupérer toutes les données du volume FabricPool et les promouvoir dans le Tier de performance.</p>
+<div class="admonitionblock caution">
+<table>
+<tr>
+<td class="icon">
+<img src="/us-en/storagegrid-117/images/caution.svg" alt="Avertissement">
+</td>
+<td class="content">
+Pour éviter toute perte de données, n&#8217;utilisez pas de règle ILM qui expirera ou supprimera les données de Tier cloud FabricPool. Définissez la période de conservation de chaque règle ILM sur <strong>Forever</strong> pour vous assurer que les objets FabricPool ne sont pas supprimés par la ILM de StorageGRID.
+</td>
+</tr>
+</table>
+</div>
 </li>
 <li>
 <p>Ne créez pas de règles qui déplacera les données de Tier cloud FabricPool hors du compartiment vers un autre emplacement. Vous ne pouvez pas utiliser un pool de stockage cloud pour déplacer des données FabricPool vers un autre magasin d&#8217;objets. De même, vous ne pouvez pas archiver de données FabricPool sur bande à l&#8217;aide d&#8217;un nœud d&#8217;archivage.</p>

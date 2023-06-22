@@ -3318,6 +3318,8 @@
   
 
 
+
+
         </li>
       </ul>
     
@@ -10573,7 +10575,14 @@
       class=" "
     ><a class="na-navbar-padding" href="/fr-fr/storagegrid-117/fabricpool/other-best-practices-for-storagegrid-and-fabricpool.html">
         Autres meilleures pratiques
-      </a></li></ul></li></ul></li></ul></li><li 
+      </a></li></ul></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Supprimez les données FabricPool de StorageGRID"
+      data-li-level="3#" 
+      class=" "
+    ><a class="na-navbar-padding" href="/fr-fr/storagegrid-117/fabricpool/remove-fabricpool-data.html">
+        Supprimez les données FabricPool de StorageGRID
+      </a></li></ul></li></ul></li><li 
       data-pdf-exists="true" 
       data-pdf-filename="Utiliser StorageGRID"
       data-li-level="1" 
@@ -15005,7 +15014,7 @@
 <p class="page-details">
   
     
-    <time datetime="2023-05-19 14:10:15 +0000">05/19/2023</time>
+    <time datetime="2023-06-22 22:08:31 +0000">06/22/2023</time>
     
   
 
@@ -15864,7 +15873,7 @@ Ne fermez pas cette page tant que vous n&#8217;avez pas copié les deux clés d&
 <p>Instruction de placement</p>
 </div></div></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p>code d&#8217;effacement 2+1</p>
+<p>Utilisez le code d&#8217;effacement 2+1 du jour 0 à l&#8217;infini</p>
 </div></div></td>
 </tr>
 </tbody>
@@ -15875,7 +15884,7 @@ Ne fermez pas cette page tant que vous n&#8217;avez pas copié les deux clés d&
 <div class="ulist">
 <ul>
 <li>
-<p>La <strong>période</strong> pour la règle est <strong>jour 0 - pour toujours</strong>. <strong>Jour 0</strong> signifie que la règle est appliquée lorsque les données sont hiérarchisées depuis ONTAP. <strong>Forever</strong> signifie que StorageGRID ne supprimera pas les données qui ont été hiérarchisées de ONTAP à moins qu&#8217;il ne reçoive une demande de suppression de ONTAP.</p>
+<p>La <strong>période</strong> pour la règle est <strong>jour 0 - pour toujours</strong>. <strong>Jour 0</strong> signifie que la règle est appliquée lorsque les données sont hiérarchisées depuis ONTAP. <strong>Forever</strong> signifie que l&#8217;ILM de StorageGRID ne supprimera pas les données qui ont été hiérarchisées depuis ONTAP.</p>
 </li>
 <li>
 <p>Le <strong>pool de stockage</strong> de la règle est le pool de stockage que vous avez sélectionné. <strong>EC 2+1</strong> signifie que les données seront stockées à l&#8217;aide du code d&#8217;effacement 2+1. Chaque objet sera enregistré sous forme de deux fragments de données et d&#8217;un fragment de parité. Les trois fragments de chaque objet seront enregistrés sur différents nœuds de stockage sur un seul site.</p>
@@ -15907,6 +15916,18 @@ Ne fermez pas cette page tant que vous n&#8217;avez pas copié les deux clés d&
 </td>
 <td class="content">
 Lorsque vous activez une nouvelle règle ILM, StorageGRID utilise cette règle pour gérer le placement, la durée et la protection des données de tous les objets de la grille, y compris les objets existants et les objets nouvellement ingérés. Dans certains cas, l&#8217;activation d&#8217;une nouvelle stratégie peut entraîner le déplacement d&#8217;objets existants vers de nouveaux emplacements.
+</td>
+</tr>
+</table>
+</div>
+<div class="admonitionblock caution">
+<table>
+<tr>
+<td class="icon">
+<img src="/us-en/storagegrid-117/images/caution.svg" alt="Avertissement">
+</td>
+<td class="content">
+Pour éviter toute perte de données, n&#8217;utilisez pas de règle ILM qui expirera ou supprimera les données de Tier cloud FabricPool. Définissez la période de conservation sur <strong>Forever</strong> pour vous assurer que les objets FabricPool ne sont pas supprimés par la ILM de StorageGRID.
 </td>
 </tr>
 </table>
@@ -16015,7 +16036,7 @@ Lorsque vous activez une nouvelle règle ILM, StorageGRID utilise cette règle p
 <p>Sélectionnez <strong>développer tout</strong> pour afficher un diagramme de rétention pour chaque règle de la stratégie proposée.</p>
 </li>
 <li>
-<p>Sélectionnez <strong>Time Period</strong> et <strong>Storage Pool</strong> pour consulter le diagramme de rétention.</p>
+<p>Sélectionnez <strong>Time Period</strong> et <strong>Storage Pool</strong> pour consulter le diagramme de rétention. Vérifiez que toutes les règles qui s&#8217;appliquent au compartiment FabricPool ou au locataire conservent les objets <strong>Forever</strong>.</p>
 </li>
 </ol>
 </div>
