@@ -525,12 +525,12 @@ L'instruction de placement démarre lorsque les objets sont initialement enregis
  a| 
 Instruction de placement
  a| 
-code d'effacement 2+1
+Utilisez le code d'effacement 2+1 du jour 0 à l'infini
 
 |===
 . Triez le diagramme de rétention par *période* et *pool de stockage* pour confirmer l'instruction de placement.
 +
-** La *période* pour la règle est *jour 0 - pour toujours*. *Jour 0* signifie que la règle est appliquée lorsque les données sont hiérarchisées depuis ONTAP. *Forever* signifie que StorageGRID ne supprimera pas les données qui ont été hiérarchisées de ONTAP à moins qu'il ne reçoive une demande de suppression de ONTAP.
+** La *période* pour la règle est *jour 0 - pour toujours*. *Jour 0* signifie que la règle est appliquée lorsque les données sont hiérarchisées depuis ONTAP. *Forever* signifie que l'ILM de StorageGRID ne supprimera pas les données qui ont été hiérarchisées depuis ONTAP.
 ** Le *pool de stockage* de la règle est le pool de stockage que vous avez sélectionné. *EC 2+1* signifie que les données seront stockées à l'aide du code d'effacement 2+1. Chaque objet sera enregistré sous forme de deux fragments de données et d'un fragment de parité. Les trois fragments de chaque objet seront enregistrés sur différents nœuds de stockage sur un seul site.
 
 
@@ -547,6 +547,9 @@ Pour plus de détails sur cette étape, voir link:../ilm/creating-ilm-policy.htm
 
 
 CAUTION: Lorsque vous activez une nouvelle règle ILM, StorageGRID utilise cette règle pour gérer le placement, la durée et la protection des données de tous les objets de la grille, y compris les objets existants et les objets nouvellement ingérés. Dans certains cas, l'activation d'une nouvelle stratégie peut entraîner le déplacement d'objets existants vers de nouveaux emplacements.
+
+
+CAUTION: Pour éviter toute perte de données, n'utilisez pas de règle ILM qui expirera ou supprimera les données de Tier cloud FabricPool. Définissez la période de conservation sur *Forever* pour vous assurer que les objets FabricPool ne sont pas supprimés par la ILM de StorageGRID.
 
 .Étapes
 . Si vous le souhaitez, mettez à jour le *Nom de la stratégie* généré par le système. Par défaut, le système ajoute "`+ FabricPool`" au nom de votre police active ou proposée, mais vous pouvez fournir votre propre nom.
@@ -598,7 +601,7 @@ Voir link:../ilm/creating-proposed-ilm-policy.html["Création de la règle ILM p
 . Consultez le diagramme de rétention pour savoir comment les différents objets seront conservés.
 +
 .. Sélectionnez *développer tout* pour afficher un diagramme de rétention pour chaque règle de la stratégie proposée.
-.. Sélectionnez *Time Period* et *Storage Pool* pour consulter le diagramme de rétention.
+.. Sélectionnez *Time Period* et *Storage Pool* pour consulter le diagramme de rétention. Vérifiez que toutes les règles qui s'appliquent au compartiment FabricPool ou au locataire conservent les objets *Forever*.
 
 
 . Une fois que vous avez examiné la politique proposée, sélectionnez *Activer et continuer* pour activer la stratégie et passer à l'étape de classification du trafic.

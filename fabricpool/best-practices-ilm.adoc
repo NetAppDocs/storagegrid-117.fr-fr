@@ -33,7 +33,11 @@ Il est recommandé d'utiliser un code d'effacement 2+1 sur un site pour une prot
 
 CAUTION: La règle ILM de création d'une seule copie répliquée pendant toute période met les données à risque de perte permanente. Si une seule copie répliquée d'un objet existe, cet objet est perdu en cas de défaillance ou d'erreur importante d'un noeud de stockage. De plus, lors des procédures de maintenance telles que les mises à niveau, l'accès à l'objet est temporairement perdu.
 
-* N'utilisez pas de règle ILM pour expirer ou supprimer les données de Tier cloud FabricPool. Définissez la période de conservation dans chaque règle ILM sur « permanente » pour vous assurer que les objets FabricPool ne sont pas supprimés par la règle ILM de StorageGRID.
+* À vos besoins link:remove-fabricpool-data.html["Supprimez les données FabricPool de StorageGRID"], Utilisez ONTAP pour récupérer toutes les données du volume FabricPool et les promouvoir dans le Tier de performance.
++
+
+CAUTION: Pour éviter toute perte de données, n'utilisez pas de règle ILM qui expirera ou supprimera les données de Tier cloud FabricPool. Définissez la période de conservation de chaque règle ILM sur *Forever* pour vous assurer que les objets FabricPool ne sont pas supprimés par la ILM de StorageGRID.
+
 * Ne créez pas de règles qui déplacera les données de Tier cloud FabricPool hors du compartiment vers un autre emplacement. Vous ne pouvez pas utiliser un pool de stockage cloud pour déplacer des données FabricPool vers un autre magasin d'objets. De même, vous ne pouvez pas archiver de données FabricPool sur bande à l'aide d'un nœud d'archivage.
 +
 
