@@ -28,7 +28,7 @@ Un KMS peut être configuré dans Grid Manager avant ou après l'installation de
 
 
 
-IMPORTANT: Les données résidant sur une appliance sur laquelle le chiffrement des nœuds est activé avant d'être connecté au KMS sont chiffrées avec une clé temporaire qui n'est pas sécurisée. L'appareil n'est pas protégé contre le retrait ou le vol tant que la clé n'est pas réglée sur une valeur fournie par le KMS.
+IMPORTANT: Avant qu'une appliance sur laquelle le chiffrement des nœuds est activé ne soit connectée au système de gestion des clés (KMS), les données de l'appliance sont chiffrées avec une clé temporaire qui n'est pas sécurisée. L'appareil n'est pas protégé contre le retrait ou le vol tant que la clé n'est pas réglée sur une valeur fournie par le KMS.
 
 Sans la clé KMS requise pour décrypter le disque, les données de l'appliance ne peuvent pas être récupérées et sont perdues. C'est le cas lorsque la clé de déchiffrement ne peut pas être récupérée à partir du KMS. La clé devient inaccessible si un client efface la configuration KMS, une clé KMS expire, la connexion au KMS est perdue ou l'appliance est supprimée du système StorageGRID dans lequel ses clés KMS sont installées.
 
