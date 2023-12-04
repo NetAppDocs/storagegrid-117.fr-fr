@@ -114,7 +114,7 @@ L'onglet *progression de la restauration* affiche l'état du processus de restau
 
 image::../media/vol-restore-restore-progress.png[Restauration de volume - onglet progression de la restauration]
 
-Dans tous les volumes, les taux de réparation des données pour les objets répliqués et soumis au code d'effacement constituent des estimations résumant toutes les restaurations en cours, y compris les restaurations initiées à l'aide du système `repair-data` script. Le pourcentage d'objets de ces volumes qui sont intacts et ne nécessitent pas de restauration est également indiqué.
+Dans tous les volumes, les taux de réparation des données pour les objets répliqués et soumis au code d'effacement constituent des moyennes résumant toutes les restaurations en cours, y compris les restaurations initiées à l'aide du `repair-data` script. Le pourcentage d'objets de ces volumes qui sont intacts et ne nécessitent pas de restauration est également indiqué.
 
 
 NOTE: La restauration des données répliquées dépend de la disponibilité des ressources dans lesquelles les copies répliquées sont stockées. La progression de la restauration des données répliquées n'est pas linéaire et peut prendre des jours ou des semaines.

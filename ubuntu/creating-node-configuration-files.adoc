@@ -617,17 +617,17 @@ link:../ubuntu/configuring-host-network.html#considerations-and-recommendations-
 
 
  a| 
-INTERFACES_TARGET_nnnn
+INTERFACE_TARGET_nnnn
  a| 
 O
  a| 
 Nom et description facultative d'une interface supplémentaire que vous souhaitez ajouter à ce nœud. Vous pouvez ajouter plusieurs interfaces supplémentaires à chaque nœud.
 
-Pour _nnnn_, spécifiez un numéro unique pour chaque entrée INTERFACES_TARGET que vous ajoutez.
+Pour _nnnn_, spécifiez un numéro unique pour chaque entrée INTERFACE_TARGET que vous ajoutez.
 
 Pour la valeur, spécifiez le nom de l'interface physique sur l'hôte bare-Metal. Ensuite, si vous le souhaitez, ajoutez une virgule et fournissez une description de l'interface, qui s'affiche sur la page des interfaces VLAN et sur la page des groupes haute disponibilité.
 
-Par exemple : `INTERFACES_TARGET_01=ens256, Trunk`
+Par exemple : `INTERFACE_TARGET_0001=ens256, Trunk`
 
 Si vous ajoutez une interface de jonction, vous devez configurer une interface VLAN dans StorageGRID. Si vous ajoutez une interface d'accès, vous pouvez l'ajouter directement à un groupe haute disponibilité ; il n'est pas nécessaire de configurer une interface VLAN.
 

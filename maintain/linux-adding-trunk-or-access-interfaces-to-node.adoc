@@ -42,10 +42,10 @@ Le nœud est indisponible durant une brève ajout d'interfaces. Vous devez effec
 
 . Ajoutez une entrée au fichier pour spécifier le nom et, éventuellement, la description de chaque interface supplémentaire que vous souhaitez ajouter au nœud. Utilisez ce format.
 +
-`INTERFACES_TARGET_nnnn=_value_`
+`INTERFACE_TARGET_nnnn=_value_`
 
 +
-Pour _nnnn_, spécifiez un numéro unique pour chaque `INTERFACES_TARGET` entrée que vous ajoutez.
+Pour _nnnn_, spécifiez un numéro unique pour chaque `INTERFACE_TARGET` entrée que vous ajoutez.
 
 +
 Pour _value_, spécifiez le nom de l'interface physique sur l'hôte bare-Metal. Ensuite, si vous le souhaitez, ajoutez une virgule et fournissez une description de l'interface, qui s'affiche sur la page des interfaces VLAN et sur la page des groupes haute disponibilité.
@@ -54,7 +54,7 @@ Pour _value_, spécifiez le nom de l'interface physique sur l'hôte bare-Metal. 
 Par exemple :
 
 +
-`INTERFACES_TARGET_01=ens256, Trunk`
+`INTERFACE_TARGET_0001=ens256, Trunk`
 
 +
 
