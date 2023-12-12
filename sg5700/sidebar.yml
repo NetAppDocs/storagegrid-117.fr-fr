@@ -25,9 +25,9 @@ entries:
 - title: Procédures matérielles
   pdf-filename: Procédures matérielles - SG5700
   entries:
-  - title: Remplacement du contrôleur E2800
+  - title: Remplacez le contrôleur de stockage E2800
     url: "/sg5700/replacing-e2800-controller.html"
-  - title: Remplacement du contrôleur E5700SG
+  - title: Remplacez le contrôleur de calcul E5700SG
     url: "/sg5700/replacing-e5700sg-controller.html"
   - title: Remplacer les autres composants matériels
     url: "/sg5700/replacing-other-hardware-components-sg5700.html"
