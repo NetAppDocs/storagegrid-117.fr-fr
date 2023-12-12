@@ -18,6 +18,9 @@ Lorsque le message AutoSupport ne parvient pas à envoyer, ""FAILED"" s'affiche 
 image::../media/autosupport_results_tab.png[Échec de l'envoi du message AutoSupport]
 
 
+NOTE: Si vous avez configuré un serveur proxy pour transférer les messages AutoSupport à NetApp, vous devez le faire link:configuring-admin-proxy-settings.html["vérifiez que les paramètres de configuration du serveur proxy sont corrects"].
+
+
 
 == Échec hebdomadaire du message AutoSupport
 
