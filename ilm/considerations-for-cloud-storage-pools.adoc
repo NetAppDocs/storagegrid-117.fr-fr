@@ -21,6 +21,7 @@ Si vous envisagez d'utiliser un pool de stockage cloud pour déplacer les objets
 * N'utilisez pas les pools de stockage cloud pour les objets qui ont été ingérés par les clients Swift. Swift ne prend pas en charge les demandes DE restauration POST-objet. StorageGRID ne pourra donc pas récupérer d'objets Swift ayant été transférés vers le stockage Glacier S3 ou le Tier d'archivage du stockage Azure Blob Storage. L'émission d'une demande d'objet GET Swift pour récupérer ces objets échouera (403 interdit).
 * L'utilisation de pools de stockage cloud avec FabricPool n'est pas prise en charge en raison de la latence ajoutée pour extraire un objet de la cible du pool de stockage cloud.
 * Les objets avec le verrouillage d'objet S3 activé ne peuvent pas être placés dans les pools de stockage cloud.
+* Si S3 Object Lock est activé pour le compartiment S3 de destination d'un pool de stockage cloud, la tentative de configuration de la réplication de compartiment (PutBucketReplication) échoue avec une erreur AccessDenied.
 
 
 
