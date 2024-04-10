@@ -44,7 +44,7 @@ Lors de l'installation, vous utilisez le client Web VMware vSphere pour déploye
  a| 
 L'ordinateur portable de service
  a| 
-Le système StorageGRID est installé par le biais d'un service après-vente. L'ordinateur portable de service doit posséder :
+Le système StorageGRID est installé par le biais d'un ordinateur portable de service. L'ordinateur portable de service doit posséder :
 
 * Port réseau
 * Client SSH (par exemple, PuTTY)
