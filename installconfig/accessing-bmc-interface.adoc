@@ -61,9 +61,10 @@ La page de connexion BMC s'affiche.
 
 NOTE: Si vous n'avez pas encore configuré `BMC_Port_IP`, suivez les instructions de la section link:configuring-bmc-interface.html["Configurer l'interface BMC"]. Si vous ne pouvez pas suivre cette procédure en raison d'un problème matériel et si vous n'avez pas encore configuré d'adresse IP BMC, vous pourrez peut-être continuer à accéder au contrôleur BMC. Par défaut, le contrôleur BMC obtient une adresse IP à l'aide de DHCP. Si le protocole DHCP est activé sur le réseau BMC, votre administrateur réseau peut fournir l'adresse IP attribuée au contrôleur BMC MAC, qui est imprimée sur l'étiquette située à l'avant de l'appliance. Si DHCP n'est pas activé sur le réseau BMC, le BMC ne répond pas au bout de quelques minutes et se attribue l'IP statique par défaut `192.168.0.120`. Vous devrez peut-être connecter votre ordinateur portable directement au port BMC et modifier le paramètre réseau pour attribuer à votre ordinateur portable une adresse IP telle que `192.168.0.200/24`, afin de naviguer jusqu'à `192.168.0.120`.
 
-. Entrez le nom d'utilisateur et le mot de passe racine en utilisant le mot de passe que vous avez défini lorsque vous link:changing-root-password-for-bmc-interface.html["mot de passe racine par défaut modifié"]:
+. Entrez le nom d'utilisateur et le mot de passe admin ou root, en utilisant le mot de passe que vous avez défini link:changing-root-password-for-bmc-interface.html["mot de passe racine par défaut modifié"]:
 +
-image::../media/bmc_signin_page.gif[Page de connexion BMC]
+
+NOTE: L'utilisateur par défaut dépend de la date d'installation de l'appliance StorageGRID. L'utilisateur par défaut est *admin* pour les nouvelles installations et *root* pour les anciennes installations.
 
 . Sélectionnez *se connecter*.
 +
