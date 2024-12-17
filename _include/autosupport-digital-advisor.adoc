@@ -1,0 +1,9 @@
+= 
+:allow-uri-read: 
+
+
+Digital Advisor est une solution cloud qui exploite l'analytique prédictive et les connaissances de la communauté issues de la base installée de NetApp. Les évaluations continues des risques, les alertes prédictives, les conseils normatifs et les actions automatisées vous aident à anticiper les problèmes, ce qui permet d'améliorer l'état et la disponibilité du système.
+
+Vous devez activer AutoSupport si vous souhaitez utiliser les tableaux de bord et les fonctionnalités de Digital Advisor sur le site de support NetApp.
+
+https://docs.netapp.com/us-en/active-iq/index.html["Documentation Digital Advisor"^]
