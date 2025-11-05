@@ -288,6 +288,8 @@ entries:
       url: "/admin/what-storage-volume-watermarks-are.html"
   - title: Gérer le stockage des métadonnées d'objet
     url: "/admin/managing-object-metadata-storage.html"
+  - title: Augmenter le paramètre d'espace réservé aux métadonnées
+    url: "/admin/increasing-metadata-reserved-space-setting.html"
   - title: Compresser les objets stockés
     url: "/admin/configuring-stored-object-compression.html"
   - title: Paramètres de configuration du nœud de stockage
